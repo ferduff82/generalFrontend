@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<script>
+
+
+</script>
+
+<body>
+
+<h1>Control de gastos</h1>
+
+<div id="product_print"></div>
+<div id="date_print"></div>
+<div id="price_print"></div>
+<div id="kilos_print"></div>
+
+<input type="text" name="lastname" id="product">
+<input type="text" name="lastname" id="date">
+<input type="text" name="lastname" id="price">
+<input type="text" name="lastname" id="kilos">
+
+<input id="pinchable" type="button" value="Pinchame y verás" />
+
+<script>
+
+var a = 5;
+
+if (a) {
+	document.getElementById("kilos_print").innerHTML = a;
+}
+
+if (a==6){console.log("es igual")}else{console.log("no es igual");}
+
+
+var app = 0;
+
+if (app==0){
+	document.getElementById("date_print").innerHTML="WORK";
+};
+
+var node=document.createElement("p");
+document.getElementById("kilos_print").appendChild(node);
+
+
+</script>
+
+</body>
+</html>

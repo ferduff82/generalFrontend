@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<script>
+
+function User(name) {
+	
+  this.fixName = function() {
+    name = 'Mr.' + name.toUpperCase()
+  }
+
+  this.say = function(phrase) {  
+    alert(name + ' says: ' + phrase)
+  }
+
+}
+
+var user = new User('John')
+// (1)
+user.fixName()
+// (2)
+user.say("I'm alive!") // Mr.JOHN says: I'm alive!
+
+
+</script>
+
+</body>
+</html>

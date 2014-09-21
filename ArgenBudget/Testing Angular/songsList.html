@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+	<title>Learning AngularJS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js" type="text/javascript"></script>
+	<script src="app.js" type="text/javascript"></script>
+	<script src="maincontroller.js" type="text/javascript"></script>
+	
+</head>
+<body>
+	<div id='content' ng-app='MyTutorialApp'>
+			{{understand}}
+	<label for="name">
+		<input id="name" type="text" ng-model="name"/> 
+	</label>
+
+	<h2>Hello {{ name }} </h2>
+	<ul>
+		<li ng-repeat="person in recipe">
+			{{ person.name }} {{ person.value }}
+		</li>
+	</ul>
+
+	</div>
+
+</body>
+</html>

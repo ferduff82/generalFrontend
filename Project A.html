@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<script>
+
+
+</script>
+
+<body>
+
+<h1>Control de gastos</h1>
+
+<div id="product_print"></div>
+<div id="date_print"></div>
+<div id="price_print"></div>
+<div id="kilos_print"></div>
+
+<input type="text" name="lastname" id="product">
+<input type="text" name="lastname" id="date">
+<input type="text" name="lastname" id="price">
+<input type="text" name="lastname" id="kilos">
+
+<input id="pinchable" type="button" value="Pinchame y verás" />
+
+<script>
+
+var value_product = null;
+
+function enviadatos() {
+  value_product = document.getElementById("product").value;  
+  value_date = document.getElementById("date").value; 
+  value_price = document.getElementById("price").value; 
+  value_kilos = document.getElementById("kilos").value; 
+  document.getElementById("product_print").innerHTML = value_product;
+  document.getElementById("date_print").innerHTML = value_date;
+  document.getElementById("price_print").innerHTML = value_price;
+  document.getElementById("kilos_print").innerHTML = value_kilos;
+}
+
+productos = [];	
+productos.push(enviadatos.value_product);
+
+document.getElementById("pinchable").onclick = enviadatos;
+
+
+
+/*
+
+function obtenerdatos(value_product, value_date, value_price, value_kilos) {
+ this.value_product = document.getElementById("product").value; 
+ this.value_date = document.getElementById("date").value; 
+ this.value_price = document.getElementById("price").value; 
+ this.value_kilos = document.getElementById("kilos").value; 
+}
+
+
+document.getElementById("pinchable").onclick = obtenerdatos;
+  
+  
+  
+
+function obtenerdatos() {
+  value_product = document.getElementById("product").value;  
+  value_date = document.getElementById("date").value; 
+  value_price = document.getElementById("price").value; 
+  value_kilos = document.getElementById("kilos").value; 
+}
+
+
+var myArray = [];
+
+myArray.push(value_product, value_date, value_price, value_kilos);
+
+  
+  
+  
+Validación de si es un número
+var num1 = 100;
+ if(isNaN(num1)){
+	document.write(num1 + " is not a number <br/>");
+ }else{
+	document.write(num1 + " is a number <br/>");
+ }
+ 
+ var str1 = "mkyong"
+ if(isNaN(str1)){
+	document.write(str1 + " is not a number <br/>");
+ }else{
+	document.write(str1 + " is a number <br/>");
+ }
+  
+
+function enviadatos() {
+  value_product = document.getElementById("product").value;  
+  value_date = document.getElementById("date").value; 
+  value_price = document.getElementById("price").value; 
+  value_kilos = document.getElementById("kilos").value; 
+  document.getElementById("product_print").innerHTML = value_product;
+  document.getElementById("date_print").innerHTML = value_date;
+  document.getElementById("price_print").innerHTML = value_price;
+  document.getElementById("kilos_print").innerHTML = value_kilos;
+}
+
+productos = [];	
+productos.push(this);
+
+document.getElementById("pinchable").onclick = enviadatos;
+
+
+document.write(productos[0].value_product);
+
+function user(name, level, job, apparel)
+{
+ this.name = name;
+ this.state = "alive";
+ this.level = level;
+ this.job = job;
+ this.apparel = apparel;
+}
+
+player = new array();
+player.push(new user("Main Player", 1, 1, "naked"));
+document.write(player[0].name);
+*/
+
+
+</script>
+
+</body>
+</html>

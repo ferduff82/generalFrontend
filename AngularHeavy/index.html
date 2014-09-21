@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<p>Input something in the input box:</p>
+<p>Name: <input type="text" placeholder='{{ firstName + " " + lastName }}' ng-model="firstName"></p>
+<p ng-bind="firstName"></p>
+
+	<helloWorld></helloWorld>
+
+	<h1>{{ data.message }}</h1>
+	<h5></h5>
+
+	<p>{{ firstName + " " + lastName }}<br/></p>
+	<p>{{ eMail }}<br/></p>
+	<p>{{ plus }}</p>
+
+	<a href="#/home">Home</a> 
+    <a href="#/list">List</a> 
+
+	<div ng-repeat="f in files">{{ f }}</div>
+	<div ng-repeat="o in objects">{{ o.name }}</div>
+
+    <div ng-view></div>
+
+</div>
+
+<div my-dom-directive>Click Me!</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="app.js" type="text/javascript"></script>
+<script src="controller.js" type="text/javascript"></script>
+<script src="ListCtrl.js" type="text/javascript"></script>
+
+</body>
+</html>

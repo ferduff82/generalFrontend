@@ -1,0 +1,119 @@
+CHAPTER 3 SNIPPETS
+------------------
+
+Section 03-02
+=============
+
+Add this to js/views/singleFlowerView.js
+----------------------------------------
+
+// Namespace our flowerApp
+var app = app || {};
+
+// The view for a single model view, which is one flower
+app.singleFlowerView = Backbone.View.extend({
+
+
+
+
+});
+
+
+
+
+Add this inside of app.singleFlowerView in js/views/singleFlowerView.js
+-----------------------------------------------------------------------
+
+  tagName: "article",
+  className: "flowerListItem",
+
+
+
+
+Add this inside of app.singleFlowerView in js/views/singleFlowerView.js
+-----------------------------------------------------------------------
+
+  <script id="flowerElement" type="text/template">
+    <a href="#<%= link %>"><img src="<%= img %>" alt="<%= name %>" class="image" /></a>
+    <ul>
+      <li class="flowerInfo">Name:<%= name %></li>
+      <li class="flowerInfo">Price:<%= price %></li>
+      <li class="flowerInfo">Color:<%= color %></li>
+    </ul>
+  </script>
+
+
+
+
+Add this inside of app.singleFlowerView in js/views/singleFlowerView.js
+-----------------------------------------------------------------------
+
+  template: _.template( $("#flowerElement").html() ),
+
+
+
+
+
+
+Add this above the template code in js/views/singleFlowerView.js
+-----------------------------------------------------------------
+
+  render: function() {
+    var flowerTemplate = this.template(this.model.toJSON());
+    this.$el.html(flowerTemplate);
+    return this;
+  }
+
+
+
+Section 03-03
+=============
+
+Add this to js/views/allFlowersView.js
+--------------------------------------
+
+// Namespace our flowerApp
+var app = app || {};
+
+// The view for all the flowers
+app.allFlowersView = Backbone.View.extend({
+
+
+
+
+});
+
+
+Add this inside of app.allFlowersView in js/views/allFlowersView.js
+-------------------------------------------------------------------
+
+ tagName: "section",
+
+
+
+Add this below tagName js/views/allFlowersView.js
+-------------------------------------------------
+
+ render: function() {
+    this.collection.each(this.addFlower, this);
+    return this;
+ },
+
+
+
+
+Add this below render js/views/allFlowersView.js
+-------------------------------------------------
+
+ addFlower: function(flower) {
+    var flowerView = new app.singleFlowerView ({ model: flower });
+    this.$el.append(flowerView.render().el);
+ }
+
+
+ Section 03-05
+==============
+
+var flowerGroupView = new app.allFlowersView({ collection: flowerGroup});
+
+$("#allFlowers").html(flowerGroupView.render().el);

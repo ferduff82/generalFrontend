@@ -1,0 +1,65 @@
+html {
+  background: #fff url(../images/site/html.jpg) repeat;
+}
+
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+}
+
+.site {
+  background-color: #fff;
+  border: 1px solid red;
+  width: 960px;
+  min-height: 630px;
+  margin: 20px auto 0;
+}
+
+.logo {
+  padding: 5px;
+}
+
+.image {
+  border: 3px solid purple;
+  padding: 2px;
+}
+
+.flowerListItem {
+  margin: 0 10px;
+  list-style-type: none;
+  width: 220px;
+  margin-bottom: 30px;
+}
+
+
+
+.stateFlowerStyle {
+  list-style-type: none;
+  text-align: left;
+  margin-bottom: 5px;
+  width: 300px;
+}
+
+#copy {
+  text-align: center;
+  color: red;
+  font-size: 22px;
+  padding: 5px;
+  margin: 10px auto 0;
+  width: 600px;
+}
+
+#stateFlowers {
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  width: 362px;
+  background-color: #E0E0E0;
+  border: 1px solid #CC6699;
+}
+
+.stateFlowerHeader {
+  color: red;
+  text-decoration: underline;
+  text-align: center;
+}

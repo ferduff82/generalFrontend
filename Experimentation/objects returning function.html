@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<script>
+
+var accessors = {
+	sortable: {
+		get: function() {
+			return typeof this.getAttribute('sortable') != 'undefined';
+		}
+	},
+	droppable: {
+		get: function() {
+			return typeof this.getAttribute('droppable') != 'undefined';
+		}
+	}
+};
+
+var accessor = {
+	sortable: {
+		get: function(a) {
+			return a;
+		}
+	},
+	droppable: {
+		get: function() {
+			return 4;
+		}
+	}
+};
+
+if(accessor.sortable.get == 2){
+	alert("es igual a 2")
+}else{ 
+	alert("no es igual")
+};
+
+//La funcion solo devuelve algo si se le pasa un parámetro sino alerta solo el objeto función.
+alert(accessor.sortable.get);
+alert(accessor.sortable.get(4));
+
+</script>
+
+</body>
+</html>

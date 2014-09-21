@@ -1,0 +1,125 @@
+CHAPTER 2 SNIPPETS
+------------------
+
+Section 02-01
+=============
+
+Add this to js/models/singleFlower.js
+-------------------------------------
+
+// Namespace our app
+var app = app || {};
+
+app.singleFlower = Backbone.Model.extend({
+
+  defaults: {
+    color: "pink",
+    img: "images/placeholder.png"
+  }
+
+});
+
+
+Add this to js/flowerApp.js
+---------------------------
+var redRoses = new app.singleFlower({
+  name: "Red Roses",
+  price: 39.95,
+  color: "Red",
+  img: "images/redRoses.jpg",
+  link: "redRose"
+});
+
+var rainbowRoses = new app.singleFlower({
+  name: "Rainbow Roses",
+  price: 29.95,
+  color: "orange",
+  link: "rainbowRose"
+});
+
+var heirloomRoses = new app.singleFlower({
+  name: "Heirloom roses",
+  price: 19.95,
+  img: "images/heirloomRoses.jpg",
+  link: "heirloomRose"
+});
+
+
+Add this to the bottom of js/flowerApp.js
+-----------------------------------------
+console.log(heirloomRoses.toJSON());
+console.log(rainbowRoses.toJSON());
+console.log(redRoses.toJSON());
+
+
+
+
+
+
+
+Section 02-02
+=============
+
+Add this to the bottom of js/models/singleFlower.js
+---------------------------------------------------
+
+  initialize: function() {
+    console.log("A model instance named " + this.get("name") +  " has been created and it costs " + this.get("price"));
+  }
+
+    // Cut and paste this inside our initialize method
+    this.on('change', function(){
+      console.log("Something in our model has changed");
+    });
+
+   // Change the price
+   rainbowRoses.set('price', 20);
+
+    // Cut and paste this inside our initialize method
+    this.on('change:price', function(){
+      console.log("The price for the " + this.get("name") + " model just changed to $" + this.get("price") + " dollars");
+    });
+
+
+
+Section 02-03
+=============
+
+Add this to js/collections/allFlowers.js
+-------------------------------------------
+   
+// Namespace our flowerApp
+var app = app || {};
+
+app.FlowersCollection = Backbone.Collection.extend({
+
+  model: app.singleFlower
+
+});
+
+
+
+
+
+Add this to the bottom of js/flowersApp.js
+-------------------------------------------
+
+var flowerGroup = new app.FlowersCollection([
+  redRoses, rainbowRoses, heirloomRoses
+]);
+
+console.log(flowerGroup.toJSON());
+
+
+
+
+Add this above "console.log(flowerGroup.toJSON())" in js/flowersApp.js
+----------------------------------------------------------------------
+flowerGroup.add(heirloomRoses);
+
+
+
+
+Add this below "flowerGroup.add(heirloomRoses)" in js/flowersApp.js
+----------------------------------------------------------------------
+flowerGroup.remove(redRoses);

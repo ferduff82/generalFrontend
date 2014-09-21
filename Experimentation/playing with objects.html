@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+"use strict";
+//Objects
+
+var player1 = {
+
+	energy : 10,
+	strenght : 8,
+
+	hit: function () {
+		player2.energy = player2.energy - player2.strenght;
+		alert("Player2 has been damaged and it has " + player2.energy + " hitpoints left"); 
+	},
+
+	dead: function() {
+		if(player2.energy === 0){
+			alert("player2 is dead"); 
+			return false
+		}; 
+	},
+
+	life: function() {
+		player1.energy = player1.energy + 1;
+		alert(player1.energy);
+	},
+
+	initialStrength: function() {
+		var intoArray = [];
+			intoArray.push(player1.strenght);
+		return intoArray;
+	},
+
+	shield: function() {
+		player2.strenght = 0;
+		setTimeout(function()
+			{alert(player2.initialStrength())}, 5000);	
+	}
+
+};
+
+
+var player2 = {
+
+	energy : 10,
+	strenght : 5,
+
+	hit: function () {
+ 		player1.energy = player1.energy - player1.strenght;
+ 		alert("Player2 has been damaged and it has " + player1.energy + " hitpoints left"); 
+	},
+
+    dead: function() {
+ 		if(player1.energy === 0){
+ 			alert("player1 is dead"); 
+ 	 		return false
+    	}; 
+	},
+
+	life: function() {
+		player2.energy = player2.energy + 1;
+		alert(player2.energy);
+	},
+
+	initialStrength: function() {
+		var intoArray = [];
+			intoArray.push(player2.strenght);
+		return intoArray;
+	},
+
+	shield: function() {
+		player1.strenght = 0;
+		setTimeout(function()
+			{alert(player1.initialStrength())}, 5000);	
+	}
+
+};
+
+//Objects
+
+player1.hit();
+player1.dead();
+player1.shield();
+player1.hit();
+player1.life();
+
+//Objects as Functions
+/*
+function player1() {
+    this.energy=10;
+    this.hit=function(inc){
+    	player2.energy = player2.energy - inc;
+		alert(player2.energy); 
+    };
+    this.dead=function() {
+		if(player2.energy === 0){
+			return alert("player2 is dead"); 
+			return false
+		};
+	}
+};
+
+function player2() {
+    this.energy=10;
+    this.hit=function(inc){
+    	player1.energy = player1.energy - inc;
+		alert(player1.energy); 
+    };
+    this.dead=function() {
+		if(player1.energy === 0){
+			return alert("player2 is dead"); 
+			return false
+		};
+	}
+};
+*/
+
+//Objects as Functions
+/*
+var nuevoJuego = new player1();
+nuevoJuego.hit(10);
+*/
+
+//Basic example of Objects as functions
+
+function getValues() {
+
+    this.price = 23;
+
+    this.getInfoProduct = function () {
+      return this.price;
+    };
+}
+
+var nuevoGasto = new getValues();
+alert(nuevoGasto.getInfoProduct());
+
+
+</script>
+</body>
+</html>

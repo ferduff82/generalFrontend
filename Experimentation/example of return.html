@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>This example calls a function which performs a calculation, and returns the result:</p>
+
+  First name: <input type="text" name="fname" id="firstName" value="John"><br>
+  Last name: <input type="text" name="lname" id="lastName" value="Doe"><br>
+
+<button onclick="bind()">Click</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction(a, b) {
+    return a * b;
+}
+
+function bind(){
+	var name = document.getElementById("firstName").value;
+	var last = document.getElementById("lastName").value;
+    document.getElementById("demo").innerHTML = myFunction(name, last);
+}
+
+
+</script>
+
+</body>
+</html>

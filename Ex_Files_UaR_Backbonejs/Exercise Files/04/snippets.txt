@@ -1,0 +1,83 @@
+CHAPTER 4 SNIPPETS
+------------------
+
+Section 04-01
+=============
+
+Add this below the render method in js/views/singleFlowerView.js
+----------------------------------------------------------------
+
+  events: {
+    'mouseover': 'addBgColor',
+    'mouseout': 'removeBgColor'
+  },
+
+  addBgColor: function() {
+    this.$el.addBgColor("bgColorImage");
+  },
+
+  removeBgColor: function() {
+    this.$el.removeBgColor("bgColorImage");
+  }
+
+
+
+
+Section 04-02
+=============
+
+Add this below the render method in js/routes/router.js
+-------------------------------------------------------
+
+// Namespace our flowerApp
+var app = app || {};
+
+app.Router = Backbone.Router.extend({
+
+routes :{
+  "": "noCopy",
+  "heirloomRose" : "heirloomRoseMessage",
+  "rainbowRose": "rainbowRoseMessage",
+  "redRose" : "redRoseMessage"
+},
+
+
+
+});
+
+
+
+Section 04-03
+=============
+
+Add this inside of app.Router in js/router/routes.js
+----------------------------------------------------
+
+noCopy: function() {
+  $("#copy").html("");
+},
+
+heirloomRoseMessage: function() {
+  $("#copy").html("Heirloom Roses are great Mother's Day flowers");
+},
+
+rainbowRoseMessage: function() {
+  $("#copy").html("Choose Rainbow Roses for your wedding");
+},
+
+redRoseMessage: function() {
+  $("#copy").html("On Valentine's Day, give that special someone Red Roses");
+}
+
+
+
+
+Add this inside to the bottom of js/flowerApp.js
+------------------------------------------------
+
+var flowerRouter = new app.Router();
+
+Backbone.history.start();
+
+
+  

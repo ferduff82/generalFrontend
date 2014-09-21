@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="jquery-ui/js/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<h3>Login</h3>
+
+<div class="logo" id="logo"></div>
+
+<input type="text" name="lastname" id="mail" placeholder="Ingrese Mail">
+<input type="text" name="lastname" id="pass" placeholder="Ingrese Pass">
+<input id="get-values" type="button" value="Login" disabled/><br>
+
+<input type="checkbox" id="checkTerms"><a href="">Terms and Conditions</a>
+<input type="checkbox" id="checkHelp"><a href="">Help</a>
+
+<ul id="myList">
+
+</ul>
+
+<script>
+
+/* Modelo */
+
+function getValues( product ) {
+
+/* Mail validate */
+
+  this.mail = document.getElementById('mail').value;
+  var atpos = this.mail.indexOf("@");
+  var dotpos = this.mail.lastIndexOf(".");
+  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=this.mail.length) {
+      alert("Not a valid e-mail address");
+      return false;
+  } else {
+
+    this.pass = document.getElementById('pass').value;
+ 
+    this.getInfoMail = function () {
+      return this.mail;
+    };
+
+    this.getInfoPass = function () {
+      return this.pass;
+    };
+
+  }
+
+}
+
+/* Instancias del Modelo */
+
+function newLogin () {
+
+  var nuevoGasto = new getValues(mail);
+
+    /* Push into array */
+
+    var objects = [];
+
+        alert("llego");
+        objects.push(nuevoGasto.getInfoMail())
+        objects.push(nuevoGasto.getInfoPass())
+        console.log(objects);
+
+        /* Show login data in Page */
+
+        alert("You have just logged in as " + objects[0]);
+
+        var newElem = document.createElement ("h3");
+        newElem.innerHTML = "Se acaba de loguear como " + objects[0];
+        var container = document.getElementById ("myList");
+        container.appendChild (newElem);
+
+        /* Remueve los datos del input */
+
+        document.getElementById('mail').value=null;
+        document.getElementById('pass').value=null;
+}
+
+/* Disable in checked */
+
+/* Evaluar hacerlo con Jquery */
+
+function countChecked (){
+  var n = $( "input:checked" ).length;
+  if (n === 1 || n === 0){
+    $( '#get-values').prop('disabled', true);
+  }else{
+    $( '#get-values').removeAttr( "disabled" );
+  }
+}
+
+$("input[type=checkbox]").on( "click", countChecked );
+
+/* Eventos */
+
+document.getElementById('get-values').onclick = newLogin;
+
+</script>
+</body>
+</html>

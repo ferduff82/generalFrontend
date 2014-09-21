@@ -1,0 +1,11 @@
+
+ Probar plugins de cordova en máquina virtual
+ Reencarar el tema de modelos basado en objetos return y hacer ejemplos de servicios de funciones con return
+ Aplicar Sass al proyecto de Control de gastos (con la arquitectura de SEARS : Craftsman)
+ Terminar las pruebas base de Angular 
+ Aplicar Ejemplos de Angular de Projecto Kantar en pruebas Angular
+ Instalar Grunt
+ Instalar Bower 
+ Instalar Yeoman
+ Realizar tests con estos recursos nuevos
+ 
