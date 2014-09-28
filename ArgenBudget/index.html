@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap\css\bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap\css\bootstrap.min.css">
+    <script src="jquery-ui/js/jquery-1.10.2.js"></script>
+    <script src="jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
+</head>
+<body>
+
+<div id="loginContainer">
+  <div id="userName"></div>
+  <input id="get-users" type="button" value="Login"/>
+  <input type="password" name="lastname" id="passLogin" placeholder="Pass">
+  <input type="text" name="lastname" id="userLogin" placeholder="User">
+</div>
+
+<h3>Control de gastos</h3>
+
+<input type="text" name="lastname" id="categories" placeholder="Ingrese Categoría">
+<input id="get-categories" type="button" value="Ingrese Categoría" />
+<button type="button" data-toggle="modal" data-target="#myModal" id="removeCategories">Remove categories</button>
+<br>
+
+<input type="text" name="lastname" id="product" placeholder="Ingrese Producto">
+<input type="text" name="lastname" id="price" placeholder="Ingrese Precio" onblur="showFocus(this)">
+<input type="text" name="lastname" id="brand" placeholder="Ingrese Marca">
+<input type="text" name="lastname" id="kilos" placeholder="Ingrese Cantidad" onblur="showFocus(this)">
+<input type="text" name="lastname" id="date" placeholder="Ingrese Fecha">
+<select id="category">
+  <option value="" disabled selected>Categoria</option>
+  <option value="Supermercado">Supermercado</option>
+  <option value="Impuestos">Impuestos</option>
+  <option value="Salidas">Salidas</option>
+  <option value="Varios">Varios</option>
+</select>
+<br>
+
+<input id="get-values" type="button" value="Ingrese Gasto" />
+
+<div id="demo"></div>
+<div id="alert"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Remove Categories</h4>
+      </div>
+      <div class="modal-body" id="removeCategoriesContent">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="removeListener">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="controller.js"></script>
+<script src="bootstrap\js\bootstrap.min.js"></script>
+</body>
+</html>

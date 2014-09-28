@@ -1,72 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap\css\bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap\css\bootstrap.min.css">
-    <script src="jquery-ui/js/jquery-1.10.2.js"></script>
-    <script src="jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
-</head>
-<body>
-
-<div id="loginContainer">
-  <div id="userName"></div>
-  <input id="get-users" type="button" value="Login"/>
-  <input type="password" name="lastname" id="passLogin" placeholder="Pass">
-  <input type="text" name="lastname" id="userLogin" placeholder="User">
-</div>
-
-<h3>Control de gastos</h3>
-
-<input type="text" name="lastname" id="categories" placeholder="Ingrese Categoría">
-<input id="get-categories" type="button" value="Ingrese Categoría" />
-<button type="button" data-toggle="modal" data-target="#myModal" id="removeCategories"
->Remove categories</button>
-<br>
-
-<input type="text" name="lastname" id="product" placeholder="Ingrese Producto">
-<input type="text" name="lastname" id="price" placeholder="Ingrese Precio" onblur="showFocus(this)">
-<input type="text" name="lastname" id="brand" placeholder="Ingrese Marca">
-<input type="text" name="lastname" id="kilos" placeholder="Ingrese Cantidad" onblur="showFocus(this)">
-<input type="text" name="lastname" id="date" placeholder="Ingrese Fecha">
-<select id="category">
-  <option value="" disabled selected>Categoria</option>
-  <option value="Supermercado">Supermercado</option>
-  <option value="Impuestos">Impuestos</option>
-  <option value="Salidas">Salidas</option>
-  <option value="Varios">Varios</option>
-</select>
-<br>
-
-<input id="get-values" type="button" value="Ingrese Gasto" />
-
-<div id="demo"></div>
-<div id="alert"></div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Remove Categories</h4>
-      </div>
-      <div class="modal-body" id="removeCategoriesContent">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="removeListener">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-
 /* Modelo de Login */
 
 function getValuesLogin( login ) {
@@ -112,32 +43,32 @@ function getValues( product ) {
   } else {
  
     this.getInfoProduct = function () {
-      return this.product + "  ";
+      return "<p>" + this.product + "  </p>";
     };
 
     this.getInfoDate = function () {
-      return this.date + "  ";
+      return "<p>" + this.date + "  </p>";
     };
 
     this.getInfoPrice = function () {
-      return "$" + this.price + "  ";
+      return "<p>$" + this.price + "  </p>";
     };
 
     this.getInfoKilos = function () {
-      return "Cantidad: " + this.kilos + "  ";
+      return "<p>Cantidad:" + this.kilos + "  </p>";
     };
 
     this.getInfoBrand = function () {
-      return this.brand + "  ";
+      return "<p>" + this.brand + "  </p>";
     };
 
     this.getInfoCategory = function () {
-      return this.category + "  ";
+      return "<p>" + this.category + "  </p>";
     };
   }
 }
 
-/* Instancias del Modelo de Login */
+/* Instancias del Modelo de Login *///////////////////////////////////////////////////////
 /* To use ajax in Chrome do this Chrome.exe" --allow-file-access-from-files */
 
 function newLogin (){
@@ -241,16 +172,16 @@ function newProduct (){
 
     /* Validación de Campos vacíos */
 
-    if(nuevoGasto.getInfoCategory() == "  "){
+    if(nuevoGasto.getInfoCategory() == "<p>  </p>"){
       alert('Debe ingresar una categoría de compra')
       return false
-    } else if (nuevoGasto.getInfoProduct() == "  "){
+    } else if (nuevoGasto.getInfoProduct() == "<p>  </p>"){
       alert('Debe ingresar un producto')
       return false
-    } else if (nuevoGasto.getInfoDate() == "  "){
+    } else if (nuevoGasto.getInfoDate() == "<p>  </p>"){
       alert('Debe ingresar una fecha')
       return false
-    } else if (nuevoGasto.getInfoPrice() == "$  "){
+    } else if (nuevoGasto.getInfoPrice() == "<p>$  </p>"){
       alert('Debe ingresar un precio')
       return false
     }
@@ -265,20 +196,16 @@ function newProduct (){
 
         /* Don't push if empty values */
 
-        if (nuevoGasto.getInfoKilos() != "Cantidad:   ") {
+        if (nuevoGasto.getInfoKilos() != "<p>Cantidad:  </p>") {
           objects.push(nuevoGasto.getInfoKilos())
         }
-        if (nuevoGasto.getInfoBrand() != "  ") {
+        if (nuevoGasto.getInfoBrand() != "<p>  </p>") {
           objects.push(nuevoGasto.getInfoBrand())
         };
 
         objects.push(nuevoGasto.getInfoCategory())
         alert("Su producto ha sido ingresado con éxito");
         console.log(objects);
-
-        /* Loop array with for with background color change on category select */
-
-        text = "";
 
         /* Re-search on array to asign color */
 
@@ -302,8 +229,16 @@ function newProduct (){
         var randomId = makeid();
             createRemovePurchaseButton.setAttribute("id",randomId);
             createRemovePurchaseButton.setAttribute("class","borrarCompra");
+        var getNumber = makeid();
+            createUl.setAttribute("id",getNumber);
             getDemo.appendChild(createUl);
             createUl.appendChild(createRemovePurchaseButton);
+
+        var selectUL = document.getElementById(getNumber);
+
+        /* Loop array with for with background color change on category select */
+
+        text = "";
 
         for (var i = 0; i < objects.length; i++) {
 
@@ -312,41 +247,29 @@ function newProduct (){
         var createEditItem = document.createElement('input');
             createEditItem.setAttribute("type","button");
             createEditItem.setAttribute("value","Editar");
-            createEditItem.setAttribute("onclick","changeValues(this)");
+            createEditItem.setAttribute("class","edit");
             newElem.appendChild(createEditItem);
-
-          if (getCategoryValue == "Supermercado  "){
-            var getNumber = makeid();
-            createUl.setAttribute("id",getNumber);
-            var selectUL = document.getElementById(getNumber);
-                selectUL.classList.add('coral')
+        
+          if (getCategoryValue == "<p>Supermercado  </p>"){
+                selectUL.classList.add('coral');
                 selectUL.appendChild(newElem);
-          } else if (getCategoryValue == "Impuestos  "){
-            var getNumber = makeid();
-            createUl.setAttribute("id",getNumber);
-            var selectUL = document.getElementById(getNumber);
-                selectUL.classList.add('aquamarine')
+          } else if (getCategoryValue == "<p>Impuestos  </p>"){
+                selectUL.classList.add('aquamarine');
                 selectUL.appendChild(newElem);
-          } else if (getCategoryValue == "Salidas  "){
-            var getNumber = makeid();
-            createUl.setAttribute("id",getNumber);
-            var selectUL = document.getElementById(getNumber);
-                selectUL.classList.add('chocolate')
+          } else if (getCategoryValue == "<p>Salidas  </p>"){
+                selectUL.classList.add('chocolate');
                 selectUL.appendChild(newElem);
-          } else if (getCategoryValue == "Varios  "){
-            var getNumber = makeid();
-            createUl.setAttribute("id",getNumber);
-            var selectUL = document.getElementById(getNumber);
-                selectUL.classList.add('crimson')
+          } else if (getCategoryValue == "<p>Varios  </p>"){
+                selectUL.classList.add('crimson');
                 selectUL.appendChild(newElem);
           } else {
-            var getNumber = makeid();
-            createUl.setAttribute("id",getNumber);
-            var selectUL = document.getElementById(getNumber);
                 selectUL.classList.add('personalizados')
                 selectUL.appendChild(newElem);
           }
         }
+
+        $(selectUL).find("li:last-child p").addClass("mainCategoryClass");
+        $(selectUL).addClass("newPurchase");
 
         /* Remueve los datos del input */
 
@@ -358,46 +281,51 @@ function newProduct (){
 
   /* Eventos dentro de final de función */
 
-    /* Borrar Compra */
+  /* Editar Items */
 
-    var borrarCompra = document.getElementById(randomId);
-    borrarCompra.addEventListener("click", remove, false);
-
-    function remove(event){
-      console.dir(event);
-      debugger
-      $(this).parent("ul").remove();
-      objects.splice(getProductIndex,7);
-      console.log(objects);
-      alert("Compra borrada");
-      $("#alert").text("Element removido");
-      setTimeout(function(){
-        document.getElementById('alert').innerHTML="";
-      }, 3000);
+  $('ul#'+getNumber+'>li>input.edit').click(function(){
+    var edit = prompt("Ingrese el cambio de valor");
+    if (edit != null) {
+      $(this).prev().empty();
+      var getIndex = $(this).parent().index();
+      objects[getIndex] = edit;
+      $(this).prev().prepend(objects[getIndex]);
+      alert("Valor " + objects[getIndex] + " cambiado con éxito");
     }
 
-  /* Tools *////////////////////////////////////
+  });
 
-    /* Genera String aleatorias de 5 caracteres */
+  /* Borrar Compra */
 
-    function makeid() {
-      var text = "";
-      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-      return text;
-    }
+  var borrarCompra = document.getElementById(randomId);
+  borrarCompra.addEventListener("click", remove, false);
+
+  function remove(event){
+    console.dir(event);
+    debugger
+    $(this).parent("ul").remove();
+    objects.splice(getProductIndex,7);
+    console.log(objects);
+    alert("Compra borrada");
+    $("#alert").text("Element removido");
+    setTimeout(function(){
+      document.getElementById('alert').innerHTML="";
+    }, 3000);
+  }
+
+  /* Tools *////////////////////////////
+
+  /* Genera String aleatorias de 5 caracteres */
+
+  function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 5; i++ )
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
+  }
 
 }
-
-  /* Editar Items */
-  function changeValues(arg){
-      var edit = prompt("Ingrese el cambio de valor");
-      if (edit != null) {
-      newProduct.objects.nuevoGasto.getInfoProduct() = edit;
-      alert("Cambio realizado con éxito con valor "+edit+"");
-    }
-  }
 
 /* Fin de la construcción de la compra *//////////////////////////////////////////////////////////////////////////////////////////
 
@@ -425,49 +353,55 @@ function createCategories (){
 
 /* Remover categorías */
 
-function removeCategories (){
-  var txt="";
-  var c = document.getElementById('category');
-  var selectId = document.getElementById('removeCategoriesContent');
+function removeCategories () {
 
-  for (i=0; i<c.length; i++){
-    txt = txt + "<li>" + c[i].childNodes[0].nodeValue + "</li>";
-  };
+  function readAllCategories() {
+    var txt="";
+    var c = document.getElementById('category');
+    var selectId = document.getElementById('removeCategoriesContent');
 
-  selectId.innerHTML = "<ul id='newUl'>" + txt + "</ul>";
-  var getUlId = document.getElementById("newUl");
+    for (i=1; i<c.length; i++){
+      txt = txt + "<li>" + c[i].childNodes[0].nodeValue + "</li>";
+    };
+    selectId.innerHTML = "<ul id='newUl'>" + txt + "</ul>";
+    remove();
+  }
+  readAllCategories();
 
-  /*
-  var addEventRemove = function (event) {
-    var target = event.target;
-    alert(target.nodeName + "");
-    alert(target.index);
+  function remove(){
+    $("li").click(function(){
 
-    var txt = "";
+      var getClickValue = $(this).text();
+      var getIndex = $(this).index()+1;
 
-    for (i=0; i<event.length; i++){
-      txt = txt + "\n" + event[i].index;
-    }
-  };
+      if (confirm("Desea borrar también el contenido de las categorías") == true) {
+        removeCat();
+        removeContent();
+        alert("Categoría y contenido borrados con éxito");
+      } else {
+        removeCat();
+        alert("Categoría borrada con éxito");
+      }
 
-  var selectAllLi = document.getElementById('removeCategoriesContent');
-  selectAllLi.addEventListener("click", addEventRemove, false);
+      function removeCat(){
+        var select = document.getElementById('category');
+        select.removeChild(select[getIndex]);
+        $('#newUl').remove(); 
+        readAllCategories();
+      }
 
-  function removeListener () {
-    selectAllLi.removeEventListener('click', addEventRemove, false);
-  };
+      function removeContent(){
+          var getCategoryName = $(".mainCategoryClass").text();
+          var getCategoryNameTrimed = $.trim(getCategoryName);
 
-  document.getElementById('removeListener').onclick = removeListener;
-  */
+          if(getClickValue == getCategoryNameTrimed){
+              $(".borrarCompra").parent().remove();
+          }
+      }
 
-  $("li").click(function(){
-    var getIndex = $(this).index() + 1;
-    alert(getIndex);
-    $("#category").indexOf.remove();
-
-
-  });
-
+    });
+  }
+  
 }
 
 /* Evaluar OnBlur si son números o no */
@@ -492,16 +426,3 @@ document.getElementById('removeCategories').onclick = removeCategories;
 $( function() {
   $( "#date" ).datepicker();
 });
-
-/*
-var test = "hola";
-function alertar(bla){
-  alert(bla);
-}
-alertar(test);
-*/
-
-</script>
-<script src="bootstrap\js\bootstrap.min.js"></script>
-</body>
-</html>

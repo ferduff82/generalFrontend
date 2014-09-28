@@ -1,8 +1,0 @@
-
- Problema en cordova con plugins
- Bug al editar datos en compras 
- Finalizar eliminar categorías
- Bug en login al desloguearse no permite volver a loguearse
-
-	
-   
