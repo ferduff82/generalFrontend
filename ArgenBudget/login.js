@@ -1,3 +1,28 @@
+/* Modelo de Login */
+
+function getValuesLogin( login ) {
+
+  this.userLogin = document.getElementById('userLogin').value;
+  this.passLogin = document.getElementById('passLogin').value;
+
+  var a = this.userLogin;
+  var b = this.passLogin;
+
+  if (a === "" || b === "") {
+    alert("User or pass can't be empty");
+    return false;
+  } else {
+ 
+    this.getInfoUser = function () {
+      return this.userLogin;
+    };
+
+    this.getInfoPass = function () {
+      return this.passLogin;
+    };
+  }
+}
+
 /* Instancias del Modelo de Login *///////////////////////////////////////////////////////
 /* To use ajax in Chrome do this Chrome.exe" --allow-file-access-from-files */
 
