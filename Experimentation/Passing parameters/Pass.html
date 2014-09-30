@@ -1,0 +1,21 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<button id="button">Click</button>
+		<script>	
+		function sayHelloWorld() {
+		    var name = "Fernando";
+		    var lastName = "Arias";
+
+		    window.location.href = "somepage.html?w1=" + name + "&w2=" + lastName;
+		}
+
+		var select = document.getElementById("button");
+		select.addEventListener("click", sayHelloWorld);
+		</script>
+
+
+	</body>
+</html>
