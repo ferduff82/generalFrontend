@@ -36,3 +36,17 @@ app.directive('myDomDirective', function () {
 app.factory('Data', function () {
 	return { message: "I'm data from a service" }
 });
+
+app.factory('ergastAPIservice', function($http) {
+
+    var ergastAPI = {};
+
+    ergastAPI.getDrivers = function() {
+      return $http({
+        method: 'JSONP', 
+        url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
+      });
+    }
+
+    return ergastAPI;
+});
