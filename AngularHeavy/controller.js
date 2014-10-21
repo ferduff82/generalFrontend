@@ -1,4 +1,4 @@
-app.controller("myCtrl", function($scope, Data) {
+app.controller("myCtrl", function($scope, Data, ergastAPIservice) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
     $scope.eMail = "ferduff82@hotmail.com";
@@ -22,4 +22,18 @@ app.controller("myCtrl", function($scope, Data) {
 
     $scope.data = Data;
 
+
+    $scope.nameFilter = null;
+    $scope.driversList = [];
+
+    ergastAPIservice.getDrivers().success(function (response) {
+    //Dig into the responde to get the relevant data
+    $scope.driversList = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    });
+
+	$scope.searchFilter = function (driver) {
+	    var keyword = new RegExp($scope.nameFilter, 'i');
+	    return !$scope.nameFilter || keyword.test(driver.Driver.givenName) || keyword.test(driver.Driver.familyName);
+	};
+    
 });
