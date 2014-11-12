@@ -1,0 +1,42 @@
+<!-- 
+	Developer: Hafiz Faraz Mukhtar
+	Blog:  	   http://blog.hfarazm.com/ 
+	Contact:   http://www.fb.com/h.farazmukhtar/
+	Liscense:  MIT license 2014
+-->
+<!doctype html>
+<html ng-app="GuitarApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Application</title>
+	<link rel="stylesheet" type="text/css" href="styles.css"></link>
+	<script src="lib/Angular/angular.min.js" type="text/javascript" ></script>
+	<script src="lib/Angular/angular-route.min.js" type="text/javascript" ></script>
+	<script src="lib/Angular/angular-animate.js" type="text/javascript" ></script>
+	<script src="js/app.js" type="text/javascript" ></script>
+	<script src="js/controllers.js" type="text/javascript" ></script>
+</head>
+<body>
+
+	<div class="longDescription uReview" ng-repeat="review in guitarVariable[whichGuitar].reviews"> 
+		<h3>Review Points: {{review.star}} </h3>
+		<p> {{review.body}} ~{{review.name}} </p>
+	</div>
+	<a>Add review</a>
+	<form class="reviewForm" ng-controller="ReviewController as reviewCtrl">
+		<div>
+			 Review Points: <select>
+				<option>5</option>
+				<option>4</option>
+				<option>3</option>
+				<option>2</option>
+				<option>1</option>
+			</select>
+			 Email: <input type="email">
+			<button type="submit">Submit</button>
+		</div>
+		<textarea></textarea>	
+	</form>
+
+</body>
+</html>

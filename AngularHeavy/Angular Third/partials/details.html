@@ -1,0 +1,57 @@
+<!-- 
+	Developer: Hafiz Faraz Mukhtar
+	Blog:  	   http://blog.hfarazm.com/ 
+	Contact:   http://www.fb.com/h.farazmukhtar/
+	Liscense:  MIT license 2014
+-->
+<div class="details" ng-model="guitarVariable">
+	
+	<img class="magnifyImg" ng-src="img/{{guitarVariable[whichGuitar].image}}.jpg" />
+	<div>
+		<h2> {{guitarVariable[whichGuitar].name | lowercase }}</h2>
+		<p class="rightDate magnifyDate">Price Revised on: {{guitarVariable[whichGuitar].dateAdded | date:'MM/yy'}}</p><p class="rightPrice magnifyPrice">${{guitarVariable[whichGuitar].price | number:0 }}</p>
+		<p> {{guitarVariable[whichGuitar].description}}</p>
+
+
+		<section class="tab" ng-controller="TabController as panel">
+
+			<ul>
+				<li ng-class="{active:panel.isSelected(1) }">
+					<a href ng-click="panel.selectTab(1)">Description</a>
+				</li>
+				<li ng-class="{active:panel.isSelected(2)  }">
+					<a href ng-click="panel.selectTab(2)">Specifications</a>
+				</li>
+				<li ng-class="{active:panel.isSelected(3)}">
+					<a href ng-click="panel.selectTab(3)">Reviews</a>
+				</li>
+			</ul>
+			{{tab}}
+			<br />
+
+			<!-- Description Tab START -->
+			<div ng-show="panel.isSelected(1)">
+				<p class="longDescription"> {{guitarVariable[whichGuitar].longDescription}}</p>
+			</div>
+
+			<!-- Specification Tab START -->
+			<div ng-show="panel.isSelected(2)">
+				<p class="longDescription"> Some Specification about {{guitarVariable[whichGuitar].name}} will go here</p>
+			</div>
+
+			<user-reviews></user-reviews>
+			
+		</section>
+
+
+		<br />
+		<a href="index.html" class="link">&laquo; Go back to Search</a>
+		<a href="#/test/{{whichGuitar}}" class="checkout">Checkout &raquo;</a>
+
+		<!-- added this navigation for switching between different guitars -->
+		<div class="navigation">
+			<a href="#/details/{{prevGuitar}}">&lt;&nbsp; Previous</a>
+			<a href="#/details/{{nextGuitar}}">Next &nbsp;&gt;</a>
+		</div>
+	</div>
+</div>

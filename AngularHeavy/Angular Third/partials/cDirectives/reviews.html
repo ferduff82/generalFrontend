@@ -1,0 +1,32 @@
+<!-- Review Tab START, it has a new controller -->
+<div ng-show="panel.isSelected(3)" class="reviewContainer" ng-controller="ReviewController as reviewCtrl" >
+
+<!-- User Reviews on each guitar from data.json - simple iterating through guitars list -->
+				<div class="longDescription uReview" ng-repeat="review in guitarVariable[whichGuitar].reviews"> 
+						<h3>Review Points: {{review.star}} </h3>
+						<p> {{review.body}} ~{{review.name}} on <date>{{review.createdOn | date:'MM/yy'}} </p>
+				</div><!-- End User Reviews -->
+
+				<!-- This is showing new review preview-->
+				<div ng-show="add === 1" class="longDescription uReview" > 
+						<h3>Review Points: {{reviewCtrl.review.star}} <span ng-click="add=0">X</span></h3>
+						<p> {{reviewCtrl.review.body}} ~ {{reviewCtrl.review.name}} </p>
+				</div>
+
+				<!-- Add new Review to specific guitar - click this link to show review adding pannel -->
+				<a href ng-click="add=1" class="addReviewLink">Add review</a>	
+
+				<!-- form validates here using form name and .$valid and on submission we are going to addReview function with guitarID -->
+				<form class="reviewForm" name="reviewForm" ng-submit="reviewForm.$valid && reviewCtrl.addReview(guitarVariable.indexOf(guitarVariable[whichGuitar]))" novalidate ng-show="add===1" >
+					<div>
+						Review Points: 
+						<!-- ng-option here is setting options, cool? -->
+						<select ng-model="reviewCtrl.review.star" ng-options="point for point in [5,4,3,2,1]" required >						
+						</select>
+						Email: 
+						<input type="email" ng-model="reviewCtrl.review.name" required>
+						<button type="submit">Submit</button>
+					</div>
+					<textarea placeholder="Enter your experience with this guitar..."  ng-model="reviewCtrl.review.body"></textarea>
+				</form><!-- END add new review -->
+</div><br /><!-- END Review Tab -->
