@@ -23,13 +23,14 @@ var player1 = {
 	},
 
 	life: function() {
-		player1.energy = player1.energy + 1;
+		var self = this;
+		self.energy = self.energy + 1;
 		alert(player1.energy);
 	},
 
 	initialStrength: function() {
 		var intoArray = [];
-			intoArray.push(player1.strenght);
+			intoArray.push(this.strenght);
 		return intoArray;
 	},
 
@@ -38,7 +39,6 @@ var player1 = {
 		setTimeout(function()
 			{alert(player2.initialStrength())}, 5000);	
 	}
-
 };
 
 
@@ -60,13 +60,14 @@ var player2 = {
 	},
 
 	life: function() {
-		player2.energy = player2.energy + 1;
+		var self = this;
+		self.energy = self.energy + 1;
 		alert(player2.energy);
 	},
 
 	initialStrength: function() {
 		var intoArray = [];
-			intoArray.push(player2.strenght);
+			intoArray.push(this.strenght);
 		return intoArray;
 	},
 
