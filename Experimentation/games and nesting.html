@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body onkeydown="showKeyCode(event);">
+<script>
+
+var game = {
+        player1 : {
+            life : 10,
+            strength : 2,
+            rangeToEnemy : false,
+            dead : {
+                life : 1,
+                notdead : false
+            }
+        }
+        ,
+        player2 : {
+            life : 20,
+            strength : 3,
+            rangeToEnemy : false,
+        }
+};
+
+alert(game.player1.dead.life);
+
+var shoppingLinks = [			
+						{
+							label:'Test Drive',
+							url:'/shopping-tools/request-a-test-drive.html'
+								
+						}	
+						,
+						{
+							label:'Request a Quote',
+							url:'/shopping-tools/request-a-quote.html'
+								
+						}	
+						
+				]	
+
+alert(shoppingLinks[1].label);
+
+function showKeyCode(e) {
+	alert( "keyCode for the key pressed: " + e.keyCode + "\n" );
+}
+
+
+</script>
+</body>
+</html>
