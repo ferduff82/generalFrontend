@@ -1,0 +1,41 @@
+
+Es javascript un lenguaje tipado?
+Es javascript un lenguaje orientado a objetos?
+Es javascript un lenguaje orientado a prototipos?
+Es javascript un lenguaje single thread o multi thread?
+Para que sirven los web workers?
+Defina MVC
+Explique el uso de box-sizing: border-box;
+Para que se utiliza comunmente la variable self?
+Que es y para que se utiliza '' ? '' : '' ?
+Es posible crear o modificar archivos con Javascript, por ejemplo un JSON?
+Cual es la diferencia entre == y === ?
+Cual es la diferencia for y while? ejemplifique.
+Que son los namespaces?
+
+para que se parsea un JSON ej. JSON.parse()?
+https://msdn.microsoft.com/es-es/library/ie/cc836466(v=vs.94).aspx
+
+Que es JSONP y como se usa?
+http://es.wikipedia.org/wiki/JSONP
+
+Para que se usa 'use strict'?
+Defina Herencia, Encapsulamiento, Abstracción y Polimorfismo
+Que diferencia hay entre $() y find() en Jquery?
+Que diferencia hay entre Null y Undefined?
+
+Que es el Event Bubbling?
+http://javascript.info/tutorial/bubbling-and-capturing
+
+Ademas de las Cookies, que otras formas de guardar datos en el navegador existen?
+http://www.w3schools.com/html/html5_webstorage.asp
+
+Para que sirve el método off() en Jquery?
+
+Para que se utilizan objetos literales (function(){...})() en Plugins de JQUERY (function($){})(jQuery); ademas de para crear plugins?
+http://stackoverflow.com/questions/2937227/what-does-function-jquery-mean
+
+Que diferencia hay entre window.load y $(document).ready()?
+http://dev.w3xperiences.com/tutoriales/js-ajax/diferencia-entre-document-ready-vs-window-load/
+
+Que es el DOM y el BOM?
