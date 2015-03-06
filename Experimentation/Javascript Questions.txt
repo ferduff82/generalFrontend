@@ -2,6 +2,7 @@
 Es javascript un lenguaje tipado?
 Es javascript un lenguaje orientado a objetos?
 Es javascript un lenguaje orientado a prototipos?
+Que es una Clase?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 Defina MVC
@@ -20,7 +21,7 @@ Que es JSONP y como se usa?
 http://es.wikipedia.org/wiki/JSONP
 
 Para que se usa 'use strict'?
-Defina Herencia, Encapsulamiento, Abstracción y Polimorfismo
+Defina Herencia, Encapsulamiento, AbstracciÃ³n y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
 Que diferencia hay entre Null y Undefined?
 
@@ -30,7 +31,7 @@ http://javascript.info/tutorial/bubbling-and-capturing
 Ademas de las Cookies, que otras formas de guardar datos en el navegador existen?
 http://www.w3schools.com/html/html5_webstorage.asp
 
-Para que sirve el método off() en Jquery?
+Para que sirve el mÃ©todo off() en Jquery?
 
 Para que se utilizan objetos literales (function(){...})() en Plugins de JQUERY (function($){})(jQuery); ademas de para crear plugins?
 http://stackoverflow.com/questions/2937227/what-does-function-jquery-mean
