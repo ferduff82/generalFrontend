@@ -5,6 +5,10 @@ Es javascript un lenguaje orientado a prototipos?
 Que es una Clase?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
+
+Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
+http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
+
 Defina MVC
 Explique el uso de box-sizing: border-box;
 Para que se utiliza comunmente la variable self?
