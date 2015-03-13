@@ -24,6 +24,9 @@ https://msdn.microsoft.com/es-es/library/ie/cc836466(v=vs.94).aspx
 Que es JSONP y como se usa?
 http://es.wikipedia.org/wiki/JSONP
 
+Que hace esto? que problema soluciona con distintos navegadores?
+$('li').click(function (e) { var e = window.event || e; });
+
 Para que se usa 'use strict'?
 Defina Herencia, Encapsulamiento, Abstracción y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
