@@ -1,0 +1,66 @@
+
+
+      /**
+       * Adding an IE8/IE9 workaround for box in desktop with Stickybox
+       */
+
+    var ie = (function(){
+
+        var undef,
+            v = 3,
+            div = document.createElement('div'),
+            all = div.getElementsByTagName('i');
+
+        while (
+            div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+            all[0]
+        );
+        return v > 4 ? v : undef;
+    }());
+
+    if(ie <= 9 ){
+      window.onscroll = navbar_reset_top;
+      var navbar_top=682;
+
+      function navbar_reset_top() {
+        var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+
+        var navFixHasClass = mrm.$(".category_filters.ui-vertical-tabs").hasClass("navbar_fixed");
+        var navAbsHasClass = mrm.$(".category_filters.ui-vertical-tabs").hasClass("navbar_absolute");
+
+        if(scrollTop>navbar_top) {
+          mrm.$(".category_filters.ui-vertical-tabs").removeClass("navbar_absolute");
+          mrm.$(".category_filters.ui-vertical-tabs").addClass("navbar_fixed");
+        }
+        else if(scrollTop<navbar_top&&navFixHasClass) {
+          mrm.$(".category_filters.ui-vertical-tabs").removeClass("navbar_fixed");
+          mrm.$(".category_filters.ui-vertical-tabs").addClass("navbar_absolute");
+        }
+      }
+    }
+
+
+
+
+
+Bug Fixed:
+
+File:
+
+/trunk/public/modules/Cnt_acc_catalog_1/js/cnt_acc_catalog_1.all.js
+
+
+IE 8 y 9 no soportan la propiedad window.pageYOffset
+
+Crosbrowser fix for scroll:
+
+$(document).scrollTop()
+
+
+Lines: 86, 89, 106 y 109
+
+
+http://www.w3schools.com/jsref/prop_win_pagexoffset.asp
+
+
+
