@@ -21,20 +21,53 @@
   }
 
   #vida-personaje {
-    float:left;
+
   }
 
   .start {
-    float:left;
+    position: absolute;
+    z-index: 9999;
   }
 
   .hideElements {
     display:none;
   }
 
+  .piedra {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    position: relative;
+  }
+
+  #piedra-a {
+    top: 250px;
+    left: 350px;
+  }
+
   #background-moving {
     background-color: rgb(234, 253, 255);
     height: 100%;
+    width: 2000px;
+    position: relative;
+    -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
+    animation: mymove 5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+
+  /* animation */
+
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes mymove {
+      from {left: 0px;}
+      to {left: -500px;}
+  }
+
+  /* Standard syntax */
+  @keyframes mymove {
+      from {left: 0px;}
+      to {left: -500px;}
   }
 
   </style>  
@@ -47,7 +80,9 @@
   <div id="game">
     <button class="start">Start</button>
     <ul id="vida-personaje"></ul>
-    <div id="background-moving"></div>
+    <div id="background-moving">
+      <div class="piedra" id="piedra-a"></div>
+    </div>
   </div>
 
   <!-- Templates -->
@@ -98,6 +133,7 @@
 
     app.GameList = Backbone.Collection.extend({
       model: app.Game,
+      localStorage: new Store("Game-store")
     });
 
     // instance of the Collection
@@ -148,7 +184,13 @@
       },
 
       startOver: function(){
-        alert("Juego se Reinicia");
+        console.log("Juego se Reinicia");
+        var resetLife = this.model.toJSON().vida = 3;
+        this.model.save({vida: resetLife});
+        var resetEnergy = this.model.toJSON().energia = 5;
+        this.model.save({energia: resetEnergy});
+        var resetShield = this.model.toJSON().escudo = 0;
+        this.model.save({escudo: resetShield});
       }
 
     });
