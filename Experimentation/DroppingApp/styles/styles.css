@@ -1,0 +1,91 @@
+
+#app {
+width: 477px;
+height: 435px;
+background-color: green;
+padding: 10px;
+box-sizing: border-box;
+}
+.droppable {
+position: relative;
+top: -411px;
+left: 180px;
+height: 411px;
+width: 273px;
+background-color: yellow;
+background-image: url("../img/face.jpg");
+background-position-x: -21px;
+background-position-y: 5px;
+background-repeat: no-repeat;
+}
+.draggable {
+width: 152px;
+margin-bottom: 8px;
+height: 114px;
+z-index: 9999;
+background-color: #fff;
+}
+#draggableContainer {
+background-color: orange;
+width: 162px;
+height: 412px;
+padding: 5px;
+box-sizing: border-box;
+overflow: overlay;
+}
+.hide {
+display: none;
+}
+#moustache {
+width: 139px;
+margin-top: 32px;
+}
+#beard {
+width: 99px;
+margin-top: 1px;
+margin-left: 20px;
+}
+#glasses {
+width: 139px;
+margin-top: 0px;
+}
+#clownNose {
+width: 80px;
+margin-top: 16px;
+margin-left: 31px;
+}
+#tear {
+width: 98px;
+margin-top: 7px;
+margin-left: 23px;
+}
+.moustacheInPosition {
+width: 141px;
+position: absolute;
+left: 69px;
+top: 249px;
+}
+.beardInPosition {
+width: 218px;
+position: absolute;
+left: 26px;
+top: 175px;
+}
+.glassesInPosition {
+width: 186px;
+position: absolute;
+left: 46px;
+top: 121px;
+}
+.clownNoseInPosition {
+width: 58px;
+position: absolute;
+left: 110px;
+top: 215px;
+}
+.tearInPosition {
+width: 31px;
+position: absolute;
+left: 192px;
+top: 190px;
+}
