@@ -17,38 +17,90 @@
 	    	});
 
 	    	$("#draggableContainer").mousedown(function(e){
+
 	    		var getTarget = e.target;
 	    		var getId = $(getTarget).attr('id');
 	    		var createImg = document.createElement('img');
 	    		var getDroppable = document.getElementById("dropSpace");
+
 	            switch (getId) {
 	                case "beard":
-	    				createImg.setAttribute("class","beardInPosition hide");
-	        			createImg.setAttribute("src","img/beard.png");
-	        			getDroppable.appendChild(createImg);
-	        			self.setBeard = true;
+	                	beard();
 	                    break;
 	         		case "moustache":
-	        			createImg.setAttribute("class","moustacheInPosition hide");
-	        			createImg.setAttribute("src","img/moustache.png");
-	        			getDroppable.appendChild(createImg);
+	         			moustache();
 	                    break;
 	                case "glasses":
-	        			createImg.setAttribute("class","glassesInPosition hide");
-	        			createImg.setAttribute("src","img/sunglasses.png");
-	        			getDroppable.appendChild(createImg);
+	                	glasses();
 	                    break;
 	               	case "clownNose":
-	        			createImg.setAttribute("class","clownNoseInPosition hide");
-	        			createImg.setAttribute("src","img/nose.png");
-	        			getDroppable.appendChild(createImg);
+	               		clownNose();
 	                    break;
 	               	case "tear":
-	        			createImg.setAttribute("class","tearInPosition hide");
-	        			createImg.setAttribute("src","img/tear.png");
-	        			getDroppable.appendChild(createImg);
+	               		tear();
 	                    break;
+	    		};
+
+	    		function beard(){
+	    			var getBeardId = document.getElementById("beardOn");
+	    			if(getBeardId != null){
+	    				return false;
+	    			} else {
+	    				createImg.setAttribute("class","beardInPosition hide");
+		        		createImg.setAttribute("src","img/beard.png");
+		        		createImg.setAttribute("id","beardOn");
+		        		getDroppable.appendChild(createImg);
+	    			}
+	    		};
+
+	    		function moustache() {
+	    			var getBeardId = document.getElementById("moustacheOn");
+		    		if(getBeardId != null){
+		    			return false;
+		    		} else {
+	        			createImg.setAttribute("class","moustacheInPosition hide");
+	        			createImg.setAttribute("src","img/moustache.png");
+	        			createImg.setAttribute("id","moustacheOn");
+	        			getDroppable.appendChild(createImg);
+	        		}	    			
+	    		};
+
+	    		function glasses() {
+	    			var getBeardId = document.getElementById("glassesOn");
+		    		if(getBeardId != null){
+		    			return false;
+		    		} else {
+	        			createImg.setAttribute("class","glassesInPosition hide");
+	        			createImg.setAttribute("src","img/sunglasses.png");
+	        			createImg.setAttribute("id","glassesOn");
+	        			getDroppable.appendChild(createImg);
+	        		}	    			
+	    		};
+
+	    		function clownNose() {
+	    			var getBeardId = document.getElementById("clownOn");
+		    		if(getBeardId != null){
+		    			return false;
+		    		} else {
+	    				createImg.setAttribute("class","clownNoseInPosition hide");
+	        			createImg.setAttribute("src","img/nose.png");
+	        			createImg.setAttribute("id","clownOn");
+	        			getDroppable.appendChild(createImg);
+	        		}
+	    		};
+
+	    		function tear() {
+	    			var getBeardId = document.getElementById("tearOn");
+		    		if(getBeardId != null){
+		    			return false;
+		    		} else {
+    				createImg.setAttribute("class","tearInPosition hide");
+        			createImg.setAttribute("src","img/tear.png");
+        			createImg.setAttribute("id","tearOn");
+        			getDroppable.appendChild(createImg);
+        			}
 	    		}
+
 	    	})
 
 	    	$( ".droppable" ).droppable({

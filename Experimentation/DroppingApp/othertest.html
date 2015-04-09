@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>FunFace App</title>
+	<script src="jquery-ui/external/jquery/jquery.js"></script>
+	<script src="jquery-ui/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/styles.css" />
+  	<script>
+	  	$(function() {
+
+	  		var self = this;
+	  		var setBeard = null;
+
+	    	$( ".draggable" ).draggable({
+	    		helper: 'clone'
+	    	});
+
+	    	$("#draggableContainer").mousedown(function(e){
+
+	    		var getTarget = e.target;
+	    		var getId = $(getTarget).attr('id');
+	    		var createImg = document.createElement('img');
+	    		var getDroppable = document.getElementById("dropSpace");
+
+	    		switch (getId) {
+	                case "beard":
+	                	var classVar = "beardInPosition hide";
+	                	var imgRoute = "img/beard.png";
+	                	createImg(getId, classVar, imgRoute);
+	                    break;
+	         		case "moustache":
+	         			var classVar = "moustacheInPosition hide";
+	         			var imgRoute = "img/moustache.png";
+	                    break;
+	                case "glasses":
+	                	var classVar = "glassesInPosition hide";
+	         			var imgRoute = "img/sunglasses.png";	                
+	                    break;
+	               	case "clownNose":
+	               		var classVar = "clownNoseInPosition hide";
+	         			var imgRoute = "img/nose.png";	               		
+	                    break;
+	               	case "tear":
+	               		var classVar = "tearInPosition hide";
+	         			var imgRoute = "img/tear.png";	               		
+	                    break;
+	    		};
+
+	    		function createImg (getId, classVar, imgRoute) {
+	    			var getBeardId = document.getElementById(getId);
+	    			if(getBeardId != null){
+	    				return false;
+	    			} else {
+	    				createImg.setAttribute("class",classVar);
+		        		createImg.setAttribute("src",imgRoute);
+		        		createImg.setAttribute("id",getId);
+		        		getDroppable.appendChild(createImg);
+	    			}
+	    		};	
+
+	    	});
+
+	    	$( ".droppable" ).droppable({
+		      	drop: function( event, ui ) {
+		      		$( this ).find("img").removeClass("hide");
+		      	}
+	    	});
+
+	  	});
+  	</script>
+</head>
+<body>
+	<div id="app">
+		<div id="draggableContainer">
+			<div class="draggable">
+				<img src="img/moustache.png" id="moustache">
+			</div>
+			<div class="draggable">
+				<img src="img/beard.png" id="beard">
+			</div>
+			<div class="draggable">
+				<img src="img/sunglasses.png" id="glasses">
+			</div>
+			<div class="draggable">
+				<img src="img/nose.png" id="clownNose">
+			</div>
+			<div class="draggable">
+				<img src="img/tear.png" id="tear">
+			</div>
+		</div>
+		<div class="droppable" id="dropSpace">
+
+		</div>
+	</div>
+</body>
+</html>
