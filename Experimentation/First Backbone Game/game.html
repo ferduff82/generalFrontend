@@ -48,7 +48,7 @@
   #background-moving {
     background-color: rgb(234, 253, 255);
     height: 100%;
-    width: 2000px;
+    width: 4000px;
     position: relative;
     -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
     animation: mymove 5s;
@@ -199,7 +199,7 @@
     app.AppView = Backbone.View.extend({
       el: '#game',
       initialize: function () {
-        app.gameList.on('add', this.addAll, this);
+        app.gameList.on('add', this.addOne, this);
       },
       events: {
         'click .start': 'newGame'
@@ -223,10 +223,6 @@
       addOne: function(vida){
         var view = new app.GameView({model: vida});
         $('#vida-personaje').append(view.render().el);
-      },
-
-      addAll: function(){
-        app.gameList.each(this.addOne, this);
       }
 
     });
