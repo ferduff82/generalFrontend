@@ -9,9 +9,6 @@
   	<script>
 	  	$(function() {
 
-	  		var self = this;
-	  		var setBeard = null;
-
 	    	$( ".draggable" ).draggable({
 	    		helper: 'clone'
 	    	});
@@ -23,85 +20,37 @@
 	    		var createImg = document.createElement('img');
 	    		var getDroppable = document.getElementById("dropSpace");
 
-	            switch (getId) {
+	    		switch (getId) {
 	                case "beard":
-	                	beard();
+	                	createimg("beardOn","beardInPosition hide","img/beard.png");
 	                    break;
 	         		case "moustache":
-	         			moustache();
+	         			createimg("moustacheOn","moustacheInPosition hide","img/moustache.png");
 	                    break;
 	                case "glasses":
-	                	glasses();
+	         			createimg("glassesOn","glassesInPosition hide","img/sunglasses.png");               
 	                    break;
-	               	case "clownNose":
-	               		clownNose();
+	               	case "clownNose": 
+	         			createimg("clownOn","clownNoseInPosition hide","img/nose.png");            		
 	                    break;
-	               	case "tear":
-	               		tear();
+	               	case "tear":    
+	         			createimg("tearOn","tearInPosition hide","img/tear.png");            		
 	                    break;
 	    		};
-
-	    		function beard(){
-	    			var getBeardId = document.getElementById("beardOn");
+				
+	    		function createimg (showBeardId, classVar, imgRoute) {
+	    			var getBeardId = document.getElementById(showBeardId);
 	    			if(getBeardId != null){
 	    				return false;
 	    			} else {
-	    				createImg.setAttribute("class","beardInPosition hide");
-		        		createImg.setAttribute("src","img/beard.png");
-		        		createImg.setAttribute("id","beardOn");
+	    				createImg.setAttribute("class",classVar);
+		        		createImg.setAttribute("src",imgRoute);
+		        		createImg.setAttribute("id",showBeardId);
 		        		getDroppable.appendChild(createImg);
 	    			}
-	    		};
+	    		};	
 
-	    		function moustache() {
-	    			var getBeardId = document.getElementById("moustacheOn");
-		    		if(getBeardId != null){
-		    			return false;
-		    		} else {
-	        			createImg.setAttribute("class","moustacheInPosition hide");
-	        			createImg.setAttribute("src","img/moustache.png");
-	        			createImg.setAttribute("id","moustacheOn");
-	        			getDroppable.appendChild(createImg);
-	        		}	    			
-	    		};
-
-	    		function glasses() {
-	    			var getBeardId = document.getElementById("glassesOn");
-		    		if(getBeardId != null){
-		    			return false;
-		    		} else {
-	        			createImg.setAttribute("class","glassesInPosition hide");
-	        			createImg.setAttribute("src","img/sunglasses.png");
-	        			createImg.setAttribute("id","glassesOn");
-	        			getDroppable.appendChild(createImg);
-	        		}	    			
-	    		};
-
-	    		function clownNose() {
-	    			var getBeardId = document.getElementById("clownOn");
-		    		if(getBeardId != null){
-		    			return false;
-		    		} else {
-	    				createImg.setAttribute("class","clownNoseInPosition hide");
-	        			createImg.setAttribute("src","img/nose.png");
-	        			createImg.setAttribute("id","clownOn");
-	        			getDroppable.appendChild(createImg);
-	        		}
-	    		};
-
-	    		function tear() {
-	    			var getBeardId = document.getElementById("tearOn");
-		    		if(getBeardId != null){
-		    			return false;
-		    		} else {
-    				createImg.setAttribute("class","tearInPosition hide");
-        			createImg.setAttribute("src","img/tear.png");
-        			createImg.setAttribute("id","tearOn");
-        			getDroppable.appendChild(createImg);
-        			}
-	    		}
-
-	    	})
+	    	});
 
 	    	$( ".droppable" ).droppable({
 		      	drop: function( event, ui ) {
