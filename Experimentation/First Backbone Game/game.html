@@ -260,9 +260,13 @@
       },   
 
       moveShip: function(e){
+
         var getTop = $(".spaceshipClass").css("top");
         var getLeft = $(".spaceshipClass").css("left");
-
+        /* For Collision issue
+        var getOffset = $(".spaceshipClass").offset().top;
+        console.log(getOffset);
+        */
         switch( e.which ){
           case 38:
             var addHeight = (parseInt(getTop.replace(/px/,""))-10)+"px";
