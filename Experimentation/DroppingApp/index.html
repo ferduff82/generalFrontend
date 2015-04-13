@@ -58,6 +58,10 @@
 		      	}
 	    	});
 
+	    	$("#BorrarTodo").click(function(){
+	    		document.getElementById("dropSpace").innerHTML = "";
+	    	})
+
 	  	});
   	</script>
 </head>
@@ -83,6 +87,8 @@
 		<div class="droppable" id="dropSpace">
 
 		</div>
+
+		<button id="BorrarTodo">Borrar Todo</button>
 	</div>
 </body>
 </html>
