@@ -56,6 +56,15 @@
     animation-timing-function: linear;
   }
 
+  .spaceshipClass {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: 298px;
+    left: 100px;
+  }
+
   /* animation */
 
   /* Chrome, Safari, Opera */
@@ -85,6 +94,10 @@
     </div>
   </div>
 
+  <div id="spaceship">
+      <div id="space"></div>
+  </div>
+
   <!-- Templates -->
   <script type="text/template" id="item-template">
     <div class="view">
@@ -97,6 +110,11 @@
       <button class="agregarenergia">Agregar energía</button>
     </div>
   </script>  
+
+  <script type="text/template" id="spaceship-template">
+    <div class="view">
+    </div>
+  </script> 
 
   <!-- ========= -->
   <!-- Libraries -->
@@ -195,7 +213,6 @@
 
     });
 
-    // renders the full list of todo items calling TodoView for each one.
     app.AppView = Backbone.View.extend({
       el: '#game',
       initialize: function () {
@@ -227,6 +244,59 @@
 
     });
 
+    /* Start Spaceship */
+
+    app.AddSpaceship = Backbone.View.extend({
+      tagName: 'div',
+      className: 'spaceshipClass',
+      template: _.template($('#spaceship-template').html()),
+      render: function(){
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+      },
+      initialize: function(){
+        this.model.on('change', this.render, this);
+        $(document).on('keydown', this.moveShip);
+      },   
+
+      moveShip: function(e){
+        var getTop = $(".spaceshipClass").css("top");
+        var getLeft = $(".spaceshipClass").css("left");
+
+        switch( e.which ){
+          case 38:
+            var addHeight = (parseInt(getTop.replace(/px/,""))-10)+"px";
+            $(".spaceshipClass").css("top",addHeight);
+            break;
+          case 40:
+            var addHeight = (parseInt(getTop.replace(/px/,""))+10)+"px";
+            $(".spaceshipClass").css("top",addHeight);
+            break;            
+          case 37:
+            var addHeight = (parseInt(getLeft.replace(/px/,""))-10)+"px";
+            $(".spaceshipClass").css("left",addHeight);
+            break;
+          case 39:
+            var addHeight = (parseInt(getLeft.replace(/px/,""))+10)+"px";
+            $(".spaceshipClass").css("left",addHeight);
+            break;
+        }
+      }
+
+    });
+
+    app.AppSpaceship = Backbone.View.extend({
+      el: '#spaceship',
+      initialize: function () {
+        app.gameList.on('add', this.addOne, this);
+      },
+
+      addOne: function(vida){
+        var view = new app.AddSpaceship({model: vida});
+        $('#space').append(view.render().el);
+      }
+    });
+
     //--------------
     // Routers
     //--------------
@@ -244,6 +314,7 @@
     app.router = new app.Router();
     Backbone.history.start();    
     app.appView = new app.AppView(); 
+    app.appView = new app.AppSpaceship(); 
 
   </script>
   
