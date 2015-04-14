@@ -1,0 +1,71 @@
+  #game {
+    position:absolute;
+    top:5px;
+    left:5px;
+    right:5px;
+    bottom:5px;
+    border: 1px solid red;
+    overflow: hidden;
+  }
+
+  #vida-personaje {
+
+  }
+
+  .start {
+    position: absolute;
+    z-index: 9999;
+  }
+
+  .hideElements {
+    display:none;
+  }
+
+  .piedra {
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    position: relative;
+  }
+
+  #piedra-a {
+    top: 250px;
+    left: 350px;
+  }
+
+  #background-moving {
+    background-color: rgb(234, 253, 255);
+    height: 100%;
+    width: 4000px;
+    position: relative;
+  }
+
+  .start-moving {
+    -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
+    animation: mymove 5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+
+  .spaceshipClass {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: absolute;
+    top: 298px;
+    left: 100px;
+  }
+
+  /* animation */
+
+  /* Chrome, Safari, Opera */
+  @-webkit-keyframes mymove {
+      from {left: 0px;}
+      to {left: -500px;}
+  }
+
+  /* Standard syntax */
+  @keyframes mymove {
+      from {left: 0px;}
+      to {left: -500px;}
+  }

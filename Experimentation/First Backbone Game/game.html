@@ -4,82 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Game</title>
-  
-  <!-- ========= -->
-  <!--    CSS    -->
-  <!-- ========= -->
-  <style type="text/css">
-
-  #game {
-    position:absolute;
-    top:5px;
-    left:5px;
-    right:5px;
-    bottom:5px;
-    border: 1px solid red;
-    overflow: hidden;
-  }
-
-  #vida-personaje {
-
-  }
-
-  .start {
-    position: absolute;
-    z-index: 9999;
-  }
-
-  .hideElements {
-    display:none;
-  }
-
-  .piedra {
-    width: 100px;
-    height: 100px;
-    background-color: grey;
-    position: relative;
-  }
-
-  #piedra-a {
-    top: 250px;
-    left: 350px;
-  }
-
-  #background-moving {
-    background-color: rgb(234, 253, 255);
-    height: 100%;
-    width: 4000px;
-    position: relative;
-    -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
-    animation: mymove 5s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-  }
-
-  .spaceshipClass {
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    position: absolute;
-    top: 298px;
-    left: 100px;
-  }
-
-  /* animation */
-
-  /* Chrome, Safari, Opera */
-  @-webkit-keyframes mymove {
-      from {left: 0px;}
-      to {left: -500px;}
-  }
-
-  /* Standard syntax */
-  @keyframes mymove {
-      from {left: 0px;}
-      to {left: -500px;}
-  }
-
-  </style>  
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
@@ -225,6 +150,7 @@
       newGame: function(){
         $('.start').addClass("hideElements");
         name = prompt("Comienza el juego");
+        $('#background-moving').addClass("start-moving");
         app.gameList.add(this.newAttributes());
       },
 
@@ -264,8 +190,9 @@
         var getTop = $(".spaceshipClass").css("top");
         var getLeft = $(".spaceshipClass").css("left");
         /* For Collision issue
-        var getOffset = $(".spaceshipClass").offset().top;
-        console.log(getOffset);
+        var getTopOffset = $(".spaceshipClass").offset().top;
+        var getLeftOffset = $(".spaceshipClass").offset().left;
+        console.log(getTopOffset);
         */
         switch( e.which ){
           case 38:
