@@ -24,8 +24,13 @@
   .piedra {
     width: 100px;
     height: 100px;
-    background-color: grey;
+    background-image: url("rock.png");
+    background-position-x: -6px;
+    background-repeat: no-repeat;
     position: relative;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
   }
 
   #piedra-a {
@@ -48,9 +53,11 @@
   }
 
   .spaceshipClass {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    width: 139px;
+    height: 75px;
+    background-image: url("spaceship.gif");
+    background-position-x: -6px;
+    background-repeat: no-repeat;
     position: absolute;
     top: 298px;
     left: 100px;
@@ -68,4 +75,23 @@
   @keyframes mymove {
       from {left: 0px;}
       to {left: -500px;}
+  }
+
+  @-moz-keyframes spin { 
+    100% { 
+      -moz-transform: rotate(360deg); 
+    } 
+  }
+
+  @-webkit-keyframes spin { 
+    100% { 
+      -webkit-transform: rotate(360deg); 
+    } 
+  }
+
+  @keyframes spin { 
+    100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+    } 
   }

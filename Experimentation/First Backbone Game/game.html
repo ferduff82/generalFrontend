@@ -15,7 +15,7 @@
     <button class="start">Start</button>
     <ul id="vida-personaje"></ul>
     <div id="background-moving">
-      <div class="piedra" id="piedra-a"></div>
+      <div id="piedra-a"></div>
     </div>
   </div>
 
@@ -85,8 +85,9 @@
     //--------------
     // Views
     //--------------
+
+    /* Start LifeBox */
     
-    // renders individual todo items list (li)
     app.GameView = Backbone.View.extend({
       tagName: 'li',
       template: _.template($('#item-template').html()),
@@ -151,6 +152,7 @@
         $('.start').addClass("hideElements");
         name = prompt("Comienza el juego");
         $('#background-moving').addClass("start-moving");
+        $('#piedra-a').addClass("piedra");
         app.gameList.add(this.newAttributes());
       },
 
