@@ -39,8 +39,10 @@
   }
 
   #background-moving {
-    background-color: rgb(234, 253, 255);
+    background-image: url("space.png");
+    background-repeat: no-repeat;
     height: 100%;
+    background-size: 3000px;
     width: 4000px;
     position: relative;
   }
