@@ -22,15 +22,16 @@
   }
 
   .piedra {
-    width: 100px;
-    height: 100px;
-    background-image: url("rock.png");
-    background-position-x: -6px;
+    width: 66px;
+    height: 73px;
+    background-image: url("../images/rock.png");
+    background-position-x: -31px;
+    background-position-y: -27px;
     background-repeat: no-repeat;
     position: relative;
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
+    -webkit-animation: spin 4s linear infinite;
+    -moz-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
   }
 
   #piedra-a {
@@ -39,7 +40,7 @@
   }
 
   #background-moving {
-    background-image: url("space.png");
+    background-image: url("../images/space.png");
     background-repeat: no-repeat;
     height: 100%;
     background-size: 3000px;
@@ -57,7 +58,7 @@
   .spaceshipClass {
     width: 139px;
     height: 75px;
-    background-image: url("spaceship.gif");
+    background-image: url("../images/spaceship.gif");
     background-position-x: -6px;
     background-repeat: no-repeat;
     position: absolute;

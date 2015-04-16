@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Game</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
 </head>
 <body>
 
@@ -15,13 +15,11 @@
     <button class="start">Start</button>
     <ul id="vida-personaje"></ul>
     <div id="background-moving">
-      <div id="piedra-a"></div>
+      <div id="piedra-a" class="crash-detection"></div>
     </div>
   </div>
 
-  <div id="spaceship">
-      <div id="space"></div>
-  </div>
+  <div id="spaceship"></div>
 
   <!-- Templates -->
   <script type="text/template" id="item-template">
@@ -191,11 +189,7 @@
 
         var getTop = $(".spaceshipClass").css("top");
         var getLeft = $(".spaceshipClass").css("left");
-        /* For Collision issue
-        var getTopOffset = $(".spaceshipClass").offset().top;
-        var getLeftOffset = $(".spaceshipClass").offset().left;
-        console.log(getTopOffset);
-        */
+
         switch( e.which ){
           case 38:
             var addHeight = (parseInt(getTop.replace(/px/,""))-10)+"px";
@@ -214,6 +208,29 @@
             $(".spaceshipClass").css("left",addHeight);
             break;
         }
+
+        /* Collision Detection */
+
+        /* Spaceship */
+
+        var getSpaceshipTopOffset = $(".spaceshipClass").offset().top,
+            getSpaceshipRightOffset = $(".spaceshipClass").offset().left + $(".spaceshipClass").width(),
+            getSpaceshipBottomOffset = $(".spaceshipClass").offset().top + $(".spaceshipClass").height(),
+            getSpaceshipLeftOffset = $(".spaceshipClass").offset().left;
+
+        /* Any other object */
+
+        var anyObjectTop = $(".crash-detection").offset().top,
+            anyObjectRight = $(".crash-detection").offset().left + $(".crash-detection").width(),
+            anyObjectBottom = $(".crash-detection").offset().top + $(".crash-detection").height(),
+            anyObjectLeft = $(".crash-detection").offset().left;
+
+        if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
+          alert("Perdiste 1 vida");
+          var lifetaken = this.model.toJSON().vida - 1;
+          this.model.save({vida: lifetaken});
+        }
+
       }
 
     });
@@ -226,7 +243,7 @@
 
       addOne: function(vida){
         var view = new app.AddSpaceship({model: vida});
-        $('#space').append(view.render().el);
+        $('#spaceship').append(view.render().el);
       }
     });
 
