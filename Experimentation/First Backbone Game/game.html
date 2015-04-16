@@ -17,9 +17,8 @@
     <div id="background-moving">
       <div id="piedra-a" class="crash-detection"></div>
     </div>
+    <div id="spaceship"></div>
   </div>
-
-  <div id="spaceship"></div>
 
   <!-- Templates -->
   <script type="text/template" id="item-template">
@@ -143,7 +142,32 @@
         app.gameList.on('add', this.addOne, this);
       },
       events: {
-        'click .start': 'newGame'
+        'click .start': 'newGame',
+        'mousemove': 'replaceMouse'        
+      },
+
+      replaceMouse: function(e){
+        $(".spaceshipClass").css('left', e.clientX).css('top', e.clientY);
+
+        /* Collision Detection */
+          /* Spaceship */
+
+          var getSpaceshipTopOffset = $(".spaceshipClass").offset().top,
+              getSpaceshipRightOffset = $(".spaceshipClass").offset().left + $(".spaceshipClass").width(),
+              getSpaceshipBottomOffset = $(".spaceshipClass").offset().top + $(".spaceshipClass").height(),
+              getSpaceshipLeftOffset = $(".spaceshipClass").offset().left;
+
+          /* Any other object */
+
+          var anyObjectTop = $(".crash-detection").offset().top,
+              anyObjectRight = $(".crash-detection").offset().left + $(".crash-detection").width(),
+              anyObjectBottom = $(".crash-detection").offset().top + $(".crash-detection").height(),
+              anyObjectLeft = $(".crash-detection").offset().left;
+
+          if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
+            alert("Perdiste 1 vida");
+
+          }
       },
 
       newGame: function(){
@@ -182,56 +206,7 @@
       },
       initialize: function(){
         this.model.on('change', this.render, this);
-        $(document).on('keydown', this.moveShip);
       },   
-
-      moveShip: function(e){
-
-        var getTop = $(".spaceshipClass").css("top");
-        var getLeft = $(".spaceshipClass").css("left");
-
-        switch( e.which ){
-          case 38:
-            var addHeight = (parseInt(getTop.replace(/px/,""))-10)+"px";
-            $(".spaceshipClass").css("top",addHeight);
-            break;
-          case 40:
-            var addHeight = (parseInt(getTop.replace(/px/,""))+10)+"px";
-            $(".spaceshipClass").css("top",addHeight);
-            break;            
-          case 37:
-            var addHeight = (parseInt(getLeft.replace(/px/,""))-10)+"px";
-            $(".spaceshipClass").css("left",addHeight);
-            break;
-          case 39:
-            var addHeight = (parseInt(getLeft.replace(/px/,""))+10)+"px";
-            $(".spaceshipClass").css("left",addHeight);
-            break;
-        }
-
-        /* Collision Detection */
-
-        /* Spaceship */
-
-        var getSpaceshipTopOffset = $(".spaceshipClass").offset().top,
-            getSpaceshipRightOffset = $(".spaceshipClass").offset().left + $(".spaceshipClass").width(),
-            getSpaceshipBottomOffset = $(".spaceshipClass").offset().top + $(".spaceshipClass").height(),
-            getSpaceshipLeftOffset = $(".spaceshipClass").offset().left;
-
-        /* Any other object */
-
-        var anyObjectTop = $(".crash-detection").offset().top,
-            anyObjectRight = $(".crash-detection").offset().left + $(".crash-detection").width(),
-            anyObjectBottom = $(".crash-detection").offset().top + $(".crash-detection").height(),
-            anyObjectLeft = $(".crash-detection").offset().left;
-
-        if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
-          alert("Perdiste 1 vida");
-          var lifetaken = this.model.toJSON().vida - 1;
-          this.model.save({vida: lifetaken});
-        }
-
-      }
 
     });
 

@@ -6,6 +6,7 @@
     bottom:5px;
     border: 1px solid red;
     overflow: hidden;
+    cursor: none;
   }
 
   #vida-personaje {
@@ -56,6 +57,7 @@
   }
 
   .spaceshipClass {
+    cursor: none;
     width: 139px;
     height: 75px;
     background-image: url("../images/spaceship.gif");
@@ -64,6 +66,7 @@
     position: absolute;
     top: 298px;
     left: 100px;
+    z-index: 10000;
   }
 
   /* animation */
