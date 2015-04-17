@@ -16,6 +16,12 @@
     <ul id="vida-personaje"></ul>
     <div id="background-moving">
       <div id="piedra-a" class="crash-detection"></div>
+      <div class="energy-detection">
+        <div class="energyObject"></div>
+      </div>
+      <div class="shield-detection">
+        <div class="shieldObject"></div>        
+      </div>
     </div>
     <div id="spaceship"></div>
   </div>
@@ -27,9 +33,6 @@
       <label>Vida <%- vida %></label>
       <label>Escudo <%- escudo %></label>
       <label>Energía <%- energia %></label>
-      <button class="quitavida">Quitar Vida</button>
-      <button class="agregarescudo">Agregar escudo</button>
-      <button class="agregarenergia">Agregar energía</button>
     </div>
   </script>  
 
@@ -76,8 +79,7 @@
       localStorage: new Store("Game-store")
     });
 
-    // instance of the Collection
-    app.gameList = new app.GameList();
+    app.gameList = new app.GameList(); // instance of the Collection
 
     //--------------
     // Views
@@ -96,26 +98,6 @@
         this.model.on('change', this.render, this);
         this.model.on('change', this.isdead, this);
       },   
-      events: {
-        'click .quitavida': 'quitarvida',
-        'click .agregarenergia': 'agregaenergia',
-        'click .agregarescudo': 'agregaescudo',
-      },
-
-      quitarvida: function(){
-        var lifetaken = this.model.toJSON().vida - 1;
-        this.model.save({vida: lifetaken});
-      },
-
-      agregaenergia: function(){
-        var energyadded = this.model.toJSON().energia + 2;
-        this.model.save({energia: energyadded});
-      },
-
-      agregaescudo: function(){
-        var shieldadded = this.model.toJSON().escudo + 1;
-        this.model.save({escudo: shieldadded});
-      },
 
       isdead: function(){
         if(this.model.toJSON().vida == 0) {
@@ -136,6 +118,8 @@
 
     });
 
+    /* Start Game */
+
     app.AppView = Backbone.View.extend({
       el: '#game',
       initialize: function () {
@@ -143,13 +127,15 @@
       },
       events: {
         'click .start': 'newGame',
-        'mousemove': 'replaceMouse'        
+        'mousemove': 'mouseTrigger'        
       },
 
-      replaceMouse: function(e){
+      mouseTrigger: function(e){
+
         $(".spaceshipClass").css('left', e.clientX).css('top', e.clientY);
 
         /* Collision Detection */
+
           /* Spaceship */
 
           var getSpaceshipTopOffset = $(".spaceshipClass").offset().top,
@@ -164,12 +150,38 @@
               anyObjectBottom = $(".crash-detection").offset().top + $(".crash-detection").height(),
               anyObjectLeft = $(".crash-detection").offset().left;
 
+          /* Any other object that adds Energy */
+
+          if($(".energyObject").length) {
+            var anyEnergyObjectTop = $(".energyObject").offset().top,
+                anyEnergyObjectRight = $(".energyObject").offset().left + $(".energyObject").width(),
+                anyEnergyObjectBottom = $(".energyObject").offset().top + $(".energyObject").height(),
+                anyEnergyObjectLeft = $(".energyObject").offset().left;
+          }
+
+          /* Any other object that adds Shield */
+
+          if($(".shieldObject").length) {
+          var anyShieldObjectTop = $(".shieldObject").offset().top,
+              anyShieldObjectRight = $(".shieldObject").offset().left + $(".shieldObject").width(),
+              anyShieldObjectBottom = $(".shieldObject").offset().top + $(".shieldObject").height(),
+              anyShieldObjectLeft = $(".shieldObject").offset().left;
+          }
+
+          /* Crash Logic */
+
           if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
             alert("Perdiste 1 vida");
-            var getLifeValue = app.gameList.models[0].get('vida');
-            var killLife = getLifeValue - 1;
+            var getLifeValue = app.gameList.models[0].get('vida'),
+                killLife = getLifeValue - 1;
             app.gameList.models[0].set({'vida': killLife});
+          } else if (getSpaceshipRightOffset > anyEnergyObjectLeft && getSpaceshipLeftOffset < anyEnergyObjectRight && getSpaceshipTopOffset < anyEnergyObjectBottom && getSpaceshipBottomOffset > anyEnergyObjectTop) {
+            var getEnergyValue = app.gameList.models[0].get('energia'),
+                energyNewValue = getEnergyValue + 1;
+            app.gameList.models[0].set({'energia': energyNewValue});
+            $('.energy-detection').html('');
           }
+
       },
 
       newGame: function(){
@@ -225,21 +237,9 @@
     });
 
     //--------------
-    // Routers
-    //--------------
-    
-    app.Router = Backbone.Router.extend({
-      routes: {
-        '*filter' : 'setFilter'
-      },
-    });     
-
-    //--------------
     // Initializers
     //--------------   
 
-    app.router = new app.Router();
-    Backbone.history.start();    
     app.appView = new app.AppView(); 
     app.appView = new app.AppSpaceship(); 
 

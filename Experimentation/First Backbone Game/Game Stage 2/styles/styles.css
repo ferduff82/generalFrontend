@@ -1,103 +1,106 @@
-  #game {
-    position:absolute;
-    top:5px;
-    left:5px;
-    right:5px;
-    bottom:5px;
-    border: 1px solid red;
-    overflow: hidden;
-    cursor: none;
-  }
+#game {
+  position:absolute;
+  top:5px;
+  left:5px;
+  right:5px;
+  bottom:5px;
+  border: 1px solid red;
+  overflow: hidden;
+  cursor: none;
+}
 
-  #vida-personaje {
+.start {
+  position: absolute;
+  z-index: 9999;
+}
 
-  }
+.hideElements {
+  display:none;
+}
 
-  .start {
-    position: absolute;
-    z-index: 9999;
-  }
+.piedra {
+  width: 66px;
+  height: 73px;
+  background-image: url("../images/rock.png");
+  background-position-x: -31px;
+  background-position-y: -27px;
+  background-repeat: no-repeat;
+  position: relative;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
 
-  .hideElements {
-    display:none;
-  }
+#piedra-a {
+  top: 250px;
+  left: 350px;
+}
 
-  .piedra {
-    width: 66px;
-    height: 73px;
-    background-image: url("../images/rock.png");
-    background-position-x: -31px;
-    background-position-y: -27px;
-    background-repeat: no-repeat;
-    position: relative;
-    -webkit-animation: spin 4s linear infinite;
-    -moz-animation: spin 4s linear infinite;
-    animation: spin 4s linear infinite;
-  }
+#background-moving {
+  background-image: url("../images/space.png");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: 3000px;
+  width: 4000px;
+  position: relative;
+}
 
-  #piedra-a {
-    top: 250px;
-    left: 350px;
-  }
+.start-moving {
+  -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
+  animation: mymove 5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
 
-  #background-moving {
-    background-image: url("../images/space.png");
-    background-repeat: no-repeat;
-    height: 100%;
-    background-size: 3000px;
-    width: 4000px;
-    position: relative;
-  }
+.spaceshipClass {
+  cursor: none;
+  width: 139px;
+  height: 75px;
+  background-image: url("../images/spaceship.gif");
+  background-position-x: -6px;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 298px;
+  left: 100px;
+  z-index: 10000;
+}
 
-  .start-moving {
-    -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
-    animation: mymove 5s;
-    -webkit-animation-timing-function: linear;
-    animation-timing-function: linear;
-  }
+.energyObject {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
 
-  .spaceshipClass {
-    cursor: none;
-    width: 139px;
-    height: 75px;
-    background-image: url("../images/spaceship.gif");
-    background-position-x: -6px;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 298px;
-    left: 100px;
-    z-index: 10000;
-  }
+/* animation */
 
-  /* animation */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    from {left: 0px;}
+    to {left: -500px;}
+}
 
-  /* Chrome, Safari, Opera */
-  @-webkit-keyframes mymove {
-      from {left: 0px;}
-      to {left: -500px;}
-  }
+/* Standard syntax */
+@keyframes mymove {
+    from {left: 0px;}
+    to {left: -500px;}
+}
 
-  /* Standard syntax */
-  @keyframes mymove {
-      from {left: 0px;}
-      to {left: -500px;}
-  }
+@-moz-keyframes spin { 
+  100% { 
+    -moz-transform: rotate(360deg); 
+  } 
+}
 
-  @-moz-keyframes spin { 
-    100% { 
-      -moz-transform: rotate(360deg); 
-    } 
-  }
+@-webkit-keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+  } 
+}
 
-  @-webkit-keyframes spin { 
-    100% { 
-      -webkit-transform: rotate(360deg); 
-    } 
-  }
-
-  @keyframes spin { 
-    100% { 
-      -webkit-transform: rotate(360deg); 
-      transform:rotate(360deg); 
-    } 
-  }
+@keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+  } 
+}
