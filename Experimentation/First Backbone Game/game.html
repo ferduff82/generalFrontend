@@ -146,7 +146,7 @@
         'mousemove': 'replaceMouse'        
       },
 
-      replaceMouse: function(e){
+      replaceMouse: function(e, vida){
         $(".spaceshipClass").css('left', e.clientX).css('top', e.clientY);
 
         /* Collision Detection */
@@ -167,6 +167,8 @@
           if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
             alert("Perdiste 1 vida");
 
+            console.log(app.gameList.models[0].get('vida');
+            app.gameList.models[0].set({'vida': '2'});
           }
       },
 
@@ -213,11 +215,11 @@
     app.AppSpaceship = Backbone.View.extend({
       el: '#spaceship',
       initialize: function () {
-        app.gameList.on('add', this.addOne, this);
+        app.gameList.on('add', this.createSpaceship, this);
       },
 
-      addOne: function(vida){
-        var view = new app.AddSpaceship({model: vida});
+      createSpaceship: function(life){
+        var view = new app.AddSpaceship({model: life});
         $('#spaceship').append(view.render().el);
       }
     });
