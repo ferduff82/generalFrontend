@@ -146,7 +146,7 @@
         'mousemove': 'replaceMouse'        
       },
 
-      replaceMouse: function(e, vida){
+      replaceMouse: function(e){
         $(".spaceshipClass").css('left', e.clientX).css('top', e.clientY);
 
         /* Collision Detection */
@@ -157,7 +157,7 @@
               getSpaceshipBottomOffset = $(".spaceshipClass").offset().top + $(".spaceshipClass").height(),
               getSpaceshipLeftOffset = $(".spaceshipClass").offset().left;
 
-          /* Any other object */
+          /* Any other object that crashes */
 
           var anyObjectTop = $(".crash-detection").offset().top,
               anyObjectRight = $(".crash-detection").offset().left + $(".crash-detection").width(),
@@ -166,9 +166,9 @@
 
           if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
             alert("Perdiste 1 vida");
-
-            console.log(app.gameList.models[0].get('vida');
-            app.gameList.models[0].set({'vida': '2'});
+            var getLifeValue = app.gameList.models[0].get('vida');
+            var killLife = getLifeValue - 1;
+            app.gameList.models[0].set({'vida': killLife});
           }
       },
 
