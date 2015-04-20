@@ -1,0 +1,171 @@
+#item-a{
+width:50px;
+height:50px;
+background-color:black;
+position:absolute;
+left:150px;
+top:535px;
+}
+
+#item-b{
+width:50px;
+height:50px;
+background-color:black;
+position:absolute;
+left:210px;
+top:535px;
+}
+
+#item-c{
+width:50px;
+height:50px;
+background-color:black;
+position:absolute;
+left:270px;
+top:535px;
+}
+
+#item-d{
+width:50px;
+height:50px;
+background-color:black;
+position:absolute;
+left:330px;
+top:535px;
+}
+
+.image-a{
+width: 100px;
+height: 100px;
+background-color: red;
+position: absolute;
+}
+.image-b{
+width: 100px;
+height: 100px;
+background-color: yellow;
+position: absolute;
+left: 100px;
+}
+.image-c{
+width: 100px;
+height: 100px;
+background-color: green;
+position: absolute;
+left: 200px;
+}
+.image-d{
+width: 100px;
+height: 100px;
+background-color: blue;
+position: absolute;
+left: 300px;
+}
+
+.inline{
+float: left;
+}
+
+#main-container{
+width: 400px;
+height: 400px;
+position: absolute;
+top: 106px;
+left: 59px;
+border: 1px solid #ddd;
+overflow: hidden;
+}
+
+#container{
+width:400px
+height:100px;
+position:relative;
+}
+
+.animate-a {
+	-webkit-animation:myfirst 1s; 
+	animation:myfirst 1s;
+}
+
+.animate-b {
+	-webkit-animation:mysecond 1s; 
+	animation:mysecond 1s;
+}
+
+.animate-c {
+	-webkit-animation:mythird 1s; 
+	animation:mythird 1s;
+}
+
+.animate-d {
+	-webkit-animation:myforth 1s; 
+	animation:mmyforth 1s;
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+	0%   {left:0px;}
+	100% {left:-100px;}
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+	0%   {left:0px;}
+	100% {left:-100px;}
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mysecond {
+	0%   {left:-100px;}
+	100% {left:-200px;}
+}
+
+/* Standard syntax */
+@keyframes mysecond {
+	0%   {left:-100px;}
+	100% {left:-200px;}
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mythird {
+	0%   {left:-200px;}
+	100% {left:-300px;}
+}
+
+/* Standard syntax */
+@keyframes mythird {
+	0%   {left:-200px;}
+	100% {left:-300px;}
+}
+
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myforth {
+	0%   {left:-300px;}
+	100% {left:-400px;}
+}
+
+/* Standard syntax */
+@keyframes myforth {
+	0%   {left:-300px;}
+	100% {left:-400px;}
+}
+
+.final-position-a{
+	left:-100px !important;
+}
+
+.final-position-b{
+	left:-200px !important;
+}
+
+.final-position-c{
+	left:-300px !important;
+}
+
+.final-position-d{
+	left:-400px !important;
+}

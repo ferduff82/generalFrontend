@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div id="main-container">
+	<div id="container">
+		<div class="image-a inline"></div>
+		<div class="image-b inline"></div>
+		<div class="image-c inline"></div>
+		<div class="image-d inline"></div>
+	</div>
+</div>
+
+<div class="left-arrow"></div>
+<div class="right-arrow"></div>
+
+<a href="#" id="item-a"></a>
+<a href="#" id="item-b"></a>
+<a href="#" id="item-c"></a>
+<a href="#" id="item-d"></a>
+
+<script>
+
+setTimeout(function(){
+	document.getElementById('container').classList.add('animate-a');
+	document.getElementById('container').classList.add('final-position-a');
+},3000);
+	
+setTimeout(function(){
+	document.getElementById('container').classList.add('animate-b');
+	document.getElementById('container').classList.add('final-position-b');
+},6000);
+	
+setTimeout(function(){
+	document.getElementById('container').classList.add('animate-c');
+	document.getElementById('container').classList.add('final-position-c');
+},9000);
+
+setTimeout(function(){
+	document.getElementById('container').classList.add('animate-d');
+	document.getElementById('container').classList.add('final-position-d');
+},12000);
+
+document.getElementById("item-a").onclick = function(){
+	document.getElementById('container').classList.add('animate-a');
+	document.getElementById('container').classList.add('final-position-a');
+};
+
+document.getElementById("item-b").onclick = function(){
+	document.getElementById('container').classList.add('animate-b');
+	document.getElementById('container').classList.add('final-position-b');
+};
+
+document.getElementById("item-c").onclick = function(){
+	document.getElementById('container').classList.add('animate-c');
+	document.getElementById('container').classList.add('final-position-c');
+};
+
+document.getElementById("item-d").onclick = function(){
+	document.getElementById('container').classList.add('animate-d');
+	document.getElementById('container').classList.add('final-position-d');
+};
+
+
+</script>
+</body>
+</html>
