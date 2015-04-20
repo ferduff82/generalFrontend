@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="styles.css">
+<script src="jquery.js"></script>
 </head>
 <body>
 <div id="main-container">
@@ -16,13 +17,80 @@
 <div class="left-arrow"></div>
 <div class="right-arrow"></div>
 
-<a href="#" id="item-a"></a>
-<a href="#" id="item-b"></a>
-<a href="#" id="item-c"></a>
-<a href="#" id="item-d"></a>
+<div id="links">
+	<a href="#" id="item-a" class ="animate"></a>
+	<a href="#" id="item-b" class ="animate"></a>
+	<a href="#" id="item-c" class ="animate"></a>
+	<a href="#" id="item-d" class ="animate"></a>
+</div>
+
 
 <script>
 
+$(".animate").click(function(e){
+	var captureClick = e.target,
+		getIndex = $(captureClick).index(),
+		result = $("#container"),
+		getActualPosition = $("#container").attr("class");
+
+	$(".animate").css("background-color","black");
+	$(captureClick).css("background-color","green");
+
+	console.log(getIndex);
+	console.log(getActualPosition);
+
+	if (getActualPosition == "animate-a") {
+		var position = 1;
+	} else if (getActualPosition == "animate-b") {
+		var position = 2;
+	} else if (getActualPosition == "animate-c") {
+		var position = 3;
+	} else if (getActualPosition == "animate-d"){
+		var position = -1;
+	} else if (getActualPosition == "animate-e"){
+		var position = -2;
+	} else if (getActualPosition == "animate-f"){
+		var position = -3;
+	} else {
+		var position = 0;
+	}
+
+	var finalPosition = getIndex - position;
+	console.log(position);
+	console.log(finalPosition);
+
+	switch (finalPosition) {
+		case 0:
+			$(result).attr('class', '');
+ 		case 1:
+ 			$(result).attr('class', '');
+ 			$(result).addClass('animate-a');
+            break;
+        case 2:
+        	$(result).attr('class', '');
+ 			$(result).addClass('animate-b');              
+            break;
+       	case 3: 
+       		$(result).attr('class', '');
+ 			$(result).addClass('animate-c');            		
+            break;
+        case -1:
+       		$(result).attr('class', '');
+ 			$(result).addClass('animate-d');            		
+            break;
+        case -2:
+       		$(result).attr('class', '');
+ 			$(result).addClass('animate-e');            		
+            break;
+        case -2:
+       		$(result).attr('class', '');
+ 			$(result).addClass('animate-f');            		
+            break;
+	};
+});
+
+
+/*
 setTimeout(function(){
 	document.getElementById('container').classList.add('animate-a');
 	document.getElementById('container').classList.add('final-position-a');
@@ -42,27 +110,7 @@ setTimeout(function(){
 	document.getElementById('container').classList.add('animate-d');
 	document.getElementById('container').classList.add('final-position-d');
 },12000);
-
-document.getElementById("item-a").onclick = function(){
-	document.getElementById('container').classList.add('animate-a');
-	document.getElementById('container').classList.add('final-position-a');
-};
-
-document.getElementById("item-b").onclick = function(){
-	document.getElementById('container').classList.add('animate-b');
-	document.getElementById('container').classList.add('final-position-b');
-};
-
-document.getElementById("item-c").onclick = function(){
-	document.getElementById('container').classList.add('animate-c');
-	document.getElementById('container').classList.add('final-position-c');
-};
-
-document.getElementById("item-d").onclick = function(){
-	document.getElementById('container').classList.add('animate-d');
-	document.getElementById('container').classList.add('final-position-d');
-};
-
+*/
 
 </script>
 </body>

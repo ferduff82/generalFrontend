@@ -77,30 +77,41 @@ overflow: hidden;
 }
 
 #container{
-width:400px
+width:400px;
 height:100px;
 position:relative;
 }
 
 .animate-a {
-	-webkit-animation:myfirst 1s; 
-	animation:myfirst 1s;
+	-webkit-animation:myfirst 1s forwards; 
+	animation:myfirst 1s forwards;
 }
 
 .animate-b {
-	-webkit-animation:mysecond 1s; 
-	animation:mysecond 1s;
+	-webkit-animation:mysecond 1s forwards; 
+	animation:mysecond 1s forwards;
 }
 
 .animate-c {
-	-webkit-animation:mythird 1s; 
-	animation:mythird 1s;
+	-webkit-animation:mythird 1s forwards; 
+	animation:mythird 1s forwards;
 }
 
 .animate-d {
-	-webkit-animation:myforth 1s; 
-	animation:mmyforth 1s;
+	-webkit-animation:myforth 1s forwards; 
+	animation:mmyforth 1s forwards;
 }
+
+.animate-e {
+	-webkit-animation:myfifth 1s forwards; 
+	animation:mmyforth 1s forwards;
+}
+
+.animate-f {
+	-webkit-animation:mysixth 1s forwards; 
+	animation:mmyforth 1s forwards;
+}
+
 
 
 /* Chrome, Safari, Opera */
@@ -141,31 +152,38 @@ position:relative;
 	100% {left:-300px;}
 }
 
-
 /* Chrome, Safari, Opera */
 @-webkit-keyframes myforth {
 	0%   {left:-300px;}
-	100% {left:-400px;}
+	100% {left:-200px;}
 }
 
 /* Standard syntax */
 @keyframes myforth {
 	0%   {left:-300px;}
-	100% {left:-400px;}
+	100% {left:-200px;}
 }
 
-.final-position-a{
-	left:-100px !important;
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfifth {
+	0%   {left:-200px;}
+	100% {left:-100px;}
 }
 
-.final-position-b{
-	left:-200px !important;
+/* Standard syntax */
+@keyframes myfifth {
+	0%   {left:-200px;}
+	100% {left:-100px;}
 }
 
-.final-position-c{
-	left:-300px !important;
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mysixth {
+	0%   {left:-100px;}
+	100% {left:0px;}
 }
 
-.final-position-d{
-	left:-400px !important;
+/* Standard syntax */
+@keyframes mysixth {
+	0%   {left:-100px;}
+	100% {left:0px;}
 }
