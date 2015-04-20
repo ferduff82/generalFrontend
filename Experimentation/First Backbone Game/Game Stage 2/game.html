@@ -14,15 +14,14 @@
   <div id="game">
     <button class="start">Start</button>
     <ul id="vida-personaje"></ul>
-    <div id="background-moving">
+    <div id="background-moving"></div>
       <div id="piedra-a" class="crash-detection"></div>
       <div class="energy-detection">
-        <div class="energyObject"></div>
+        <div id="energy"></div>
       </div>
       <div class="shield-detection">
-        <div class="shieldObject"></div>        
+        <div id="shield"></div>        
       </div>
-    </div>
     <div id="spaceship"></div>
   </div>
 
@@ -180,6 +179,16 @@
                 energyNewValue = getEnergyValue + 1;
             app.gameList.models[0].set({'energia': energyNewValue});
             $('.energy-detection').html('');
+          } else if (getSpaceshipRightOffset > anyShieldObjectLeft && getSpaceshipLeftOffset < anyShieldObjectRight && getSpaceshipTopOffset < anyShieldObjectBottom && getSpaceshipBottomOffset > anyShieldObjectTop) {
+            var getShieldValue = app.gameList.models[0].get('escudo'),
+                shieldNewValue = getShieldValue + 1;
+            app.gameList.models[0].set({'escudo': shieldNewValue});
+            $('.shield-detection').html('');
+            setTimeout(function(){ 
+              var getShieldValue = app.gameList.models[0].get('escudo'),
+                  shieldNewValue = getShieldValue - 1;
+              app.gameList.models[0].set({'escudo': shieldNewValue});
+            }, 5000);
           }
 
       },
@@ -189,6 +198,8 @@
         name = prompt("Comienza el juego");
         $('#background-moving').addClass("start-moving");
         $('#piedra-a').addClass("piedra");
+        $('#energy').addClass("energyObject");
+        $('#shield').addClass("shieldObject");
         app.gameList.add(this.newAttributes());
       },
 

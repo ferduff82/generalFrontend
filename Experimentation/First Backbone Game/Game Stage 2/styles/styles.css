@@ -18,6 +18,13 @@
   display:none;
 }
 
+#vida-personaje {
+  position: absolute;
+  z-index: 99999;
+  color: #fff;
+  right: 20px;
+}
+
 .piedra {
   width: 66px;
   height: 73px;
@@ -25,20 +32,20 @@
   background-position-x: -31px;
   background-position-y: -27px;
   background-repeat: no-repeat;
-  position: relative;
-  -webkit-animation: spin 4s linear infinite;
-  -moz-animation: spin 4s linear infinite;
-  animation: spin 4s linear infinite;
+  position: absolute;
+  -webkit-animation: spinAndMove 12s linear;
+  -moz-animation: spinAndMove 12s linear;
+  animation: spinAndMove 12s linear;
 }
 
 #piedra-a {
   top: 250px;
-  left: 350px;
+  left: 1250px;
 }
 
 #background-moving {
   background-image: url("../images/space.png");
-  background-repeat: no-repeat;
+  background-repeat-y: no-repeat;
   height: 100%;
   background-size: 3000px;
   width: 4000px;
@@ -46,10 +53,9 @@
 }
 
 .start-moving {
-  -webkit-animation: mymove 5s; /* Chrome, Safari, Opera */
-  animation: mymove 5s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
+  -webkit-animation: moveSpace 5s linear;
+  -moz-animation: moveSpace 5s linear;
+  animation: moveSpace 5s linear;
 }
 
 .spaceshipClass {
@@ -67,39 +73,113 @@
 
 .energyObject {
   position: absolute;
+  top: 200px;
+  left: 700px;
   width: 100px;
   height: 100px;
   background-color: green;
+  -webkit-animation: justMove 12s linear;
+  -moz-animation: justMove 12s linear;
+  animation: justMove 12s linear;
 }
 
-/* animation */
-
-/* Chrome, Safari, Opera */
-@-webkit-keyframes mymove {
-    from {left: 0px;}
-    to {left: -500px;}
+.shieldObject {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 700px;
+  left: 1045px;
+  background-color: red;
+  -webkit-animation: justMove 12s linear;
+  -moz-animation: justMove 12s linear;
+  animation: justMove 12s linear;
 }
 
-/* Standard syntax */
-@keyframes mymove {
-    from {left: 0px;}
-    to {left: -500px;}
-}
+/* --  animation  -- */
 
-@-moz-keyframes spin { 
+/* Move Space */
+
+@-webkit-keyframes moveSpace {
+  0% {
+    left:0px;
+  }
   100% { 
+    left:-400px;
+  } 
+}
+
+@keyframes moveSpace {
+  0% {
+    left:0px;
+  }
+  100% { 
+    left:-400px;
+  } 
+}
+
+
+/* Move Objects */
+
+@-moz-keyframes justMove { 
+  50% {
+    left:-200px;
+  }
+  100% { 
+    left:-400px;
+  } 
+}
+
+@-webkit-keyframes justMove { 
+  50% {
+    left:-200px;
+  }
+  100% { 
+    left:-400px;
+  } 
+}
+
+@keyframes justMove { 
+  100% { 
+    left:-200px;
+  } 
+  100% { 
+    left:-400px;
+  } 
+}
+
+
+/* Spin and move Objects */
+
+@-moz-keyframes spinAndMove { 
+  50% {
+    left:-200px;
+    -moz-transform: rotate(360deg); 
+  }
+  100% { 
+    left:-400px;
     -moz-transform: rotate(360deg); 
   } 
 }
 
-@-webkit-keyframes spin { 
+@-webkit-keyframes spinAndMove { 
+  50% {
+    left:-200px;
+    -webkit-transform: rotate(360deg); 
+  }
   100% { 
+    left:-400px;
     -webkit-transform: rotate(360deg); 
   } 
 }
 
-@keyframes spin { 
+@keyframes spinAndMove { 
   100% { 
+    left:-200px;
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+  } 
+  100% { 
+    left:-400px;
     -webkit-transform: rotate(360deg); 
     transform:rotate(360deg); 
   } 
