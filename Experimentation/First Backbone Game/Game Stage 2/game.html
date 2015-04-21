@@ -119,6 +119,9 @@
     app.AppView = Backbone.View.extend({
       el: '#game',
       initialize: function () {
+        var audio = (new Audio()).canPlayType("audio/ogg; codecs=vorbis");
+        if (audio == "") { alert("Tu navegador no soporta Audio"); }
+
         app.gameList.on('add', this.addOne, this);
       },
       events: {
@@ -167,6 +170,8 @@
           /* Crash Logic */
 
           if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
+            var snd = new Audio("sounds/explode.mp3");
+            snd.play();
             $(".spaceshipClass").addClass("explode");            
             $("#spaceshipId").removeClass("spaceshipClass");
             setTimeout(function(){ 
@@ -182,6 +187,7 @@
             app.gameList.models[0].set({'energia': energyNewValue});
             $('.energy-detection').html('');
           } else if (getSpaceshipRightOffset > anyShieldObjectLeft && getSpaceshipLeftOffset < anyShieldObjectRight && getSpaceshipTopOffset < anyShieldObjectBottom && getSpaceshipBottomOffset > anyShieldObjectTop) {
+            $("#spaceshipId").addClass("showShieldInSpaceship");
             var getShieldValue = app.gameList.models[0].get('escudo'),
                 shieldNewValue = getShieldValue + 1;
             app.gameList.models[0].set({'escudo': shieldNewValue});
@@ -189,6 +195,7 @@
             setTimeout(function(){ 
               var getShieldValue = app.gameList.models[0].get('escudo'),
                   shieldNewValue = getShieldValue - 1;
+                  $("#spaceshipId").removeClass("showShieldInSpaceship");
               app.gameList.models[0].set({'escudo': shieldNewValue});
             }, 5000);
           }

@@ -112,6 +112,15 @@
   cursor: none;
 }
 
+.showShieldInSpaceship {
+  background-image: url("../images/eye.gif");
+  background-size: 149px;
+  background-position-x: -6px;
+  height: 110px;
+  background-position-y: -34px;
+  opacity: 0.5;
+}
+
 /* --  animation  -- */
 
 /* Move Space */
