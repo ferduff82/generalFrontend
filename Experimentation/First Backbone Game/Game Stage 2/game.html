@@ -35,10 +35,7 @@
     </div>
   </script>  
 
-  <script type="text/template" id="spaceship-template">
-    <div class="view">
-    </div>
-  </script> 
+  <script type="text/template" id="spaceship-template"></script> 
 
   <!-- ========= -->
   <!-- Libraries -->
@@ -170,7 +167,12 @@
           /* Crash Logic */
 
           if (getSpaceshipRightOffset > anyObjectLeft && getSpaceshipLeftOffset < anyObjectRight && getSpaceshipTopOffset < anyObjectBottom && getSpaceshipBottomOffset > anyObjectTop) {
-            alert("Perdiste 1 vida");
+            $(".spaceshipClass").addClass("explode");            
+            $("#spaceshipId").removeClass("spaceshipClass");
+            setTimeout(function(){ 
+              $("#spaceshipId").addClass("spaceshipClass");
+              $(".spaceshipClass").removeClass("explode");            
+            }, 900);
             var getLifeValue = app.gameList.models[0].get('vida'),
                 killLife = getLifeValue - 1;
             app.gameList.models[0].set({'vida': killLife});
@@ -224,6 +226,7 @@
     app.AddSpaceship = Backbone.View.extend({
       tagName: 'div',
       className: 'spaceshipClass',
+      id: 'spaceshipId',
       template: _.template($('#spaceship-template').html()),
       render: function(){
         this.$el.html(this.template(this.model.toJSON()));

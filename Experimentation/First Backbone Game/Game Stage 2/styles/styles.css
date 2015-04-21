@@ -75,9 +75,11 @@
   position: absolute;
   top: 200px;
   left: 700px;
-  width: 100px;
-  height: 100px;
-  background-color: green;
+  width: 77px;
+  height: 88px;
+  background-repeat: no-repeat;
+  background-image: url("../images/thunder.png");
+  background-size: 78px;
   -webkit-animation: justMove 12s linear;
   -moz-animation: justMove 12s linear;
   animation: justMove 12s linear;
@@ -85,14 +87,29 @@
 
 .shieldObject {
   position: absolute;
-  width: 100px;
+  width: 81px;
   height: 100px;
   top: 700px;
   left: 1045px;
-  background-color: red;
+  background-image: url("../images/shield.png");
+  background-size: 81px;
+  background-repeat: no-repeat;
   -webkit-animation: justMove 12s linear;
   -moz-animation: justMove 12s linear;
   animation: justMove 12s linear;
+}
+
+.explode {
+  background-image: url("../images/explosion.gif");
+  z-index: 999999;
+  background-position-x: 38px;
+  background-position-y: 1px;
+  height: 200px;
+  width: 200px;
+  background-size: 125px;
+  background-repeat: no-repeat;
+  position: absolute;
+  cursor: none;
 }
 
 /* --  animation  -- */
