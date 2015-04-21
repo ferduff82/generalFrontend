@@ -7,11 +7,13 @@ function jsonp(url){
 }  
 function json_process(data){  
     alert(data);  
-    console.info(data);  
+    console.info(data[0].address.country);  
 }  
 function test(){  
-    var url = "http://www.flickr.com/services/rest/?method=flickr.test.echo&format=json&api_key=fb3db427da4bcda80f74ea31c64cd64d&jsoncallback=json_process";  
+    var url = "https://www.gmfleet.com/bypass/gmna/dealerlocator/services/getdealers?type=PostalCode&format=JSON&x-country=US&x-language=en&x-brand=Chevrolet&postalcode=48048&callback=json_process";  
     // Probar también con este servicio: 
-    //https://www.gmfleet.com/bypass/gmna/dealerlocator/services/getdealers?type=PostalCode&format=JSON&x-country=US&x-language=en&x-brand=Chevrolet&postalcode=48048&callback=json_process
+    //http://www.flickr.com/services/rest/?method=flickr.test.echo&format=json&api_key=fb3db427da4bcda80f74ea31c64cd64d&jsoncallback=json_process
     jsonp(url);  
 }  
+
+test();
