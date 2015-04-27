@@ -20,7 +20,7 @@
 <input type="text" id="date" placeholder="Ingrese Fecha">
 <div><input id="get-values" type="button" value="Ingrese Gasto" /></div>
 
-<div id="nuevaCompra"></div>
+<div id="Compras"></div>
 
 <script type="text/javascript">
 
@@ -61,25 +61,80 @@ function newProduct (){
 
   var Compra = Parse.Object.extend("Compra");
   var compra = new Compra();
-    compra.save({ precio: nuevoGasto.getInfoPrice() , kilos: nuevoGasto.getInfoKilos() , producto: nuevoGasto.getInfoProduct() , fecha: nuevoGasto.getInfoDate() , brand: nuevoGasto.getInfoBrand() }, {
+  compra.save({ precio: nuevoGasto.getInfoPrice() , kilos: nuevoGasto.getInfoKilos() , producto: nuevoGasto.getInfoProduct() , fecha: nuevoGasto.getInfoDate() , brand: nuevoGasto.getInfoBrand() }, {
     success: function(compra) {
-      console.log(compra.id);
 
-      var createUl = document.createElement('ul');
-      var getDomTarget = document.getElementById("nuevaCompra");
-          getDomTarget.appendChild(createUl);
+      var compraId = compra.id;
 
+      var createUl = document.createElement('ul'),
+          getDomTarget = document.getElementById("Compras");
+          getDomTarget.appendChild(createUl),
 
+          AppendPrice = nuevoGasto.getInfoPrice(),
+          AppendKilos = nuevoGasto.getInfoKilos(),
+          AppendProduct = nuevoGasto.getInfoProduct(),
+          AppendDate = nuevoGasto.getInfoDate(),
+          AppendBrand = nuevoGasto.getInfoBrand(),
 
+          createPriceLi = document.createElement('li'),
+          createKilosLi = document.createElement('li'),
+          createProductLi = document.createElement('li'),
+          createDateLi = document.createElement('li'),
+          createBrandLi = document.createElement('li'),
+          createRemove = document.createElement('li'),
+
+          textPriceNode = document.createTextNode(AppendPrice),
+          textKilosNode = document.createTextNode(AppendKilos),
+          textProductNode = document.createTextNode(AppendProduct),
+          textDateNode = document.createTextNode(AppendDate),
+          textBrandNode = document.createTextNode(AppendBrand),
+          createButton = document.createElement('button'),
+          textButtonNode = document.createTextNode("Borrar Datos"),
+          createButton.appendChild(textButtonNode);
+
+          createPriceLi.appendChild(textPriceNode);
+          createKilosLi.appendChild(textKilosNode);
+          createProductLi.appendChild(textProductNode);
+          createDateLi.appendChild(textDateNode);
+          createBrandLi.appendChild(textBrandNode);
+          createRemove.appendChild(createButton);
+
+          createUl.appendChild(createPriceLi);
+          createUl.appendChild(createKilosLi);
+          createUl.appendChild(createProductLi);
+          createUl.appendChild(createDateLi);
+          createUl.appendChild(createBrandLi);
+          createUl.appendChild(createRemove);
+          createUl.setAttribute("class",compraId);
     },
     error: function(compra, error) {
       alert("Error al ingresar a la base de datos");
     }
   });
-
 }
 
+$("button").click(function(e){
+  var getClass = $(e.target).closest( "ul" ).attr("class");
+  console.log(getClass);
+
+  var query = new Parse.Query(Compra);
+    query.get(getClass, {
+      success: function(Compra) {
+        console.log(Compra);
+        Compra.set("brand");
+        alert("Objeto removido con éxito");
+      },
+      error: function(Compra, error) {
+        alert("Error al remover Objeto");
+      }
+    })
+});
+
+
+
 document.getElementById('get-values').onclick = newProduct;
+
+
 
 </script>
 </body>
