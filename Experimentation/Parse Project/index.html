@@ -1,0 +1,87 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+</head>
+
+<body>
+  
+<input type="text" id="product" placeholder="Ingrese Producto">
+<input type="text" id="price" placeholder="Ingrese Precio">
+<input type="text" id="brand" placeholder="Ingrese Marca">
+<input type="text" id="kilos" placeholder="Ingrese Cantidad">
+<input type="text" id="date" placeholder="Ingrese Fecha">
+<div><input id="get-values" type="button" value="Ingrese Gasto" /></div>
+
+<div id="nuevaCompra"></div>
+
+<script type="text/javascript">
+
+function getValues() {
+
+  var price = document.getElementById('price').value,
+      kilos = document.getElementById('kilos').value,
+      product = document.getElementById('product').value,
+      date = document.getElementById('date').value,
+      brand = document.getElementById('brand').value;
+
+  this.getInfoPrice = function () {
+    return price.trim();
+  };
+
+  this.getInfoKilos = function () {
+    return kilos.trim();
+  };
+
+  this.getInfoProduct = function () {
+    return product.trim();
+  };
+
+  this.getInfoDate = function () {
+    return date.trim();
+  };
+
+  this.getInfoBrand = function () {
+    return brand.trim();
+  };
+}
+
+function newProduct (){
+
+  var nuevoGasto = new getValues();
+
+  Parse.initialize("AogVdrlIztcrk1pQ67K4PODPWpYjwOrtnxOmToEZ", "8DeByMbDiYQR4WBQZvnzsFjEARJYQWJdDG6Nl5iB");
+
+  var Compra = Parse.Object.extend("Compra");
+  var compra = new Compra();
+    compra.save({ precio: nuevoGasto.getInfoPrice() , kilos: nuevoGasto.getInfoKilos() , producto: nuevoGasto.getInfoProduct() , fecha: nuevoGasto.getInfoDate() , brand: nuevoGasto.getInfoBrand() }, {
+    success: function(compra) {
+      console.log(compra.id);
+
+      var createUl = document.createElement('ul');
+      var getDomTarget = document.getElementById("nuevaCompra");
+          getDomTarget.appendChild(createUl);
+
+
+
+    },
+    error: function(compra, error) {
+      alert("Error al ingresar a la base de datos");
+    }
+  });
+
+}
+
+document.getElementById('get-values').onclick = newProduct;
+
+</script>
+</body>
+
+</html>
