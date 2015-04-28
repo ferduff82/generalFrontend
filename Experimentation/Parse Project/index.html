@@ -24,6 +24,26 @@
 
 <script type="text/javascript">
 
+$(document).ready(function(){
+  Parse.initialize("AogVdrlIztcrk1pQ67K4PODPWpYjwOrtnxOmToEZ", "8DeByMbDiYQR4WBQZvnzsFjEARJYQWJdDG6Nl5iB");
+  var Compra = Parse.Object.extend("Compra");
+  var compra = new Compra();
+
+  compra.fetch({
+    success: function(compra) {
+
+      for (i = 0; i < compra.length; i++) {
+           console.log(compra[i] + "<br>");
+      }
+      
+    },
+    error: function(compra, error) {
+
+    }
+  });
+
+})
+
 function getValues() {
 
   var price = document.getElementById('price').value,
