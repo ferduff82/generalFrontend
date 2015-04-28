@@ -106,35 +106,74 @@ function newProduct (){
           createUl.appendChild(createBrandLi);
           createUl.appendChild(createRemove);
           createUl.setAttribute("class",compraId);
+
+          listener();
+
+          console.log(compraId);
+
     },
     error: function(compra, error) {
       alert("Error al ingresar a la base de datos");
     }
   });
+
+  function listener() {
+    $("button").click(function(e){
+    var getClass = $(e.target).closest( "ul" ).attr("class");
+    console.log(getClass);
+
+      /* Retrieving Data Succesfull 
+
+      var GameScore = Parse.Object.extend("Compra");
+      var query = new Parse.Query(GameScore);
+      query.get(getClass, {
+        success: function(GameScore) {
+          console.log(GameScore);
+        },
+        error: function(object, error) {
+        }
+      });
+
+      */
+
+      /* Edit Data Succesfull
+
+      var GameScore = Parse.Object.extend("Compra");
+      var gameScore = new GameScore();
+      var query = new Parse.Query(GameScore);
+      query.get(getClass, {
+        success: function(gameScore) {
+          gameScore.set("brand","COCA");
+          gameScore.save();
+          console.log("Compra realizada con éxito");
+        },
+        error: function(object, error) {
+        }
+      });
+
+      */
+
+      /* Removing Data Successfull 
+
+      var GameScore = Parse.Object.extend("Compra");
+      var gameScore = new GameScore();
+      var query = new Parse.Query(GameScore);
+      query.get(getClass, {
+        success: function(gameScore) {
+          gameScore.destroy();          
+          console.log("Datos borrados");
+        },
+        error: function(object, error) {
+        }
+      });     
+
+      */
+    });
+  }
+
 }
 
-$("button").click(function(e){
-  var getClass = $(e.target).closest( "ul" ).attr("class");
-  console.log(getClass);
-
-  var query = new Parse.Query(Compra);
-    query.get(getClass, {
-      success: function(Compra) {
-        console.log(Compra);
-        Compra.set("brand");
-        alert("Objeto removido con éxito");
-      },
-      error: function(Compra, error) {
-        alert("Error al remover Objeto");
-      }
-    })
-});
-
-
-
 document.getElementById('get-values').onclick = newProduct;
-
-
 
 </script>
 </body>
