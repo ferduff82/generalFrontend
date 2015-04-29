@@ -12,7 +12,10 @@
   <!-- Your HTML -->
   <!-- ========= -->
   <div id="game">
-    <button class="start">Start</button>
+    <div id="startGame">
+      <h3>Space Command</h3>
+      <button class="start">Start</button>
+    </div>
     <ul id="vida-personaje"></ul>
     <div id="background-moving"></div>
       <div id="piedra-a" class="crash-detection"></div>
@@ -100,15 +103,18 @@
 
     app.AppView = Backbone.View.extend({
       el: '#game',
+
       initialize: function () {
         var audio = (new Audio()).canPlayType("audio/ogg; codecs=vorbis");
         if (audio == "") { alert("Tu navegador no soporta Audio"); }
 
         app.gameList.on('add', this.addOne, this);
       },
+      
       events: {
         'click .start': 'newGame',
-        'mousemove': 'mouseTrigger'        
+        'mousemove': 'mouseTrigger',
+        'click .start-moving': 'triggerFire'        
       },
 
       mouseTrigger: function(e){
@@ -143,10 +149,10 @@
           /* Any other object that adds Shield */
 
           if($(".shieldObject").length) {
-          var anyShieldObjectTop = $(".shieldObject").offset().top,
-              anyShieldObjectRight = $(".shieldObject").offset().left + $(".shieldObject").width(),
-              anyShieldObjectBottom = $(".shieldObject").offset().top + $(".shieldObject").height(),
-              anyShieldObjectLeft = $(".shieldObject").offset().left;
+            var anyShieldObjectTop = $(".shieldObject").offset().top,
+                anyShieldObjectRight = $(".shieldObject").offset().left + $(".shieldObject").width(),
+                anyShieldObjectBottom = $(".shieldObject").offset().top + $(".shieldObject").height(),
+                anyShieldObjectLeft = $(".shieldObject").offset().left;
           }
 
           /* Crash Logic */
@@ -193,6 +199,10 @@
 
       },
 
+      triggerFire: function() {
+        console.log("Fire");
+      },
+
       newGame: function(){
         $('.start').addClass("hideElements");
         name = prompt("Comienza el juego");
@@ -200,6 +210,7 @@
         $('#piedra-a').addClass("piedra");
         $('#energy').addClass("energyObject");
         $('#shield').addClass("shieldObject");
+        $('#startGame').addClass("hideElements");
         app.gameList.add(this.newAttributes());
       },
 

@@ -1,17 +1,46 @@
+
+body {
+  background-color:#000;
+}
+
 #game {
-  position:absolute;
-  top:5px;
-  left:5px;
-  right:5px;
-  bottom:5px;
-  border: 1px solid red;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1200px;
+  margin-left: -599px;
+  margin-top: -455px;
+  height: 900px;
+  border: 1px solid #fff;
   overflow: hidden;
   cursor: none;
 }
 
-.start {
+#startGame {
   position: absolute;
-  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  margin-left: -101px;
+  margin-top: -93px;
+  width: 200px;
+  height: 140px;
+  border: 1px #fff solid;
+  z-index: 1;
+  background-color: black;
+}
+
+#startGame h3 {
+  color: #fff;
+  font-family: arial;
+  padding-left: 17px;
+  text-transform: uppercase;
+}
+
+#startGame .start {
+  position: relative;
+  left: 79px;
+  top: 21px;
+  z-index: 1;
 }
 
 .hideElements {
@@ -44,18 +73,16 @@
 }
 
 #background-moving {
-  background-image: url("../images/space.png");
-  background-repeat-y: no-repeat;
+  background-image: url("../images/spacetest.png");
   height: 100%;
-  background-size: 3000px;
-  width: 4000px;
+  width: 3600px;
   position: relative;
 }
 
 .start-moving {
-  -webkit-animation: moveSpace 5s linear;
-  -moz-animation: moveSpace 5s linear;
-  animation: moveSpace 5s linear;
+  -webkit-animation: moveSpace 30s linear infinite;
+  -moz-animation: moveSpace 30s linear infinite;
+  animation: moveSpace 30s linear infinite;
 }
 
 .spaceshipClass {
@@ -131,7 +158,7 @@
     left:0px;
   }
   100% { 
-    left:-400px;
+    left:-2400px;
   } 
 }
 
@@ -140,7 +167,7 @@
     left:0px;
   }
   100% { 
-    left:-400px;
+    left:-2776px;
   } 
 }
 
