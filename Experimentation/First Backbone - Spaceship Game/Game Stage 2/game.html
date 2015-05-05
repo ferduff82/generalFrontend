@@ -38,7 +38,9 @@
     </div>
   </script>  
 
-  <script type="text/template" id="spaceship-template"></script> 
+  <script type="text/template" id="spaceship-template">
+    <div id="fire"></div>    
+  </script> 
 
   <!-- ========= -->
   <!-- Libraries -->
@@ -200,7 +202,10 @@
       },
 
       triggerFire: function() {
-        console.log("Fire");
+        $("#fire").addClass("openFire");
+        setTimeout(function(){ 
+          $("#fire").removeClass("openFire");
+        }, 1000);
       },
 
       newGame: function(){
@@ -211,6 +216,7 @@
         $('#energy').addClass("energyObject");
         $('#shield').addClass("shieldObject");
         $('#startGame').addClass("hideElements");
+        $('#game').addClass('removeCursor');
         app.gameList.add(this.newAttributes());
       },
 

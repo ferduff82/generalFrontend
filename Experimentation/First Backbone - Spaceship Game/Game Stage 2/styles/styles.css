@@ -13,6 +13,9 @@ body {
   height: 900px;
   border: 1px solid #fff;
   overflow: hidden;
+}
+
+.removeCursor {
   cursor: none;
 }
 
@@ -149,6 +152,22 @@ body {
   opacity: 0.5;
 }
 
+.openFire {
+  background-image: url("../images/laser.png");
+  background-position-x: 38px;
+  background-position-y: 1px;
+  height: 200px;
+  width: 200px;
+  background-size: 125px;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 106px;
+  top: 30px;
+  -webkit-animation: animateFire 1s forwards;
+  -moz-animation: animateFire 1s forwards;
+  animation: animateFire 1s forwards;
+}
+
 /* --  animation  -- */
 
 /* Move Space */
@@ -167,7 +186,27 @@ body {
     left:0px;
   }
   100% { 
-    left:-2776px;
+    left:-2400px;
+  } 
+}
+
+/* Open Fire animate */
+
+@-webkit-keyframes animateFire {
+  0% {
+    left:0px;
+  }
+  100% { 
+    left:1200px;
+  } 
+}
+
+@keyframes animateFire {
+  0% {
+    left:0px;
+  }
+  100% { 
+    left:1200px;
   } 
 }
 
