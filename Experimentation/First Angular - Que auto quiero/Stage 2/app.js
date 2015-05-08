@@ -1,8 +1,7 @@
 var app = angular.module('app', ['ngRoute'])
 
   .factory('Todos', function(){
-
-    var information = [
+    return [
       { name: 'AngularJS Directives', completed: true, note: 'add notes...' },
       { name: 'Data binding', completed: true, note: 'add notes...' },
       { name: '$scope', completed: true, note: 'add notes...' },
@@ -12,9 +11,7 @@ var app = angular.module('app', ['ngRoute'])
       { name: 'Get started with Node/ExpressJS', completed: false, note: 'add notes...' },
       { name: 'Setup MongoDB database', completed: false, note: 'add notes...' },
       { name: 'Be awesome!', completed: false, note: 'add notes...' },
-    ];
-
-    return information;
+    ];     
   })
 
   .controller('TodoController', ['$scope', 'Todos', function ($scope, Todos) {
@@ -32,6 +29,17 @@ var app = angular.module('app', ['ngRoute'])
         name: $scope.newData,
         complete: true
       });
+    };
+
+    $scope.remove = function(index) { 
+      $scope.todos.splice(index, 1);     
+    };
+
+    $scope.editItem = function(todo) {
+      angular.element(document.getElementById("newInfo")).scope().todo = todo;
+    };
+
+    $scope.saveItem = function(todo) {
     };
   }])
   
