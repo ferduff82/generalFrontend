@@ -9,10 +9,10 @@
 <!-- Template -->   
 <script type="text/ng-template" id="/todos.html">
   Search: <input type="text" ng-model="search.name">
-  {{ remaining() }} of {{ todos.length }} remaining
+  {{ remaining() }} of {{ toddos.length }} remaining
   <ul>
-    <li ng-repeat="todo in todos | filter: search">
-      <input type="checkbox" ng-model="todo.completed" ng-hide="showme">
+    <li ng-repeat="todo in toddos | filter: search track by $index">
+      <input type="checkbox" ng-model="todo.done" ng-hide="showme">
       <a href="#/{{$index}}" ng-hide="showme">{{todo.name}}</a>
       <input type="text" ng-model="todo.name" ng-show="showme">
       <button ng-click="remove($index)" ng-hide="showme">Remove Item</button>  
@@ -20,7 +20,7 @@
       <button ng-click="showme=false" ng-show="showme" ng-click="saveItem()">Finish Editing</button>   
     </li>
   </ul>
-  <input type="text" id="newInfo">
+  <input type="text" id="newInfo" data-ng-model="todoText">
   <button ng-click="update()">Add to Todo</button>
 </script>
   

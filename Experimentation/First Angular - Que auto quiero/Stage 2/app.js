@@ -16,11 +16,6 @@ var app = angular.module('app', ['ngRoute'])
 
   .controller('TodoController', ['$scope', 'Todos', function ($scope, Todos) {
     $scope.todos = Todos;
-    $scope.name = 'World';
-    $scope.keyCode = "";
-    $scope.keyPressed = function(e) {
-      $scope.keyCode = e.which;
-    };
 
     $scope.update = function() {
       $scope.todos = Todos;
@@ -35,12 +30,20 @@ var app = angular.module('app', ['ngRoute'])
       $scope.todos.splice(index, 1);     
     };
 
-    $scope.editItem = function(todo) {
-      angular.element(document.getElementById("newInfo")).scope().todo = todo;
+    $scope.editing = null;
+
+    $scope.editItem = function(item) {
+      $scope.editing = item;
+    }
+
+    $scope.remaining = function() {
+      var count = 0;
+      angular.forEach($scope.todos, function(todo){
+        count+= todo.completed ? 0 : 1;
+      });
+      return count;
     };
 
-    $scope.saveItem = function(todo) {
-    };
   }])
   
   .controller('TodoDetailCtrl', ['$scope', '$routeParams', 'Todos', function ($scope, $routeParams, Todos) {
