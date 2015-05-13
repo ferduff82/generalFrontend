@@ -54,9 +54,6 @@ var app = angular.module('app', ['ngRoute'])
     $scope.todo = Todos.getData()[$routeParams.id];
     $scope.todos = Todos.getData();
 
-    console.log($scope.todo);
-    console.log($scope.todos);
-
     $scope.$watch('todos', function(newVal){
       var str = angular.toJson(newVal); 
       window.localStorage['localS'] = str; 
@@ -72,6 +69,6 @@ var app = angular.module('app', ['ngRoute'])
     
       .when('/:id', {
         templateUrl: '/todoDetails.html',
-        controller: 'TodoDetailCtrl'
+        controller: 'TodoDetailCtrl',
       });
   }]);
