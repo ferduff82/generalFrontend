@@ -11,7 +11,7 @@
   Search: <input type="text" ng-model="search.name">
   {{ remaining() }} of {{ toddos.length }} remaining
   <ul>
-    <li ng-repeat="todo in todos | orderBy:'name' | filter: search track by $index">
+    <li ng-repeat="todo in todos | filter: search track by $index">
       <input type="checkbox" ng-model="todo.done" ng-hide="showme">
       <a href="#/{{$index}}" ng-hide="showme">{{todo.name}}</a>
       <input type="text" ng-model="todo.name" ng-show="showme">
