@@ -19,6 +19,9 @@ Cual es la diferencia entre == y === ?
 Cual es la diferencia for y while? ejemplifique.
 Que son los namespaces?
 
+Cual es la diferencia entre TDD y BDD?
+https://joshldavis.com/2013/05/27/difference-between-tdd-and-bdd/
+
 para que se parsea un JSON ej. JSON.parse()?
 https://msdn.microsoft.com/es-es/library/ie/cc836466(v=vs.94).aspx
 
