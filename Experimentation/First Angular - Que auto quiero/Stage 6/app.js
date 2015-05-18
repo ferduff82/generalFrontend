@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ngRoute'])
 
-  .factory('Todos', function(){
+  app.factory('Todos', function(){
     return {
       getData : function () {
         var saved = localStorage.getItem('localT');
@@ -11,7 +11,7 @@ var app = angular.module('app', ['ngRoute'])
     };     
   })
 
-  .controller('TodoController', ['$scope','Todos', function ($scope, Todos) {
+  app.controller('TodoController', ['$scope','Todos', function ($scope, Todos) {
 
     $scope.todos = Todos.getData();
 
@@ -48,15 +48,25 @@ var app = angular.module('app', ['ngRoute'])
       return count;
     }
 
+    $scope.archive = function() {
+      var oldTodos = $scope.todos;
+      $scope.todos = [];
+      angular.forEach(oldTodos, function(todo){
+        if (!todo.done)
+          $scope.todos.push(todo);
+      });
+      localStorage.setItem('todos', JSON.stringify($scope.todos));
+    };
+
   }])
   
-  .controller('TodoDetailCtrl', ['$scope','$routeParams','Todos', function ($scope, $routeParams, Todos) {
+  app.controller('TodoDetailCtrl', ['$scope','$routeParams','Todos', function ($scope, $routeParams, Todos) {
     
     $scope.todo = Todos.getData()[$routeParams.id];
 
   }])
   
-  .config(['$routeProvider', function ($routeProvider) {
+  app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: '/todos.html',
