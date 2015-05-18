@@ -1,6 +1,7 @@
 
 body {
   background-color:#000;
+  cursor:none;
 }
 
 #game {
@@ -44,6 +45,18 @@ body {
   left: 79px;
   top: 21px;
   z-index: 1;
+}
+
+#arrowBegin {
+  cursor: none;
+  width: 35px;
+  height: 36px;
+  background-image: url("../images/cursor.png");
+  background-position-x: -2px;
+  background-position-y: -2px;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 10000;
 }
 
 .hideElements {

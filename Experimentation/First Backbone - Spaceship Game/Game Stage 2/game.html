@@ -14,7 +14,7 @@
   <div id="game">
     <div id="startGame">
       <h3>Space Command</h3>
-      <button class="start">Start</button>
+      <button class="start removeCursor">Start</button>
     </div>
     <ul id="vida-personaje"></ul>
     <div id="background-moving"></div>
@@ -25,7 +25,9 @@
       <div class="shield-detection">
         <div id="shield"></div>        
       </div>
-    <div id="spaceship"></div>
+    <div id="spaceship">
+      <div id="arrowBegin"></div>
+    </div>
   </div>
 
   <!-- Templates -->
@@ -116,12 +118,15 @@
       events: {
         'click .start': 'newGame',
         'mousemove': 'mouseTrigger',
-        'click .start-moving': 'triggerFire'        
+        'click #spaceship': 'triggerFire'        
       },
 
       mouseTrigger: function(e){
 
-        $(".spaceshipClass").css('left', e.clientX).css('top', e.clientY);
+        if($("#spaceshipId").hasClass('spaceshipClass')){
+
+          $("#arrowBegin").remove();
+          $(".spaceshipClass").css('left', e.clientX - 50).css('top', e.clientY - 50);
 
         /* Collision Detection */
 
@@ -198,6 +203,9 @@
               app.gameList.models[0].set({'escudo': shieldNewValue});
             }, 5000);
           }
+        } else {
+          $("#arrowBegin").css('left', e.clientX - 35).css('top', e.clientY - 35);
+        }
 
       },
 
@@ -209,8 +217,8 @@
       },
 
       newGame: function(){
-        $('.start').addClass("hideElements");
         name = prompt("Comienza el juego");
+        $('.start').addClass("hideElements");
         $('#background-moving').addClass("start-moving");
         $('#piedra-a').addClass("piedra");
         $('#energy').addClass("energyObject");
