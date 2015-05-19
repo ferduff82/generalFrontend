@@ -55,7 +55,6 @@ var app = angular.module('app', ['ngRoute'])
         if (!todo.done)
           $scope.todos.push(todo);
       });
-      //localStorage.setItem('localT', JSON.stringify($scope.todos));
     };
 
   }])
@@ -66,7 +65,6 @@ var app = angular.module('app', ['ngRoute'])
     $scope.todo = Todos.getData()[$routeParams.id];
 
     $scope.change = function() {
-
       angular.forEach($scope.allTodos, function(eachTodo){
         if (eachTodo.name == $scope.todo.name) {
           eachTodo.done = $scope.todo.done;
