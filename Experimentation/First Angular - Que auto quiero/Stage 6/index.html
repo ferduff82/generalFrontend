@@ -29,7 +29,7 @@
   <h1>{{ todo.name }}</h1>
   completed: <input type="checkbox" ng-model="todo.done">
   note: <textarea>{{ todo.note }}</textarea>
-  <button ng-click="update()">Update</button>
+  <button ng-click="change($index)">Update</button>
 </script>
 <!-- End of Templates -->   
 

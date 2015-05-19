@@ -55,14 +55,25 @@ var app = angular.module('app', ['ngRoute'])
         if (!todo.done)
           $scope.todos.push(todo);
       });
-      localStorage.setItem('todos', JSON.stringify($scope.todos));
+      //localStorage.setItem('localT', JSON.stringify($scope.todos));
     };
 
   }])
   
   app.controller('TodoDetailCtrl', ['$scope','$routeParams','Todos', function ($scope, $routeParams, Todos) {
     
+    $scope.allTodos = Todos.getData();
     $scope.todo = Todos.getData()[$routeParams.id];
+
+    $scope.change = function() {
+
+      angular.forEach($scope.allTodos, function(eachTodo){
+        if (eachTodo.name == $scope.todo.name) {
+          eachTodo.done = $scope.todo.done;
+          localStorage.setItem('localT', JSON.stringify($scope.allTodos)); 
+        }
+      })
+    }
 
   }])
   
