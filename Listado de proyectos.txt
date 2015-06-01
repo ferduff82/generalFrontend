@@ -6,19 +6,3 @@ Proyectos
 4- Sistema de control de compras
 5- Agenda
 6- Organizador de Proyectos (Jira)
-
-
-
-
-0-Devices y sistemas (Android y IOS)?
-1-Assets
-Uso de svg para trabajar
-https://www.youtube.com/watch?v=CbzTjamoDyM#t=135
-2-Resoluciones 
-No trabajar con medidas fijas de pantalla
-Cajas (contenido) con medidas en porcentajes
-Espacios entre ellas (margins) con medidas fijas en em
-
-Mobile
-Tomar una medida base de trabajo como ejemplo Recomendada I-Phone 4 960x640px
-Luego se adapta a responsive
