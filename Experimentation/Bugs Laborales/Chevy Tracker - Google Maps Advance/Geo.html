@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Localizador</title>
+    <script src="lib/jquery.js"></script>
+    <style>
+        body{
+            font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div id='map_canvas' style='width:100%; height:400px;'></div>
+    
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+    <script type="text/javascript">
+
+        var latitud,
+            longitud,
+            map
+
+        var d = new Date();
+        var h = d.getHours();
+
+        if(h <= 12) {
+            console.log("Good Morning");
+        } else if (h <= 19) {
+            console.log("Good Afternoon");
+            var dataA = [
+                {
+                  latitud : -34.587226,
+                  longitud : -58.438826000000006,
+                  name : "Niceto"
+                },
+                {
+                  latitud : -34.585872,
+                  longitud : -58.433537,
+                  name : "Rosebar"
+                }
+            ];
+        } else {
+            console.log("Good night");
+        }
+
+
+        $(document).ready(function() {
+            localizame();  
+        });
+    
+        function localizame() {
+            if (navigator.geolocation) { 
+                navigator.geolocation.getCurrentPosition(coordenadas);
+            }else{alert('Oops! Tu navegador no soporta geolocalización. Descarga Chrome, es gratis!');}
+        }
+        
+        function coordenadas(position) {
+            latitud = position.coords.latitude; 
+            longitud = position.coords.longitude; 
+            cargarMapa();
+        }
+        
+        function errores(err) {
+            if (err.code == 0) {alert("Oops! Algo ha salido mal");}
+            if (err.code == 1) {alert("Oops! No has aceptado compartir tu posición");}
+            if (err.code == 2) {alert("Oops! No se puede obtener la posición actual");}
+            if (err.code == 3) {alert("Oops! Hemos superado el tiempo de espera");}
+        }
+
+        function cargarMapa() {
+            var latlon = new google.maps.LatLng(latitud,longitud); 
+
+            var myOptions = {
+                zoom: 17,
+                center: latlon,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map($("#map_canvas").get(0), myOptions); 
+            
+            var coorMarcador = new google.maps.LatLng(latitud,longitud); 
+                
+            var marcador = new google.maps.Marker({
+                position: coorMarcador, 
+                map: map, 
+                title: "Donde estoy?",
+                icon: 'img/marker-a.png'
+            });
+
+            var bounds = new google.maps.LatLngBounds ();
+
+            for (var count = 0; count < dataA.length; count++) {
+                var name = dataA[count].name;
+                var LatLngList = new Array (new google.maps.LatLng (dataA[count].latitud,dataA[count].longitud));
+                
+                for (var i = 0, LtLgLen = LatLngList.length; i < LtLgLen; i++) {
+                  bounds.extend (LatLngList[i]);
+                }
+
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(dataA[count].latitud,dataA[count].longitud),
+                    map: map,
+                    title: name,
+                    icon: 'img/marker-b.png'
+                });
+            }
+            map.fitBounds (bounds);
+
+        }
+    </script>
+</body>
+</html>
