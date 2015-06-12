@@ -7,6 +7,9 @@ Que es una Clase?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 
+Defina Diseño Atómico, OOCSS, BEM, SMACSS y Sass
+http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-atomic-design-patternlab/
+
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
 
@@ -19,6 +22,10 @@ https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditi
 
 Es posible crear o modificar archivos con Javascript, por ejemplo un JSON?
 Cual es la diferencia entre == y === ?
+
+Por que si comparamos false == 0 nos da true?
+http://dorey.github.io/JavaScript-Equality-Table/
+
 Cual es la diferencia for y while? ejemplifique.
 
 Cual es la diferencia entre for y foreach? en que caso conviene usar cada uno?
