@@ -1,0 +1,11 @@
+{
+  "name": "banners-chevy-city-express",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-htmlmin": "^0.2.0",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-uglify": "^1.0.1",
+    "imagemin-pngcrush": "^4.0.0"
+  }
+}
