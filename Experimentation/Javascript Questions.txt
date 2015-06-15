@@ -17,6 +17,9 @@ Defina MVC
 Explique el uso de box-sizing: border-box;
 Para que se utiliza comunmente la variable self?
 
+Para que sirve el método prototype?
+http://www.w3schools.com/js/js_object_prototypes.asp
+
 Que es un operador ternario?
 https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 
