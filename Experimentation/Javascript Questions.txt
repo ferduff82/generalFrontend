@@ -52,6 +52,7 @@ Para que se usa 'use strict'?
 Defina Herencia, Encapsulamiento, Abstracción(función anónima) y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
 Que diferencia hay entre Null y Undefined?
+Que hace el método .split() y como se usa?
 
 Que es el Event Bubbling?
 http://javascript.info/tutorial/bubbling-and-capturing
