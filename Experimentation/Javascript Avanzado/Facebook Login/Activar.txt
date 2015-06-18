@@ -1,0 +1,9 @@
+
+ Para activar crear una nueva app en facebook app y configurarla:
+
+ Configuración:
+
+ Ir a Settings, Advanced, OAuth Settings.
+ Poner la ruta que va a escuchar en: Valid OAuth redirect URIs
+
+ Volver a Basics y poner la misma ruta en Website, Site URL.
