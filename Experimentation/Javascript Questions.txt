@@ -17,6 +17,9 @@ Defina MVC
 Explique el uso de box-sizing: border-box;
 Para que se utiliza comunmente la variable self?
 
+Para que sirve el método prototype?
+http://www.w3schools.com/js/js_object_prototypes.asp
+
 Que es un operador ternario?
 https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 
@@ -49,6 +52,7 @@ Para que se usa 'use strict'?
 Defina Herencia, Encapsulamiento, Abstracción(función anónima) y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
 Que diferencia hay entre Null y Undefined?
+Que hace el método .split() y como se usa?
 
 Que es el Event Bubbling?
 http://javascript.info/tutorial/bubbling-and-capturing
