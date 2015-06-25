@@ -1,0 +1,29 @@
+
+Como crear un plugin en Jquery + evitar conflictos con $ entre Jquery y otras librerías:
+
+(function( $ ) {
+ 
+    $.fn.showLinkLocation = function() {
+ 
+        this.filter( "a" ).each(function() {
+            var link = $( this );
+            link.append( " (" + link.attr( "href" ) + ")" );
+        });
+ 
+        return this;
+ 
+    };
+ 
+}( jQuery ));
+ 
+// Usage example:
+$( "a" ).showLinkLocation();
+
+-----------------------------------------------------------------------------------------------------
+
+Como guardar un dato en una posición específica de un Array:
+
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits[10] = "Lemon";
+    console.log(fruits[10]);
+    console.log(fruits[4]);
