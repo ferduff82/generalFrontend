@@ -1,8 +1,0 @@
-Proyectos
-
-1- Calculadora
-2- Image slider
-3- Sistema de gastos
-4- Sistema de control de compras
-5- Agenda
-6- Organizador de Proyectos (Jira)
