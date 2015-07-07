@@ -127,10 +127,12 @@
 
       mouseTrigger: function(e){
 
+        var w = window.innerWidth;
+
         if($("#spaceshipId").hasClass('spaceshipClass')){
 
           $("#arrowBegin").remove();
-          $(".spaceshipClass").css('left', e.clientX - 50).css('top', e.clientY - 50);
+          $(".spaceshipClass").css('left', e.clientX - ((w - 1200) / 2) - 10).css('top', e.clientY - 50);
 
         /* Collision Detection */
 
@@ -208,7 +210,7 @@
             }, 5000);
           }
         } else {
-          $("#arrowBegin").css('left', e.clientX - 35).css('top', e.clientY - 35);
+          $("#arrowBegin").css('left', e.clientX - ((w - 1200) / 2)).css('top', e.clientY - 35);
         }
 
       },
