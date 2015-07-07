@@ -1,5 +1,5 @@
 
-Como crear un plugin en Jquery + evitar conflictos con $ entre Jquery y otras librerÌas:
+Como crear un plugin en Jquery + evitar conflictos con $ entre Jquery y otras librer√≠as:
 
 (function( $ ) {
  
@@ -21,9 +21,29 @@ $( "a" ).showLinkLocation();
 
 -----------------------------------------------------------------------------------------------------
 
-Como guardar un dato en una posiciÛn especÌfica de un Array:
+Como guardar un dato en una posici√≥n espec√≠fica de un Array:
 
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits[10] = "Lemon";
     console.log(fruits[10]);
     console.log(fruits[4]);
+
+-----------------------------------------------------------------------------------------------------
+
+Ejemplo de uso de m√©todo arguments en Javascript:
+
+var sum = function () {
+
+  var length = arguments.length,
+      total = 0;
+
+  for (var i = 0; i < length; i++) {
+
+      // se suman todos los argumentos
+      total += arguments[i];
+  }
+
+  return total;
+};
+
+console.log(sum(20, 30, 50)); // => 100
