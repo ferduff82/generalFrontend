@@ -16,6 +16,7 @@ http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefau
 Defina MVC
 Explique el uso de box-sizing: border-box;
 Para que se utiliza comunmente la variable self?
+Para que sirve el método "arguments.length" dentro de una función?
 
 Para que sirve el método prototype?
 http://www.w3schools.com/js/js_object_prototypes.asp
