@@ -32,7 +32,7 @@ function loadHandler() {
       studio.innovation.ChannelEvent.CLOSE, closeHandler);
   channelConnect.getMobileChannel(getParameter('id'));
 }
-
+/*
 function unloadHandler() {
   if (!pageUnloaded) {
     pageUnloaded = true;
@@ -40,7 +40,7 @@ function unloadHandler() {
         new studio.innovation.ChannelMessage('mobile_client_unload'));
   }
 }
-
+*/
 function channelReadyHandler() {
   log('Channel Ready');
   channelConnect.connectToChannel();
@@ -86,13 +86,10 @@ function clickHandler(eventData) {
 
   var message =
       new studio.innovation.ChannelMessage('Mobile client says \'' +
-      tiltLR + tiltFB + dir + '\'.');
+      "left-to-right: " + tiltLR + 
+      "Front to Back: " + tiltFB + 
+      "Alpha: " + dir + '\'.');
   channelConnect.sendMessage(message);
-  resetForm();
-}
-
-function resetForm() {
-  inputMessage.value = '';
 }
 
 function log(message) {
@@ -173,7 +170,7 @@ var removeEvent = function(object, eventType, handler) {
 };
 
 addEvent(window, 'load', loadHandler);
-addEvent(window, 'unload', unloadHandler);
-addEvent(window, 'beforeunload', unloadHandler);
-addEvent(window, 'pagehide', unloadHandler);
+//addEvent(window, 'unload', unloadHandler);
+//addEvent(window, 'beforeunload', unloadHandler);
+//addEvent(window, 'pagehide', unloadHandler);
 addEvent(window, 'deviceorientation' , clickHandler);
