@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* Default style, feel free to remove if not needed. */
+body {
+  vertical-align: baseline;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+/* Div layer for the entire banner. */
+#container-dc {
+  position: absolute;
+  width: 968px;
+  height: 498px;
+  border: 1px solid #666666;
+  top: 0px;
+  left: 0px;
+  margin: auto;
+  background-image: url('DCRM_HTML5_InPage_970x500_Background.png');
+}
+
+#content-dc {
+  position: absolute;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+}
+
+/* Invisible button for background clickthrough. */
+#button-exit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 10;
+}
+
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
