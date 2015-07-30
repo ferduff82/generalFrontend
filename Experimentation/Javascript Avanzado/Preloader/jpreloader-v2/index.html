@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jPreLoader v2 - A jQuery preloader for Website</title>
+<meta name="description" content="jPreLoader plugin is a jQuery preloader to preload images for website."/>
+<link rel="stylesheet" href="css/vendor.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/jpreloader.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="js/vendor.js"></script>
+<script src="js/jpreloader.js"></script>
+<link rel="shortcut icon" href="http://www.inwebson.com/wp-content/themes/inwebson2/favicon.ico" />
+<link rel="canonical" href="http://www.inwebson.com/demo/jpreloader-v2/" />
+</head>
+
+<body>
+
+<ul>
+	<li><img src="img/Gallery.jpg" /></li>
+	<li><img src="img/gal_05.jpg" /></li>
+	<li><img src="img/test.jpg" /></li>
+	<li><img src="img/images.jpg" /></li>
+	<li><img src="img/sa.jpg" /></li>
+	<li><img src="img/fer.jpg" /></li>
+	<li><img src="http://www.hdwallpapersimages.com/wp-content/uploads/2014/01/Winter-Tiger-Wild-Cat-Images.jpg" /></li>
+	<li><img src="http://www.planwallpaper.com/static/images/6775415-beautiful-images.jpg" /></li>
+	<li><img src="http://www.planwallpaper.com/static/images/6986083-waterfall-images_Mc3SaMS.jpg" /></li>
+</ul>
+
+<script>
+$(document).ready( function() {
+
+	$('body').jpreLoader({
+		showSplash:true,
+		showPercentage:true,
+		onetimeLoad:false
+	}, function() {	//callback function
+			alert("all loaded");
+	});
+
+});
+</script>
+</body>
+</html>
