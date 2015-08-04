@@ -85,10 +85,7 @@ function clickHandler(eventData) {
   }
 
   var message =
-      new studio.innovation.ChannelMessage('Mobile client says \'' +
-      "left-to-right: " + tiltLR + 
-      "Front to Back: " + tiltFB + 
-      "Alpha: " + dir + '\'.');
+      new studio.innovation.ChannelMessage(" "+ tiltLR +" "+ tiltFB +" "+ dir);
   channelConnect.sendMessage(message);
 }
 

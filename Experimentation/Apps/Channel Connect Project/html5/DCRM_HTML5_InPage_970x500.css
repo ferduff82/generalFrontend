@@ -48,3 +48,11 @@ body {
 
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
+
+.logo {
+    width: 275px;
+    left: 50%;
+    display: block;
+    padding: 15px;
+    position: absolute;
+}

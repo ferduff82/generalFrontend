@@ -143,6 +143,17 @@ function log(message) {
 function messageHandler(event) {
   var jsonString = event.data.toString().replace('\\n', '');
   log('Message: ' + jsonString);
+  console.log(event.data);
+  var str = event.data;
+  var toStr = str.toString();
+  var res = toStr.split(" ");
+  console.log(res[1]);
+  console.log(res[2]);
+  console.log(res[3]);
+  var logo = document.getElementById("imgLogo");
+      logo.style.webkitTransform = "rotate("+ res[1] +"deg) rotate3d(1,0,0, "+ (res[2]*-1)+"deg)";
+      logo.style.MozTransform = "rotate("+ res[1] +"deg)";
+      logo.style.transform = "rotate("+ res[1] +"deg) rotate3d(1,0,0, "+ (res[2]*-1)+"deg)";
   var jsonObject = eval('(' + jsonString + ')');
   if (jsonObject.data == 'mobile_client_ready') {
     buttonSend.disabled = null;
@@ -275,6 +286,6 @@ var getParameter = function(name) {
 };
 
 addEvent(window, 'load', loadHandler);
-addEvent(window, 'unload', unloadHandler);
-addEvent(window, 'beforeunload', unloadHandler);
-addEvent(window, 'pagehide', unloadHandler);
+//addEvent(window, 'unload', unloadHandler);
+//addEvent(window, 'beforeunload', unloadHandler);
+//addEvent(window, 'pagehide', unloadHandler);
