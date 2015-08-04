@@ -44,6 +44,7 @@
 
   <script type="text/template" id="spaceship-template">
     <div id="fire"></div>    
+    <div id="possible-shield"></div>
   </script> 
 
   <!-- ========= -->
@@ -197,7 +198,7 @@
             app.gameList.models[0].set({'energia': energyNewValue});
             $('.energy-detection').html('');
           } else if (getSpaceshipRightOffset > anyShieldObjectLeft && getSpaceshipLeftOffset < anyShieldObjectRight && getSpaceshipTopOffset < anyShieldObjectBottom && getSpaceshipBottomOffset > anyShieldObjectTop) {
-            $("#spaceshipId").addClass("showShieldInSpaceship");
+            $("#possible-shield").addClass("showShieldInSpaceship");
             var getShieldValue = app.gameList.models[0].get('escudo'),
                 shieldNewValue = getShieldValue + 1;
             app.gameList.models[0].set({'escudo': shieldNewValue});
@@ -205,7 +206,7 @@
             setTimeout(function(){ 
               var getShieldValue = app.gameList.models[0].get('escudo'),
                   shieldNewValue = getShieldValue - 1;
-                  $("#spaceshipId").removeClass("showShieldInSpaceship");
+                  $("#possible-shield").removeClass("showShieldInSpaceship");
               app.gameList.models[0].set({'escudo': shieldNewValue});
             }, 5000);
           }

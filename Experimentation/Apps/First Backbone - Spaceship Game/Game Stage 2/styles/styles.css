@@ -158,12 +158,15 @@ body {
 }
 
 .showShieldInSpaceship {
-  background-image: url("../images/eye.gif");
-  background-size: 149px;
-  background-position-x: -6px;
+  background-image: url("../images/eye.png");
+  background-size: 110px;
+  background-position-x: 3px;
   height: 110px;
-  background-position-y: -34px;
+  background-position-y: 0px;
   opacity: 0.5;
+  -webkit-animation: rotateEnergy 3s infinite linear;
+  -moz-animation: rotateEnergy 3s infinite linear;
+  animation: rotateEnergy 3s infinite linear;
 }
 
 .openFire {
@@ -224,6 +227,25 @@ body {
   } 
 }
 
+/* Rotate Energy */
+
+@-webkit-keyframes rotateEnergy {
+  0%   {
+    -webkit-transform: rotate(0deg)
+  }
+  100% {
+    -webkit-transform: rotate(359deg)
+  }
+}
+
+@keyframes rotateEnergy {
+  0%   {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(359deg)
+  }
+}
 
 /* Move Objects */
 
