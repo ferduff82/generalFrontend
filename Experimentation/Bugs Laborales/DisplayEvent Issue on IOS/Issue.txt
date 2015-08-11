@@ -1,0 +1,4 @@
+
+ window.open no funciona en dispositivos moviles para eso hay que utilizar un método distinto.
+
+ dispatchEvent

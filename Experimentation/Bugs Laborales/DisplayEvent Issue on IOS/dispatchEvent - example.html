@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=3.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="MobileOptimized" content="width" />
+        <meta name="HandheldFriendly" content="true" />
+        <title>div link with window.opern</title>
+    </head>
+    <body>
+        <div id="foz" data-href="http://www.google.fi">div with window.open</a>
+        <script>
+            document.getElementById("foz").addEventListener("click", function(evt) {
+               var a = document.createElement('a');
+               a.setAttribute("href", this.getAttribute("data-href"));
+               a.setAttribute("target", "_blank");
+               
+               var dispatch = document.createEvent("HTMLEvents")
+               dispatch.initEvent("click", true, true);
+               a.dispatchEvent(dispatch);
+            });
+        </script>
+    </body>
+</html>
