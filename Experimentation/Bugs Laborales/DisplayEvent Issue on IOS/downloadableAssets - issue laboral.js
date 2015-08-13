@@ -64,7 +64,7 @@ tccc.initComponent('.image-asset', ['jqJSONP'], function (instances, tccc, jsonP
                     //window.open(download_link, "_blank");
                     var a = document.createElement('a');
                         a.setAttribute("href", download_link);
-                        a.setAttribute("target", "_blank");
+                        a.setAttribute("target", "_self");
 
                     var dispatch = document.createEvent("HTMLEvents");
                         dispatch.initEvent("click", true, true);
@@ -86,6 +86,8 @@ tccc.initComponent('.image-asset', ['jqJSONP'], function (instances, tccc, jsonP
                     })
                     .done(function( response ) {
                         //window.open(download_link,"_blank");
+
+                        /*
                         var a = document.createElement('a');
                             a.setAttribute("href", download_link);
                             a.setAttribute("target", "_self");
@@ -93,6 +95,39 @@ tccc.initComponent('.image-asset', ['jqJSONP'], function (instances, tccc, jsonP
                         var dispatch = document.createEvent("HTMLEvents");
                             dispatch.initEvent("click", true, true);
                             a.dispatchEvent(dispatch);
+                        */
+
+
+                        var a = document.createElement('a');
+                            a.setAttribute("href", download_link);
+                            a.setAttribute("target", "_self");
+
+                        var event = new MouseEvent('click', {
+                            'view': window,
+                            'bubbles': true,
+                            'cancelable': true
+                        });
+
+                        a.dispatchEvent(event);
+
+
+                        /*
+                        var event = new MouseEvent('click', {
+                            'view': window,
+                            'bubbles': true,
+                            'cancelable': true
+                        });
+                        var cb = document.getElementById('a'); 
+                        var canceled = !cb.dispatchEvent(event);
+                        if (canceled) {
+                            // A handler called preventDefault.
+                            alert("canceled");
+                        } else {
+                            // None of the handlers called preventDefault.
+                            alert("not canceled");
+                        }
+                        */
+
                         $("#download-modal").fadeOut();
                     });
                 }
