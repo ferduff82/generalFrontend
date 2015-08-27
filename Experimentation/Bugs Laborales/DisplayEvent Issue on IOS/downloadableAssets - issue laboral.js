@@ -32,11 +32,14 @@ tccc.initComponent('.image-asset', ['jqJSONP'], function (instances, tccc, jsonP
         });
 
         downloadButton.on("click", function(e) {
+
             var e = window.event || e;
                 e.preventDefault();
-            var download_link = $("#download-modal").find('input[name="download_link"]').val(),
-                email_address = $("#download-modal").find('input[name="email"]').val(),
-                media_outlet = $("#download-modal").find('input[name="company"]').val();    
+                e.stopPropagation();
+
+            download_link = $("#download-modal").find('input[name="download_link"]').val(),
+            email_address = $("#download-modal").find('input[name="email"]').val(),
+            media_outlet = $("#download-modal").find('input[name="company"]').val();    
 
             if (download_link !== "") {
 
@@ -85,48 +88,38 @@ tccc.initComponent('.image-asset', ['jqJSONP'], function (instances, tccc, jsonP
                         data: json_submission
                     })
                     .done(function( response ) {
-                        //window.open(download_link,"_blank");
 
-                        /*
-                        var a = document.createElement('a');
+                        var browserChrome = /chrome/.test(navigator.userAgent.toLowerCase());
+                        var is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+                        var is_IE = navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0;
+
+                        if(browserChrome || is_firefox || is_IE) {   
+
+                            window.open(download_link,"new");
+                            /*
+                            var a = document.createElement('a');
+                                a.setAttribute("href", download_link);
+                                a.setAttribute("target", "_blank");
+
+                            var event = new MouseEvent('click', {
+                                'view': window,
+                                'bubbles': true,
+                                'cancelable': true
+                            });
+                            $.browser.safari = false;
+                            a.dispatchEvent(event);
+                            */
+                        }
+
+                        if($.browser.safari) {                         
+                            var a = document.createElement('a');
                             a.setAttribute("href", download_link);
                             a.setAttribute("target", "_self");
 
-                        var dispatch = document.createEvent("HTMLEvents");
+                            var dispatch = document.createEvent("HTMLEvents");
                             dispatch.initEvent("click", true, true);
                             a.dispatchEvent(dispatch);
-                        */
-
-
-                        var a = document.createElement('a');
-                            a.setAttribute("href", download_link);
-                            a.setAttribute("target", "_self");
-
-                        var event = new MouseEvent('click', {
-                            'view': window,
-                            'bubbles': true,
-                            'cancelable': true
-                        });
-
-                        a.dispatchEvent(event);
-
-
-                        /*
-                        var event = new MouseEvent('click', {
-                            'view': window,
-                            'bubbles': true,
-                            'cancelable': true
-                        });
-                        var cb = document.getElementById('a'); 
-                        var canceled = !cb.dispatchEvent(event);
-                        if (canceled) {
-                            // A handler called preventDefault.
-                            alert("canceled");
-                        } else {
-                            // None of the handlers called preventDefault.
-                            alert("not canceled");
                         }
-                        */
 
                         $("#download-modal").fadeOut();
                     });

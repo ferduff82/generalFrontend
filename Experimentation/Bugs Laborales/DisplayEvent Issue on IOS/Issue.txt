@@ -1,4 +1,5 @@
 
  window.open no funciona en dispositivos moviles para eso hay que utilizar un método distinto.
+ De todas formas window.open "new" como target evita pop up bloquer en navegadores.
 
  dispatchEvent
