@@ -41,23 +41,11 @@
 
 
 
-
-
-Bug Fixed:
-
-File:
-
-/trunk/public/modules/Cnt_acc_catalog_1/js/cnt_acc_catalog_1.all.js
-
-
 IE 8 y 9 no soportan la propiedad window.pageYOffset
 
 Crosbrowser fix for scroll:
 
 $(document).scrollTop()
-
-
-Lines: 86, 89, 106 y 109
 
 
 http://www.w3schools.com/jsref/prop_win_pagexoffset.asp
