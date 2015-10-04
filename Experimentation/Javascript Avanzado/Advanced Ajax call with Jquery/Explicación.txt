@@ -1,0 +1,1 @@
+http://joseoncode.com/2011/09/26/a-walkthrough-jquery-deferred-and-promise/
