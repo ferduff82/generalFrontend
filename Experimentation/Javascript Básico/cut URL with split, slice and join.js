@@ -1,4 +1,5 @@
-var url = window.location.href,
-    urlCut = url.split('/').slice(4, 8).join('/'),
-    slashUrl = '/' + urlCut;
-    console.log(slashUrl);
+var getUrl = window.location.href,
+    urlCut = '/content' + getUrl.split('/content').slice(1),
+    urlLanguage = urlCut.split('/').slice(1,5).join('/'),
+    slashUrl = '/' + urlLanguage;
+console.log(slashUrl);
