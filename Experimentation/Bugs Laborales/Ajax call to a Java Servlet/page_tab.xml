@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Panel"
+    id="current_page_tab"
+    title="Current Page">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <general
+            jcr:primaryType="cq:Widget"
+            collapsed="{Boolean}true"
+            collapsible="{Boolean}true"
+            title="General"
+            xtype="dialogfieldset">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <longTitle
+                    jcr:primaryType="cq:Widget"
+                    allowBlank="false"
+                    fieldLabel="Long Title"
+                    name="./longTitle"
+                    width="300"
+                    xtype="textfield"/>
+                <shortTitle
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Short Title"
+                    name="./shortTitle"
+                    width="300"
+                    xtype="textfield"/>
+                <simpleTitle
+                    jcr:primaryType="cq:Widget"
+                    name="./simpleTitle"
+                    xtype="hidden"/>
+                <package
+                    jcr:primaryType="cq:Widget"
+                    editable="{Boolean}true"
+                    fieldLabel="Package"
+                    name="./package"
+                    options="/apps/journey/components/common/dialogConfig/packageslist/data.json?path=$PATH"
+                    type="select"
+                    xtype="selection"/>
+                <topic
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="Topic to be associated with the page."
+                    fieldLabel="Topics"
+                    name="./topic"
+                    xtype="multifield">
+                    <fieldConfig
+                        jcr:primaryType="cq:Widget"
+                        editable="{Boolean}true"
+                        options="/apps/journey/components/common/dialogConfig/topiclist/data.json?path=$PATH"
+                        optionsTextField="text"
+                        optionsValueField="value"
+                        type="select"
+                        xtype="selection">
+                        <listeners
+                            jcr:primaryType="nt:unstructured"
+                            selectionchanged="function() {&#xa;var jsonObj = this.comboBox.store.reader.arrayData;&#xa;for(var index = 0; index &lt; jsonObj.length;index++) {&#xa;if (this.getValue() == jsonObj[index][0]){&#xa;break;&#xa;}&#xa;if (index + 1 == jsonObj.length){&#xa;this.comboBox.setValue('');&#xa;CQ.Ext.Msg.show({title:CQ.I18n.getMessage('Validation Failed'),&#xa;msg: CQ.I18n.getMessage('Please Enter Correct Topic Value in the DropDown'),&#xa;buttons: CQ.Ext.Msg.OK,icon: CQ.Ext.Msg.ERROR});&#xa;}&#xa;}&#xa;}"/>
+                    </fieldConfig>
+                </topic>
+                <newTopicName
+                    jcr:primaryType="cq:Widget"
+                    allowBlank="true"
+                    fieldLabel="New Topic name"
+                    fieldDescription="Specify a Topic name"
+                    name="./newTopicName"
+                    width="300"
+                    xtype="textfield"/>
+                <createNewTopic
+                    jcr:primaryType="cq:Widget"
+                    autoWidth="{Boolean}true"
+                    fieldLabel=" "
+                    text="Create New Topic"
+                    xtype="button">
+                    <listeners
+                        jcr:primaryType="nt:unstructured"
+						click="function() {
+
+                                    var inputValueTopic = $('[name=&quot;./newTopicName&quot;]').val();
+
+                                    if( inputValueTopic == '' ) {
+                                        alert('Please add a value Topic to create');
+                                        return false;
+                                    }
+
+                                    var getUrl = window.location.href,
+                                        urlCut = '/content' + getUrl.split('/content').slice(1),
+                                        urlLanguage = urlCut.split('/').slice(1,5).join('/'),
+                                        slashUrl = '/' + urlLanguage,
+                                        urlResponse = 'http:/' + getUrl.split('/').slice(1,3).join('/');
+
+                                        if ($('#successTopic')) { $('#successTopic').remove(); }
+                                        if ($('#errorTopic')) { $('#errorTopic').remove(); }
+
+									$.ajax({
+										url : '/bin/createNewPageServlet',
+										data : {
+											title : inputValueTopic,
+											parentPath : slashUrl,
+											template : 'topic'
+										},
+										success : function(responseLink) {
+                                            $('.x-viewport #cq-sk-tab-PAGE table:first').trigger('click');
+                                            $(document).ready(function() {
+											    responseLink = responseLink.trim();
+											    $('button:contains(&quot;Create New Topic&quot;)').closest('div').append('&lt;div id=&quot;successTopic&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot; &gt;New Topic successfully created &lt;/br&gt; &lt;a style=&quot;text-decoration:underline;color:#15428B;&quot; target=&quot;_blank&quot; href=' + urlResponse + responseLink + '&gt; View Topic&lt;/a&gt; &lt;/div&gt;');
+                                            });
+										},
+										error : function() {
+											$('button:contains(&quot;Create New Topic&quot;)').closest('div').append('&lt;div id=&quot;errorTopic&quot; style=&quot;position:relative;color:red;left:115px;top:-18px;width:200px&quot;&gt;Unable to create New Topic&lt;/div&gt;');
+										}
+									}
+								);}"/>
+                </createNewTopic>
+                <tag
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="Tag to be associated with the page."
+                    fieldLabel="Tags"
+                    name="./tag"
+                    xtype="multifield">
+                    <fieldConfig
+                        jcr:primaryType="cq:Widget"
+                        editable="{Boolean}true"
+                        options="/apps/journey/components/common/dialogConfig/taglist/data.json?path=$PATH"
+                        optionsTextField="text"
+                        optionsValueField="value"
+                        type="select"
+                        xtype="selection">
+                        <listeners
+                            jcr:primaryType="nt:unstructured"
+                            selectionchanged="function() {&#xa;var jsonObj = this.comboBox.store.reader.arrayData;&#xa;for(var index = 0; index &lt; jsonObj.length;index++) {&#xa;if (this.getValue() == jsonObj[index][0]){&#xa;break;&#xa;}&#xa;if (index + 1 == jsonObj.length){&#xa;this.comboBox.setValue('');&#xa;CQ.Ext.Msg.show({title:CQ.I18n.getMessage('Validation Failed'),&#xa;msg: CQ.I18n.getMessage('Please Enter Correct Tag Value in the DropDown'),&#xa;buttons: CQ.Ext.Msg.OK,icon: CQ.Ext.Msg.ERROR});&#xa;}&#xa;}&#xa;}"/>
+                    </fieldConfig>
+                </tag>
+				<newTagName
+                    jcr:primaryType="cq:Widget"
+                    allowBlank="true"
+                    fieldLabel="New Tag name"
+					fieldDescription="Specify a Tag name"
+                    name="./newTagName"
+                    width="300"
+                    xtype="textfield"/>
+                <createNewTag
+                    jcr:primaryType="cq:Widget"
+                    autoWidth="{Boolean}true"
+                    fieldLabel=" "
+                    text="Create New Tag"
+                    xtype="button">
+                    <listeners
+                        jcr:primaryType="nt:unstructured"
+                        click="function() {
+
+                                    var inputValueTab = $('[name=&quot;./newTagName&quot;]').val();
+
+                                    if( inputValueTab == '' ) {
+                                        alert('Please add a value Tag to create');
+                                        return false;
+                                    }
+
+                                    var getUrl = window.location.href,
+                                        urlCut = '/content' + getUrl.split('/content').slice(1),
+                                        urlLanguage = urlCut.split('/').slice(1,5).join('/'),
+                                        slashUrl = '/' + urlLanguage,
+                                        urlResponse = 'http:/' + getUrl.split('/').slice(1,3).join('/');
+                                    
+                                    if ($('#errorTag')) { $('#errorTag').remove(); }
+									if ($('#successTag')) { $('#successTag').remove(); }
+
+                                    $.ajax({
+                                        url : '/bin/createNewPageServlet',
+                                        data : {
+                                            title : inputValueTab,
+                                            parentPath : slashUrl,
+                                            template : 'tag'
+                                        },
+                                        success : function(responseLink) {
+                                            $('#cq-sk-tab-PAGE table:first').trigger('click');
+                                            $(document).ready(function() {
+                                                responseLink = responseLink.trim();
+                                                $('button:contains(&quot;Create New Tag&quot;)').closest('div').append('&lt;div id=&quot;successTag&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot; &gt;New Tag successfully created &lt;/br&gt; &lt;a style=&quot;text-decoration:underline;color:#15428B;&quot; target=&quot;_blank&quot; href='+urlResponse+responseLink+'&gt;View Tag&lt;/a&gt; &lt;/div&gt;');
+                                            });
+                                        },
+                                        error : function() {
+                                            $('button:contains(&quot;Create New Tag&quot;)').closest('div').append('&lt;div id=&quot;errorTag&quot; style=&quot;position:relative;color:red;left:115px;top:-18px;width:200px&quot;&gt;Unable to create New Tag&lt;/div&gt;');
+                                        }
+                                    }
+                                );}"/>
+                </createNewTag>
+                <helperSmartWidget
+                    jcr:primaryType="cq:Widget"
+                    name="./helper_vanityurl"
+                    xtype="helper_articlevanityurl"/>
+            </items>
+        </general>
+        <hide
+            jcr:primaryType="cq:Widget"
+            collapsed="{Boolean}true"
+            collapsible="{Boolean}true"
+            title="Hide/Show"
+            xtype="dialogfieldset">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <hidefromdiscovery
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide from Global Content Discovery"
+                    name="./hidefromdiscovery"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideFlyout
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}true"
+                    fieldLabel="Hide from Corporate Flyout"
+                    name="./hideFlyout"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideTopNavigations
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide from Top Navigations"
+                    name="./hideTopNavigations"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideBrandList
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide from Brand List"
+                    name="./hideBrandList"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideTitles
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldDescription="Recommend showing Title"
+                    fieldLabel="Hide Title on page"
+                    name="./hideTitles"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hide3rdpartyauthorprofile
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide Third Party Author Profile"
+                    name="./hidetpauthor"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideBreadCrumb
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldDescription="To suppress Breadcrumb"
+                    fieldLabel="Hide Breadcrumbs"
+                    id="hideBreadCrumbID"
+                    name="./hideBreadCrumb"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideFromBreadCrumb
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="To suppress page from breadcrumbs"
+                    fieldLabel="Hide from Bread Crumb"
+                    name="./hideInBreadCrumb"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideComments
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="To hide Comments on the page"
+                    fieldLabel="Hide Comments"
+                    name="./disableComments"
+                    type="checkbox"
+                    xtype="selection"/>
+                <noShareBar
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldDescription="To hide Share Bar on the page"
+                    fieldLabel="Disable Share Bar?"
+                    name="./noShareBar"
+                    type="checkbox"
+                    xtype="selection"/>
+                <relatedContent
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="Select to add the component to the page"
+                    fieldLabel="Show in Related Content"
+                    name="./relatedContent"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hidePublishDate
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide Publish Date"
+                    name="./hidePublishDate"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideTwitterFeed
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Hide Twitter feed"
+                    name="./hideTwitterFeed"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideLeadImage
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Hide Lead Image"
+                    name="./hideLeadImage"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideFloatingRail
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide Floating Rail"
+                    name="./hideFloatingRail"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideRightRail
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide Right Rail"
+                    name="./hideRightRail"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideBottomRail
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="&#x9;&#xa;&#xa;Hide Bottom Rail"
+                    name="./hideBottomRail"
+                    type="checkbox"
+                    xtype="selection"/>
+                <hideRecommendedForYou
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Hide Recommended Fly-In module"
+                    name="./hideRecommendedForYou"
+                    type="checkbox"
+                    xtype="selection"/>
+            </items>
+        </hide>
+        <articles
+            jcr:primaryType="cq:Widget"
+            collapsed="{Boolean}true"
+            collapsible="{Boolean}true"
+            title="Articles"
+            xtype="dialogfieldset">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <publishDateOverride
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="By default, the publish date is the CQ Activation date. An author can override in the page if that renders front end publish date."
+                    fieldLabel="Publish Date"
+                    format="m/d/Y"
+                    name="./cq:lastPublishedDate"
+                    width="300"
+                    xtype="datetime"/>
+                <author
+                    jcr:primaryType="cq:Widget"
+                    editable="{Boolean}true"
+                    fieldLabel="Author"
+                    name="./author"
+                    options="/apps/journey/components/common/dialogConfig/authorlist/data.json?path=$PATH"
+                    optionsTextField="text"
+                    optionsValueField="value"
+                    type="select"
+                    xtype="selection">
+                    <listeners
+                        jcr:primaryType="nt:unstructured"
+                        selectionchanged="function() {&#xa;var jsonObj = this.comboBox.store.reader.arrayData;&#xa;for(var index = 0; index &lt; jsonObj.length;index++) {&#xa;if (this.getValue() == jsonObj[index][0]){&#xa;break;&#xa;}&#xa;if (index + 1 == jsonObj.length){&#xa;this.comboBox.setValue('');&#xa;CQ.Ext.Msg.show({title:CQ.I18n.getMessage('Validation Failed'),&#xa;msg: CQ.I18n.getMessage('Please Enter Correct Author Value in the DropDown'),&#xa;buttons: CQ.Ext.Msg.OK,icon: CQ.Ext.Msg.ERROR});&#xa;}&#xa;}&#xa;}"/>
+                </author>
+				<newAuthorName
+                    jcr:primaryType="cq:Widget"
+                    allowBlank="true"
+                    fieldLabel="New Author name"
+					fieldDescription="Specify a Author name"
+                    name="./newAuthorName"
+                    width="300"
+                    xtype="textfield"/>
+                <createNewAuthor
+                    jcr:primaryType="cq:Widget"
+                    autoWidth="{Boolean}true"
+                    fieldLabel=" "
+                    text="Create New Author"
+                    xtype="button">
+                    <listeners
+                        jcr:primaryType="nt:unstructured"
+                        click="function() {
+
+                                    var inputValueAuthor = $('[name=&quot;./newAuthorName&quot;]').val();
+
+                                    if( inputValueAuthor == '' ){
+                                        alert('Please add a value Author to create');
+                                        return false;
+                                    }
+
+                                    var getUrl = window.location.href,
+                                        urlCut = '/content' + getUrl.split('/content').slice(1),
+                                        urlLanguage = urlCut.split('/').slice(1,5).join('/'),
+                                        slashUrl = '/' + urlLanguage,
+                                        urlResponse = 'http:/' + getUrl.split('/').slice(1,3).join('/');
+
+                                    if ($('#errorArticle')) { $('#errorArticle').remove(); }
+									if ($('#successArticle')) { $('#successArticle').remove(); }
+
+                                    $.ajax({
+                                        url : '/bin/createNewPageServlet',
+                                        data : {
+                                            title : inputValueAuthor,
+                                            parentPath : slashUrl,
+                                            template : 'author'
+                                        },
+                                        success : function(responseLink) {
+                                            $('#cq-sk-tab-PAGE table:first').trigger('click');
+                                            $(document).ready(function() {                                            
+											    responseLink = responseLink.trim();
+                                                $('button:contains(&quot;Create New Author&quot;)').closest('div').append('&lt;div id=&quot;successArticle&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot; &gt;New Author successfully created &lt;/br&gt; &lt;a style=&quot;text-decoration:underline;color:#15428B;&quot; target=&quot;_blank&quot; href='+urlResponse+responseLink+'&gt;View Author&lt;/a&gt; &lt;/div&gt;');
+                                            });
+                                        },
+                                        error : function() {
+                                            $('button:contains(&quot;Create New Author&quot;)').closest('div').append('&lt;div id=&quot;errorArticle&quot; style=&quot;position:relative;left:115px;top:-18px;color:red;width:200px&quot;&gt;Unable to create New Author&lt;/div&gt;');
+                                        }
+                                    }
+                                );}"/>
+                </createNewAuthor>
+                <contentType
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="article"
+                    fieldDescription="Select the type of content in the page in order to accurately render in Search Results."
+                    fieldLabel="Content Page Type"
+                    name="./contentType"
+                    options="/apps/journey/components/common/dialogConfig/contenttypelist/data.json"
+                    type="select"
+                    xtype="selection">
+                    <listeners
+                        jcr:primaryType="nt:unstructured"
+                        loadcontent="function(box,value){&#xa;var dia = box.findParentByType('dialog'); &#xa;var f = this.findParentByType('form').getForm();&#xa;var notresponsive=dia.find('name','./notResponsive');&#xa;var selectionField = f.findField('./contentType'); &#xa;var selValue = selectionField.getValue();&#xa;if(selValue == 'iframe'){ &#xa;notresponsive[0].show();&#xa;} &#xa;else{ &#xa;notresponsive[0].hide();&#xa;} &#xa;}"
+                        selectionchanged="function(box,value){&#xa;var dia = box.findParentByType('dialog'); &#xa;var f = this.findParentByType('form').getForm();&#xa;var notresponsive=dia.find('name','./notResponsive');&#xa;var selectionField = f.findField('./contentType'); &#xa;var selValue = selectionField.getValue();&#xa;if(selValue == 'iframe'){ &#xa;notresponsive[0].show();&#xa;} &#xa;else{ &#xa;notresponsive[0].hide();&#xa;} &#xa;}"/>
+                </contentType>
+                <notResponsive
+                    jcr:primaryType="cq:Widget"
+                    defaultValue="{Boolean}false"
+                    fieldLabel="Do not re-size for mobile view?"
+                    name="./notResponsive"
+                    type="checkbox"
+                    xtype="selection"/>
+            </items>
+        </articles>
+        <contentOverrides
+            jcr:primaryType="cq:Widget"
+            collapsed="{Boolean}true"
+            collapsible="{Boolean}true"
+            id="page_topiclist_contentOverrides"
+            title="Content Overrides"
+            xtype="dialogfieldset">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <moreonJourneyOverrides
+                    jcr:primaryType="cq:Widget"
+                    collapsible="{Boolean}true"
+                    id="general"
+                    title="More On Journey Overrides"
+                    xtype="dialogfieldset">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <linkList
+                            jcr:primaryType="cq:Widget"
+                            id="linklist"
+                            name="./linkList"
+                            xtype="multicompositefield">
+                            <fieldConfigs jcr:primaryType="cq:WidgetCollection">
+                                <linkType
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    defaultValue="Internal"
+                                    fieldDescription="Select “internal” for link to internal cms page, “external” to an outside internet link&#xa;"
+                                    fieldLabel="Content Link Type"
+                                    name="linkType"
+                                    type="select"
+                                    value="internal"
+                                    xtype="selection">
+                                    <options jcr:primaryType="cq:WidgetCollection">
+                                        <internal
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Internal"
+                                            value="internal"/>
+                                        <external
+                                            jcr:primaryType="nt:unstructured"
+                                            text="External"
+                                            value="external"/>
+                                    </options>
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function() &#xa;{ &#xa;var selectFieldName = this.name.replace('linkType', 'newWindow'); &#xa;var fld = this.findParentByType('form').find('name', selectFieldName)[0];  &#xa;var value = this.getValue();&#xa;if(value == 'internal' )&#xa;{ &#xa;fld.el.dom.checked=false;&#xa;}&#xa;else&#xa;{ &#xa;fld.el.dom.checked=true;&#xa;}&#xa;}"/>
+                                </linkType>
+                                <linkURL
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    anchor="90%"
+                                    fieldDescription="Link to an internal page or an external URL. &#xa;"
+                                    fieldLabel="Content Link&#xa;"
+                                    name="link"
+                                    xtype="ddsearchfield">
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        dialogselect="function() {&#xa;var temp = this.name;&#xa;temp = temp+'$'&#xa;var longTitle = temp.replace('link$', 'longTitle'); &#xa;var shortTitle = temp.replace('link$', 'shortTitle'); &#xa;var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; &#xa;var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; &#xa;var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); &#xa;$.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,&#xa;{     &#xa;link: titlelink,     &#xa;},&#xa;function(data) { &#xa;var longTitle = data.longTitle; &#xa;var shortTitle = data.shortTitle; &#xa;if(longTitle) { &#xa;fieldLongTitle.setValue(longTitle); &#xa;} &#xa;if(shortTitle) { &#xa;fieldShortTitle.setValue(shortTitle); &#xa;} &#xa;}); &#xa;};"
+                                        search="function() {&#xa;var temp = this.name;&#xa;temp = temp+'$'&#xa;var longTitle = temp.replace('link$', 'longTitle'); &#xa;var shortTitle = temp.replace('link$', 'shortTitle'); &#xa;var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; &#xa;var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; &#xa;var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); &#xa;$.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,&#xa;{     &#xa;link: titlelink,     &#xa;},&#xa;function(data) { &#xa;var longTitle = data.longTitle; &#xa;var shortTitle = data.shortTitle; &#xa;if(longTitle) { &#xa;fieldLongTitle.setValue(longTitle); &#xa;} &#xa;if(shortTitle) { &#xa;fieldShortTitle.setValue(shortTitle); &#xa;} &#xa;}); &#xa;};"
+                                        select="function() {&#xa;var temp = this.name;&#xa;temp = temp+'$'&#xa;var longTitle = temp.replace('link$', 'longTitle'); &#xa;var shortTitle = temp.replace('link$', 'shortTitle'); &#xa;var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; &#xa;var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; &#xa;var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); &#xa;$.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,&#xa;{     &#xa;link: titlelink,     &#xa;},&#xa;function(data) { &#xa;var longTitle = data.longTitle; &#xa;var shortTitle = data.shortTitle; &#xa;if(longTitle) { &#xa;fieldLongTitle.setValue(longTitle); &#xa;} &#xa;if(shortTitle) { &#xa;fieldShortTitle.setValue(shortTitle); &#xa;} &#xa;}); &#xa;};"/>
+                                </linkURL>
+                                <contentLongTitle
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldDescription="Enter text to be displayed instead of linked long title&#xa;"
+                                    fieldLabel="Content Long Title&#xa;"
+                                    name="longTitle"
+                                    xtype="textfield"/>
+                                <contentShortTitle
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldDescription="Enter text to be displayed instead of linked short title&#xa;"
+                                    fieldLabel="Content Short Title&#xa;"
+                                    name="shortTitle"
+                                    xtype="textfield"/>
+                                <newWindow
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    defaultValue="{Boolean}false"
+                                    fieldDescription="External page recommended to open in a new window&#xa;"
+                                    fieldLabel="Open in New Window"
+                                    name="newWindow"
+                                    xtype="checkbox"/>
+                            </fieldConfigs>
+                        </linkList>
+                    </items>
+                </moreonJourneyOverrides>
+                <topiclistOverrides
+                    jcr:primaryType="cq:Widget"
+                    collapsible="{Boolean}true"
+                    id="page_topiclist_topiclistOverrides"
+                    title="Topic List  Overrides"
+                    xtype="dialogfieldset">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <topicLinkList
+                            jcr:primaryType="cq:Widget"
+                            id="page_topiclist_topiclinklist"
+                            name="./multiComposites"
+                            xtype="multicompositefield">
+                            <fieldConfigs jcr:primaryType="cq:WidgetCollection">
+                                <topicLinkType
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    defaultValue="Internal"
+                                    fieldDescription="Select “internal” for link to internal cms page, “external” to an outside internet link&#xa;"
+                                    fieldLabel="Link Type"
+                                    name="linkType"
+                                    type="select"
+                                    value="internal"
+                                    xtype="selection">
+                                    <options jcr:primaryType="cq:WidgetCollection">
+                                        <internal
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Internal"
+                                            value="internal"/>
+                                        <external
+                                            jcr:primaryType="nt:unstructured"
+                                            text="External"
+                                            value="external"/>
+                                    </options>
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function() &#xa;{ &#xa;var selectFieldName = this.name.replace('linkType', 'newWindow'); &#xa;var fld = this.findParentByType('form').find('name', selectFieldName)[0];  &#xa;var value = this.getValue();&#xa;if(value == 'internal' )&#xa;{ &#xa;fld.el.dom.checked=false;&#xa;}&#xa;else&#xa;{ &#xa;fld.el.dom.checked=true;&#xa;}&#xa;}"/>
+                                </topicLinkType>
+                                <topicLinkURL
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    anchor="90%"
+                                    fieldDescription="Link to an internal page or an external URL. &#xa;"
+                                    fieldLabel="Link Path"
+                                    name="link"
+                                    xtype="ddsearchfield">
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        dialogselect="function() { var longTitle = this.name.replace('link', 'longTitle'); var shortTitle = this.name.replace('link', 'shortTitle'); var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); $.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,{     link: titlelink,     },function(data) { var longTitle = data.longTitle; var shortTitle = data.shortTitle; if(longTitle) { fieldLongTitle.setValue(longTitle); } if(shortTitle) { fieldShortTitle.setValue(shortTitle); } }); };"
+                                        search="function() { var longTitle = this.name.replace('link', 'longTitle'); var shortTitle = this.name.replace('link', 'shortTitle'); var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); $.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,{     link: titlelink,     },function(data) { var longTitle = data.longTitle; var shortTitle = data.shortTitle; if(longTitle) { fieldLongTitle.setValue(longTitle); } if(shortTitle) { fieldShortTitle.setValue(shortTitle); } }); };"
+                                        select="function() { var longTitle = this.name.replace('link', 'longTitle'); var shortTitle = this.name.replace('link', 'shortTitle'); var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); $.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,{     link: titlelink,     },function(data) { var longTitle = data.longTitle; var shortTitle = data.shortTitle; if(longTitle) { fieldLongTitle.setValue(longTitle); } if(shortTitle) { fieldShortTitle.setValue(shortTitle); } }); };"/>
+                                </topicLinkURL>
+                                <topicLinkLTitle
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldDescription="Enter text to be displayed instead of linked long title&#xa;"
+                                    fieldLabel="Long Title&#xa;"
+                                    name="longTitle"
+                                    xtype="textfield"/>
+                                <topicLinkSTitle
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldDescription="Enter text to be displayed instead of linked short title&#xa;"
+                                    fieldLabel="Short Title&#xa;"
+                                    name="shortTitle"
+                                    xtype="textfield"/>
+                                <topicLinkNewWindow
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    defaultValue="{Boolean}false"
+                                    fieldDescription="External page recommended to open in a new window&#xa;"
+                                    fieldLabel="Open in New Window"
+                                    name="newWindow"
+                                    xtype="checkbox"/>
+                            </fieldConfigs>
+                        </topicLinkList>
+                    </items>
+                </topiclistOverrides>
+                <recommendedListOverrides
+                    jcr:primaryType="cq:Widget"
+                    collapsible="{Boolean}true"
+                    id="page_recommendedListOverrides"
+                    title="Recommended List  Overrides"
+                    xtype="dialogfieldset">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <linkList
+                            jcr:primaryType="cq:Widget"
+                            id="recommendedLinkList"
+                            name="./recommendedLinkList"
+                            xtype="multicompositefield">
+                            <fieldConfigs jcr:primaryType="cq:WidgetCollection">
+                                <author
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldLabel="Author"
+                                    name="author"
+                                    options="/apps/journey/components/common/dialogConfig/authorlist/data.json?path=$PATH"
+                                    optionsTextField="text"
+                                    optionsValueField="value"
+                                    type="select"
+                                    xtype="selection"/>
+                                <recommendedLinkType
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    defaultValue="Internal"
+                                    fieldDescription="Select “internal” for link to internal cms page, “external” to an outside internet link&#xa;"
+                                    fieldLabel="Article Link Type"
+                                    name="linkType"
+                                    type="select"
+                                    value="internal"
+                                    xtype="selection">
+                                    <options jcr:primaryType="cq:WidgetCollection">
+                                        <internal
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Internal"
+                                            value="internal"/>
+                                        <external
+                                            jcr:primaryType="nt:unstructured"
+                                            text="External"
+                                            value="external"/>
+                                    </options>
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function() &#xa;{ &#xa;var selectFieldName = this.name.replace('linkType', 'newWindow'); &#xa;var fld = this.findParentByType('form').find('name', selectFieldName)[0];  &#xa;var value = this.getValue();&#xa;if(value == 'internal' )&#xa;{ &#xa;fld.el.dom.checked=false;&#xa;}&#xa;else&#xa;{ &#xa;fld.el.dom.checked=true;&#xa;}&#xa;}"/>
+                                </recommendedLinkType>
+                                <recommendedLinkURL
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="{Boolean}false"
+                                    anchor="90%"
+                                    fieldDescription="Link to an internal page or an external URL. &#xa;"
+                                    fieldLabel="Article Link"
+                                    name="link"
+                                    xtype="ddsearchfield">
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        dialogselect="function() { var longTitle = this.name.replace('link', 'longTitle'); var shortTitle = this.name.replace('link', 'shortTitle'); var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); $.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,{     link: titlelink,     },function(data) { var longTitle = data.longTitle; var shortTitle = data.shortTitle; if(longTitle) { fieldLongTitle.setValue(longTitle); } if(shortTitle) { fieldShortTitle.setValue(shortTitle); } }); };"
+                                        search="function() { var longTitle = this.name.replace('link', 'longTitle'); var shortTitle = this.name.replace('link', 'shortTitle'); var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); $.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,{     link: titlelink,     },function(data) { var longTitle = data.longTitle; var shortTitle = data.shortTitle; if(longTitle) { fieldLongTitle.setValue(longTitle); } if(shortTitle) { fieldShortTitle.setValue(shortTitle); } }); };"
+                                        select="function() { var longTitle = this.name.replace('link', 'longTitle'); var shortTitle = this.name.replace('link', 'shortTitle'); var fieldLongTitle = this.findParentByType('form').find('name', longTitle)[0]; var fieldShortTitle = this.findParentByType('form').find('name', shortTitle)[0]; var titlelink  = this.getValue(); $.ajaxSetup({ async: false }); $.getJSON(&quot;/apps/journey/components/common/dialogConfig/titleslist/data.json&quot;,{     link: titlelink,     },function(data) { var longTitle = data.longTitle; var shortTitle = data.shortTitle; if(longTitle) { fieldLongTitle.setValue(longTitle); } if(shortTitle) { fieldShortTitle.setValue(shortTitle); } }); };"/>
+                                </recommendedLinkURL>
+                                <recommendedLinkLTitle
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldDescription="Enter text to be displayed instead of linked long title&#xa;"
+                                    fieldLabel="Article Long Title"
+                                    name="longTitle"
+                                    xtype="textfield"/>
+                                <recommendedLinkSTitle
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    fieldDescription="Enter text to be displayed instead of linked short title&#xa;"
+                                    fieldLabel="Article Short Title"
+                                    name="shortTitle"
+                                    xtype="textfield"/>
+                                <recommendedLinkNewWindow
+                                    jcr:primaryType="cq:Widget"
+                                    anchor="90%"
+                                    defaultValue="{Boolean}false"
+                                    fieldDescription="External page recommended to open in a new window&#xa;"
+                                    fieldLabel="Open in New Window"
+                                    name="newWindow"
+                                    xtype="checkbox"/>
+                            </fieldConfigs>
+                        </linkList>
+                    </items>
+                </recommendedListOverrides>
+                <relatedContentOverridesSet
+                    jcr:primaryType="cq:Widget"
+                    collapsible="{Boolean}true"
+                    id="page_relatedContentOverridesSet"
+                    title="Related Content Overrides"
+                    xtype="dialogfieldset">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <relatedContentOverrides
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Related Content Overrides"
+                            id="page_relatedContentOverrides"
+                            name="./relatedContentOverrides"
+                            width="300"
+                            xtype="multifield">
+                            <fieldConfig
+                                jcr:primaryType="cq:Widget"
+                                xtype="ddsearchfield"/>
+                        </relatedContentOverrides>
+                    </items>
+                </relatedContentOverridesSet>
+                <recommendedForYouOverride
+                    jcr:primaryType="cq:Widget"
+                    fieldLabel="Recommended For You Override"
+                    id="page_recommendedForYouOverride"
+                    name="./recommendedForYouOverride"
+                    xtype="ddsearchfield"/>
+				 <twitterwidget
+                    jcr:primaryType="cq:Widget"
+                    fieldDescription="select twitter account name"
+                    fieldLabel="Twitter Widget"
+                    name="./twitterwidget"
+                    options="/apps/journey/components/common/dialogConfig/twitterFeed/data.json?path=$PATH"
+                    type="select"
+                    xtype="selection"/>		
+            </items>
+        </contentOverrides>
+    </items>
+</jcr:root>
