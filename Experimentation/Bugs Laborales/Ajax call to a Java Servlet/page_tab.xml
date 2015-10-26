@@ -76,18 +76,18 @@
                                     var inputValueTopic = $('[name=&quot;./newTopicName&quot;]').val();
 
                                     if( inputValueTopic == '' ) {
-                                        alert('Please add a value Topic to create');
+                                        CQ.Ext.Msg.alert('Input Error', 'Please add a value Topic to create');
                                         return false;
                                     }
 
                                     var getUrl = window.location.href,
-                                        urlCut = '/content' + getUrl.split('/content').slice(1),
-                                        urlLanguage = urlCut.split('/').slice(1,5).join('/'),
-                                        slashUrl = '/' + urlLanguage,
+                                        slashUrl = CQ.WCM.getPagePath().slice(0,22),
                                         urlResponse = 'http:/' + getUrl.split('/').slice(1,3).join('/');
 
-                                        if ($('#successTopic')) { $('#successTopic').remove(); }
-                                        if ($('#errorTopic')) { $('#errorTopic').remove(); }
+                                    if ($('#successTopic')) { $('#successTopic').remove(); }
+                                    if ($('#errorTopic')) { $('#errorTopic').remove(); }
+
+                                    $('button:contains(&quot;Create New Topic&quot;)').closest('div').append('&lt;div id=&quot;successTopic&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot;&gt;Reloading cache to update dialog options. Please wait.&lt;/div&gt;');
 
 									$.ajax({
 										url : '/bin/createNewPageServlet',
@@ -99,11 +99,13 @@
 										success : function(responseLink) {
                                             $('.x-viewport #cq-sk-tab-PAGE table:first').trigger('click');
                                             $(document).ready(function() {
+                                                $('#successTopic').remove();
 											    responseLink = responseLink.trim();
 											    $('button:contains(&quot;Create New Topic&quot;)').closest('div').append('&lt;div id=&quot;successTopic&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot; &gt;New Topic successfully created &lt;/br&gt; &lt;a style=&quot;text-decoration:underline;color:#15428B;&quot; target=&quot;_blank&quot; href=' + urlResponse + responseLink + '&gt; View Topic&lt;/a&gt; &lt;/div&gt;');
                                             });
 										},
 										error : function() {
+                                            $('#successTopic').remove();
 											$('button:contains(&quot;Create New Topic&quot;)').closest('div').append('&lt;div id=&quot;errorTopic&quot; style=&quot;position:relative;color:red;left:115px;top:-18px;width:200px&quot;&gt;Unable to create New Topic&lt;/div&gt;');
 										}
 									}
@@ -146,37 +148,39 @@
                         jcr:primaryType="nt:unstructured"
                         click="function() {
 
-                                    var inputValueTab = $('[name=&quot;./newTagName&quot;]').val();
+                                    var inputValueTag = $('[name=&quot;./newTagName&quot;]').val();
 
-                                    if( inputValueTab == '' ) {
-                                        alert('Please add a value Tag to create');
+                                    if( inputValueTag == '' ) {
+                                        CQ.Ext.Msg.alert('Input Error', 'Please add a value Tag to create');
                                         return false;
                                     }
 
                                     var getUrl = window.location.href,
-                                        urlCut = '/content' + getUrl.split('/content').slice(1),
-                                        urlLanguage = urlCut.split('/').slice(1,5).join('/'),
-                                        slashUrl = '/' + urlLanguage,
+                                        slashUrl = CQ.WCM.getPagePath().slice(0,22),
                                         urlResponse = 'http:/' + getUrl.split('/').slice(1,3).join('/');
                                     
                                     if ($('#errorTag')) { $('#errorTag').remove(); }
 									if ($('#successTag')) { $('#successTag').remove(); }
 
+                                    $('button:contains(&quot;Create New Tag&quot;)').closest('div').append('&lt;div id=&quot;successTag&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot;&gt;Reloading cache to update dialog options. Please wait.&lt;/div&gt;');
+
                                     $.ajax({
                                         url : '/bin/createNewPageServlet',
                                         data : {
-                                            title : inputValueTab,
+                                            title : inputValueTag,
                                             parentPath : slashUrl,
                                             template : 'tag'
                                         },
                                         success : function(responseLink) {
                                             $('#cq-sk-tab-PAGE table:first').trigger('click');
                                             $(document).ready(function() {
+                                                $('#successTag').remove();
                                                 responseLink = responseLink.trim();
                                                 $('button:contains(&quot;Create New Tag&quot;)').closest('div').append('&lt;div id=&quot;successTag&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot; &gt;New Tag successfully created &lt;/br&gt; &lt;a style=&quot;text-decoration:underline;color:#15428B;&quot; target=&quot;_blank&quot; href='+urlResponse+responseLink+'&gt;View Tag&lt;/a&gt; &lt;/div&gt;');
                                             });
                                         },
                                         error : function() {
+                                            $('#successTag').remove();  
                                             $('button:contains(&quot;Create New Tag&quot;)').closest('div').append('&lt;div id=&quot;errorTag&quot; style=&quot;position:relative;color:red;left:115px;top:-18px;width:200px&quot;&gt;Unable to create New Tag&lt;/div&gt;');
                                         }
                                     }
@@ -375,18 +379,18 @@
                                     var inputValueAuthor = $('[name=&quot;./newAuthorName&quot;]').val();
 
                                     if( inputValueAuthor == '' ){
-                                        alert('Please add a value Author to create');
+                                        CQ.Ext.Msg.alert('Input Error', 'Please add a value Author to create');
                                         return false;
                                     }
 
                                     var getUrl = window.location.href,
-                                        urlCut = '/content' + getUrl.split('/content').slice(1),
-                                        urlLanguage = urlCut.split('/').slice(1,5).join('/'),
-                                        slashUrl = '/' + urlLanguage,
+                                        slashUrl = CQ.WCM.getPagePath().slice(0,22),
                                         urlResponse = 'http:/' + getUrl.split('/').slice(1,3).join('/');
 
                                     if ($('#errorArticle')) { $('#errorArticle').remove(); }
 									if ($('#successArticle')) { $('#successArticle').remove(); }
+
+                                    $('button:contains(&quot;Create New Author&quot;)').closest('div').append('&lt;div id=&quot;successArticle&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot;&gt;Reloading cache to update dialog options. Please wait.&lt;/div&gt;');
 
                                     $.ajax({
                                         url : '/bin/createNewPageServlet',
@@ -397,12 +401,14 @@
                                         },
                                         success : function(responseLink) {
                                             $('#cq-sk-tab-PAGE table:first').trigger('click');
-                                            $(document).ready(function() {                                            
+                                            $(document).ready(function() {                      
+                                                $('#successArticle').remove();                      
 											    responseLink = responseLink.trim();
                                                 $('button:contains(&quot;Create New Author&quot;)').closest('div').append('&lt;div id=&quot;successArticle&quot; style=&quot;position:relative;left:115px;top:-18px;width:200px&quot; &gt;New Author successfully created &lt;/br&gt; &lt;a style=&quot;text-decoration:underline;color:#15428B;&quot; target=&quot;_blank&quot; href='+urlResponse+responseLink+'&gt;View Author&lt;/a&gt; &lt;/div&gt;');
                                             });
                                         },
                                         error : function() {
+                                            $('#successArticle').remove();  
                                             $('button:contains(&quot;Create New Author&quot;)').closest('div').append('&lt;div id=&quot;errorArticle&quot; style=&quot;position:relative;left:115px;top:-18px;color:red;width:200px&quot;&gt;Unable to create New Author&lt;/div&gt;');
                                         }
                                     }
