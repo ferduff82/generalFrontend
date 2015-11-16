@@ -1,0 +1,23 @@
+------------------------------------
+DoubleClick ChannelConnect Templates
+------------------------------------
+
+- Version: 8
+  Release Date: 11/27/2013
+  Updated JSON parsing, to avoid using browser native JSON parser, failing in IE8 in some edge case.
+
+- Version: 7
+  Release Date: 11/25/2013
+  Using https to call url shortener service.
+
+- Version: 6
+  Release Date: 03/07/2013
+  Updated FLAs, to use MXP v4.
+
+- Version: 5
+  Release Date: 12/19/2012
+  Updated paths from appspot to gstatic.
+
+- Version: 4
+  Release Date: 11/27/2012
+  First release.
