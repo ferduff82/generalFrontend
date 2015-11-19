@@ -81,6 +81,9 @@ Para que sirve el método off() en Jquery?
 Para que se utilizan objetos literales (function(){...})() en Plugins de JQUERY (function($){})(jQuery); ademas de para crear plugins?
 http://stackoverflow.com/questions/2937227/what-does-function-jquery-mean
 
+Como crear un plugin en Jquery?
+https://learn.jquery.com/plugins/basic-plugin-creation/
+
 Que diferencia hay entre window.load y $(document).ready()?
 http://dev.w3xperiences.com/tutoriales/js-ajax/diferencia-entre-document-ready-vs-window-load/
 
