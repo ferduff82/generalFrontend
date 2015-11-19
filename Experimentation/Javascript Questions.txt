@@ -13,6 +13,12 @@ http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-at
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
 
+Que diferencia hay entre $(document).ready y $(window).load
+https://4loc.wordpress.com/2009/04/28/documentready-vs-windowload/
+
+Para que se utiliza el método jQuery.noConflict()
+https://api.jquery.com/jquery.noconflict/
+
 Defina MVC
 Explique el uso de box-sizing: border-box;
 Para que se utiliza comunmente la variable self?
@@ -51,6 +57,9 @@ https://msdn.microsoft.com/es-es/library/ie/cc836466(v=vs.94).aspx
 
 Que es JSONP y como se usa y a que se le llama comunmente CORS?
 http://es.wikipedia.org/wiki/JSONP
+
+Como saber si tengo acceso a CORS en un dominio externo, donde buscarlo en el navegador?
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 
 Que hace esto? que problema soluciona con distintos navegadores?
 $('li').click(function (e) { var e = window.event || e; });
