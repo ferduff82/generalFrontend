@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parse Mercadolibre</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<style>
+
+	table {
+		width:100%;
+		border: 1px solid grey;
+	}
+
+	td {
+		border: 1px solid grey;
+	}
+
+	tr:nth-child(even) {
+		background: #CCC
+	}
+
+	tr:nth-child(odd) {
+		background: #FFF
+	}
+
+	tr:first-child {
+		background-color: green !important;
+	}
+
+	tr:last-child {
+		background-color: red !important;
+	}
+
+	#sendData {
+	    width: 265px;
+	    margin: auto;
+	    margin-bottom: 10px;
+	    margin-top: 10px;
+	}
+
+	</style>
+
+</head>
+
+<body>
+
+<div id="sendData">
+	<input type="text" name="firstname" id="sendParameters">
+	<button id="getData">Read Data</button>
+</div>
+
+<div id="content"></div>
+
+<script>
+
+	$("#getData").click(function(){
+		var inputValue = $("#sendParameters").val();
+
+		$.ajax({
+		    url : "https://api.mercadolibre.com/sites/MLA/search?q=" + inputValue + "#json",
+		    type : 'GET',
+		    dataType : 'json',
+		    success : function(data) {
+				var results = data.results,
+					sortResults = [];
+
+				$("#content").html("<table></table>");
+
+				for (i = 0; i <= 4 ;i++) {
+					sortResults.push(results[i]);
+					sortResults.sort(function(a,b){return a.price - b.price});
+				}
+
+				for (i = 0; i < sortResults.length ;i++) {
+					$("table").append("<tr><td>" + sortResults[i].title + "</td><td>$" + sortResults[i].price + "</td></tr>");
+				}
+
+		    },
+		    error : function(xhr, status) {
+		        console.log('issue = ' + xhr);
+		    },
+		    complete : function(xhr, status) {
+		        console.log('Ajax call success ' + xhr);
+		    }
+		});
+	});
+
+</script>
+
+</body>
+</html>
