@@ -1,0 +1,16 @@
+{
+  "name": "TestMongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mongooseSimpleExample.js",
+  "dependencies": {
+    "mongoose": "^4.0.1",
+    "mongodb": "^2.0.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
