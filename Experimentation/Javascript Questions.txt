@@ -91,3 +91,5 @@ Que diferencia hay entre window.load y $(document).ready()?
 http://dev.w3xperiences.com/tutoriales/js-ajax/diferencia-entre-document-ready-vs-window-load/
 
 Que es el DOM y el BOM?
+Que es más pesado al aplicar en CSS, opacity o drop shadow y por que?
+Cual es la diferencia entre localstorage, sessionstorage y cookie? 
