@@ -7,7 +7,7 @@ Que es una Clase?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 
-Defina Diseño Atómico, OOCSS, BEM, SMACSS y Sass
+Defina Diseño Atómico, OOCSS, BEM, SMACSS (Base, Layout, Module, State and Theme) y Sass 
 http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-atomic-design-patternlab/
 
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
