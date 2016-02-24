@@ -90,6 +90,11 @@ https://learn.jquery.com/plugins/basic-plugin-creation/
 Que diferencia hay entre window.load y $(document).ready()?
 http://dev.w3xperiences.com/tutoriales/js-ajax/diferencia-entre-document-ready-vs-window-load/
 
+Para que se utiliza el objeto $.Deferred()?
+http://tutorials.jenkov.com/jquery/deferred-objects.html
+http://www.etnassoft.com/2011/02/02/el-nuevo-objeto-deferred-en-jquery-1-5/
+https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
+
 Que es el DOM y el BOM?
 Que es más pesado al aplicar en CSS, opacity o drop shadow y por que?
 Cual es la diferencia entre localstorage, sessionstorage y cookie? 
