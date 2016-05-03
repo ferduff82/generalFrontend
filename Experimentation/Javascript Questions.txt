@@ -6,6 +6,7 @@ Es javascript un lenguaje orientado a prototipos?
 Que es una Clase?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
+Que significa AMD?
 
 Defina Diseño Atómico, OOCSS, BEM, SMACSS (Base, Layout, Module, State and Theme) y Sass 
 http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-atomic-design-patternlab/
