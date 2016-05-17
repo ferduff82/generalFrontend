@@ -24,6 +24,14 @@
 
 		pagination();
 
+		$j(".searchDataComponent").keydown(function( event ) {
+			var searchComp = $j(this).val();
+			if ( event.which == 13 ) {
+				event.preventDefault();
+				callService(searchComp);
+			}
+		})
+
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
 			$j(this).next().slideToggle("slow", function() {
 				$j(this).parent().toggleClass("cmeSearchFilterOpen");
@@ -146,16 +154,16 @@
 
 		function pagination() {
 
-			var brokersList = $j("#cmeSearchFilterResults > li"),
+			var brokersList = $j("#cmeSearchFilterResults tr"),
 				wrapper = $j("#cmeSearchFilterResults"),
 				paginationWrapper = $j(".cmePaginationWrapper"),
 				brokersLength = brokersList.length,
-				maxVisibility = 6,
+				maxVisibility = 4,
 				definedLength = 3,
 				increaseLength = 0,
 				calc = Math.ceil(brokersLength / definedLength),
 				setLength = definedLength;
-
+			
 			if (brokersLength > definedLength) {
 				for (var i = 0; i < calc; i++) {
 					var setClass = (i === 0) ? "active" : "" ;
@@ -196,7 +204,7 @@
 						getFirstPosition = $j(".pagination li:nth-child(3)").attr("data-lp");
 
 					brokersList.css("display","none");	
-					wrapperBlock.css("display","block");
+					wrapperBlock.css("display","table-row");
 					for (var i = 0; i < removeArrowsLength; i++) {
 						var iIncreased = i + 3,
 							textIncreased = i + 1;
@@ -218,28 +226,38 @@
 			}
 		}
 
-		function callService() {
+		function callService(isSearch) {
 
-			$j(".cmeTableBlockWrapper").append("<div class='loading'>Loading...</div>");
-
-			function getValue() {
-				for (var i = 0; i < filtersData.length; i++) {
-					var filterService = "&" + filtersData[i].serviceFilterName + "=" + filtersData[i].serviceFilter;   
-					return filterService
-				}
-			}
-			console.log(getValue());
+			$j("#cmeSearchFilterResults").empty();
 			
-			var promise = $j.ajax({ url: "http://www.cmegroup.com/apps/cmegroup/widgets/services/brokerService.json" + getValue()});
-				promise.done(function(data) {
-					$j(".cmeTableBlockWrapper").append("<table>" + data + "</table>");
-				});
-				promise.fail(function() {
-					$j(".cmeTableBlockWrapper").append("Service is not ready, please try again...");
-				});
-				promise.always(function() {
-					$j(".cmeTableBlockWrapper .loading").remove();
-				});
+			if (isSearch) {
+				console.log(isSearch);
+				var promise = $j.ajax({ url: "http://www.cmegroup.com/apps/cmegroup/widgets/services/brokerService.json&search=" + isSearch});
+			} else {
+				function getValue() {
+					for (var i = 0; i < filtersData.length; i++) {
+						var filterService = "&" + filtersData[i].serviceFilterName + "=" + filtersData[i].serviceFilter;   
+						return filterService
+					}
+				}
+				var promise = $j.ajax({ url: "http://www.cmegroup.com/apps/cmegroup/widgets/services/brokerService.json" + getValue()});
+				console.log("second");
+				console.log(getValue());
+			}
+
+			$j(".cmeProgressPanel").css("display","block");
+			$j(".page_top,.page_bottom").empty();
+			
+			promise.done(function(data) {
+				$j(".cmeTableBlockWrapper").append("<table>" + data + "</table>");
+				pagination();
+			});
+			promise.fail(function() {
+				$j(".cmeTableBlockWrapper").append("Service is not ready, please try again...");
+			});
+			promise.always(function() {
+				$j(".cmeProgressPanel").css("display","none");
+			});
 		}
 	})
 })($.noConflict())
