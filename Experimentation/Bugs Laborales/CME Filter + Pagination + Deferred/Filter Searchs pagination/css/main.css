@@ -1,0 +1,24 @@
+table#cmeSearchFilterResults {
+    width: 100%;
+}
+
+.cmeResultListing > tbody tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.cmeResultListing > tbody tr:nth-child(odd) {
+    background: #e4e4e4;
+}
+
+#cmeSearchFilterResults td {
+    overflow: hidden;
+    padding: 10px;
+}
+
+#cmeSearchFilterResults {
+    overflow: auto;
+}
+
+.disabledPageMenu {
+	background-color: #EFEFEF !important;
+}
