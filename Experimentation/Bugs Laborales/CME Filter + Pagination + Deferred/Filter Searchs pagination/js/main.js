@@ -1,5 +1,3 @@
-//window['cme.component.broker'] = function () {
-
 (function($j){
 
 	"use strict";
@@ -26,6 +24,8 @@
 			var that = $j(this).html(),
 				getDataFilter = $j(this).attr("data-filter");
 			storeDomEl.push("<tr data-filter='" + getDataFilter + "'>" + that.toString() + "</tr>");
+			console.log(storeDomEl);
+			console.log(that);
 		}); 
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
@@ -92,6 +92,13 @@
 		function pushData(filterName, filterText, filterDataName) {
 			var newClass = new filterClass(filterName,filterText,filterDataName);
 			filtersData.unshift(newClass);
+
+			filtersData.sort(function (a, b) {
+			  if (a.filter.length > b.filter.length) { return 1; }
+			  if (a.filter.length < b.filter.length) { return -1; }
+			  return 0;
+			});
+
 			showListOfFilters();
 			filterTable();
 		}
@@ -230,19 +237,17 @@
 
 		function filterTable() {
 
-			var filterExists = $j("#cmeSearchFilterResults").find("[data-filter='" + getFilterData + "']").length,
-				tableSelect = $j("#cmeSearchFilterResults tbody");
+				var tableSelect = $j("#cmeSearchFilterResults tbody");
 				tableSelect.empty();
 
-			if (filtersData.length) {			
+			if (filtersData.length) {		
 				for (var i = 0; i < filtersData.length; i++) {
 					var getFilterData = filtersData[i].filter;
 					appendFromFilter(getFilterData);
 				}
 				function appendFromFilter(getFilterData) {
 
-					console.log(getFilterData);
-					console.log(filterExists);
+					var filterExists = $j("#cmeSearchFilterResults").find("[data-filter='" + getFilterData + "']").length;
 
 					for (var i = 0; i < storeDomEl.length; i++) {
 						var getStoreValue = storeDomEl[i];
