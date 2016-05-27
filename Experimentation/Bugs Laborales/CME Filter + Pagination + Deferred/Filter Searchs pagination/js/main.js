@@ -12,14 +12,10 @@
 		pageNumber = undefined,
 		service = $j(".serviceCall");
 
-	function filterClass(filterName, filter, serviceFilterName, serviceFilter) {
+	function filterClass(filterName, filter, filterDataName) {
 		this.filterName = filterName;
 		this.filter = filter;
-		this.serviceFilterName = serviceFilterName;
-		this.serviceFilter = serviceFilter;
-		this.filterGather = function() {
-			return this.filterName + "-" + filter.replace(/ /g, '-');
-		}
+		this.filterDataName = filterDataName;
 	}
 
 	$j(document).ready(function(){
@@ -27,8 +23,9 @@
 		pagination();
 
 		getRows.each(function(){
-			var that = $j(this).html();
-			storeDomEl.push(that.toString());
+			var that = $j(this).html(),
+				getDataFilter = $j(this).attr("data-filter");
+			storeDomEl.push("<tr data-filter='" + getDataFilter + "'>" + that.toString() + "</tr>");
 		}); 
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
@@ -42,19 +39,17 @@
 		$j(".cmeSearchFilter li").on("click", function() {
 
 			var	filterName = $j(this).parent().parent().find("h4").text(),
-				filterText = $j(this).find("label").text(),
-				servicefilterName = $j(this).find(":input").attr("name"),
-				servicefilterText = $j(this).find(":input").attr("value");
+				filterText = $j(this).attr("data-filter"),
+				filterDataName = $j(this).find("label").text();
 
 			if ($j(this).hasClass("cmeCheckboxSelectAll")) {
 				if (!$j(this).hasClass("checked")) {
 					$j(this).siblings().each(function() {
 						if (!$j(this).hasClass("checked")) {
 							var	filterNameAll = $j(this).parent().parent().find("h4").text(),
-								filterTextAll = $j(this).find("label").text(),
-								servicefilterNameAll = $j(this).find(":input").attr("name"),
-								servicefilterTextAll = $j(this).find(":input").attr("value");
-							pushData(filterNameAll,filterTextAll,servicefilterNameAll,servicefilterTextAll);
+								filterTextAll = $j(this).attr("data-filter"),
+								filterDataNameAll = $j(this).find("label").text();
+							pushData(filterNameAll,filterTextAll,filterDataNameAll);
 						}
 					})
 					$j(this).siblings().removeClass("checked");
@@ -69,16 +64,15 @@
 				$j(this).toggleClass("checked");
 			} else if ($j(this).parent().hasClass("cmeRadio")) {
 				if (!$j(this).hasClass("checked")) {
-					var radioFilterName = $j(this).siblings().find("label").text(),
-						removeRadioFilter = filterName + " - " + radioFilterName;
-					removeFilter(removeRadioFilter);	
+					var radioFilterName = $j(this).siblings().attr("data-filter");
+					removeFilter(radioFilterName);	
 					$j(this).siblings().removeClass("checked");
-					pushData(filterName,filterName + " - " + filterText,servicefilterName,servicefilterText);
+					pushData(filterName,filterText,filterDataName);
 				}
 				$j(this).addClass("checked");
 			} else {
 				if (!$j(this).hasClass("checked")) {
-					pushData(filterName ,filterText,servicefilterName,servicefilterText);
+					pushData(filterName,filterText,filterDataName);
 				}
 				$j(this).toggleClass("checked");
 				if (!$j(this).hasClass("checked")) {
@@ -95,8 +89,8 @@
 			filterTable();
 		})
 
-		function pushData(filterName, filterText, serviceFilterName, serviceFilter) {
-			var newClass = new filterClass(filterName,filterText,serviceFilterName,serviceFilter);
+		function pushData(filterName, filterText, filterDataName) {
+			var newClass = new filterClass(filterName,filterText,filterDataName);
 			filtersData.unshift(newClass);
 			showListOfFilters();
 			filterTable();
@@ -108,16 +102,17 @@
 				$j("#cmeSearchFiltersLabel").css("display","block");
 				$j(searchFilterSelected + " ul").empty();
 				for (var i = 0; i < filtersData.length; i++) {
-					$j(searchFilterSelected + " ul").append("<li data-name=" + filtersData[i].filterName + " data-id=" + filtersData[i].filterGather() + ">" + filtersData[i].filter + "</li>");
+					$j(searchFilterSelected + " ul").append("<li data-name=" + filtersData[i].filter + ">" + filtersData[i].filterDataName + "</li>");
 				}
 				$j(searchFilterSelected + " li").on("click", function() {
-					var filterText = $j(this).text();
+					var filterText = $j(this).text(),
+						dataValue = $j(this).attr("data-name");
 					$j(".cmeSearchFilter li").each(function() {
 						if ($j(this).text() === filterText){
 							$j(this).removeClass("checked");
 						}
 					})
-					removeFilter(filterText);
+					removeFilter(dataValue);
 				})
 				if (filtersData.length > 4){
 					$j(searchFilterSelected + " ul li").each(function(index) {
@@ -142,9 +137,9 @@
 			}
 		}
 
-		function removeFilter(filterText) {
+		function removeFilter(dataValue) {
 			for (var i = 0; i < filtersData.length; i++) {
-				if (filtersData[i].filter == filterText) {
+				if (filtersData[i].filter == dataValue) {
 					filtersData.splice(i,1);
 				}
 			}
@@ -235,7 +230,8 @@
 
 		function filterTable() {
 
-			var tableSelect = $j("#cmeSearchFilterResults tbody");
+			var filterExists = $j("#cmeSearchFilterResults").find("[data-filter='" + getFilterData + "']").length,
+				tableSelect = $j("#cmeSearchFilterResults tbody");
 				tableSelect.empty();
 
 			if (filtersData.length) {			
@@ -244,17 +240,23 @@
 					appendFromFilter(getFilterData);
 				}
 				function appendFromFilter(getFilterData) {
+
+					console.log(getFilterData);
+					console.log(filterExists);
+
 					for (var i = 0; i < storeDomEl.length; i++) {
 						var getStoreValue = storeDomEl[i];
-						if (getStoreValue.indexOf(getFilterData) > -1) {
-							tableSelect.append("<tr>" + getStoreValue + "</tr>");
-						} 
+						if (!(filterExists > 0)) {
+							if (getStoreValue.indexOf(getFilterData) > -1) {
+								tableSelect.append(getStoreValue);
+							} 
+						}
 					}
 				}
 			} else {
 				for (var i = 0; i < storeDomEl.length; i++) {
 					var getStoreValue = storeDomEl[i];
-						tableSelect.append("<tr>" + getStoreValue + "</tr>");
+						tableSelect.append(getStoreValue);
 				}
 			}
 			$j("#cmeSearchFilterResults tbody:empty").text("No data available to display.");
