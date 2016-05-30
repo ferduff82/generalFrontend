@@ -2,21 +2,21 @@
 
 	"use strict";
 
-	var filtersData = [],
-		storeDomEl = [],
-		searchFilterSelected = "#cmeSearchFiltersSelected",
-		getRows = $j("#cmeSearchFilterResults tr"),
-		pageTotal = undefined,
-		pageNumber = undefined,
-		service = $j(".serviceCall");
-
-	function filterClass(filterName, filter, filterDataName) {
-		this.filterName = filterName;
-		this.filter = filter;
-		this.filterDataName = filterDataName;
-	}
-
 	$j(document).ready(function(){
+
+		var filtersData = [],
+			storeDomEl = [],
+			searchFilterSelected = "#cmeSearchFiltersSelected",
+			getRows = $j("#cmeSearchFilterResults tr"),
+			pageTotal = undefined,
+			pageNumber = undefined,
+			service = $j(".serviceCall");
+
+		function filterClass(filterName, filter, filterDataName) {
+			this.filterName = filterName;
+			this.filter = filter;
+			this.filterDataName = filterDataName;
+		}
 
 		pagination();
 
@@ -24,8 +24,6 @@
 			var that = $j(this).html(),
 				getDataFilter = $j(this).attr("data-filter");
 			storeDomEl.push("<tr data-filter='" + getDataFilter + "'>" + that.toString() + "</tr>");
-			console.log(storeDomEl);
-			console.log(that);
 		}); 
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
@@ -94,9 +92,11 @@
 			filtersData.unshift(newClass);
 
 			filtersData.sort(function (a, b) {
-			  if (a.filter.length > b.filter.length) { return 1; }
-			  if (a.filter.length < b.filter.length) { return -1; }
-			  return 0;
+				if (a.filter && b.filter) {
+					if (a.filter.length > b.filter.length) { return 1; }
+					if (a.filter.length < b.filter.length) { return -1; }
+					return 0;
+				}
 			});
 
 			showListOfFilters();
