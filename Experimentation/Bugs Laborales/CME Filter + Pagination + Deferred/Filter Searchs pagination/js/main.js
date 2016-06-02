@@ -13,16 +13,16 @@
 			service = $j(".serviceCall");
 
 		function filterClass(filterName, filter, filterDataName) {
-			this.filterName = filterName;
-			this.filter = filter;
-			this.filterDataName = filterDataName;
+			this.filterName = filterName.replace(/ /g,'');
+			if (filter) { this.filter = filter.replace(/ /g,''); }
+			this.filterDataName = filterDataName.replace(/ /g,'');
 		}
 
 		pagination();
 
 		getRows.each(function(){
 			var that = $j(this).html(),
-				getDataFilter = $j(this).attr("data-filter");
+				getDataFilter = $j(this).attr("data-filter").replace(/ /g,'');
 			storeDomEl.push("<tr data-filter='" + getDataFilter + "'>" + that.toString() + "</tr>");
 		}); 
 
@@ -61,6 +61,7 @@
 				}
 				$j(this).toggleClass("checked");
 			} else if ($j(this).parent().hasClass("cmeRadio")) {
+				var filterText = filterText.replace(/ /g,'');
 				if (!$j(this).hasClass("checked")) {
 					var radioFilterName = $j(this).siblings().attr("data-filter");
 					removeFilter(radioFilterName);	
@@ -69,6 +70,7 @@
 				}
 				$j(this).addClass("checked");
 			} else {
+				var filterText = filterText.replace(/ /g,'');
 				if (!$j(this).hasClass("checked")) {
 					pushData(filterName,filterText,filterDataName);
 				}
@@ -161,7 +163,7 @@
 				paginationWrapper = $j(".cmePaginationWrapper"),
 				brokersLength = brokersList.length,
 				maxVisibility = 4,
-				definedLength = 3,
+				definedLength = 12,
 				increaseLength = 0,
 				calc = Math.ceil(brokersLength / definedLength),
 				setLength = definedLength;
