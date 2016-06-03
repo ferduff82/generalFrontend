@@ -8,30 +8,30 @@
 			storeDomEl = [],
 			searchFilterSelected = "#cmeSearchFiltersSelected",
 			getRows = $j("#cmeSearchFilterResults tr"),
+			firstLoad = ".cmeSearchFilter:first h4",
 			pageTotal = undefined,
-			pageNumber = undefined,
-			service = $j(".serviceCall");
+			pageNumber = undefined;
 
 		function filterClass(filterName, filter, filterDataName) {
-			this.filterName = filterName.replace(/ /g,'');
-			if (filter) { this.filter = filter.replace(/ /g,''); }
-			this.filterDataName = filterDataName.replace(/ /g,'');
+			this.filterName = filterName;
+			this.filter = (filter) ? filter.replace(/ /g,'') : filter;
+			this.filterDataName = filterDataName;
 		}
 
+		showList(firstLoad);
 		pagination();
 
 		getRows.each(function(){
 			var that = $j(this).html(),
-				getDataFilter = $j(this).attr("data-filter").replace(/ /g,'');
-			storeDomEl.push("<tr data-filter='" + getDataFilter + "'>" + that.toString() + "</tr>");
+				dataFilter = $j(this).attr("data-filter");
+				dataFilter = (dataFilter) ? dataFilter.replace(/ /g,'') : dataFilter;
+
+			storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
 		}); 
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
-			$j(this).next().slideToggle("slow", function() {
-				$j(this).parent().toggleClass("cmeSearchFilterOpen");
-				$j(this).parent().children("h4").toggleClass("cmeIcon-down-dir");
-				$j(this).parent().children("h4").toggleClass("cmeIcon-right-dir");
-			})
+			var paramSlide = $j(this);
+			showList(paramSlide);
 		})
 
 		$j(".cmeSearchFilter li").on("click", function() {
@@ -61,7 +61,6 @@
 				}
 				$j(this).toggleClass("checked");
 			} else if ($j(this).parent().hasClass("cmeRadio")) {
-				var filterText = filterText.replace(/ /g,'');
 				if (!$j(this).hasClass("checked")) {
 					var radioFilterName = $j(this).siblings().attr("data-filter");
 					removeFilter(radioFilterName);	
@@ -70,7 +69,6 @@
 				}
 				$j(this).addClass("checked");
 			} else {
-				var filterText = filterText.replace(/ /g,'');
 				if (!$j(this).hasClass("checked")) {
 					pushData(filterName,filterText,filterDataName);
 				}
@@ -89,6 +87,14 @@
 			filterTable();
 		})
 
+		function showList(parameterSlide) {
+			$j(parameterSlide).next().slideToggle("slow", function() {
+				$j(this).parent().toggleClass("cmeSearchFilterOpen");
+				$j(this).parent().children("h4").toggleClass("cmeIcon-down-dir");
+				$j(this).parent().children("h4").toggleClass("cmeIcon-right-dir");
+			})
+		}
+
 		function pushData(filterName, filterText, filterDataName) {
 			var newClass = new filterClass(filterName,filterText,filterDataName);
 			filtersData.unshift(newClass);
@@ -100,7 +106,6 @@
 					return 0;
 				}
 			});
-
 			showListOfFilters();
 			filterTable();
 		}
@@ -147,6 +152,9 @@
 		}
 
 		function removeFilter(dataValue) {
+
+			var dataValue = (dataValue) ? dataValue.replace(/ /g,'') : dataValue;
+
 			for (var i = 0; i < filtersData.length; i++) {
 				if (filtersData[i].filter == dataValue) {
 					filtersData.splice(i,1);
@@ -239,7 +247,7 @@
 
 		function filterTable() {
 
-				var tableSelect = $j("#cmeSearchFilterResults tbody");
+			var tableSelect = $j("#cmeSearchFilterResults tbody");
 				tableSelect.empty();
 
 			if (filtersData.length) {		
