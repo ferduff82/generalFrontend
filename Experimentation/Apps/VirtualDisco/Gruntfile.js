@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     watch: {
       scripts: {
         files: ['www/css/*.scss','www/js/*js','www/index.html'],
-        tasks: ['sass','uncss','autoprefixer','jshint','concat','uglify'],
+        tasks: ['sass','uncss','autoprefixer','jshint','concat'],
         options: {
           spawn: false,
           livereload: true
@@ -144,7 +144,8 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('default', ['jshint','concat','uglify','sprite','sass','csslint','uncss','autoprefixer','clean','wiredep','express','open','watch']);
+  grunt.registerTask('prod', ['jshint','concat','uglify','sprite','sass','csslint','uncss','autoprefixer','clean','wiredep','express','open','watch']);
+  grunt.registerTask('dev', ['jshint','concat','sprite','sass','csslint','uncss','autoprefixer','clean','wiredep','express','open','watch']);
   grunt.registerTask('update', ['devUpdate']);
 
 };
