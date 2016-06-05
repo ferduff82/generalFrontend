@@ -75,7 +75,7 @@ Que hace el método .split() y como se usa?
 Que es el Event Bubbling?
 http://javascript.info/tutorial/bubbling-and-capturing
 
-Ademas de las Cookies, que otras formas de guardar datos en el navegador existen?
+Cual es la diferencia entre localstorage, sessionstorage y cookie? 
 http://www.w3schools.com/html/html5_webstorage.asp
 
 Para que sirve el método off() en Jquery?
@@ -99,4 +99,3 @@ https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
 
 Que es el DOM y el BOM?
 Que es más pesado al aplicar en CSS, opacity o drop shadow y por que?
-Cual es la diferencia entre localstorage, sessionstorage y cookie? 
