@@ -1,6 +1,5 @@
 
 virtualDisco.controller('userInstance',['$scope','mainClassUser', '$location', function ($scope, mainClassUser, $location) {
-
     $scope.send = function() {
         var user = new mainClassUser( $scope.username, $scope.edad, $scope.sex, $scope.email, $scope.password );
         $location.path('/boliches').search({user: user});
@@ -15,7 +14,7 @@ virtualDisco.controller('bolichesInstance',['$scope','mainClassDiscos', '$locati
     };        
 }]);
 
-virtualDisco.controller('bolichesController',['$scope', '$routeParams', '$route', function ($scope, $routeParams, $route) {
+virtualDisco.controller('bolichesController',['$scope', '$routeParams', '$route', '$http', function ($scope, $routeParams, $route, $http) {
 
     /* Podemos ejecutar un evento cuando se produzca un cambio de ruta
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -26,6 +25,12 @@ virtualDisco.controller('bolichesController',['$scope', '$routeParams', '$route'
     $scope.showEdad = $routeParams.user.edad;
     $scope.showSex = $routeParams.user.sex;
     $scope.showEmail = $routeParams.user.email;
+
+
+    $http.get("http://demo1861308.mockable.io/fdfesf").then(function(response) {
+        $scope.myData = response.data.results;
+    });
+
 }]);
 
 virtualDisco.controller('bolichesControllerSuccess',['$scope', '$routeParams', '$route', function ($scope, $routeParams, $route) {
