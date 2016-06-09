@@ -18,9 +18,7 @@
 			this.filterDataName = filterDataName;
 		}
 
-		showList(firstLoad);
 		pagination();
-
 		getRows.each(function(){
 			var that = $j(this).html(),
 				dataFilter = $j(this).attr("data-filter");
@@ -28,6 +26,7 @@
 
 			storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
 		}); 
+		readUrlParams();
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
 			var paramSlide = $j(this);
@@ -44,11 +43,9 @@
 				if (!$j(this).hasClass("checked")) {
 					$j(this).siblings().each(function() {
 						if (!$j(this).hasClass("checked")) {
-
 							var	filterNameAll = $j(this).parent().parent().find("h4").text(),
 								filterTextAll = $j(this).attr("data-filter"),
 								filterDataNameAll = $j(this).find("label").text();
-
 							pushData(filterNameAll,filterTextAll,filterDataNameAll);
 						}
 					})
@@ -58,15 +55,12 @@
 					$j(searchFilterSelected + " ul").empty();
 					$j(this).siblings().removeClass("checked");
 					filtersData = [];
-					showListOfFilters();
-					filterTable();
+					getStatusFunctions();
 				}
 				$j(this).toggleClass("checked");
 			} else if ($j(this).parent().hasClass("cmeRadio")) {
 				if (!$j(this).hasClass("checked")) {
-
 					var radioFilterName = $j(this).siblings().find("label").text();
-					
 					removeFilter(radioFilterName);	
 					$j(this).siblings().removeClass("checked");
 					pushData(filterName,filterText,filterDataName);
@@ -87,9 +81,14 @@
 			$j("#cmeSearchFilterControls li").removeClass("checked");
 			$j(searchFilterSelected + " ul").empty();
 			filtersData = [];
+			getStatusFunctions();
+		})
+
+		function getStatusFunctions() {
+			sendUrlParams();
 			showListOfFilters();
 			filterTable();
-		})
+		}
 
 		function showList(parameterSlide) {
 			$j(parameterSlide).next().slideToggle("slow", function() {
@@ -100,9 +99,10 @@
 		}
 
 		function pushData(filterName, filterText, filterDataName) {
-			var newClass = new filterClass(filterName,filterText,filterDataName);
-			filtersData.unshift(newClass);
 
+			var newClass = new filterClass(filterName,filterText,filterDataName);
+
+			filtersData.unshift(newClass);
 			filtersData.sort(function (a, b) {
 				if (a.filter && b.filter) {
 					if (a.filter.length > b.filter.length) { return 1; }
@@ -110,11 +110,91 @@
 					return 0;
 				}
 			});
-			showListOfFilters();
-			filterTable();
+			getStatusFunctions();
+		}
+
+		function removeFilter(dataValue) {
+
+			var dataValue = dataValue.replace(/ /g,'');
+
+			for (var i = 0; i < filtersData.length; i++) {
+				var dataName = filtersData[i].filterDataName;
+					dataName = dataName.replace(/ /g,'');
+				if (dataName == dataValue) {
+					filtersData.splice(i,1);
+				}
+			}
+			getStatusFunctions();
+		}
+
+		function sendUrlParams() {		
+
+			var getUrl = window.location.href,
+				addAmp = (getUrl.indexOf('?') > -1) ? addAmp = "&" : addAmp = "",
+				stringURL = "?";	
+
+			for (var i = 0; i < filtersData.length; i++) {
+				stringURL = stringURL + "fn=" +
+							filtersData[i].filterName + "&ft=" + 
+							filtersData[i].filter + "&fd=" + 
+							filtersData[i].filterDataName + addAmp;
+			}
+			if (addAmp != "") {
+				stringURL = stringURL.slice(0, -1);
+			}
+			window.location.hash = stringURL;
+		}
+
+		function readUrlParams() {
+
+			var storeUrlData = [],
+				slideDown = [],
+				searchString = window.location.href.substring(1),
+				variableArray = searchString.split('=');
+
+			if (variableArray.length <= 1) {
+				showList(firstLoad);
+			};
+		    for(var i = 1; i < variableArray.length; i++){
+		        var KeyValuePair = variableArray[i].split('&');
+		        storeUrlData.push(KeyValuePair[0]);
+		    }
+		    console.log(storeUrlData);
+		    for(var i = 1; i < storeUrlData.length; i++) {
+		    	$j(".cmeSearchFilter h4").each(function(){
+		    		var getTextTitle = $j(this).text();
+		    		if (getTextTitle == storeUrlData[i]) {
+		    			var valueExists = slideDown.indexOf(storeUrlData[i]);
+		    			if (valueExists == -1) {
+		    				showList($j(this));
+		    			}
+		    			slideDown.push(storeUrlData[i]);
+		    		}
+		    	});
+		    	$j(".cmeSearchFilter li label").each(function(){
+		    		var getTextLi = $j(this).text();
+		    		if (getTextLi == storeUrlData[i]) {
+		    			var getCheckboxContainer = storeUrlData[i - 2],
+		    				getParentContainer = $j(this).parent().parent().parent().find("h4").text();
+		    			if (getCheckboxContainer == getParentContainer) {
+		    				$j(this).parent().addClass("checked");
+		    			}		    			
+		    		}
+		    	})
+		    }
+	    	$j("#cmeSearchFilters li.checked").each(function(){
+	    		console.log($j(this));
+	    		var filterNameUrl = $j(this).parent().parent().find("h4").text(),
+	    			filterTextUrl = $j(this).attr("data-filter"),
+	    			filterDataNameUrl = $j(this).find("label").text();
+	    		pushData(filterNameUrl, filterTextUrl, filterDataNameUrl);
+	    	})
 		}
 
 		function showListOfFilters() {
+
+			var showAllLi = $j("#cmeSearchFiltersSelected .show");
+
 			if (filtersData.length > 0) {
 				$j(searchFilterSelected).css("display","block");
 				$j("#cmeSearchFiltersLabel").css("display","block");
@@ -138,34 +218,22 @@
 					  		$j(this).css("display","none");
 					  	}
 					});
-					$j("#cmeSearchFiltersSelected li.show").remove();
-					$j("#cmeSearchFiltersSelected").append("<li class='show'><a href='#'>Show all "+ filtersData.length +" active filters</a></li>");
-					$j("#cmeSearchFiltersSelected li.show").css({"display": "inline-block", "width": "100%"});
-					$j(searchFilterSelected + " a").on("click", function() {
+					showAllLi.remove();
+					$j("#cmeSearchFiltersSelected").append("<div id='showAllFilters' class='show'>Show all "+ filtersData.length +" active filters</div>");
+					showAllLi.css({"display": "inline-block", "width": "100%"});
+					$j(searchFilterSelected + " #showAllFilters").on("click", function() {
 						$j(searchFilterSelected + " ul li").each(function() {
 							$j(this).css("display","block");
 						})
+						$j(this).remove();
 					})
 				} else {
-					$j("#cmeSearchFiltersSelected li.show").remove();
+					showAllLi.remove();
 				}
 			} else {
 				$j(searchFilterSelected).css("display","none");
 				$j("#cmeSearchFiltersLabel").css("display","none");
 			}
-		}
-
-		function removeFilter(dataValue) {
-
-			var dataValue = (dataValue) ? dataValue.replace(/ /g,'') : dataValue;
-
-			for (var i = 0; i < filtersData.length; i++) {
-				if (filtersData[i].filterDataName == dataValue) {
-					filtersData.splice(i,1);
-				}
-			}
-			showListOfFilters();
-			filterTable();
 		}
 
 		function pagination() {
@@ -281,5 +349,6 @@
 			$j("#cmeSearchFilterResults tbody:empty").text("No data available to display.");
 			pagination();
 		}
+
 	})
 })($.noConflict())
