@@ -29,6 +29,8 @@ table#cmeSearchFilterResults {
 
 #showAllFilters {
     display: inline-table;
-    color: #337ab7;
+    color: #1971c4;
     cursor: pointer;
+    clear: both;
+    width: 100%;
 }

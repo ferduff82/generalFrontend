@@ -150,17 +150,18 @@
 			var storeUrlData = [],
 				slideDown = [],
 				searchString = window.location.href.substring(1),
+				paramExists = searchString.split('?'),
+				cqDisplayActive = "wcmmode=disabled#",
 				variableArray = searchString.split('=');
 
-			if (variableArray.length <= 1) {
+			if (paramExists.length <= 1 || paramExists[1] == cqDisplayActive && paramExists.length < 3) {
 				showList(firstLoad);
 			};
 		    for(var i = 1; i < variableArray.length; i++){
 		        var KeyValuePair = variableArray[i].split('&');
 		        storeUrlData.push(KeyValuePair[0]);
 		    }
-		    console.log(storeUrlData);
-		    for(var i = 1; i < storeUrlData.length; i++) {
+		    for(var i = 0; i < storeUrlData.length; i++) {
 		    	$j(".cmeSearchFilter h4").each(function(){
 		    		var getTextTitle = $j(this).text();
 		    		if (getTextTitle == storeUrlData[i]) {
@@ -183,7 +184,6 @@
 		    	})
 		    }
 	    	$j("#cmeSearchFilters li.checked").each(function(){
-	    		console.log($j(this));
 	    		var filterNameUrl = $j(this).parent().parent().find("h4").text(),
 	    			filterTextUrl = $j(this).attr("data-filter"),
 	    			filterDataNameUrl = $j(this).find("label").text();
