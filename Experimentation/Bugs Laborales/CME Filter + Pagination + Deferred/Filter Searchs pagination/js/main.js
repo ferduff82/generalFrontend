@@ -27,6 +27,7 @@
 			storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
 		}); 
 		readUrlParams();
+		activateSelectAll();
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
 			var paramSlide = $j(this);
@@ -52,12 +53,10 @@
 					$j(this).siblings().removeClass("checked");
 					$j(this).siblings().toggleClass("checked");
 				} else {
-					$j(searchFilterSelected + " ul").empty();
 					$j(this).siblings().removeClass("checked");
 					filtersData = [];
 					getStatusFunctions();
 				}
-				$j(this).toggleClass("checked");
 			} else if ($j(this).parent().hasClass("cmeRadio")) {
 				if (!$j(this).hasClass("checked")) {
 					var radioFilterName = $j(this).siblings().find("label").text();
@@ -75,11 +74,11 @@
 					removeFilter(filterDataName);		
 				}
 			}
+			activateSelectAll();
 		})
 
 		$j(".cmeSearchFilterReset").on("click", function() {
 			$j("#cmeSearchFilterControls li").removeClass("checked");
-			$j(searchFilterSelected + " ul").empty();
 			filtersData = [];
 			getStatusFunctions();
 		})
@@ -95,6 +94,36 @@
 				$j(this).parent().toggleClass("cmeSearchFilterOpen");
 				$j(this).parent().children("h4").toggleClass("cmeIcon-down-dir");
 				$j(this).parent().children("h4").toggleClass("cmeIcon-right-dir");
+			})
+		}
+
+		function activateSelectAll() {
+
+			var setSelectAllValue = [],
+				addSelectAll = true;
+
+			$j(".cmeSearchFilter").each(function(){
+				var that = $j(this);
+				$j(this).find("li").not(".cmeCheckboxSelectAll").each(function(){
+					var determinClass = $j(this).hasClass("checked"),
+						selectAll = that.find(".cmeCheckboxSelectAll");
+					if (determinClass == true) {
+						setSelectAllValue.push(true);
+					} else {
+						setSelectAllValue.push(false);
+					}
+					for (var i = 0; i < setSelectAllValue.length; i++) {
+						if (setSelectAllValue[i] == false) {
+							addSelectAll = false;
+							break;
+						}
+					}
+					if (addSelectAll) {
+						selectAll.addClass("checked");
+					} else {
+						selectAll.removeClass("checked");
+					}
+				})
 			})
 		}
 
@@ -211,6 +240,7 @@
 						}
 					})
 					removeFilter(filterText);
+					activateSelectAll();
 				})
 				if (filtersData.length > 4){
 					$j(searchFilterSelected + " ul li").each(function(index) {
@@ -231,6 +261,7 @@
 					showAllLi.remove();
 				}
 			} else {
+				$j(searchFilterSelected + " ul").empty();
 				$j(searchFilterSelected).css("display","none");
 				$j("#cmeSearchFiltersLabel").css("display","none");
 			}
