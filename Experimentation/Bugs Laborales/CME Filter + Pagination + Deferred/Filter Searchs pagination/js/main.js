@@ -19,15 +19,10 @@
 		}
 
 		pagination();
-		getRows.each(function(){
-			var that = $j(this).html(),
-				dataFilter = $j(this).attr("data-filter");
-				dataFilter = (dataFilter) ? dataFilter.replace(/ /g,'') : dataFilter;
-
-			storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
-		}); 
+		getTableImage();
 		readUrlParams();
 		activateSelectAll();
+		determineRadio();
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
 			var paramSlide = $j(this);
@@ -53,14 +48,19 @@
 					$j(this).siblings().removeClass("checked");
 					$j(this).siblings().toggleClass("checked");
 				} else {
+					$j(this).siblings().each(function() {
+						var removeNode = $j(this).find("label").text();
+						removeFilter(removeNode);
+					})
 					$j(this).siblings().removeClass("checked");
-					filtersData = [];
 					getStatusFunctions();
 				}
 			} else if ($j(this).parent().hasClass("cmeRadio")) {
+				var removePrevious = $j(this).parent().find(".checked").text();
 				if (!$j(this).hasClass("checked")) {
-					var radioFilterName = $j(this).siblings().find("label").text();
-					removeFilter(radioFilterName);	
+					if (removePrevious) {
+						removeFilter(removePrevious);	
+					}
 					$j(this).siblings().removeClass("checked");
 					pushData(filterName,filterText,filterDataName);
 				}
@@ -87,6 +87,8 @@
 			sendUrlParams();
 			showListOfFilters();
 			filterTable();
+			fixRepeteadRows();
+			pagination();
 		}
 
 		function showList(parameterSlide) {
@@ -97,16 +99,39 @@
 			})
 		}
 
+		function getTableImage() {
+			getRows.each(function(){
+
+				var that = $j(this).html(),
+					dataFilter = $j(this).attr("data-filter");
+					dataFilter = (dataFilter) ? dataFilter.replace(/ /g,'') : dataFilter;
+
+				storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
+			}); 
+		}
+
+		function determineRadio() {
+			$j(".cmeSearchFilter").each(function(){
+
+				var selectUl = $j(this).find("ul"),
+					getRadio = selectUl.hasClass("cmeRadio");
+				
+				if (getRadio) {
+					selectUl.find(".cmeCheckboxSelectAll").remove();
+				} 
+			})
+		}
+
 		function activateSelectAll() {
 
-			var setSelectAllValue = [],
-				addSelectAll = true;
-
 			$j(".cmeSearchFilter").each(function(){
-				var that = $j(this);
+
+				var selectAll = $j(this).find(".cmeCheckboxSelectAll"),
+					setSelectAllValue = [],
+					addSelectAll = true;
+
 				$j(this).find("li").not(".cmeCheckboxSelectAll").each(function(){
-					var determinClass = $j(this).hasClass("checked"),
-						selectAll = that.find(".cmeCheckboxSelectAll");
+					var determinClass = $j(this).hasClass("checked");
 					if (determinClass == true) {
 						setSelectAllValue.push(true);
 					} else {
@@ -118,12 +143,12 @@
 							break;
 						}
 					}
-					if (addSelectAll) {
-						selectAll.addClass("checked");
-					} else {
-						selectAll.removeClass("checked");
-					}
 				})
+				if (addSelectAll) {
+					selectAll.addClass("checked");
+				} else {
+					selectAll.removeClass("checked");
+				}
 			})
 		}
 
@@ -191,16 +216,6 @@
 		        storeUrlData.push(KeyValuePair[0]);
 		    }
 		    for(var i = 0; i < storeUrlData.length; i++) {
-		    	$j(".cmeSearchFilter h4").each(function(){
-		    		var getTextTitle = $j(this).text();
-		    		if (getTextTitle == storeUrlData[i]) {
-		    			var valueExists = slideDown.indexOf(storeUrlData[i]);
-		    			if (valueExists == -1) {
-		    				showList($j(this));
-		    			}
-		    			slideDown.push(storeUrlData[i]);
-		    		}
-		    	});
 		    	$j(".cmeSearchFilter li label").each(function(){
 		    		var getTextLi = $j(this).text();
 		    		if (getTextLi == storeUrlData[i]) {
@@ -211,11 +226,28 @@
 		    			}		    			
 		    		}
 		    	})
+		    	$j(".cmeSearchFilter label").each(function(){
+
+		    		var labels = $j(this).text(),
+		    			getTitle = $j(this).parents(".cmeSearchFilter").find("h4"),
+		    			valueExists = slideDown.indexOf(storeUrlData[i - 2]),
+		    			getTilteText = getTitle.text();
+
+		    		if (labels == storeUrlData[i] && getTilteText == storeUrlData[i - 2]) {
+		    			if (valueExists == -1) {
+		    				showList(getTitle);
+		    			}
+		    			slideDown.push(storeUrlData[i - 2]);
+		    		}
+		    	})
 		    }
+
 	    	$j("#cmeSearchFilters li.checked").each(function(){
+
 	    		var filterNameUrl = $j(this).parent().parent().find("h4").text(),
 	    			filterTextUrl = $j(this).attr("data-filter"),
 	    			filterDataNameUrl = $j(this).find("label").text();
+
 	    		pushData(filterNameUrl, filterTextUrl, filterDataNameUrl);
 	    	})
 		}
@@ -228,6 +260,7 @@
 				$j(searchFilterSelected).css("display","block");
 				$j("#cmeSearchFiltersLabel").css("display","block");
 				$j(searchFilterSelected + " ul").empty();
+
 				for (var i = 0; i < filtersData.length; i++) {
 					$j(searchFilterSelected + " ul").append("<li data-name=" + filtersData[i].filter + ">" + filtersData[i].filterDataName + "</li>");
 				}
@@ -352,6 +385,7 @@
 
 			var tableSelect = $j("#cmeSearchFilterResults tbody");
 				tableSelect.empty();
+			var rowExists = [];
 
 			if (filtersData.length) {		
 				for (var i = 0; i < filtersData.length; i++) {
@@ -376,10 +410,23 @@
 					var getStoreValue = storeDomEl[i];
 						tableSelect.append(getStoreValue);
 				}
-			}
+			}				
 			$j("#cmeSearchFilterResults tbody:empty").text("No data available to display.");
-			pagination();
 		}
+
+		function fixRepeteadRows() {
+
+			var obj = {};
+
+			$j('#cmeSearchFilterResults *[data-filter]').each(function(){
+			    var text = $j.trim($j(this).text());
+			    if(obj[text]){
+			        $j(this).remove();
+			    } else {
+			        obj[text] = true;
+			    }
+			})
+		} 
 
 	})
 })($.noConflict())
