@@ -9,6 +9,7 @@
 			searchFilterSelected = "#cmeSearchFiltersSelected",
 			getRows = $j("#cmeSearchFilterResults tr"),
 			firstLoad = ".cmeSearchFilter:first h4",
+			setFirstLoad = false,
 			pageTotal,
 			pageNumber;
 
@@ -18,11 +19,7 @@
 			this.filterDataName = filterDataName;
 		}
 
-		pagination();
-		getTableImage();
-		readUrlParams();
-		activateSelectAll();
-		determineRadio();
+		execOnLoad();
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
 			var paramSlide = $j(this);
@@ -31,7 +28,7 @@
 
 		$j(".cmeSearchFilter li").on("click", function() {
 
-			var	filterName = $j(this).parent().parent().find("h4").text(),
+			var	filterName = $j(this).parents(".cmeSearchFilter").find("h4").text(),
 				filterText = $j(this).attr("data-filter"),
 				filterDataName = $j(this).find("label").text();
 
@@ -39,7 +36,7 @@
 				if (!$j(this).hasClass("checked")) {
 					$j(this).siblings().each(function() {
 						if (!$j(this).hasClass("checked")) {
-							var	filterNameAll = $j(this).parent().parent().find("h4").text(),
+							var	filterNameAll = $j(this).parents(".cmeSearchFilter").find("h4").text(),
 								filterTextAll = $j(this).attr("data-filter"),
 								filterDataNameAll = $j(this).find("label").text();
 							pushData(filterNameAll,filterTextAll,filterDataNameAll);
@@ -82,6 +79,14 @@
 			filtersData = [];
 			getStatusFunctions();
 		})
+
+		function execOnLoad() {
+			pagination();
+			getTableImage();
+			readUrlParams();
+			activateSelectAll();
+			determineRadio();
+		}
 
 		function getStatusFunctions() {
 			sendUrlParams();
@@ -188,10 +193,18 @@
 				stringURL = "?";	
 
 			for (var i = 0; i < filtersData.length; i++) {
+
+				var getN = filtersData[i].filterName,
+					getF = filtersData[i].filter,
+					getD = filtersData[i].filterDataName,
+					getFiltername = (getN.indexOf('&') > -1) ? getN.replace('&','@') : getN,
+					getFilter = (getF.indexOf('&') > -1) ? getF.replace('&','@') : getF,
+					getFilterData = (getD.indexOf('&') > -1) ? getD.replace('&','@') : getD;
+
 				stringURL = stringURL + "fn=" +
-							filtersData[i].filterName + "&ft=" + 
-							filtersData[i].filter + "&fd=" + 
-							filtersData[i].filterDataName + addAmp;
+							getFiltername + "&ft=" + 
+							getFilter + "&fd=" + 
+							getFilterData + addAmp;
 			}
 			if (addAmp != "") {
 				stringURL = stringURL.slice(0, -1);
@@ -208,9 +221,6 @@
 				cqDisplayActive = "wcmmode=disabled#",
 				variableArray = searchString.split('=');
 
-			if (paramExists.length <= 1 || paramExists[1] == cqDisplayActive && paramExists.length < 3) {
-				showList(firstLoad);
-			};
 		    for(var i = 1; i < variableArray.length; i++){
 		        var KeyValuePair = variableArray[i].split('&');
 		        storeUrlData.push(KeyValuePair[0]);
@@ -220,7 +230,7 @@
 		    		var getTextLi = $j(this).text();
 		    		if (getTextLi == storeUrlData[i]) {
 		    			var getCheckboxContainer = storeUrlData[i - 2],
-		    				getParentContainer = $j(this).parent().parent().parent().find("h4").text();
+		    				getParentContainer = $j(this).parents(".cmeSearchFilter").find("h4").text();
 		    			if (getCheckboxContainer == getParentContainer) {
 		    				$j(this).parent().addClass("checked");
 		    			}		    			
@@ -241,10 +251,18 @@
 		    		}
 		    	})
 		    }
-
+		    $j(".cmeSearchFilter li").each(function(){
+				var getAnyChecked = $j(this).hasClass("checked");
+				if (getAnyChecked) {
+					setFirstLoad = true;
+				}
+			})
+			if (setFirstLoad == false && paramExists.length < 3 || setFirstLoad == false && paramExists[1] == cqDisplayActive) {
+				showList(firstLoad);
+			};
 	    	$j("#cmeSearchFilters li.checked").each(function(){
 
-	    		var filterNameUrl = $j(this).parent().parent().find("h4").text(),
+	    		var filterNameUrl = $j(this).parents(".cmeSearchFilter").find("h4").text(),
 	    			filterTextUrl = $j(this).attr("data-filter"),
 	    			filterDataNameUrl = $j(this).find("label").text();
 
@@ -260,7 +278,6 @@
 				$j(searchFilterSelected).css("display","block");
 				$j("#cmeSearchFiltersLabel").css("display","block");
 				$j(searchFilterSelected + " ul").empty();
-
 				for (var i = 0; i < filtersData.length; i++) {
 					$j(searchFilterSelected + " ul").append("<li data-name=" + filtersData[i].filter + ">" + filtersData[i].filterDataName + "</li>");
 				}
