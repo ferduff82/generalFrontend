@@ -186,25 +186,18 @@
 			getStatusFunctions();
 		}
 
-		function sendUrlParams() {		
+		function sendUrlParams() {
 
 			var getUrl = window.location.href,
-				addAmp = (getUrl.indexOf('?') > -1) ? addAmp = "&" : addAmp = "",
-				stringURL = "?";	
+				addAmp = (getUrl.indexOf('#') > -1) ? addAmp = "#" : addAmp = "",
+				stringURL = "#";	
 
 			for (var i = 0; i < filtersData.length; i++) {
 
-				var getN = filtersData[i].filterName,
-					getF = filtersData[i].filter,
-					getD = filtersData[i].filterDataName,
-					getFiltername = (getN.indexOf('&') > -1) ? getN.replace('&','@') : getN,
-					getFilter = (getF.indexOf('&') > -1) ? getF.replace('&','@') : getF,
-					getFilterData = (getD.indexOf('&') > -1) ? getD.replace('&','@') : getD;
-
-				stringURL = stringURL + "fn=" +
-							getFiltername + "&ft=" + 
-							getFilter + "&fd=" + 
-							getFilterData + addAmp;
+				stringURL = stringURL + 
+							filtersData[i].filterName + "#" +
+							filtersData[i].filter + "#" +
+							filtersData[i].filterDataName + addAmp;
 			}
 			if (addAmp != "") {
 				stringURL = stringURL.slice(0, -1);
@@ -216,15 +209,14 @@
 
 			var storeUrlData = [],
 				slideDown = [],
-				searchString = window.location.href.substring(1),
-				paramExists = searchString.split('?'),
 				cqDisplayActive = "wcmmode=disabled#",
-				variableArray = searchString.split('=');
-
-		    for(var i = 1; i < variableArray.length; i++){
-		        var KeyValuePair = variableArray[i].split('&');
-		        storeUrlData.push(KeyValuePair[0]);
+				searchString = window.location.href.substring(1),
+				paramExists = searchString.split('#');
+			
+		    for(var i = 1; i < paramExists.length; i++){
+		        storeUrlData.push(paramExists[i]);
 		    }
+
 		    for(var i = 0; i < storeUrlData.length; i++) {
 		    	$j(".cmeSearchFilter li label").each(function(){
 		    		var getTextLi = $j(this).text();
@@ -251,6 +243,7 @@
 		    		}
 		    	})
 		    }
+
 		    $j(".cmeSearchFilter li").each(function(){
 				var getAnyChecked = $j(this).hasClass("checked");
 				if (getAnyChecked) {
