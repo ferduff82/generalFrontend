@@ -1,7 +1,5 @@
 (function($j){
 
-	'use strict';
-
 	$j(document).ready(function(){
 
 		var filtersData = [],
@@ -216,12 +214,15 @@
 		    for(var i = 1; i < paramExists.length; i++){
 		        storeUrlData.push(paramExists[i]);
 		    }
-
 		    for(var i = 0; i < storeUrlData.length; i++) {
 		    	$j(".cmeSearchFilter li label").each(function(){
+
 		    		var getTextLi = $j(this).text();
-		    		if (getTextLi == storeUrlData[i]) {
-		    			var getCheckboxContainer = storeUrlData[i - 2],
+		    			decodeUri = decodeURI(storeUrlData[i]),
+		    			decodedLessTwo = decodeURI(storeUrlData[i - 2]);
+
+		    		if (getTextLi == decodeUri) {
+		    			var getCheckboxContainer = decodedLessTwo,
 		    				getParentContainer = $j(this).parents(".cmeSearchFilter").find("h4").text();
 		    			if (getCheckboxContainer == getParentContainer) {
 		    				$j(this).parent().addClass("checked");
@@ -232,18 +233,17 @@
 
 		    		var labels = $j(this).text(),
 		    			getTitle = $j(this).parents(".cmeSearchFilter").find("h4"),
-		    			valueExists = slideDown.indexOf(storeUrlData[i - 2]),
+		    			valueExists = slideDown.indexOf(decodedLessTwo),
 		    			getTilteText = getTitle.text();
 
-		    		if (labels == storeUrlData[i] && getTilteText == storeUrlData[i - 2]) {
+		    		if (labels == decodeUri && getTilteText == decodedLessTwo) {
 		    			if (valueExists == -1) {
 		    				showList(getTitle);
 		    			}
-		    			slideDown.push(storeUrlData[i - 2]);
+		    			slideDown.push(decodedLessTwo);
 		    		}
 		    	})
 		    }
-
 		    $j(".cmeSearchFilter li").each(function(){
 				var getAnyChecked = $j(this).hasClass("checked");
 				if (getAnyChecked) {
@@ -398,10 +398,6 @@
 			var rowExists = [];
 
 			if (filtersData.length) {		
-				for (var i = 0; i < filtersData.length; i++) {
-					var getFilterData = filtersData[i].filter;
-					appendFromFilter(getFilterData);
-				}
 				function appendFromFilter(getFilterData) {
 
 					var filterExists = $j("#cmeSearchFilterResults").find("[data-filter='" + getFilterData + "']").length;
@@ -414,6 +410,10 @@
 							} 
 						}
 					}
+				}
+				for (var i = 0; i < filtersData.length; i++) {
+					var getFilterData = filtersData[i].filter;
+					appendFromFilter(getFilterData);
 				}
 			} else {
 				for (var i = 0; i < storeDomEl.length; i++) {
