@@ -25,7 +25,7 @@
    * Use the mongodb-uri library to help you convert from the standard format to
    * Mongoose's format.
    */
-  var mongodbUri = 'mongodb://ferduff82:warrant2315@ds041150.mongolab.com:41150/argenbudget';
+  var mongodbUri = 'mongodb://ferduff82:warrant2315@ds041150.mlab.com:41150/argenbudget';
   var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
   mongoose.connect(mongooseUri, options);
@@ -101,15 +101,11 @@
             );
           });
 
-          // Since this is an example, we'll clean up after ourselves.
-          mongoose.connection.db.collection('songs').drop(function (err) {
-            if(err) throw err;
-
             // Only close the connection when your app is terminating
             mongoose.connection.db.close(function (err) {
               if(err) throw err;
             });
-          });
+
         });
       }
     )
