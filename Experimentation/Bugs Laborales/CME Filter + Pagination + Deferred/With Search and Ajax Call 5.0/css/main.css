@@ -1,0 +1,89 @@
+
+ol, ul, li {
+    list-style: none;
+}
+
+#cmeSearchFilterResults > li {
+    overflow: hidden;
+
+}
+
+.cmeResultListing li.emptySearch {
+    background-color: #CCCCCC;
+    padding: 10px;
+    margin: 0px 0px 5px 0px !important;
+}
+
+table#cmeSearchFilterResults {
+    width: 100%;
+}
+
+.cmeResultListing > tbody tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.cmeResultListing > tbody tr:nth-child(odd) {
+    background: #e4e4e4;
+}
+
+#cmeSearchFilterResults td {
+    overflow: hidden;
+    padding: 10px;
+}
+
+#cmeSearchFilterResults {
+    overflow: auto;
+}
+
+.disabledPageMenu {
+	background-color: #EFEFEF !important;
+}
+
+#cmeSearchFilters li input {
+    display: none;
+}
+
+#showAllFilters {
+    display: inline-table;
+    color: #1971c4;
+    cursor: pointer;
+    clear: both;
+    width: 100%;
+}
+
+@media screen and (max-width: 980px) {
+    #cmeSearchFilterLeft {
+        margin-bottom: 0 !important;
+    }
+
+    .btnSearchFilterButtonClass {
+        position: absolute;
+        top: 10px;
+        z-index: 99999;
+        right: 10px;
+        height: 33px;
+        padding: 7px !important;
+    }
+
+    .cmeSearchFilterResetTopClass {
+        position: absolute !important;
+        top: 10px !important;
+        z-index: 99999;
+        height: 33px;
+    }
+
+    .page_bottom ul {
+        margin-bottom: 50px;
+    }
+
+    #cmeSearchFilterBottom {
+        margin-bottom: 61px;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    #btnSearchFilterConfirmBottom {
+        display: none;
+    }
+}
+
