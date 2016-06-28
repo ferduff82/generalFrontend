@@ -5,7 +5,6 @@ ol, ul, li {
 
 #cmeSearchFilterResults > li {
     overflow: hidden;
-
 }
 
 .cmeResultListing li.emptySearch {
@@ -16,6 +15,10 @@ ol, ul, li {
 
 table#cmeSearchFilterResults {
     width: 100%;
+}
+
+.cmeTable {
+    min-width: auto !important;
 }
 
 .cmeResultListing > tbody tr:nth-child(even) {
@@ -78,6 +81,15 @@ table#cmeSearchFilterResults {
 
     #cmeSearchFilterBottom {
         margin-bottom: 61px;
+    }
+
+    .cmeTable th, .cmeTable td {
+        white-space: normal !important;
+    }
+
+    #cmeSearchFilterRight .cmeTableBlockWrapper {
+        overflow-y: hidden;
+        overflow-x: scroll !important;
     }
 }
 

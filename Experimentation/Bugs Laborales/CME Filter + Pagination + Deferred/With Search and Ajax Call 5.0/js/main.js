@@ -6,10 +6,10 @@
 			storeDomEl = [],
 			searchFilterSelected = "#cmeSearchFiltersSelected",
 			getRows = $j("#cmeSearchFilterResults tr"),
+			searchInput = $j(".searchDataComponent"),
 			firstLoad = ".cmeSearchFilter:first h4",
 			setFirstLoad = false,
 			toggleMobileFilter = false,
-			getWidth = window.innerWidth,
 			pageTotal,
 			pageNumber;
 
@@ -27,11 +27,9 @@
 		})
 
 		$j(".cmeSearchFilter li").on("click", function() {
-
 			var	filterName = $j(this).parents(".cmeSearchFilter").find("h4").text(),
 				filterText = $j(this).attr("data-filter"),
 				filterDataName = $j(this).find("label").text();
-
 			if ($j(this).hasClass("cmeCheckboxSelectAll")) {
 				if (!$j(this).hasClass("checked")) {
 					$j(this).siblings().each(function() {
@@ -71,6 +69,7 @@
 					removeFilter(filterDataName);		
 				}
 			}
+			searchInput.val("");
 			activateSelectAll();
 		})
 
@@ -82,9 +81,11 @@
 			}
 		})
 
-		$j(".searchDataComponent").on("keydown", function search(e) {
+		searchInput.on("keydown", function search(e) {
+			var getSearchValue = $j(this).val();
 		    if (e.keyCode == 13) {
-		        callService($j(this).val());
+		        callService(getSearchValue);
+		        sendUrlParams(getSearchValue);
 		    }
 		});
 
@@ -129,25 +130,31 @@
 
 		function getTableImage() {
 			getRows.each(function(){
-
 				var that = $j(this).html(),
 					dataFilter = $j(this).attr("data-filter");
 					dataFilter = (dataFilter) ? dataFilter.replace(/ /g,'') : dataFilter;
-
 				storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
 			}); 
 		}
 
 		function determineRadio() {
 			$j(".cmeSearchFilter").each(function(){
-
 				var selectUl = $j(this).find("ul"),
 					getRadio = selectUl.hasClass("cmeRadio");
-				
 				if (getRadio) {
 					selectUl.find(".cmeCheckboxSelectAll").remove();
 				} 
 			})
+		}
+
+		function showResultsNumber() {
+			var getRowsLength = $j("#cmeSearchFilterResults tr").length;
+			$j("#cmeSearchFilterResultsMessage, #cmeSearchFilterBottomResults").find("span").html(getRowsLength);
+		}
+
+		function emptyResearch() {
+			$j("#cmeSearchFilterResults tbody:empty")
+				.append("<li class='emptySearch'><strong>No results found.</strong> There are no brokers which meet your selection criteria.</li>");
 		}
 
 		function activateMobileFilter() {
@@ -173,11 +180,9 @@
 		function activateSelectAll() {
 
 			$j(".cmeSearchFilter").each(function(){
-
 				var selectAll = $j(this).find(".cmeCheckboxSelectAll"),
 					setSelectAllValue = [],
 					addSelectAll = true;
-
 				$j(this).find("li").not(".cmeCheckboxSelectAll").each(function(){
 					var determinClass = $j(this).hasClass("checked");
 					if (determinClass == true) {
@@ -229,17 +234,21 @@
 			getStatusFunctions();
 		}
 
-		function sendUrlParams() {
+		function sendUrlParams(isSearch) {
 
 			var getUrl = window.location.href,
 				addAmp = (getUrl.indexOf('#') > -1) ? addAmp = "#" : addAmp = "",
 				stringURL = "#";	
 
-			for (var i = 0; i < filtersData.length; i++) {
-				stringURL = stringURL + 
-							filtersData[i].filterName + "#" +
-							filtersData[i].filter + "#" +
-							filtersData[i].filterDataName + addAmp;
+			if (isSearch) {
+				stringURL = stringURL + "search=" + isSearch + addAmp;
+			} else {
+				for (var i = 0; i < filtersData.length; i++) {
+					stringURL = stringURL + 
+								filtersData[i].filterName + "#" +
+								filtersData[i].filter + "#" +
+								filtersData[i].filterDataName + addAmp;
+				}	
 			}
 			if (addAmp != "") {
 				stringURL = stringURL.slice(0, -1);
@@ -253,18 +262,24 @@
 				slideDown = [],
 				cqDisplayActive = "wcmmode=disabled#",
 				searchString = window.location.href.substring(1),
-				paramExists = searchString.split('#');
-			
+				paramExists = searchString.split('#'),
+				getFirstSearch = paramExists[1],
+				searchUse = (getFirstSearch) ? getFirstSearch.search("search") : -1;
+
+			if (searchUse > -1) {
+				var splitDataSearch = getFirstSearch.split('=');
+					getDataSearch = splitDataSearch[1];
+				searchInput.val(getDataSearch);
+				callService(getDataSearch);
+			}
 		    for(var i = 1; i < paramExists.length; i++){
 		        storeUrlData.push(paramExists[i]);
 		    }
 		    for(var i = 0; i < storeUrlData.length; i++) {
 		    	$j(".cmeSearchFilter li label").each(function(){
-
 		    		var getTextLi = $j(this).text();
 		    			decodeUri = decodeURI(storeUrlData[i]),
 		    			decodedLessTwo = decodeURI(storeUrlData[i - 2]);
-
 		    		if (getTextLi == decodeUri) {
 		    			var getCheckboxContainer = decodedLessTwo,
 		    				getParentContainer = $j(this).parents(".cmeSearchFilter").find("h4").text();
@@ -274,12 +289,10 @@
 		    		}
 		    	})
 		    	$j(".cmeSearchFilter label").each(function(){
-
 		    		var labels = $j(this).text(),
 		    			getTitle = $j(this).parents(".cmeSearchFilter").find("h4"),
 		    			valueExists = slideDown.indexOf(decodedLessTwo),
 		    			getTilteText = getTitle.text();
-
 		    		if (labels == decodeUri && getTilteText == decodedLessTwo) {
 		    			if (valueExists == -1) {
 		    				showList(getTitle);
@@ -298,18 +311,17 @@
 				showList(firstLoad);
 			};
 	    	$j("#cmeSearchFilters li.checked").each(function(){
-
 	    		var filterNameUrl = $j(this).parents(".cmeSearchFilter").find("h4").text(),
 	    			filterTextUrl = $j(this).attr("data-filter"),
 	    			filterDataNameUrl = $j(this).find("label").text();
-
 	    		pushData(filterNameUrl, filterTextUrl, filterDataNameUrl);
 	    	})
 		}
 
 		function showListOfFilters() {
 
-			var showAllLi = $j("#cmeSearchFiltersSelected .show");
+			var showAllLi = $j("#cmeSearchFiltersSelected .show"),
+				getWidth = window.innerWidth;
 
 			if (filtersData.length > 0) {
 				$j(searchFilterSelected).css("display","block");
@@ -350,6 +362,7 @@
 					showAllLi.remove();
 				}
 				if (getWidth < 980) {
+					console.log("entra");
 					$j(searchFilterSelected).css("display","none");
 					$j("#cmeSearchFiltersLabel").css("display","none");
 				}
@@ -408,13 +421,11 @@
 				    lastClass: 'last',
 				    firstClass: 'first'
 				}).on("page", function(event, num){
-
 					var numReduced = num - 1,
 						wrapperBlock = wrapper.find(".num" + numReduced),
 						getLiLength = $j(".pagination li").length,
 						removeArrowsLength = (getLiLength / 2) - 4,
 						getFirstPosition = $j(".pagination li:nth-child(3)").attr("data-lp");
-
 					brokersList.css("display","none");	
 					wrapperBlock.css("display","table-row");
 					for (var i = 0; i < removeArrowsLength; i++) {
@@ -437,6 +448,7 @@
 					$j(this).find("a").addClass("disabledPageMenu");
 				})
 			}
+			showResultsNumber();
 		}
 
 		function filterTable() {
@@ -447,9 +459,7 @@
 
 			if (filtersData.length) {		
 				function appendFromFilter(getFilterData) {
-
 					var filterExists = $j("#cmeSearchFilterResults").find("[data-filter='" + getFilterData + "']").length;
-
 					for (var i = 0; i < storeDomEl.length; i++) {
 						var getStoreValue = storeDomEl[i];
 						if (!(filterExists > 0)) {
@@ -469,22 +479,21 @@
 						tableSelect.append(getStoreValue);
 				}
 			}				
-			$j("#cmeSearchFilterResults tbody:empty")
-				.append("<li class='emptySearch'><strong>No results found.</strong> There are no brokers which meet your selection criteria.</li>");
+			emptyResearch();
 		}
 
 		function callService(getValue) {
 
 			var tableContent = $j("#cmeSearchFilterResults tbody");
-			tableContent
-				.append("<div class='cmeProgressPanel'>Processing...</div>");
-			
+				tableContent
+					.append("<div class='cmeProgressPanel'>Processing...</div>");
+
+			clearAll();
+
 			var promise = $j.ajax({ url: tableService.url, data: { search: getValue } });
 				promise.done(function(data) {
-
 					var selectRow = 1;
 					tableContent.empty();
-
 					function getDataColumns(columns) {
 						for (var i = 0; i < columns.length; i++) {
 							$j("#cmeSearchFilterResults tbody tr:nth-child(" + selectRow + ")")
@@ -498,6 +507,7 @@
 							.append("<tr data-filter='" + data.results[i].dataFilterValue + "'></tr>");
 						getDataColumns(columns);
 					}
+					emptyResearch();
 					pagination();
 				});
 				promise.fail(function() {
@@ -510,7 +520,9 @@
 		}
 
 		function fixRepeteadRows() {
+
 			var obj = {};
+
 			$j('#cmeSearchFilterResults *[data-filter]').each(function(){
 			    var text = $j.trim($j(this).text());
 			    if(obj[text]){
