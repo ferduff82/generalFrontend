@@ -243,8 +243,9 @@
 				selectTable = $j("#cmeSearchFilterResults tbody");
 
 			getColumn.each(function() { 
-				var getRowText = $j(this).text().trim();
-				sortArray.push(getRowText);
+				var getRowText = $j(this).text().trim(),
+					capFirstString = capitalizeFirst(getRowText);
+				sortArray.push(capFirstString);
 			})
 			selectTable.append("<div class='cmeProgressPanel'>Processing...</div>");
 			if (typeOfSort === "sortAsc") {
@@ -255,12 +256,12 @@
 			for (var i = 0; i < sortArray.length; i++) {
 				reOrder(sortArray[i]);
 			}
-
 			function reOrder(getSortedString) {
 				getColumn.each(function() {
 					var getColumn = $j(this).text().trim(),
+						getColumnCap = capitalizeFirst(getColumn);
 						getParentRow = $j(this).parent();
-					if (getColumn.indexOf(getSortedString) > -1) {
+					if (getColumnCap.indexOf(getSortedString) > -1) {
 						finalGather.push(getParentRow);
 						getParentRow.remove();
 					} 
@@ -269,10 +270,10 @@
 					selectTable.append(finalGather[i]);
 				}
 			}
-			
 			$j(".cmeProgressPanel").remove();
-			fixRepeteadRows();
 			pagination();
+			$j(".cmePaginationWrapper li:nth-child(4)").find("a").trigger("click");
+			$j(".cmePaginationWrapper li:nth-child(3)").find("a").trigger("click");
 		} 
 
 		function pushData(filterName, filterText, filterDataName) {
@@ -603,9 +604,7 @@
 		}
 
 		function fixRepeteadRows() {
-
 			var obj = {};
-
 			$j('#cmeSearchFilterResults *[data-filter]').each(function(){
 			    var text = $j.trim($j(this).text());
 			    if(obj[text]){
@@ -615,6 +614,12 @@
 			    }
 			})
 		} 
+
+		function capitalizeFirst(getRowText) {
+			var caps = getRowText;
+		    	caps = caps.charAt(0).toUpperCase() + caps.slice(1);
+		    return caps;
+		}
 
 		function stringDes(a, b) {
 			if (a > b) { return -1 }
