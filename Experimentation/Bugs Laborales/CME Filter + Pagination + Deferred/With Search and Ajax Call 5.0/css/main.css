@@ -39,7 +39,7 @@ table#cmeSearchFilterResults {
 }
 
 .disabledPageMenu {
-	background-color: #EFEFEF !important;
+    background-color: #EFEFEF !important;
 }
 
 #cmeSearchFilters li input {
@@ -52,6 +52,16 @@ table#cmeSearchFilterResults {
     cursor: pointer;
     clear: both;
     width: 100%;
+}
+
+.cmePaginationWrapper .pagination {
+    margin: 3px 0 13px;
+}
+
+#cmeSearchFilterResults th {
+    background-color: #252525;
+    color: #fff;
+    font-weight: bold !important;
 }
 
 @media screen and (max-width: 980px) {
@@ -99,3 +109,36 @@ table#cmeSearchFilterResults {
     }
 }
 
+.cmeTableSortingCell a {
+    color: #fff;
+    display: block;
+    padding-right: 14px;
+}
+
+.cmeTableSortingCell:before {
+    content: "";
+    float: right;
+    bottom: 2px;
+    margin-top: 8px;
+    margin-right: 2px;
+    background: url("../img/cmegroup-icon-set.png") no-repeat scroll -2px -470px transparent;
+    width: 10px;
+    height: 6px;
+}
+
+.cmeTableSortingCell.cmeSortActive.cmeSortasc:before {
+    background-position: -2px -444px;
+}
+
+.cmeTableSortingCell.cmeSortActive.cmeSortdesc:before {
+    background-position: -2px -453px;
+}
+
+.cmeTableSortingCell.cmeSortActive a,
+.cmeTableSortingCell a:hover {
+    color: #fbc100 !important;
+}
+
+#cmeSearchFilterResults th {
+    min-width: 108px;
+}

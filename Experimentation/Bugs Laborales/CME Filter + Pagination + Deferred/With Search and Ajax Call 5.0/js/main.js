@@ -5,8 +5,9 @@
 		var filtersData = [],
 			storeDomEl = [],
 			searchFilterSelected = "#cmeSearchFiltersSelected",
-			getRows = $j("#cmeSearchFilterResults tr"),
+			getRows = $j("#cmeSearchFilterResults tbody tr"),
 			searchInput = $j(".searchDataComponent"),
+			sortCell = $j(".cmeTableSortingCell"),
 			firstLoad = ".cmeSearchFilter:first h4",
 			setFirstLoad = false,
 			toggleMobileFilter = false,
@@ -81,12 +82,29 @@
 			}
 		})
 
-		searchInput.on("keydown", function search(e) {
+		sortCell.on("click", function() {
+
+			var self = $j(this),
+				getIndexTable = self.parent().index(),
+				toggleSort = $j(this).hasClass("cmeSortasc");
+
+			sortCell.each(function(){
+				$j(this).removeClass("cmeSortActive");				
+			})
+			self.addClass("cmeSortActive");
+			if (toggleSort) {
+				self.removeClass("cmeSortasc").addClass("cmeSortdesc");
+				sortTable("sortDesc", getIndexTable);
+			} else {
+				self.removeClass("cmeSortdesc").addClass("cmeSortasc");
+				sortTable("sortAsc", getIndexTable);
+			}
+		})
+
+		searchInput.on("keyup", function() {
 			var getSearchValue = $j(this).val();
-		    if (e.keyCode == 13) {
 		        callService(getSearchValue);
 		        sendUrlParams(getSearchValue);
-		    }
 		});
 
 		$j(".cmeSearchFilterReset").on("click", function() {
@@ -111,6 +129,7 @@
 			showListOfFilters();
 			filterTable();
 			fixRepeteadRows();
+			removeHeaderIfEmpty();
 			pagination();
 		}
 
@@ -118,6 +137,16 @@
 			$j("#cmeSearchFilterControls li").removeClass("checked");
 			filtersData = [];
 			getStatusFunctions();
+		}
+
+		function removeHeaderIfEmpty() {
+			var notFound = $j(".emptySearch").length,
+				removeHeader = $j("#cmeSearchFilterResults thead");
+			if (notFound > 0) {
+				removeHeader.css("display","none");
+			} else {
+				removeHeader.css("display","table-header-group");
+			}
 		}
 
 		function showList(parameterSlide) {
@@ -178,7 +207,6 @@
 		}
 
 		function activateSelectAll() {
-
 			$j(".cmeSearchFilter").each(function(){
 				var selectAll = $j(this).find(".cmeCheckboxSelectAll"),
 					setSelectAllValue = [],
@@ -204,6 +232,48 @@
 				}
 			})
 		}
+
+		function sortTable(typeOfSort, getIndexTable) {
+
+			var sortArray = [],
+				emptyElem = [],
+				finalGather = [],
+				incColNum = getIndexTable + 1,
+				getColumn = $j("#cmeSearchFilterResults td:nth-child(" + incColNum + ")"),
+				selectTable = $j("#cmeSearchFilterResults tbody");
+
+			getColumn.each(function() { 
+				var getRowText = $j(this).text().trim();
+				sortArray.push(getRowText);
+			})
+			selectTable.append("<div class='cmeProgressPanel'>Processing...</div>");
+			if (typeOfSort === "sortAsc") {
+				var sortedAsc = sortArray.sort();
+			} else {
+				var sortedDesc = sortArray.sort(stringDes);
+			}
+			for (var i = 0; i < sortArray.length; i++) {
+				reOrder(sortArray[i]);
+			}
+
+			function reOrder(getSortedString) {
+				getColumn.each(function() {
+					var getColumn = $j(this).text().trim(),
+						getParentRow = $j(this).parent();
+					if (getColumn.indexOf(getSortedString) > -1) {
+						finalGather.push(getParentRow);
+						getParentRow.remove();
+					} 
+				}) 
+				for (var i = 0; i < finalGather.length; i++) {
+					selectTable.append(finalGather[i]);
+				}
+			}
+			
+			$j(".cmeProgressPanel").remove();
+			fixRepeteadRows();
+			pagination();
+		} 
 
 		function pushData(filterName, filterText, filterDataName) {
 
@@ -238,8 +308,17 @@
 
 			var getUrl = window.location.href,
 				addAmp = (getUrl.indexOf('#') > -1) ? addAmp = "#" : addAmp = "",
+				searchExist = (getUrl.indexOf('search=') > -1) ? searchExist = true : searchExist = false,
 				stringURL = "#";	
 
+			if (!(filtersData.length)) {
+				if (isSearch == undefined) {
+					if (searchExist) {
+						var urlSplit = getUrl.split('search=');
+							isSearch = urlSplit[1];
+					}
+				}
+			}				
 			if (isSearch) {
 				stringURL = stringURL + "search=" + isSearch + addAmp;
 			} else {
@@ -271,51 +350,52 @@
 					getDataSearch = splitDataSearch[1];
 				searchInput.val(getDataSearch);
 				callService(getDataSearch);
+			} else {
+				for(var i = 1; i < paramExists.length; i++){
+			        storeUrlData.push(paramExists[i]);
+			    }
+			    for(var i = 0; i < storeUrlData.length; i++) {
+			    	$j(".cmeSearchFilter li label").each(function(){
+			    		var getTextLi = $j(this).text();
+			    			decodeUri = decodeURI(storeUrlData[i]),
+			    			decodedLessTwo = decodeURI(storeUrlData[i - 2]);
+			    		if (getTextLi == decodeUri) {
+			    			var getCheckboxContainer = decodedLessTwo,
+			    				getParentContainer = $j(this).parents(".cmeSearchFilter").find("h4").text();
+			    			if (getCheckboxContainer == getParentContainer) {
+			    				$j(this).parent().addClass("checked");
+			    			}		    			
+			    		}
+			    	})
+			    	$j(".cmeSearchFilter label").each(function(){
+			    		var labels = $j(this).text(),
+			    			getTitle = $j(this).parents(".cmeSearchFilter").find("h4"),
+			    			valueExists = slideDown.indexOf(decodedLessTwo),
+			    			getTilteText = getTitle.text();
+			    		if (labels == decodeUri && getTilteText == decodedLessTwo) {
+			    			if (valueExists == -1) {
+			    				showList(getTitle);
+			    			}
+			    			slideDown.push(decodedLessTwo);
+			    		}
+			    	})
+			    }
+			    $j(".cmeSearchFilter li").each(function(){
+					var getAnyChecked = $j(this).hasClass("checked");
+					if (getAnyChecked) {
+						setFirstLoad = true;
+					}
+				})
+				if (setFirstLoad == false && paramExists.length < 3 || setFirstLoad == false && paramExists[1] == cqDisplayActive) {
+					showList(firstLoad);
+				};
+		    	$j("#cmeSearchFilters li.checked").each(function(){
+		    		var filterNameUrl = $j(this).parents(".cmeSearchFilter").find("h4").text(),
+		    			filterTextUrl = $j(this).attr("data-filter"),
+		    			filterDataNameUrl = $j(this).find("label").text();
+		    		pushData(filterNameUrl, filterTextUrl, filterDataNameUrl);
+		    	})
 			}
-		    for(var i = 1; i < paramExists.length; i++){
-		        storeUrlData.push(paramExists[i]);
-		    }
-		    for(var i = 0; i < storeUrlData.length; i++) {
-		    	$j(".cmeSearchFilter li label").each(function(){
-		    		var getTextLi = $j(this).text();
-		    			decodeUri = decodeURI(storeUrlData[i]),
-		    			decodedLessTwo = decodeURI(storeUrlData[i - 2]);
-		    		if (getTextLi == decodeUri) {
-		    			var getCheckboxContainer = decodedLessTwo,
-		    				getParentContainer = $j(this).parents(".cmeSearchFilter").find("h4").text();
-		    			if (getCheckboxContainer == getParentContainer) {
-		    				$j(this).parent().addClass("checked");
-		    			}		    			
-		    		}
-		    	})
-		    	$j(".cmeSearchFilter label").each(function(){
-		    		var labels = $j(this).text(),
-		    			getTitle = $j(this).parents(".cmeSearchFilter").find("h4"),
-		    			valueExists = slideDown.indexOf(decodedLessTwo),
-		    			getTilteText = getTitle.text();
-		    		if (labels == decodeUri && getTilteText == decodedLessTwo) {
-		    			if (valueExists == -1) {
-		    				showList(getTitle);
-		    			}
-		    			slideDown.push(decodedLessTwo);
-		    		}
-		    	})
-		    }
-		    $j(".cmeSearchFilter li").each(function(){
-				var getAnyChecked = $j(this).hasClass("checked");
-				if (getAnyChecked) {
-					setFirstLoad = true;
-				}
-			})
-			if (setFirstLoad == false && paramExists.length < 3 || setFirstLoad == false && paramExists[1] == cqDisplayActive) {
-				showList(firstLoad);
-			};
-	    	$j("#cmeSearchFilters li.checked").each(function(){
-	    		var filterNameUrl = $j(this).parents(".cmeSearchFilter").find("h4").text(),
-	    			filterTextUrl = $j(this).attr("data-filter"),
-	    			filterDataNameUrl = $j(this).find("label").text();
-	    		pushData(filterNameUrl, filterTextUrl, filterDataNameUrl);
-	    	})
 		}
 
 		function showListOfFilters() {
@@ -362,7 +442,6 @@
 					showAllLi.remove();
 				}
 				if (getWidth < 980) {
-					console.log("entra");
 					$j(searchFilterSelected).css("display","none");
 					$j("#cmeSearchFiltersLabel").css("display","none");
 				}
@@ -375,7 +454,7 @@
 
 		function pagination() {
 
-			var brokersList = $j("#cmeSearchFilterResults tr"),
+			var brokersList = $j("#cmeSearchFilterResults tbody tr"),
 				wrapper = $j("#cmeSearchFilterResults"),
 				paginationWrapper = $j(".cmePaginationWrapper"),
 				brokersLength = brokersList.length,
@@ -444,7 +523,9 @@
 				$j(".pagination li.active").find("a").text("1 of " + calc);
 			} else {
 				paginationWrapper.each(function(){
+					$j(this).find("li.active a").text("1 of 1");
 					$j(this).find("li").addClass("disabled");
+					$j(this).find(".disabled").not(".first, .prev, .active, .next, .last").remove();
 					$j(this).find("a").addClass("disabledPageMenu");
 				})
 			}
@@ -453,9 +534,10 @@
 
 		function filterTable() {
 
-			var tableSelect = $j("#cmeSearchFilterResults tbody");
-				tableSelect.empty();
-			var rowExists = [];
+			var tableSelect = $j("#cmeSearchFilterResults tbody"),
+				rowExists = [];
+
+			tableSelect.empty();
 
 			if (filtersData.length) {		
 				function appendFromFilter(getFilterData) {
@@ -516,6 +598,7 @@
 				});
 				promise.always(function() {
 					$j(".cmeProgressPanel").remove();
+					removeHeaderIfEmpty();
 				});
 		}
 
@@ -532,6 +615,12 @@
 			    }
 			})
 		} 
+
+		function stringDes(a, b) {
+			if (a > b) { return -1 }
+		   	else if (a < b) { return 1 }
+		   	else { return 0 }
+		}
 
 	})
 })($.noConflict())
