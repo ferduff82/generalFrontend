@@ -2,91 +2,60 @@
 
 	$j(document).ready(function(){
 
+		/**
+	     * Local Component Vars
+		 */
+
 		var filtersData = [],
 			storeDomEl = [],
+			isList = $j('*[data-type="ul"]').length,
+			getRows = (isList > 0) ? $j("#cmeSearchFilterResults li") : $j("#cmeSearchFilterResults tbody tr"),
+			resultsTitle = $j("#cmeSearchFilterResultsMessage, #cmeSearchFilterBottomResults"),
 			searchFilterSelected = "#cmeSearchFiltersSelected",
-			getRows = $j("#cmeSearchFilterResults tbody tr"),
 			searchInput = $j(".searchDataComponent"),
 			sortCell = $j(".cmeTableSortingCell"),
 			firstLoad = ".cmeSearchFilter:first h4",
+			tableContainer = $j(".cmeTableBlockWrapper"),
 			setFirstLoad = false,
 			toggleMobileFilter = false,
 			pageTotal,
 			pageNumber;
 
+		/**
+	     * Component Filter Class
+		 */
+
 		function filterClass(filterName, filter, filterDataName) {
 			this.filterName = filterName;
-			this.filter = (filter) ? filter.replace(/ /g,'') : filter;
+			this.filter = (filter) ? removeBlank(filter) : filter;
 			this.filterDataName = filterDataName;
 		}
 
+		/**
+	     * Execute on Page Load
+		 */
+
 		execOnLoad();
 
-		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
-			var paramSlide = $j(this);
-			showList(paramSlide);
-		})
+		/**
+	     * Component Events
+		 */
 
-		$j(".cmeSearchFilter li").on("click", function() {
-			var	filterName = $j(this).parents(".cmeSearchFilter").find("h4").text(),
-				filterText = $j(this).attr("data-filter"),
-				filterDataName = $j(this).find("label").text();
-			if ($j(this).hasClass("cmeCheckboxSelectAll")) {
-				if (!$j(this).hasClass("checked")) {
-					$j(this).siblings().each(function() {
-						if (!$j(this).hasClass("checked")) {
-							var	filterNameAll = $j(this).parents(".cmeSearchFilter").find("h4").text(),
-								filterTextAll = $j(this).attr("data-filter"),
-								filterDataNameAll = $j(this).find("label").text();
-							pushData(filterNameAll,filterTextAll,filterDataNameAll);
-						}
-					})
-					$j(this).siblings().removeClass("checked");
-					$j(this).siblings().toggleClass("checked");
-				} else {
-					$j(this).siblings().each(function() {
-						var removeNode = $j(this).find("label").text();
-						removeFilter(removeNode);
-					})
-					$j(this).siblings().removeClass("checked");
-					getStatusFunctions();
-				}
-			} else if ($j(this).parent().hasClass("cmeRadio")) {
-				var removePrevious = $j(this).parent().find(".checked").text();
-				if (!$j(this).hasClass("checked")) {
-					if (removePrevious) {
-						removeFilter(removePrevious);	
-					}
-					$j(this).siblings().removeClass("checked");
-					pushData(filterName,filterText,filterDataName);
-				}
-				$j(this).addClass("checked");
-			} else {
-				if (!$j(this).hasClass("checked")) {
-					pushData(filterName,filterText,filterDataName);
-				}
-				$j(this).toggleClass("checked");
-				if (!$j(this).hasClass("checked")) {
-					removeFilter(filterDataName);		
-				}
-			}
-			searchInput.val("");
-			activateSelectAll();
-		})
+		searchInput.on("keyup", function() {
+			var getSearchValue = $j(this).val();
+		        callService(getSearchValue);
+		        sendUrlParams(getSearchValue);
+		});
 
-		$j("#btnSearchFilterButton, #btnSearchFilterConfirmBottom").on("click", function() {
-			if (toggleMobileFilter == false) {
-				activateMobileFilter();
-			} else {
-				removeMobileFilter();
-			}
-		})
-
-		sortCell.on("click", function() {
+		sortCell.on("click", function(e) {
 
 			var self = $j(this),
 				getIndexTable = self.parent().index(),
-				toggleSort = $j(this).hasClass("cmeSortasc");
+				toggleSort = $j(this).hasClass("cmeSortasc"),
+				selectTable = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody");
+
+			e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+			selectTable.prepend("<div class='cmeProgressPanel'>Processing...</div>");
 
 			sortCell.each(function(){
 				$j(this).removeClass("cmeSortActive");				
@@ -99,13 +68,28 @@
 				self.removeClass("cmeSortdesc").addClass("cmeSortasc");
 				sortTable("sortAsc", getIndexTable);
 			}
+			setTimeout(function(){
+				$j(".cmeProgressPanel").remove();
+			},500);
 		})
 
-		searchInput.on("keyup", function() {
-			var getSearchValue = $j(this).val();
-		        callService(getSearchValue);
-		        sendUrlParams(getSearchValue);
-		});
+		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
+			var paramSlide = $j(this);
+			showList(paramSlide);
+		})
+
+		$j(".cmeSearchFilter li").on("click", function() {
+			var scope = $j(this);
+			handleCheckboxEvent(scope);
+		})
+
+		$j("#btnSearchFilterButton, #btnSearchFilterConfirmBottom").on("click", function() {
+			if (toggleMobileFilter == false) {
+				activateMobileFilter();
+			} else {
+				removeMobileFilter();
+			}
+		})
 
 		$j(".cmeSearchFilterReset").on("click", function() {
 			clearAll();
@@ -116,12 +100,17 @@
 			removeMobileFilter();
 		})
 
+		/**
+	     * Component Functions
+		 */
+
 		function execOnLoad() {
 			pagination();
 			getTableImage();
 			readUrlParams();
 			activateSelectAll();
 			determineRadio();
+			clearHeader();
 		}
 
 		function getStatusFunctions() {
@@ -139,13 +128,23 @@
 			getStatusFunctions();
 		}
 
+		function clearHeader() {
+			if (isList > 0) {
+				$j(".cmeTableSortingCell").each(function(){
+					$j(this).remove();
+				})
+			}
+		}
+
 		function removeHeaderIfEmpty() {
-			var notFound = $j(".emptySearch").length,
-				removeHeader = $j("#cmeSearchFilterResults thead");
-			if (notFound > 0) {
-				removeHeader.css("display","none");
-			} else {
-				removeHeader.css("display","table-header-group");
+			if (isList === 0) {
+				var notFound = $j(".emptySearch").length,
+					removeHeader = $j("#cmeSearchFilterResults thead");
+				if (notFound > 0) {
+					removeHeader.css("display","none");
+				} else {
+					removeHeader.css("display","table-header-group");
+				}
 			}
 		}
 
@@ -161,8 +160,12 @@
 			getRows.each(function(){
 				var that = $j(this).html(),
 					dataFilter = $j(this).attr("data-filter");
-					dataFilter = (dataFilter) ? dataFilter.replace(/ /g,'') : dataFilter;
-				storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
+					dataFilter = (dataFilter) ? removeBlank(dataFilter) : dataFilter;
+				if (isList > 0) {
+					storeDomEl.push("<li data-filter='" + dataFilter + "'>" + that.toString() + "</li>");
+				} else {
+					storeDomEl.push("<tr data-filter='" + dataFilter + "'>" + that.toString() + "</tr>");
+				}
 			}); 
 		}
 
@@ -177,13 +180,25 @@
 		}
 
 		function showResultsNumber() {
-			var getRowsLength = $j("#cmeSearchFilterResults tr").length;
-			$j("#cmeSearchFilterResultsMessage, #cmeSearchFilterBottomResults").find("span").html(getRowsLength);
+			var getRowsLengthType = (isList > 0) ? $j("#cmeSearchFilterResults li").not(".emptySearch") : $j("#cmeSearchFilterResults tbody tr"),
+				getRowsLength = getRowsLengthType.length;
+			resultsTitle.find("span").html(getRowsLength);
+			if (getRowsLength === 0) {
+				resultsTitle.hide();
+			} else {
+				resultsTitle.show();
+			}
 		}
 
 		function emptyResearch() {
-			$j("#cmeSearchFilterResults tbody:empty")
-				.append("<li class='emptySearch'><strong>No results found.</strong> There are no brokers which meet your selection criteria.</li>");
+			var emptyRString = "<li class='emptySearch'><strong>No results found.</strong> There are no brokers which meet your selection criteria.</li>";
+			if (isList > 0) {
+				$j("#cmeSearchFilterResults:empty")
+					.append(emptyRString);
+			} else {
+				$j("#cmeSearchFilterResults tbody:empty")
+					.append(emptyRString);
+			}
 		}
 
 		function activateMobileFilter() {
@@ -233,49 +248,6 @@
 			})
 		}
 
-		function sortTable(typeOfSort, getIndexTable) {
-
-			var sortArray = [],
-				emptyElem = [],
-				finalGather = [],
-				incColNum = getIndexTable + 1,
-				getColumn = $j("#cmeSearchFilterResults td:nth-child(" + incColNum + ")"),
-				selectTable = $j("#cmeSearchFilterResults tbody");
-
-			getColumn.each(function() { 
-				var getRowText = $j(this).text().trim(),
-					capFirstString = capitalizeFirst(getRowText);
-				sortArray.push(capFirstString);
-			})
-			selectTable.append("<div class='cmeProgressPanel'>Processing...</div>");
-			if (typeOfSort === "sortAsc") {
-				var sortedAsc = sortArray.sort();
-			} else {
-				var sortedDesc = sortArray.sort(stringDes);
-			}
-			for (var i = 0; i < sortArray.length; i++) {
-				reOrder(sortArray[i]);
-			}
-			function reOrder(getSortedString) {
-				getColumn.each(function() {
-					var getColumn = $j(this).text().trim(),
-						getColumnCap = capitalizeFirst(getColumn);
-						getParentRow = $j(this).parent();
-					if (getColumnCap.indexOf(getSortedString) > -1) {
-						finalGather.push(getParentRow);
-						getParentRow.remove();
-					} 
-				}) 
-				for (var i = 0; i < finalGather.length; i++) {
-					selectTable.append(finalGather[i]);
-				}
-			}
-			$j(".cmeProgressPanel").remove();
-			pagination();
-			$j(".cmePaginationWrapper li:nth-child(4)").find("a").trigger("click");
-			$j(".cmePaginationWrapper li:nth-child(3)").find("a").trigger("click");
-		} 
-
 		function pushData(filterName, filterText, filterDataName) {
 
 			var newClass = new filterClass(filterName,filterText,filterDataName);
@@ -293,16 +265,104 @@
 
 		function removeFilter(dataValue) {
 
-			var dataValue = dataValue.replace(/ /g,'');
+			var dataValue = removeBlank(dataValue);
 
 			for (var i = 0; i < filtersData.length; i++) {
 				var dataName = filtersData[i].filterDataName;
-					dataName = dataName.replace(/ /g,'');
+					dataName = removeBlank(dataName);
 				if (dataName == dataValue) {
 					filtersData.splice(i,1);
 				}
 			}
 			getStatusFunctions();
+		}
+
+		function sortTable(typeOfSort, getIndexTable) {
+
+			var sortArray = [],
+				emptyElem = [],
+				finalGather = [],
+				incColNum = getIndexTable + 1,
+				selectTable = $j("#cmeSearchFilterResults tbody"),
+				getColumn = $j("#cmeSearchFilterResults td:nth-child(" + incColNum + ")");
+
+			getColumn.each(function() { 
+				var getRowText = $j(this).text().trim(),
+					capFirstString = capitalizeFirst(getRowText);
+				sortArray.push(capFirstString);
+			})
+			if (typeOfSort == "sortAsc") {
+				sortArray.sort();
+			} else {
+				sortArray.sort(stringDes);
+			}
+			for (var i = 0; i < sortArray.length; i++) {
+				var getSortedString = sortArray[i];
+				getColumn.each(function() {
+					var getColumn = $j(this).text().trim(),
+						getColumnCap = capitalizeFirst(getColumn),
+						getParentRow = $j(this).parent();
+					if (getColumnCap === getSortedString) {
+						finalGather.push(getParentRow);
+						getParentRow.remove();
+					} 
+				}) 
+			}
+			for (var i = 0; i < finalGather.length; i++) {
+				selectTable.append(finalGather[i]);
+			}
+			pagination();
+			$j(".cmePaginationWrapper li:nth-child(4)").find("a").trigger("click");
+			$j(".cmePaginationWrapper li:nth-child(3)").find("a").trigger("click");
+		}
+
+		function handleCheckboxEvent(scope) {
+
+			var	filterName = scope.parents(".cmeSearchFilter").find("h4").text(),
+				filterText = scope.attr("data-filter"),
+				filterDataName = scope.find("label").text();
+
+			if (scope.hasClass("cmeCheckboxSelectAll")) {
+				if (!scope.hasClass("checked")) {
+					scope.siblings().each(function() {
+						if (!$j(this).hasClass("checked")) {
+							var	filterNameAll = $j(this).parents(".cmeSearchFilter").find("h4").text(),
+								filterTextAll = $j(this).attr("data-filter"),
+								filterDataNameAll = $j(this).find("label").text();
+							pushData(filterNameAll,filterTextAll,filterDataNameAll);
+						}
+					})
+					scope.siblings().removeClass("checked");
+					scope.siblings().toggleClass("checked");
+				} else {
+					scope.siblings().each(function() {
+						var removeNode = $j(this).find("label").text();
+						removeFilter(removeNode);
+					})
+					scope.siblings().removeClass("checked");
+					getStatusFunctions();
+				}
+			} else if (scope.parent().hasClass("cmeRadio")) {
+				var removePrevious = scope.parent().find(".checked").text();
+				if (!scope.hasClass("checked")) {
+					if (removePrevious) {
+						removeFilter(removePrevious);	
+					}
+					scope.siblings().removeClass("checked");
+					pushData(filterName,filterText,filterDataName);
+				}
+				scope.addClass("checked");
+			} else {
+				if (!scope.hasClass("checked")) {
+					pushData(filterName,filterText,filterDataName);
+				}
+				scope.toggleClass("checked");
+				if (!scope.hasClass("checked")) {
+					removeFilter(filterDataName);		
+				}
+			}
+			searchInput.val("");
+			activateSelectAll();
 		}
 
 		function sendUrlParams(isSearch) {
@@ -312,13 +372,9 @@
 				searchExist = (getUrl.indexOf('search=') > -1) ? searchExist = true : searchExist = false,
 				stringURL = "#";	
 
-			if (!(filtersData.length)) {
-				if (isSearch == undefined) {
-					if (searchExist) {
-						var urlSplit = getUrl.split('search=');
-							isSearch = urlSplit[1];
-					}
-				}
+			if (!(filtersData.length) && isSearch == undefined && searchExist) {
+				var urlSplit = getUrl.split('search=');
+					isSearch = urlSplit[1];
 			}				
 			if (isSearch) {
 				stringURL = stringURL + "search=" + isSearch + addAmp;
@@ -423,9 +479,9 @@
 					removeFilter(filterText);
 					activateSelectAll();
 				})
-				if (filtersData.length > 4){
+				if (filtersData.length > 6){
 					$j(searchFilterSelected + " ul li").each(function(index) {
-					  	if (index > 3) {
+					  	if (index > 5) {
 					  		$j(this).css("display","none");
 					  	}
 					});
@@ -455,9 +511,10 @@
 
 		function pagination() {
 
-			var brokersList = $j("#cmeSearchFilterResults tbody tr"),
+			var brokersList = (isList > 0) ? $j("#cmeSearchFilterResults li") : $j("#cmeSearchFilterResults tbody tr"),
 				wrapper = $j("#cmeSearchFilterResults"),
 				paginationWrapper = $j(".cmePaginationWrapper"),
+				filterContainer = $j(".cmeSearchFiltersWrapper"),
 				brokersLength = brokersList.length,
 				maxVisibility = 4,
 				definedLength = 12,
@@ -466,7 +523,9 @@
 				setLength = definedLength;
 			
 			if (brokersLength > definedLength) {
+				wrapper.css("top","0");
 				paginationWrapper.each(function(){
+					$j(this).show();
 					$j(this).find("li").removeClass("disabled");
 					$j(this).find("a").removeClass("disabledPageMenu");
 				})
@@ -493,6 +552,8 @@
 				    firstLastUse: true,
 				    first: '«',
 				    last: '»',
+				    next: 'Next ›',
+				    prev: '‹ Prev',
 				    wrapClass: 'pagination',
 				    activeClass: 'active',
 				    disabledClass: 'disabled',
@@ -507,7 +568,11 @@
 						removeArrowsLength = (getLiLength / 2) - 4,
 						getFirstPosition = $j(".pagination li:nth-child(3)").attr("data-lp");
 					brokersList.css("display","none");	
-					wrapperBlock.css("display","table-row");
+					if (isList === 0) {
+						wrapperBlock.css("display","table-row");
+					} else {
+						wrapperBlock.css("display","block");
+					}
 					for (var i = 0; i < removeArrowsLength; i++) {
 						var iIncreased = i + 3,
 							textIncreased = i + 1;
@@ -524,20 +589,18 @@
 				$j(".pagination li.active").find("a").text("1 of " + calc);
 			} else {
 				paginationWrapper.each(function(){
-					$j(this).find("li.active a").text("1 of 1");
-					$j(this).find("li").addClass("disabled");
-					$j(this).find(".disabled").not(".first, .prev, .active, .next, .last").remove();
-					$j(this).find("a").addClass("disabledPageMenu");
+					$j(this).hide();
 				})
+				filterContainer.css("margin-top","10px");
 			}
 			showResultsNumber();
 		}
 
 		function filterTable() {
 
-			var tableSelect = $j("#cmeSearchFilterResults tbody"),
+			var tableSelect = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody"),
 				rowExists = [];
-
+				
 			tableSelect.empty();
 
 			if (filtersData.length) {		
@@ -567,7 +630,7 @@
 
 		function callService(getValue) {
 
-			var tableContent = $j("#cmeSearchFilterResults tbody");
+			var tableContent = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody");
 				tableContent
 					.append("<div class='cmeProgressPanel'>Processing...</div>");
 
@@ -579,15 +642,27 @@
 					tableContent.empty();
 					function getDataColumns(columns) {
 						for (var i = 0; i < columns.length; i++) {
-							$j("#cmeSearchFilterResults tbody tr:nth-child(" + selectRow + ")")
-								.append("<td class='vcard column'><div class='vcard'>" + columns[i].content + "</div></td>");
+							var columnsResult = columns[i].content;
+							if (isList > 0) {
+								$j("#cmeSearchFilterResults li:nth-child(" + selectRow + ")")
+									.append("<div class='vcard column'><div class='vcard'>" + columnsResult.xssSafe() + "</div></div>");								
+							} else {
+								$j("#cmeSearchFilterResults tbody tr:nth-child(" + selectRow + ")")
+									.append("<td class='vcard column'><div class='vcard'>" + columnsResult.xssSafe() + "</div></td>");
+							}
 						}
 						selectRow++
 					}
 					for (var i = 0; i < data.results.length; i++) {
-						var columns = data.results[i].columns;
-						tableContent
-							.append("<tr data-filter='" + data.results[i].dataFilterValue + "'></tr>");
+						var columns = data.results[i].columns,
+							resultsFilter = data.results[i].dataFilterValue;
+						if (isList > 0) {
+							tableContent
+								.append("<li data-filter='" + resultsFilter.xssSafe() + "'></li>");
+						} else {
+							tableContent
+								.append("<tr data-filter='" + resultsFilter.xssSafe() + "'></tr>");
+						}
 						getDataColumns(columns);
 					}
 					emptyResearch();
@@ -602,6 +677,10 @@
 					removeHeaderIfEmpty();
 				});
 		}
+
+		/**
+		 * Component Utility Functions
+		 */
 
 		function fixRepeteadRows() {
 			var obj = {};
@@ -621,11 +700,21 @@
 		    return caps;
 		}
 
+		String.prototype.xssSafe = function() {
+		    var node = document.createTextNode(this);
+		    return node.nodeValue;
+		}
+
 		function stringDes(a, b) {
 			if (a > b) { return -1 }
 		   	else if (a < b) { return 1 }
 		   	else { return 0 }
 		}
 
+		function removeBlank(getString) {
+			return getString.replace(/ /g,'');
+		}
+
 	})
+
 })($.noConflict())
