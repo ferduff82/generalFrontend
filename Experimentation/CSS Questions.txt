@@ -1,0 +1,11 @@
+﻿Defina Modelo de Caja CSS
+Explique el uso de box-sizing: border-box;
+
+Que es más pesado al aplicar en CSS, opacity o drop shadow y por que?
+(Drop shadow es mas liviano ya que opacity utiliza varias capas para generar el suavizado)
+
+Que diferencia hay entre position:absolute y position:relative?
+https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/
+
+Defina Diseño Atómico, OOCSS, BEM, SMACSS (Base, Layout, Module, State and Theme) y Sass 
+http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-atomic-design-patternlab/

@@ -1,4 +1,4 @@
-
+﻿
 Es javascript un lenguaje tipado?
 Es javascript un lenguaje orientado a objetos?
 Es javascript un lenguaje orientado a eventos?
@@ -9,10 +9,6 @@ Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 Que significa AMD?
 Que es Semver?
-Defina Modelo de Caja CSS
-
-Defina Diseño Atómico, OOCSS, BEM, SMACSS (Base, Layout, Module, State and Theme) y Sass 
-http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-atomic-design-patternlab/
 
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
@@ -24,12 +20,8 @@ Para que se utiliza el método jQuery.noConflict()
 https://api.jquery.com/jquery.noconflict/
 
 Defina MVC
-Explique el uso de box-sizing: border-box;
 Para que se utiliza comunmente la variable self?
 Para que sirve el método "arguments.length" dentro de una función?
-
-Que diferencia hay entre position:absolute y position:relative?
-https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/
 
 Para que sirve el método prototype?
 http://www.w3schools.com/js/js_object_prototypes.asp
@@ -101,4 +93,3 @@ http://www.etnassoft.com/2011/02/02/el-nuevo-objeto-deferred-en-jquery-1-5/
 https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
 
 Que es el DOM y el BOM?
-Que es más pesado al aplicar en CSS, opacity o drop shadow y por que?
