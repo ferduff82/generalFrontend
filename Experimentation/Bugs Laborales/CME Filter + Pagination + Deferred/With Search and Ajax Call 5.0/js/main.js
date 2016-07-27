@@ -48,29 +48,9 @@
 		});
 
 		sortCell.on("click", function(e) {
-
 			var self = $j(this),
-				getIndexTable = self.parent().index(),
-				toggleSort = $j(this).hasClass("cmeSortasc"),
-				selectTable = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody");
-
-			e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-			selectTable.prepend("<div class='cmeProgressPanel'>Processing...</div>");
-
-			sortCell.each(function(){
-				$j(this).removeClass("cmeSortActive");				
-			})
-			self.addClass("cmeSortActive");
-			if (toggleSort) {
-				self.removeClass("cmeSortasc").addClass("cmeSortdesc");
-				sortTable("sortDesc", getIndexTable);
-			} else {
-				self.removeClass("cmeSortdesc").addClass("cmeSortasc");
-				sortTable("sortAsc", getIndexTable);
-			}
-			setTimeout(function(){
-				$j(".cmeProgressPanel").remove();
-			},500);
+				target = e;
+			orderColumns(self, target);
 		})
 
 		$j("#cmeSearchFilters").on("click", ".cmeSearchFilter h4", function() {
@@ -275,6 +255,31 @@
 				}
 			}
 			getStatusFunctions();
+		}
+
+		function orderColumns(self, e) {
+
+			var getIndexTable = self.parent().index(),
+				toggleSort = self.hasClass("cmeSortasc"),
+				selectTable = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody");
+
+			e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+			selectTable.prepend("<div class='cmeProgressPanel'>Processing...</div>");
+
+			sortCell.each(function(){
+				$j(this).removeClass("cmeSortActive");				
+			})
+			self.addClass("cmeSortActive");
+			if (toggleSort) {
+				self.removeClass("cmeSortasc").addClass("cmeSortdesc");
+				sortTable("sortDesc", getIndexTable);
+			} else {
+				self.removeClass("cmeSortdesc").addClass("cmeSortasc");
+				sortTable("sortAsc", getIndexTable);
+			}
+			setTimeout(function(){
+				$j(".cmeProgressPanel").remove();
+			},500);
 		}
 
 		function sortTable(typeOfSort, getIndexTable) {
@@ -667,6 +672,7 @@
 					}
 					emptyResearch();
 					pagination();
+					getTableImage();
 				});
 				promise.fail(function() {
 					tableContent
