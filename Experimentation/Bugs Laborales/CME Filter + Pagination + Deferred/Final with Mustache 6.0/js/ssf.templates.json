@@ -1,0 +1,9 @@
+{
+	"emptySearch": "<li class='emptySearch'><strong>No results found.</strong> There are no brokers which meet your selection criteria.</li>",
+	"searchFilterSelector": "{{#.}}<li data-name='{{filter}}'>{{filterDataName}}</li>{{/.}}",
+	"showAllFilters": "<div id='showAllFilters' class='show'>Show all {{filtersDataLength}} active filters</div>",
+	"progressPanel": "<div class='cmeProgressPanel'>Processing...</div>",
+	"getColumnsDiv": "{{#columns}}<div class='vcard column'><div class='vcard'>{{#xssSafe}}{{{content}}}{{/xssSafe}}</div></div>{{/columns}}",
+	"getColumnsTd": "{{#columns}}<td class='vcard column'><div class='vcard'>{{#xssSafe}}{{{content}}}{{/xssSafe}}</div></td>{{/columns}}",
+	"serviceFailure": "<li class='emptySearch'><strong>Service failed.</strong> Please try again in a few minutes.</li>"
+}

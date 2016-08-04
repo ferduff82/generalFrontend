@@ -1,0 +1,228 @@
+ol, ul, li {
+    list-style: none;
+}
+
+#cmeSearchFilterWrapper #cmeSearchFilterLeft {
+    margin-top: 46px;
+}
+
+#cmeSearchFilterResults > li {
+    overflow: hidden;
+}
+
+.cmeResultListing li.emptySearch {
+    background-color: #CCCCCC;
+    padding: 10px;
+    margin: 0px 0px 5px 0px !important;
+}
+
+table#cmeSearchFilterResults {
+    width: 100%;
+}
+
+.cmeTable {
+    min-width: auto !important;
+}
+
+.cmeResultListing > tbody tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.cmeResultListing > tbody tr:nth-child(odd) {
+    background: #e4e4e4;
+}
+
+#cmeSearchFilterResults td {
+    overflow: hidden;
+    padding: 10px;
+}
+
+#cmeSearchFilterResults {
+    overflow: auto;
+}
+
+ul#cmeSearchFilterResults {
+    overflow: visible;
+}
+
+.disabledPageMenu {
+    background-color: #EFEFEF !important;
+}
+
+#cmeSearchFilters li input {
+    display: none;
+}
+
+#showAllFilters {
+    line-height: 23px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cmePaginationWrapper .pagination {
+    margin: 3px 0 13px;
+}
+
+#cmeSearchFilterResults th {
+    background-color: #252525;
+    color: #fff;
+    font-weight: bold !important;
+}
+
+#cmeSearchFilterControls .cmeSearchBoxWrapper {
+    position: relative;
+    margin: 14px 0px 13px 0px;
+}
+
+#cmeSearchFilterControls .cmeSearchBoxWrapper #cmeSearchBox {
+    width: 164px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 2px 3px;
+    padding-right: 24px;
+}
+
+#cmeSearchFilterControls .cmeSearchBoxWrapper #cmeSearchIcon {
+    position: absolute;
+    display: block;
+    top: 4px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    font-family: "cmeIcons";
+    font-size: 16px;
+    color: #ccc;
+}
+
+#cmeSearchFilterControls .cmeSearchBoxWrapper #cmeSearchIcon:after {
+    content: '\e801';
+}
+
+#cmeSearchFilterControls #cmeSearchFilters h4 {
+    color: #757575;
+    border-bottom: solid 1px #CCCCCC;
+    margin-bottom: 5px;
+    padding: 7px 0px 7px 2px;
+    cursor: pointer;
+    font-weight: normal;
+    font-family: helvetica, arial, sans-serif;
+}
+
+#cmeSearchFilterWrapper #cmeSearchFilterRight,
+#cmeSearchFilterWrapper #cmeSearchFilterRight .cmeTableBlockWrapper {
+    top: 0;
+}
+
+#cmeSearchFilterRight #cmeSearchFilterResultsMessage {
+    margin: 0;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.firefox #cmeSearchFilterRight .cmePaginationWrapper,
+.chrome #cmeSearchFilterRight .cmePaginationWrapper {
+    margin-top: 0;
+}
+
+#cmeSearchFilterRight .cmePaginationWrapper {
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin-top: 18px;
+}
+
+#cmeSearchFilterRight .cmePaginationWrapper .pagination > .active> a {
+    background-color: #eee;
+    color: #666;
+    border-color: #ddd;
+}
+
+.cmeSearchFiltersWrapper #cmeSearchFiltersLabel {
+    position: relative;
+    margin-top: 4px;
+    float: left;
+    margin-right: 6px;
+}
+
+@media screen and (max-width: 980px) {
+    #cmeSearchFilterLeft {
+        margin-bottom: 0 !important;
+    }
+
+    .btnSearchFilterButtonClass {
+        position: absolute;
+        top: 10px;
+        z-index: 99999;
+        right: 10px;
+        height: 33px;
+        padding: 7px !important;
+    }
+
+    .cmeSearchFilterResetTopClass {
+        position: absolute !important;
+        top: 10px !important;
+        z-index: 99999;
+        height: 33px;
+    }
+
+    .page_bottom ul {
+        margin-bottom: 50px;
+    }
+
+    #cmeSearchFilterBottom {
+        margin-bottom: 61px;
+    }
+
+    .cmeTable th, .cmeTable td {
+        white-space: normal !important;
+    }
+
+    #cmeSearchFilterRight .cmeTableBlockWrapper {
+        overflow-y: hidden;
+        overflow-x: scroll !important;
+    }
+}
+
+@media screen and (min-width: 980px) {
+    #btnSearchFilterConfirmBottom {
+        display: none;
+    }
+}
+
+.cmeTableSortingCell a {
+    color: #fff;
+    display: block;
+    padding-right: 14px;
+}
+
+.cmeTableSortingCell:before {
+    content: "";
+    float: right;
+    bottom: 2px;
+    margin-top: 8px;
+    margin-right: 2px;
+    background: url("../img/cmegroup-icon-set.png") no-repeat scroll -2px -470px transparent;
+    width: 10px;
+    height: 6px;
+}
+
+.cmeTableSortingCell.cmeSortActive.cmeSortasc:before {
+    background-position: -2px -444px;
+}
+
+.cmeTableSortingCell.cmeSortActive.cmeSortdesc:before {
+    background-position: -2px -453px;
+}
+
+.cmeTableSortingCell.cmeSortActive a,
+.cmeTableSortingCell a:hover {
+    color: #fbc100 !important;
+}
+
+#cmeSearchFilterResults th {
+    min-width: 108px;
+}
