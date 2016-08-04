@@ -1,5 +1,7 @@
 ﻿Defina Modelo de Caja CSS
 Explique el uso de box-sizing: border-box;
+Explique el uso de table-layout: fixed; (se usa para que el ancho de tablas sea igual para todas)
+
 
 Que es más pesado al aplicar en CSS, opacity o drop shadow y por que?
 (Drop shadow es mas liviano ya que opacity utiliza varias capas para generar el suavizado)
