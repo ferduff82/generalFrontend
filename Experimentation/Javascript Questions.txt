@@ -10,6 +10,11 @@ Para que sirven los web workers?
 Que significa AMD?
 Que es Semver?
 
+Se puede utilizar x === “object” para testear si x es un objeto?
+Que evaluan “1”+2+3 y 1+2+“3” respectivamente?
+Javascript soporta conversión automática de tipo?
+http://www.skilledup.com/articles/20-must-know-javascript-interview-qa
+
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
 
@@ -65,7 +70,7 @@ Para que se usa 'use strict'?
 Defina Herencia, Encapsulamiento, Abstracción(función anónima) y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
 Que diferencia hay entre Null y Undefined?
-Que hace el método .split() y como se usa?
+Que hace el método .split() y .join() y como se usan?
 
 Que es el Event Bubbling?
 http://javascript.info/tutorial/bubbling-and-capturing
