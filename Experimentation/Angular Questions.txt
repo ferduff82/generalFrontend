@@ -1,0 +1,22 @@
+
+Para que se utiliza $routeScope?
+http://www.dotnet-tricks.com/Tutorial/angularjs/UVDE100914-Understanding-AngularJS-$rootScope-and-$scope.html
+http://jsfiddle.net/FL62y/
+
+Para que se utiliza $routeParams?
+https://thinkster.io/a-better-way-to-learn-angularjs/routeparams-api
+
+Para que se utiliza $watch()?
+https://www.sitepoint.com/mastering-watch-angularjs/
+
+Para que se utiliza $apply() y $diggest()?
+https://www.sitepoint.com/understanding-angulars-apply-digest/
+http://tutorials.jenkov.com/angularjs/watch-digest-apply.html
+
+Para que se utilizan $rootScope.$broadcast, $scope.$broadcast y $scope.$emit?
+http://stackoverflow.com/questions/14502006/working-with-scope-emit-and-on
+http://stackoverflow.com/questions/26752030/rootscope-broadcast-vs-scope-emit
+
+Como crear una clase y para que se utiliza run()?
+http://www.bennadel.com/blog/2527-defining-instantiatable-classes-in-the-angularjs-dependency-injection-framework.htm
+
