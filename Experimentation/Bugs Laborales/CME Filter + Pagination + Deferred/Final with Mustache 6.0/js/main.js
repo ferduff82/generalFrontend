@@ -59,7 +59,7 @@
 				urlFlag = true;
 				searchUrl = getSearchValue;
 				keyUrlInput = true;
-		        callService();
+		        callService(getSearchValue);
 		});
 
 		sortCell.on("click", function(e) {
@@ -87,15 +87,13 @@
 			}
 		})
 
-		$j(".cmeSearchFilterReset").on("click", function() {
-			searchInput.val("");
-			urlFlag = true;
-			clearAll();
-		})
-
 		$j("#btnSearchFilterCancelBottom").on("click", function() {
 			clearAll();
 			removeMobileFilter();
+		})
+
+		$j(".cmeSearchFilterReset").on("click", function() {
+			resetAll();
 		})
 
 		/**
@@ -117,6 +115,14 @@
 			filterTable();
 			fixRepeteadRows();
 			removeHeaderIfEmpty();
+			pagination();
+		}
+
+		function resetAll() {
+			searchInput.val("");
+			urlFlag = true;
+			clearAll();
+			callService();
 			pagination();
 		}
 
@@ -672,9 +678,7 @@
 
 			clearAll();
 
-			// promise = $j.ajax({ url: tableService.url, data: { search: searchUrl } });
-
-				/* To make a call to the service install http-server in node js and open the project from there */
+			//  promise = $j.ajax({ url: tableService.url, data: { search: getDataSearch } });
 				promise = $j.ajax({ url: "http://demo1861308.mockable.io/fdfesf" });
 				promise.done(function(data) {
 					var selectRow = 1;
@@ -769,4 +773,4 @@
 
 	})
 
-})($.noConflict())
+})(jQuery.noConflict())
