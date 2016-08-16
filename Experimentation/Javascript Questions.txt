@@ -71,6 +71,7 @@ Defina Herencia, Encapsulamiento, Abstracción(función anónima) y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
 Que diferencia hay entre Null y Undefined?
 Que hace el método .split() y .join() y como se usan?
+que significa esta nomenclatura en Jquery $j("li","#cmeSearchFilterResults")?
 
 Que es el Event Bubbling?
 http://javascript.info/tutorial/bubbling-and-capturing
