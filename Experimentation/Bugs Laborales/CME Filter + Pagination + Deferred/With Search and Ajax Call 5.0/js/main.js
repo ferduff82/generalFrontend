@@ -9,7 +9,6 @@
 		var filtersData = [],
 			storeDomEl = [],
 			isList = $j('*[data-type="ul"]').length,
-			getRows = (isList > 0) ? $j("#cmeSearchFilterResults li") : $j("#cmeSearchFilterResults tbody tr"),
 			resultsTitle = $j("#cmeSearchFilterResultsMessage, #cmeSearchFilterBottomResults"),
 			searchFilterSelected = "#cmeSearchFiltersSelected",
 			searchInput = $j(".searchDataComponent"),
@@ -18,8 +17,12 @@
 			tableContainer = $j(".cmeTableBlockWrapper"),
 			setFirstLoad = false,
 			toggleMobileFilter = false,
+			keyUrlInput = false,
+			urlFlag = false,
+			searchUrl,
 			pageTotal,
-			pageNumber;
+			pageNumber,
+			templates;
 
 		/**
 	     * Component Filter Class
@@ -35,7 +38,17 @@
 	     * Execute on Page Load
 		 */
 
-		execOnLoad();
+		/*
+		$j.getJSON("/etc/clientlibs/cmegroup/cmeTable/clientlibs/js/ssf.templates.json", function(tmpls) {
+			templates = tmpls;
+			execOnLoad();
+		});
+		*/
+
+		$j.getJSON("js/ssf.templates.json", function(tmpls) {
+			templates = tmpls;
+			execOnLoad();
+		});
 
 		/**
 	     * Component Events
@@ -43,8 +56,10 @@
 
 		searchInput.on("keyup", function() {
 			var getSearchValue = $j(this).val();
+				urlFlag = true;
+				searchUrl = getSearchValue;
+				keyUrlInput = true;
 		        callService(getSearchValue);
-		        sendUrlParams(getSearchValue);
 		});
 
 		sortCell.on("click", function(e) {
@@ -60,6 +75,7 @@
 
 		$j(".cmeSearchFilter li").on("click", function() {
 			var scope = $j(this);
+				urlFlag = true;
 			handleCheckboxEvent(scope);
 		})
 
@@ -71,13 +87,13 @@
 			}
 		})
 
-		$j(".cmeSearchFilterReset").on("click", function() {
-			clearAll();
-		})
-
 		$j("#btnSearchFilterCancelBottom").on("click", function() {
 			clearAll();
 			removeMobileFilter();
+		})
+
+		$j(".cmeSearchFilterReset").on("click", function() {
+			resetAll();
 		})
 
 		/**
@@ -99,6 +115,14 @@
 			filterTable();
 			fixRepeteadRows();
 			removeHeaderIfEmpty();
+			pagination();
+		}
+
+		function resetAll() {
+			searchInput.val("");
+			urlFlag = true;
+			clearAll();
+			callService();
 			pagination();
 		}
 
@@ -137,6 +161,8 @@
 		}
 
 		function getTableImage() {
+			var getRows = (isList > 0) ? $j("#cmeSearchFilterResults li") : $j("#cmeSearchFilterResults tbody tr");
+			storeDomEl.clear();
 			getRows.each(function(){
 				var that = $j(this).html(),
 					dataFilter = $j(this).attr("data-filter");
@@ -171,7 +197,7 @@
 		}
 
 		function emptyResearch() {
-			var emptyRString = "<li class='emptySearch'><strong>No results found.</strong> There are no brokers which meet your selection criteria.</li>";
+			var emptyRString = Mustache.to_html(templates.emptySearch);
 			if (isList > 0) {
 				$j("#cmeSearchFilterResults:empty")
 					.append(emptyRString);
@@ -264,7 +290,7 @@
 				selectTable = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody");
 
 			e.preventDefault ? e.preventDefault() : (e.returnValue = false);
-			selectTable.prepend("<div class='cmeProgressPanel'>Processing...</div>");
+			selectTable.prepend(Mustache.to_html(templates.progressPanel));
 
 			sortCell.each(function(){
 				$j(this).removeClass("cmeSortActive");				
@@ -366,35 +392,40 @@
 					removeFilter(filterDataName);		
 				}
 			}
-			searchInput.val("");
 			activateSelectAll();
 		}
 
-		function sendUrlParams(isSearch) {
+		function sendUrlParams() {
+			if (urlFlag) {
+				var getUrl = window.location.href,
+					addAmp = (getUrl.indexOf('#') > -1) ? addAmp = "#" : addAmp = "",
+					searchExist = (getUrl.indexOf('search=') > -1) ? searchExist = true : searchExist = false,
+					inputValue = searchInput.val(),
+					urlSplit = getUrl.split('search='),
+					stringURL = "#";	
 
-			var getUrl = window.location.href,
-				addAmp = (getUrl.indexOf('#') > -1) ? addAmp = "#" : addAmp = "",
-				searchExist = (getUrl.indexOf('search=') > -1) ? searchExist = true : searchExist = false,
-				stringURL = "#";	
-
-			if (!(filtersData.length) && isSearch == undefined && searchExist) {
-				var urlSplit = getUrl.split('search=');
-					isSearch = urlSplit[1];
-			}				
-			if (isSearch) {
-				stringURL = stringURL + "search=" + isSearch + addAmp;
-			} else {
+				if (searchExist && keyUrlInput == false && urlSplit[1] != "") {
+					searchUrl = urlSplit[1];
+					hasAmp = (searchUrl.indexOf('#') > -1) ? hasAmp = true : hasAmp = false;
+					if (hasAmp) {
+						var splitUrl = searchUrl.split('#');
+						searchUrl = splitUrl[0];
+					}
+				}				
+				if (inputValue != "") {
+					stringURL = stringURL + "search=" + searchUrl + addAmp;
+				} 
 				for (var i = 0; i < filtersData.length; i++) {
 					stringURL = stringURL + 
 								filtersData[i].filterName + "#" +
 								filtersData[i].filter + "#" +
 								filtersData[i].filterDataName + addAmp;
 				}	
+				if (addAmp != "") {
+					stringURL = stringURL.slice(0, -1);
+				}
+				window.location.hash = stringURL;
 			}
-			if (addAmp != "") {
-				stringURL = stringURL.slice(0, -1);
-			}
-			window.location.hash = stringURL;
 		}
 
 		function readUrlParams() {
@@ -412,7 +443,13 @@
 					getDataSearch = splitDataSearch[1];
 				searchInput.val(getDataSearch);
 				callService(getDataSearch);
+				promise.done(function() {
+					continueReadUrl();
+				});
 			} else {
+				continueReadUrl();
+			}
+			function continueReadUrl() {
 				for(var i = 1; i < paramExists.length; i++){
 			        storeUrlData.push(paramExists[i]);
 			    }
@@ -466,25 +503,25 @@
 				getWidth = window.innerWidth;
 
 			if (filtersData.length > 0) {
-				$j(searchFilterSelected).css("display","block");
 				$j("#cmeSearchFiltersLabel").css("display","block");
-				$j(searchFilterSelected + " ul").empty();
-				for (var i = 0; i < filtersData.length; i++) {
-					$j(searchFilterSelected + " ul")
-						.append("<li data-name=" + filtersData[i].filter + ">" + filtersData[i].filterDataName + "</li>");
-				}
+				$j(searchFilterSelected)
+					.css("display","block")
+					.find("ul")
+					.empty()
+					.append(Mustache.to_html(templates.searchFilterSelector, filtersData));
 				$j(searchFilterSelected + " li").on("click", function() {
-					var filterText = $j(this).text(),
+					var filterText = $j(this).text();
+						urlFlag = true;
 						dataValue = $j(this).attr("data-name");
 					$j(".cmeSearchFilter li").each(function() {
 						if ($j(this).text() === filterText){
 							$j(this).removeClass("checked");
 						}
-					})
+					});
 					removeFilter(filterText);
 					activateSelectAll();
 				})
-				if (filtersData.length > 6){
+				if (filtersData.length > 6) {
 					$j(searchFilterSelected + " ul li").each(function(index) {
 					  	if (index > 5) {
 					  		$j(this).css("display","none");
@@ -492,7 +529,9 @@
 					});
 					showAllLi.remove();
 					$j("#cmeSearchFiltersSelected")
-						.append("<div id='showAllFilters' class='show'>Show all "+ filtersData.length +" active filters</div>");
+						.append(Mustache.to_html(templates.showAllFilters, {
+							filtersDataLength: filtersData.length
+						}));
 					showAllLi.css({"display": "inline-block", "width": "100%"});
 					$j(searchFilterSelected + " #showAllFilters").on("click", function() {
 						$j(searchFilterSelected + " ul li").each(function() {
@@ -549,7 +588,7 @@
 					definedLength = definedLength + setLength;
 					increaseLength = increaseLength + setLength;
 				} 		
-				$j('.page_top,.page_bottom').bootpag({
+				$j('.page_top, .page_bottom').bootpag({
 				    total: calc,
 				    page: 1,
 				    maxVisible: maxVisibility,
@@ -584,7 +623,7 @@
 							if (getFirstPosition > 1) {
 								var increasedPageValue = getFirstPosition++;
 							} else {
-								var increasedPageValue = textIncreased
+								var increasedPageValue = textIncreased;
 							}
 						$j(".pagination li:nth-child(" + iIncreased + ")").find("a").text(increasedPageValue);
 					}
@@ -613,10 +652,8 @@
 					var filterExists = $j("#cmeSearchFilterResults").find("[data-filter='" + getFilterData + "']").length;
 					for (var i = 0; i < storeDomEl.length; i++) {
 						var getStoreValue = storeDomEl[i];
-						if (!(filterExists > 0)) {
-							if (getStoreValue.indexOf(getFilterData) > -1) {
-								tableSelect.append(getStoreValue);
-							} 
+						if (!(filterExists > 0) && getStoreValue.indexOf(getFilterData) > -1) {
+							tableSelect.append(getStoreValue);
 						}
 					}
 				}
@@ -633,30 +670,39 @@
 			emptyResearch();
 		}
 
-		function callService(getValue) {
+		function callService(getDataSearch) {
 
 			var tableContent = (isList > 0) ? $j("#cmeSearchFilterResults") : $j("#cmeSearchFilterResults tbody");
 				tableContent
-					.append("<div class='cmeProgressPanel'>Processing...</div>");
+					.append(Mustache.to_html(templates.progressPanel));
 
 			clearAll();
 
-			var promise = $j.ajax({ url: tableService.url, data: { search: getValue } });
+			//  promise = $j.ajax({ url: tableService.url, data: { search: getDataSearch } });
+				promise = $j.ajax({ url: "http://demo1861308.mockable.io/fdfesf" });
 				promise.done(function(data) {
 					var selectRow = 1;
 					tableContent.empty();
 					function getDataColumns(columns) {
-						for (var i = 0; i < columns.length; i++) {
-							var columnsResult = columns[i].content;
-							if (isList > 0) {
-								$j("#cmeSearchFilterResults li:nth-child(" + selectRow + ")")
-									.append("<div class='vcard column'><div class='vcard'>" + columnsResult.xssSafe() + "</div></div>");								
-							} else {
-								$j("#cmeSearchFilterResults tbody tr:nth-child(" + selectRow + ")")
-									.append("<td class='vcard column'><div class='vcard'>" + columnsResult.xssSafe() + "</div></td>");
-							}
+						var getColumnsTmpl, columnsChildrenSelector;
+						if (isList > 0) {
+							getColumnsTmpl = templates.getColumnsDiv;
+							columnsChildrenSelector = "li:nth-child(" + selectRow + ")";
+						} else {
+							getColumnsTmpl = templates.getColumnsTd;
+							columnsChildrenSelector = "tbody tr:nth-child(" + selectRow + ")";
 						}
-						selectRow++
+						$j(columnsChildrenSelector, "#cmeSearchFilterResults").each(function(index, el) {
+							$j(el).append(Mustache.to_html(getColumnsTmpl, {
+								columns: columns,
+								xssSafe: function() {
+									return function(text, render) {
+										return render(text.xssSafe());
+									};
+								}
+							}));
+						});
+						selectRow ++
 					}
 					for (var i = 0; i < data.results.length; i++) {
 						var columns = data.results[i].columns,
@@ -676,7 +722,7 @@
 				});
 				promise.fail(function() {
 					tableContent
-						.html("<li class='emptySearch'><strong>Service failed.</strong> Please try again in a few minutes.</li>");
+						.html(Mustache.to_html(templates.serviceFailure));
 				});
 				promise.always(function() {
 					$j(".cmeProgressPanel").remove();
@@ -711,6 +757,10 @@
 		    return node.nodeValue;
 		}
 
+		Array.prototype.clear = function() {
+	       this.splice(0, this.length);
+	    }
+
 		function stringDes(a, b) {
 			if (a > b) { return -1 }
 		   	else if (a < b) { return 1 }
@@ -723,4 +773,4 @@
 
 	})
 
-})($.noConflict())
+})(jQuery.noConflict())
