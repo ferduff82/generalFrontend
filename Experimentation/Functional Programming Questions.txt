@@ -1,0 +1,16 @@
+
+Para que se usan?
+filter();
+map();
+reduce();
+range();
+pluck();
+http://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-an-array-based-on-suppl
+http://stackoverflow.com/questions/9329114/equivalent-of-underscore-js-pluck-in-jquery
+
+que es el Currying?
+https://www.sitepoint.com/currying-in-functional-javascript/
+
+Cual es la idea de codeo de Ramda?
+http://slides.com/andydrew/ramda-js-curry-compose#/7
+
