@@ -1,4 +1,4 @@
-
+﻿
 Como crear un plugin en Jquery + evitar conflictos con $ entre Jquery y otras librerías:
 
 (function( $ ) {
@@ -47,3 +47,15 @@ var sum = function () {
 };
 
 console.log(sum(20, 30, 50)); // => 100
+
+-----------------------------------------------------------------------------------------------------
+
+Escapar una función por alguna condición:
+
+function escape() {
+  if ( !x ) {
+   return;
+  }
+  console.log("aca no llega");
+}
+
