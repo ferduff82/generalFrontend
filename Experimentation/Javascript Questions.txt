@@ -10,6 +10,9 @@ Para que sirven los web workers?
 Que significa AMD?
 Que es Semver?
 
+Que significan if(!x), if(!!x)?
+(La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
+
 Se puede utilizar x === “object” para testear si x es un objeto?
 Que evaluan “1”+2+3 y 1+2+“3” respectivamente?
 Javascript soporta conversión automática de tipo?
