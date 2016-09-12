@@ -10,6 +10,9 @@ Para que sirven los web workers?
 Que significa AMD?
 Que es Semver?
 
+Que es el hoisting?
+http://www.w3schools.com/js/js_hoisting.asp
+
 Que significan if(!x), if(!!x)?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
 
