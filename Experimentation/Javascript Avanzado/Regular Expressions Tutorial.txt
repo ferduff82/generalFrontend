@@ -1,0 +1,96 @@
+Contiene caracteres de la A a la C en alguna parte del string.
+
+/[a-c]/
+
+Contiene solo caracteres de la X a la Z.
+
+/^[x-z]+$/
+
+Contiene espacios y digitos.
+
+(\s\d)
+
+ej: zce 3
+
+Contiene por lo menos una n
+
+n+
+
+Contiene ninguna n o muchas n
+
+n*
+
+Contiene ninguna o n o un a sola n
+
+n?
+
+Escapar un caracter 
+
+\.
+
+Contiene cualquier caracter
+
+.
+
+Ej: b
+
+Contiene cualquier caracter hasta el infinito
+
+.*
+
+Ej: asñdfjsdjfñadfñsd
+
+
+Contiene cualquier palabra en el texto el(culaquier letra)t.
+
+/el.t/g;
+
+Ej: elat elot elit
+
+
+Contiene cualquier palabra en el texto con la l opcional
+
+/l?est/g
+
+Ej: est lest
+
+ 
+Debe contener la palabra cat o can
+
+/ca[tn]/g
+
+
+No debe contener ni la palabra cat ni tampoco can
+
+/ca[^tn]/g
+
+
+Tiene que tener digitos en alguna parte
+
+/\d/g
+
+Ej: tengo 8 años
+
+
+Tiene que tener digitos de 1 o mas caracteres
+
+/\d+/g
+
+Ej: paso en 1985
+
+
+Contiene entre 4 y 6 caracteres
+
+/\b\w{4,6}\b/g
+
+
+Contiene de 5 caracteres en adelante
+
+/\b\w{5,}\b/g
+
+
+Ejemplo de URL:
+
+/^https?:\/\/(?:www\.|(?!www))[\w\/?.&-=]+$/
+
+
