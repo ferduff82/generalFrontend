@@ -3,6 +3,8 @@ Para que se usan?
 filter();
 map();
 reduce();
+(Reduce se usa para agrupar un array a un solo valor, se esperan dos valores, el primero es el callback y el segundo es el valor de inicialización del array): ej: https://msdn.microsoft.com/en-us/library/ff679975(v=VS.94).aspx
+
 range();
 pluck();
 http://stackoverflow.com/questions/3895478/does-javascript-have-a-method-like-range-to-generate-an-array-based-on-suppl
