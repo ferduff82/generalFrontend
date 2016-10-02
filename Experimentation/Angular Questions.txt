@@ -20,3 +20,6 @@ http://stackoverflow.com/questions/26752030/rootscope-broadcast-vs-scope-emit
 Como crear una clase y para que se utiliza run()?
 http://www.bennadel.com/blog/2527-defining-instantiatable-classes-in-the-angularjs-dependency-injection-framework.htm
 
+Que novedad introduce Angular 1.5? que es el component y que diferencia hay con las directivas?
+http://www.desarrolloweb.com/articulos/componentes-angularjs-15.html
+
