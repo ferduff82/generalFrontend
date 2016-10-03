@@ -3,6 +3,7 @@ Es javascript un lenguaje tipado?
 Es javascript un lenguaje orientado a objetos o orientado a functional? (es orientado a ambos)
 Es javascript un lenguaje orientado a eventos?
 Es javascript un lenguaje orientado a prototipos?
+Cual es el origen de Javascript? (Scheme y Java)
 Por que hay 4 diferentes versiones de Javascript? (por Google, Mozilla, Microsof y Facebook)
 Que es una Clase?
 Que son los namespaces?
