@@ -1,6 +1,6 @@
 ﻿
 Es javascript un lenguaje tipado?
-Es javascript un lenguaje orientado a objetos?
+Es javascript un lenguaje orientado a objetos o orientado a functional? (es orientado a ambos)
 Es javascript un lenguaje orientado a eventos?
 Es javascript un lenguaje orientado a prototipos?
 Que es una Clase?
