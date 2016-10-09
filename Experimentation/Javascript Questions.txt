@@ -11,6 +11,10 @@ Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 Que significa AMD?
 Que es Semver?
+Defina MVC
+
+Para que se utiliza comunmente la variable self?
+Para que sirve el método "arguments.length" dentro de una función?
 
 Que es el hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
@@ -32,10 +36,6 @@ https://4loc.wordpress.com/2009/04/28/documentready-vs-windowload/
 Para que se utiliza el método jQuery.noConflict()
 https://api.jquery.com/jquery.noconflict/
 
-Defina MVC
-Para que se utiliza comunmente la variable self?
-Para que sirve el método "arguments.length" dentro de una función?
-
 Para que sirve el método prototype?
 http://www.w3schools.com/js/js_object_prototypes.asp
 http://codehero.co/javascript-desmitificado-objetos/
@@ -45,8 +45,6 @@ http://www.etnassoft.com/2011/04/13/el-patron-javascript-proxy-y-los-contextos-p
 
 Que es un operador ternario?
 https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
-
-Es posible crear o modificar archivos con Javascript, por ejemplo un JSON?
 
 Cual es la diferencia entre == y ===, que es la Type coercion?
 http://stackoverflow.com/questions/19915688/what-exactly-is-type-coercion-in-javascript
@@ -86,6 +84,9 @@ http://javascript.info/tutorial/bubbling-and-capturing
 
 Cual es la diferencia entre localstorage, sessionstorage y cookie? 
 http://www.w3schools.com/html/html5_webstorage.asp
+
+Que diferencia hay entre bind y call/apply
+(bind crea una funcion que espera un evento, se usa normalmente para eventos, mientras que call y apply se ejecutan inmediatamente)
 
 Para que sirve el método off() en Jquery?
 
