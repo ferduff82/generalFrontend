@@ -1,0 +1,19 @@
+
+Bind:
+
+Un ejemplo concreto del uso de bind sería recibir un objeto de alguna llamada y disparar 
+una function bindeada al context de ese objeto.
+
+Ej:
+
+function talk() {
+  console.log(this.sound);
+}  
+
+var boromir = {
+  sound: 'this is the sound'
+}
+
+var talkBoundToBoromir = talk.bind(boromir)
+
+talkBoundToBoromir();

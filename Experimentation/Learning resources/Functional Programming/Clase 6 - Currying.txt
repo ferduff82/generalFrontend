@@ -1,0 +1,20 @@
+﻿
+Currying: Currying are functions that return functions
+
+var dragons = [
+
+  { name: 'fuflldo', element: 'bolls' },
+  { name: 'namoi', element: 'fire' },
+  { name: 'karo', element: 'bolls' },
+  { name: 'fuflldo', element: 'ice' },
+  { name: 'domer', element: 'bolls' },
+
+]
+
+This curry is used with Lodash!
+
+var hasElement = _.curry((element, obj)) => obj.element === element)
+
+var lightingDragons = dragons.filter(hasElement('lighting'))
+
+console.log(lightingDragons); 

@@ -1,0 +1,14 @@
+﻿
+Reduce Advanced: Como convertir un archivo de datos txt en un array de objetos
+
+import fs from 'fs'
+
+var output = fs.readFileSync('data.txt', 'UTF8')
+  .trim()
+  .split('\n')
+  .map((line) => line.split('\t'))
+  .reduce((customers, [name, order, price, quantity]) => {
+    customers[name] = customers[name] || [];
+    customers[name].push({ order, price, quantity });
+    return customers;
+}, { } );﻿

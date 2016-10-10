@@ -1,0 +1,14 @@
+
+Functional Programing:
+
+La idea de la programación functional es poder hacer el codigo mas "composable".
+LLamamos composable a lograr esto:
+
+.map()
+.filter()
+.reduce()
+.pluck()
+
+como si estuvieramos tratando de filtrar una base de datos
+
+Composition: Put big functions into smaller functions

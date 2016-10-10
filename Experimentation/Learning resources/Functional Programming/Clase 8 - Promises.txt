@@ -1,0 +1,8 @@
+﻿
+Promises:
+
+La diferencia entre las promesas y los callbacks es que las promises son "composable"
+Las promesas son eventos que todavia no sucedieron pero se puede codear logica para cuando ese evento se dispare
+
+
+

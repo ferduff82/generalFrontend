@@ -1,0 +1,6 @@
+﻿
+Closures: Functions are not just functions, they are alse closures
+
+Closures no solo sirven para definir una variable dentro del scope de una función sino también para acceder a 
+una variable fuera del scope de nuestra funcion sin necesidad de pasarle un parametro a la misma.
+

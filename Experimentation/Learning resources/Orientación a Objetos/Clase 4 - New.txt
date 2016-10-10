@@ -1,0 +1,21 @@
+
+New: 
+
+1) Crea un objeto plano
+2) checkea si hay algun prototype
+3) le asigna el parametro de Person a this.saying
+4) Retorna el objeto y ejecuta el prototype
+
+Ejemplo de uso de New:
+
+
+function Person(saying) {
+  this.saying = saying
+}
+
+Person.prototype.talk = function() {
+  console.log('I say:', this.saying)
+}
+
+var crockford = new Person ('SOMICOLANS')
+crockford.talk()

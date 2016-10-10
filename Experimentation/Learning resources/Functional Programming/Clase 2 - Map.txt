@@ -1,0 +1,41 @@
+
+Map:
+
+Map is similar to Filter except that instead of expecting a true or false validation to push into array it will wait for a new object for each item to push.
+
+Array:
+
+var animals = [
+  { name: 'Fluffykins', species: 'rabbit' },
+  { name: 'Caro',       species: 'dog' },
+  { name: 'Hamilton',   species: 'dog' },
+  { name: 'Harold',     species: 'fish' },
+  { name: 'Ursula',     species: 'cat' },
+  { name: 'Jimmy',      species: 'fish' }
+]
+
+
+Without Map:
+
+var names = []
+for (var i = 0; i < animals.length; i++) {
+  names.push(animals[i].name)
+}
+
+
+With Map:
+
+var names = animals.map(function(animal) { return animal.name })
+
+
+Mapping a new object:
+
+var names = animals.map(function(animal) { animal.name + ' the ' + animal.species })
+
+
+In ecmascript 6 we have arrow functions:
+
+var names = animals.map((animal) => animal.name)
+
+
+To use ecmascript 6 you must: http://davidwalsh.name/es6-io

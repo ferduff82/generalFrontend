@@ -1,0 +1,29 @@
+
+Prototype:
+
+Javascript no dispone de clases nativas para poder lograr herencia por eso usa el prototype.
+Incluso la version de Ecmascript 6 que cuenta con clases es solo una capa que por debajo utiliza protoype.
+La forma de lograr herencia en javascript es através del uso de Prototype.
+El prototype permite heredar un objeto de otro y de esa forma heredar sus propiedades y métodos.
+Prototype no es como las clases que se copian a objetos sino que delegan su prototype a otro objeto
+(es decir para este objeto usar este otro objeto como backup, delegate, etc)
+
+
+En este ejemplo dog va a heredar de animal la propiedad talk y de esa forma se podrá ejecutar la function
+
+
+function talk() {
+  console.log(this.sound);
+}
+
+var animal = {
+  talk : talk
+}
+
+var dog = {
+  sound : 'Woof!'
+}
+
+Object.setPrototypeOf(dog,animal)
+
+dog.talk();

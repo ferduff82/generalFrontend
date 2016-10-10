@@ -1,0 +1,24 @@
+
+Bind:
+
+bind se utiliza para pasar el contexto de this al disparar un evento.
+El problema surje de que javascript nace de dos lenguajes de programación distintos, Sheme y Java por ende
+Java Orientado a Objetos utiliza this regularmente mientras que Scheme es orientado a Functional programming
+no utiliza this, bind es un parche en javascript para solucionar est problema entre estas dos orientaciones 
+al programar.
+
+var dog = {
+  sound: 'wof',
+  talk: function() {
+    console.log(this.sound)
+  }
+}
+
+var button = document.getElementById('myNiceButton');
+
+button.addEventListener(
+  'click',
+  dog.talk.bind(dog)
+)
+
+

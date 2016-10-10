@@ -1,0 +1,19 @@
+{
+  "name": "ruleta",
+  "version": "1.0.0",
+  "description": "testing React",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot"
+  },
+  "author": "Fer",
+  "license": "ISC",
+  "dependencies": {
+    "history": "^1.17.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}

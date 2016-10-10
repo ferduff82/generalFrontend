@@ -1,0 +1,17 @@
+.hidden { 
+	display:none; 
+}
+
+td {
+	width: 32px;
+    height: 32px;
+    text-align: center;
+    border: 1px solid;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.activeLink{
+	font-weight: bold;
+	color: blue;
+}
