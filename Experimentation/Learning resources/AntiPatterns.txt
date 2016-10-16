@@ -1,0 +1,28 @@
+
+AntiPatrones:
+
+Declarar variables en contextos globales.
+Prototypear Object object.
+Agregr scripts de código en el html.
+Construir cadenas de herencia demasiado profundas en objetos.
+El uso de getters y setters es malo, se utiliza para mutar datos, algo que según los nuevos approaches de functional programming es malo (inmutable data)
+No minificar archivos JS.
+Llamar functions adentro de un for.
+No borrar console.log del codigo de producción.
+Sobreuso de Callbacks (callback hell), utilizar promises mejor.
+Spaghetti coding.
+
+
+Usar múltiples declaraciones de var:
+
+    var x = 1;
+    var y = 2;
+    var z = 3;
+
+ /* Usar siempre */
+
+    var x = 1,
+        y = 2,
+        z = 3;
+
+
