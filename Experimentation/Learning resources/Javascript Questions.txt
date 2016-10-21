@@ -6,14 +6,15 @@ Es javascript un lenguaje orientado a prototipos?
 Cual es el origen de Javascript? (Scheme y Java)
 Por que hay 4 diferentes versiones de Javascript? (por Google, Mozilla, Microsof y Facebook)
 Que es una Clase? dispone javascript de clases nativas?
-Que son los namespaces?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
+Que son los namespaces?
 Que significa AMD?
 Que es Semver?
 Defina MVC
 
 Para que se utiliza comunmente la variable self?
+Que diferencia hay entre hashear una URL y hacer un QueryString?
 Para que sirve el método "arguments.length" dentro de una función?
 
 Que es el hoisting?
