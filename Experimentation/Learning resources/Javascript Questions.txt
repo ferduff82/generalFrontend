@@ -1,4 +1,4 @@
-﻿
+
 Es javascript un lenguaje tipado?
 Es javascript un lenguaje orientado a objetos o orientado a functional? (es orientado a ambos)
 Es javascript un lenguaje orientado a eventos?
@@ -17,7 +17,7 @@ Para que se utiliza comunmente la variable self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
 Para que sirve el método "arguments.length" dentro de una función?
 
-Que es el hoisting?
+Que es el var hoisting y que es el function hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
 
 Que significan if(!x), if(!!x)?
