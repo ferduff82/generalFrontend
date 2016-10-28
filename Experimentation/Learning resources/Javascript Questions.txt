@@ -16,6 +16,8 @@ Defina MVC
 Para que se utiliza comunmente la variable self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
 Para que sirve el método "arguments.length" dentro de una función?
+Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que no esten consumiendo memoria todo el tiempo)
+Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
 
 Que es el var hoisting y que es el function hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
