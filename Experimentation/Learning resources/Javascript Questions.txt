@@ -18,6 +18,10 @@ Que diferencia hay entre hashear una URL y hacer un QueryString?
 Para que sirve el método "arguments.length" dentro de una función?
 Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que no esten consumiendo memoria todo el tiempo)
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
+Que son las funciones puras y las inpuras?
+
+Que es la inmutabilidad? Solo puede solucionarse con ES6?
+http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
 
 Que es el var hoisting y que es el function hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
