@@ -13,6 +13,7 @@ Que significa AMD?
 Que es Semver?
 Defina MVC
 
+Cuales son los 3 pasos en que se define una variable?
 Para que se utiliza comunmente la variable self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
 Para que sirve el método "arguments.length" dentro de una función?
