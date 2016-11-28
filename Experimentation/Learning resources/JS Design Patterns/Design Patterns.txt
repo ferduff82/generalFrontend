@@ -1,0 +1,64 @@
+Known Design Patterns:
+
+Module Pattern
+Revealing Pattern
+PubSub
+This Namespace Proxy
+Factory
+Constructor
+Singleton
+
+
+Object Literal Module Pattern:
+
+Objeto Literal que contiene el codigo a modo de componente.
+La desventaja es que las properties pueden accederse desde la consola dejando el objeto al descubierto.
+La ventaja es que otros módulos pueden acceder a las properties de dicho objeto de forma sencilla.
+
+Fuente: https://www.youtube.com/watch?v=m-NYyst_tiY&index=2&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f
+
+
+Revealing Module Pattern:
+
+Es una mejora del Module pattern, se usa una function y esta se instancia.
+La ventaja es que se puede acceder solo a las properties que se quiera dejar acceder a través del uso de return, es decir hay properties privadas y públicas.
+
+Fuente: https://www.youtube.com/watch?v=pOfwp6VlnlM&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f&index=3
+
+
+PubSub:
+
+Se utiliza como mediador entre modulos para comunicar un evento que se dispara en lugar de comunicarlo directo al módulo que lo quiere escuchar se crea un archivo con todos los eventos y se le comunica a ese archivo el evento disparado y todos los módulos escuchan de ese archivo los eventos.
+
+Fuente: https://www.youtube.com/watch?v=nQRXi1SVOow&list=PLoYCgNOIyGABs-wDaaxChu82q_xQgUb4f&index=4
+
+
+This Namespace Proxy:
+
+Se utiliza una function y se usa call o apply para pasar el contenido al scope de un objeto y de esa forma se instancia, es muy útil para separar properties públicas y privadas.
+
+Fuente: http://www.etnassoft.com/2011/04/13/el-patron-javascript-proxy-y-los-contextos-paralelos/
+
+
+Factory:
+
+Se crea una function en la cual se crea un object y se le asigna properties, luego se retorna dicho objeto.
+Es un tipo de Singleton ya que permite crear un objeto independiente.
+
+Fuente: http://stackoverflow.com/questions/35240411/factory-pattern-vs-constructor-pattern-in-javascript
+	https://www.youtube.com/watch?v=s6SH72uAn3Q
+
+
+Constructor:
+
+Se crea una function y se le asigna propiedades con this. y se instancia con "new".
+Todos los objetos creados con "New" heredan el prototype, de esta forma estan vínculados entre sí, si se modifica la clase usando prototype todos los objetos heredaran este cambio.
+
+Fuente: http://stackoverflow.com/questions/35240411/factory-pattern-vs-constructor-pattern-in-javascript
+
+
+Singleton:
+
+Impide que se instancie una clase de múltiples objetos, solo un objeto la puede instanciar a menos que realmente sea necesario por haber cambiado el dato, de esa manera se ahorra memoria.
+
+Fuente: http://stackoverflow.com/questions/35240411/factory-pattern-vs-constructor-pattern-in-javascript
