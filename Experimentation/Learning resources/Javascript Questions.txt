@@ -94,6 +94,7 @@ $('li').click(function (e) { var e = window.event || e; });
 Para que se usa 'use strict'?
 Defina Herencia, Encapsulamiento, Abstracción(función anónima) y Polimorfismo
 Que diferencia hay entre $() y find() en Jquery?
+Hay alguna diferencia entre $('#mydiv').find('.adiv') y $('.adiv', '#mydiv')? (no, basicamente es lo mismo)
 Que diferencia hay entre Null y Undefined?
 Que hace el método .split() y .join() y como se usan?
 que significa esta nomenclatura en Jquery $j("li","#cmeSearchFilterResults")?
