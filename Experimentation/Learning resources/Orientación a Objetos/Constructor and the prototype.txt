@@ -1,0 +1,17 @@
+function constructorPattern(name,title,startDate) {
+  this.name = name;
+  this.title = title;
+  this.startDate = startDate;
+}
+
+constructorPattern.prototype.nationality = "English";
+
+var constructorUse = new constructorPattern("fer", "account", "19,06,85");
+
+console.log(constructorUse);
+
+var test = {
+	fer: 31
+}
+
+console.log(test);

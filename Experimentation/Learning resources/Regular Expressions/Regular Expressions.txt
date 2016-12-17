@@ -1,0 +1,120 @@
+
+Ejemplo 1:
+
+Mark-9 Tim-890 Sam-10 Sara-9902
+
+Dígitos
+
+/\d/
+Resultado: 9
+
+Todos los dígitos
+
+/\d/g
+Resultado: 9,8,9,0,1,0,9,9,0,2 
+
+Todos los dígitos juntos
+
+/\d+/
+Resultado: 9,890,10,9902 
+
+Conincidir con cualquier cararter
+
+/.m/ 
+Resultado: am
+
+Ejemplo 2:
+
+Tom contact number is 1561061616. tom is 35. TOM is in London
+
+Obtener nombre estrictamente
+
+/Tom/
+Resultado: Tom
+
+Obtener nombre de forma no estricta
+
+/Tom/gi
+Resultado: Tom, tom, TOM
+
+
+
+Ejemplo 3:
+
+01131-1232
+
+Los primeros 5 valores tienen que ser dígitos, el ? es opcional 
+que esté lo evaluado entre paréntesis (que haya un - y despues 
+tiene que haber 4 dígitos) y el signo $ indica que no puede 
+haber mas nada despues de lo ultimo evaluado:
+^\d{5}(\-\d{4})?$
+
+Resultados:
+01131 o también 01131-1232
+
+
+
+Ejemplos varios:
+
+Ninguno o uno
+
+/[a-b]?/
+
+Uno o mas
+
+/[a-b]+/
+
+Ninguno o muchos
+
+/[a-b]*/
+
+Validar A-Z, a-z, 0-9 o _
+
+/\w/
+
+Uppercase o Lowercase
+
+[Aa]
+(A o a)
+
+Entre el caracter 4 y 5 debe haber un digito
+
+/\d{4,5}/
+
+Obtener dígitos del 1 al 5 y debe haber un espacio al final
+
+/[0,9]{1,5}\s/
+
+
+las dos letras que siguen deben ser Letras y Mayúsculas
+
+[A-B]{2}
+
+
+Negaciónes
+
+/[^0,9]/
+(cualquier cosa que no sea un número)
+/\D/
+(cualquier cosa que no sea un número)
+/\S/
+(cualquier cosa que no sea un espacio)
+/\B/
+(cualquier cosa que no sea un boundry)
+
+
+Word Boundry (límite de una palabra)
+
+/[0,9]{1,5}\b[A-B]{2}/
+(tiene que terminar una palabra y empezar otra)
+
+
+
+
+
+
+
+
+
+
+
