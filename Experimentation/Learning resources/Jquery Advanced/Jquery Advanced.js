@@ -1,15 +1,18 @@
+
 /***************/
 /* Jquery Vars */
 /***************/
+
 /* Normally when you store Jquery stuff you should use 
 $ to advice that you are storing a jquery value */
 
-$variableJquery = $('.sarasa');
+$variableJquery = $('.container');
 
 /* Also if you want to know if a var has a Jquery value 
 console.log that var and you will see it is wrapp around [] */
 
 console.log($variableJquery); /* Will log [someDomElement] */
+
 
 /****************************************************/
 /* Always wrapp Jquery like this (protecting Alias) */
