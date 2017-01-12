@@ -1,0 +1,93 @@
+
+Verificar accesos al repo:
+
+ssh git@cmegit
+
+
+Guardar pass para que no lo pida dos veces:
+
+git config credentials.helper store
+
+
+Crear agregar y verificar ssh:
+
+https://help.github.com/articles/generating-an-ssh-key/
+
+
+Desabilitar ssl
+
+git config --global http.sslVerify false
+
+
+clonar repositorios:
+
+git clone git@cmegit:/marketing_cmegroup_cq5_css.git
+
+
+comandos comunes:
+
+git fetch
+
+git pull
+
+git status
+
+git add "ruta del archivo modified" o git add -A "para agregar todo los untracked"
+
+git reset "ruta del archivo modified" (volver atrás el add)
+
+git commit
+
+git commit -m '<message>'
+
+git commit --amend (modifica el nombre del ultimo commit realizado)
+
+git push origin dmt-718-example
+
+git checkout <branch>
+
+git log
+
+
+Mergear branches:
+
+git checkout master (por ejemplo)
+git merge hotfix 
+(o sino) 
+git merge --no-ff dmt-xxx
+
+
+Crear un nuevo branch:
+
+git branch -b magicTable
+
+
+Recuperar archivos borrados:
+
+git checkout .
+
+
+Ver todas las branches disponibles:
+
+git branch -at
+
+
+Cambiar nombre a un branch:
+
+git branch -m 'branch-viejo' 'branch-nuevo'
+
+
+Volver atras despues de un intento de merge fallido
+
+git reset --hard HEAD
+
+
+COmo usar Stash:
+
+git stash save "my_stash"
+
+git stash list
+
+git stash pop stash@{n}
+
+git stash apply stash@{n}
