@@ -3,17 +3,16 @@ AntiPatrones:
 
 Declarar variables en contextos globales.
 Prototypear Object object.
-Agregr scripts de código en el html.
+Agregr scripts de cÃ³digo en el html.
 Construir cadenas de herencia demasiado profundas en objetos.
-El uso de getters y setters es malo, se utiliza para mutar datos, algo que según los nuevos approaches de functional programming es malo (inmutable data)
+El uso de getters y setters es malo, se utiliza para mutar datos, algo que segÃºn los nuevos approaches de functional programming es malo (inmutable data)
 No minificar archivos JS.
-Llamar functions adentro de un for.
-No borrar console.log del codigo de producción.
+Definir functions adentro de un for.
+No borrar console.log del codigo de producciÃ³n.
 Sobreuso de Callbacks (callback hell), utilizar promises mejor.
 Spaghetti coding.
 
-
-Usar múltiples declaraciones de var:
+Usar mÃºltiples declaraciones de var:
 
     var x = 1;
     var y = 2;
@@ -24,5 +23,3 @@ Usar múltiples declaraciones de var:
     var x = 1,
         y = 2,
         z = 3;
-
-
