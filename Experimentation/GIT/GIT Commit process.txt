@@ -1,0 +1,20 @@
+$ git checkout -b dmt-xxx swat_develop
+
+# comiteas, pusehas, etc... (laburando sobre dmt-xxx)
+
+$ git checkout swat_testing
+$ git merge --no-ff dmt-xxx
+$ git push origin swat_testing
+
+## Esperar a Bamboo y probar en dev1
+## Si Tomas o Joaquin dan el OK:
+
+$ git checkout swat_develop
+$ git merge --no-ff dmt-xxx
+$ git push origin swat_develop
+
+## Cuando el ticket se cierra, borrar el branch dmt:
+
+$ git branch -d dmt-xxx
+
+## Avisar a Subramanya para que borre ese branch en stash
