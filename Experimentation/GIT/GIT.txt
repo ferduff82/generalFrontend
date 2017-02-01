@@ -28,13 +28,19 @@ comandos comunes:
 
 git fetch
 
+git fetch -p
+
+git branch
+
+git branch -r
+
 git pull
 
 git status
 
 git add "ruta del archivo modified" o git add -A "para agregar todo los untracked"
 
-git reset "ruta del archivo modified" (volver atr·s el add)
+git reset "ruta del archivo modified" (volver atr√°s el add)
 
 git commit
 
