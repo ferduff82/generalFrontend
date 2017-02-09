@@ -10,6 +10,7 @@ Que es una Clase? dispone javascript de clases nativas?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 Que son los namespaces?
+Que es un Closure?
 Que significa AMD?
 Que es Semver?
 Defina MVC
