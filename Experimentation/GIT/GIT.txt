@@ -38,6 +38,8 @@ git pull
 
 git status
 
+git branch -d the_local_branch
+
 git add "ruta del archivo modified" o git add -A "para agregar todo los untracked"
 
 git reset "ruta del archivo modified" (volver atrás el add)
