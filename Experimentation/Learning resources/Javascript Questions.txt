@@ -10,7 +10,6 @@ Que es una Clase? dispone javascript de clases nativas?
 Es javascript un lenguaje single thread o multi thread?
 Para que sirven los web workers?
 Que son los namespaces?
-Que es un Closure?
 Que significa AMD?
 Que es Semver?
 Defina MVC
@@ -23,6 +22,9 @@ Que antipatrones de diseño existen?
 --------------------------------------------------------------------------------------------
 
 Cuales son los 3 pasos en que se define una variable? (declaración, instanciación y asignación)
+Que es un Closure? (funciones con referencias de el contenido de su función padre) 
+https://www.sitepoint.com/javascript-closures-demystified/
+
 Para que se utiliza comunmente la variable self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
 Para que sirve el método "arguments.length" dentro de una función?
