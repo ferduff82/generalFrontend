@@ -1,0 +1,38 @@
+
+ES5 tiene function scoping:
+
+var message = "hi";
+
+function greet(){
+  var message = "bye";
+}
+
+console.log(message); // hi
+
+------------------------------------------------
+
+
+Pero no tiene block scoping (if, for, etc.):
+
+var message = "hi",
+    test = true;
+
+if(test){
+  var message = "bye";
+}
+
+console.log(message); // bye
+
+------------------------------------------------
+
+
+Esto lo soluciona let ya que tiene block scope:
+
+let message = "hi",    
+    test = true;
+
+if(test){
+  let message = "bye";
+}
+
+console.log(message); // hi

@@ -1,0 +1,32 @@
+
+ES6 permite obtener los elementos de un Array de forma sencilla:
+
+console.log([ 1, 2, 3]); 
+
+// [1, 2, 3]
+
+
+console.log(...[ 1, 2, 3]) 
+
+// 1 2 3
+
+----------------------------------------------------------------
+
+Esto es útil para casos como cuando quiero mergear dos Arrays:
+
+El problema antes era este:
+
+let first = [ 1, 2, 3],
+    second = [ 1, 2, 3];
+
+first.push(second);
+
+console.log(first); 
+// [ 1, 2, 3, [ 4, 5, 6] ]
+
+
+Ahora con Spread se resuelve de esta forma:
+
+first.push(...second);
+
+console.log(first); // [1, 2, 3, 4, 5, 6]

@@ -1,0 +1,24 @@
+
+En ES6 se puede agregar métodos shorhand a un objeto al igual que variables:
+
+var color = "red";
+var speed = 10;
+
+var car = {
+  color,
+  speed,
+  go(){
+    console.log("vroom");
+  }
+};
+
+
+Con ES5 era:
+
+var car = {
+  color,
+  speed,
+  go: function(){
+    console.log("vroom");
+  }
+};

@@ -1,0 +1,30 @@
+
+ES6 permite agregar templates de texto:
+
+var salutation = "Hello",
+    greeting = `${salutation} , World`;
+
+-------------------------------------------------------------------
+
+También se pueden realizar cálculos en las templates:
+
+var y = 2;
+var equation = `${ x } + ${ y } = ${x + y}`
+
+console.log(equation); // "1 + 2 = 3"
+
+-------------------------------------------------------------------
+
+También podemos obtener los valores y los strings de los templates 
+por separardo:
+
+function tag(strings, ...values){
+  if(values[0] < 20){
+    values[1] = "awake";
+  }
+  return `${strings[0]}${values[0]}${strings[1]}${values[1]}`
+}
+
+var message = tag`Its ${new Date().getHours()} Im ${""}`;
+
+console.log(message);

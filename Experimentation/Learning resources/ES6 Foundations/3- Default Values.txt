@@ -1,0 +1,19 @@
+
+Con ES6 podemos agregar valores por default a los parámetros de las funciones 
+en caso de que no pasemos ningún argumento:
+
+function greet(greeting = "Hello!", name = "John"){
+  console.log(greeting + ", " + name);
+}
+
+greet();
+
+-----------------------------------------------------------------------------
+
+Si pasamos argumentos va a pisar a los parámetros por default:
+
+function greet(greeting = "Hello!", name = "John"){
+  console.log(greeting + ", " + name);
+}
+
+greet("Goodbye","James");

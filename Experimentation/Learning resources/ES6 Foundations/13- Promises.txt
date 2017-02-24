@@ -1,0 +1,17 @@
+
+ES6 viene con Promises 
+EJ:
+
+var d = new Promise((resolve, reject) => {
+  throw new Error('error thrown!');
+  setTimeout(() => {
+    if (true) {
+      resolve('hello world');
+    } else {
+      reject('no bueno');
+    }
+  }, 2000);
+});
+
+d.then((data) => console.log('success : ', data)).
+  catch((error) => console.error('error : ', error));

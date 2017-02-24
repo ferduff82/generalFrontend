@@ -1,0 +1,59 @@
+
+Forma de crear Arrow Function (larga):
+
+var arrowGreeting = (message, name) => {
+	return message + name;
+}
+
+----------------------------------------------------------------------------------
+
+Forma de crear Arrow Function (corta):
+
+var arrowGreeting = (message, name) => message + name;
+
+----------------------------------------------------------------------------------
+
+Si el parámetro es solo 1 no hace falta paréntesis:
+
+var arrowGreeting = message => message;
+
+----------------------------------------------------------------------------------
+
+Arrow Function no es una función por lo tanto en este ej. si usamos this tomará el scope 
+del objeto padre y no de la función padre (receive):
+
+Antes (Usando That para solucionar el problema del scope de This):
+
+var deliveryBoy = {
+  name: "John",
+
+  handleMessage: function (message, hangler) {
+    handler(message);
+  },
+
+  receive: function () {
+    var that = this;
+
+    this.handleMessage("Hello, ", function(message) {
+      that.name //get the proper name
+
+      console.log(message + that.name);
+    })
+  }
+}
+
+Ahora:
+
+var deliveryBoy = {
+  name: "John",
+
+  handleMessage: function (message, handler) {
+    handler(message);
+  },
+
+  receive: function () {
+    this.handleMessage("Hello, ", message => console.log(message + this.name))
+  }
+}
+
+deliverBoy.receive();

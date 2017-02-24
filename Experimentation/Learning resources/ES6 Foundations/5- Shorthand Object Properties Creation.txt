@@ -1,0 +1,15 @@
+
+ES6 tiene una forma rápida de crear objetos con propiedades 
+(hace lo inverso a Destructuring)
+
+let firstName = "John";
+let lastName = "Lindquist";
+
+let person = {firstName, lastName}
+
+console.log(person);
+
+let mascot = "Moose";
+let team = {person, mascot};
+
+console.log(team);

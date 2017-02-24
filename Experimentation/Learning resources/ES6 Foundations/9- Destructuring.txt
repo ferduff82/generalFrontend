@@ -1,0 +1,62 @@
+
+Destructuring permite asignar propiedades de un objeto a variables:
+
+function generateObj() {
+  return {
+    color: "blue",
+    name: "John",
+    state: "New York",
+    position: "Forward"
+  }
+}
+
+var {name, state} = generateObj(); 
+
+--------------------------------------------------------------------
+
+También se puede cambiar el nombre de la variable a guardar:
+
+var {name:firstname, state:location} = generateObj();
+
+--------------------------------------------------------------------
+
+También nos permite asignar variables a valores de un Array:
+
+var [first,,,,fifth] = ["red", "yellow", "green", "blue", "orange"]
+
+--------------------------------------------------------------------
+
+Ejemplos de Iteración de un array y un Objeto usando Destructuring:
+
+Iterando todo un array:
+
+var people = [
+  {
+    "firstName": "Skyler",
+    "lastName": "Carroll",
+    "phone": "1-429-754-5027",
+    "email": "Cras.vehicula.alique@diamProin.ca",
+    "address": "P.O. Box 171, 1135 Feugiat St."
+  },
+  {
+    "firstName": "Kylynn",
+    "lastName": "Madden",
+    "phone": "1-637-627-2810",
+    "email": "mollis.Duis@ante.co.uk",
+    "address": "993-6353 Aliquet, Street"
+  },
+]
+
+people.forEach(({firstName})=> console.log(firstName))
+
+-------------------------------------------------------------------
+
+Buscando un elemento específico de un Array:
+
+var [,Skyler] = people;
+
+function logEmail({email}){
+  console.log(email);
+}
+
+logEmail(Skyler) // Cras.vehicula.aliquet@diamProin.ca

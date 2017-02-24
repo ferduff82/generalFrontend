@@ -1,0 +1,5 @@
+
+Array.from permite convertir un nodeList en un Array para que de esa forma pueda ser iterable:
+
+const products = 
+Array.from(document.querySelectorAll('.product'));

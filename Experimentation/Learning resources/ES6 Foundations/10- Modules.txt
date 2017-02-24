@@ -1,0 +1,51 @@
+
+ES6 permite importar y exportar funciones de distintos archivos:
+
+function sumTwo(a,b){
+  return a + b;
+}
+
+export { sumTwo }
+
+//main.js
+import { sumTwo } from `math/addition`;
+
+----------------------------------------------------------------
+
+Otra forma:
+
+function sumThree(a, b, c){
+  return a + b + c;
+}
+
+export { sumTwo, sumThree }
+
+//main.js
+import {
+  sumTwo as addTwoNumbers,
+  sumThree
+} from 'math/addition';
+
+----------------------------------------------------------------
+
+Otra forma:
+
+export function sumTwo(a, b) { ... }
+
+export function sumThree(a, b, c) { ... }
+
+----------------------------------------------------------------
+
+También se puede importar todo con *:
+
+import * as addition from 'math/addition';
+
+console.log(
+  "1 + 3",
+  addition.sumTwo(1, 3) // 4
+);
+
+console.log(
+  "1 + 3 + 4",
+  addition.sumTwo(1, 3, 4) // 8
+);

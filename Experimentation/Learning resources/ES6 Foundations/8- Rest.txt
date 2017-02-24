@@ -1,0 +1,10 @@
+
+Rest hace lo contrario a Spread, en este caso al pasarle parametros a una función al usar
+Rest se puede convertir esos parámetros en un Array:
+
+function fun1(...theArgs) {
+  console.log(theArgs.length);
+}
+
+fun1(5); // 1
+fun1(5, 6, 7); // 3

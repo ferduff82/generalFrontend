@@ -1,0 +1,18 @@
+
+ES6 permite agregar variables constantes (de solo lectura), es decir que no se 
+pueden modificar:
+
+const NAME = "Fernando Arias";
+
+NAME = "Martin";
+
+console.log(NAME); // Will throw an error.
+
+------------------------------------------------------------------------------
+
+const al igual que let admite block scope:
+
+if(true){
+  const foo = 'bar';
+}
+console.log(foo); // foo is not defined
