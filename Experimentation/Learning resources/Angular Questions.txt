@@ -17,6 +17,9 @@ Para que se utilizan $rootScope.$broadcast, $scope.$broadcast y $scope.$emit?
 http://stackoverflow.com/questions/14502006/working-with-scope-emit-and-on
 http://stackoverflow.com/questions/26752030/rootscope-broadcast-vs-scope-emit
 
+Como se usan $broadcast, $emit y $on?
+https://www.uno-de-piera.com/eventos-en-angularjs/
+
 Como crear una clase y para que se utiliza run()?
 http://www.bennadel.com/blog/2527-defining-instantiatable-classes-in-the-angularjs-dependency-injection-framework.htm
 
