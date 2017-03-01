@@ -1,25 +1,3 @@
-﻿
-Como crear un plugin en Jquery + evitar conflictos con $ entre Jquery y otras librerías:
-
-(function( $ ) {
- 
-    $.fn.showLinkLocation = function() {
- 
-        this.filter( "a" ).each(function() {
-            var link = $( this );
-            link.append( " (" + link.attr( "href" ) + ")" );
-        });
- 
-        return this;
- 
-    };
- 
-}( jQuery ));
- 
-// Usage example:
-$( "a" ).showLinkLocation();
-
------------------------------------------------------------------------------------------------------
 
 Como guardar un dato en una posición específica de un Array:
 
@@ -27,35 +5,3 @@ var fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits[10] = "Lemon";
     console.log(fruits[10]);
     console.log(fruits[4]);
-
------------------------------------------------------------------------------------------------------
-
-Ejemplo de uso de método arguments en Javascript:
-
-var sum = function () {
-
-  var length = arguments.length,
-      total = 0;
-
-  for (var i = 0; i < length; i++) {
-
-      // se suman todos los argumentos
-      total += arguments[i];
-  }
-
-  return total;
-};
-
-console.log(sum(20, 30, 50)); // => 100
-
------------------------------------------------------------------------------------------------------
-
-Escapar una función por alguna condición:
-
-function escape() {
-  if ( !x ) {
-   return;
-  }
-  console.log("aca no llega");
-}
-
