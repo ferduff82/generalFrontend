@@ -111,6 +111,7 @@ http://www.w3schools.com/html/html5_webstorage.asp
 
 Que diferencia hay entre bind y call/apply
 (bind crea una funcion que espera un evento, se usa normalmente para eventos, mientras que call y apply se ejecutan inmediatamente)
+https://www.youtube.com/watch?v=c0mLRpw-9rI
 
 Para que sirve el método off() en Jquery?
 
