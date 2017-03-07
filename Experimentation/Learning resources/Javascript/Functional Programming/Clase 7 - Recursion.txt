@@ -1,5 +1,5 @@
 ﻿
-Recursion: Recursion is function that calls it self until it stops callint itself
+Recursion: Recursion is function that calls it self until it stops calling itself
 
 Ej:
 
