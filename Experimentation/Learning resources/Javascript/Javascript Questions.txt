@@ -42,7 +42,7 @@ http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
 Que es el var hoisting y que es el function hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
 
-Que significan if(!x), if(!!x)?
+Que significan if(!x) y if(!!x)? defina algún caso de uso. Que tiene que ver con type coersion?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
 
 Se puede utilizar x === “object” para testear si x es un objeto?
