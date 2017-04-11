@@ -25,6 +25,9 @@ Cuales son los 3 pasos en que se define una variable? (declaración, instanciaci
 Que es un Closure? (funciones con referencias de el contenido de su función padre) 
 https://www.sitepoint.com/javascript-closures-demystified/
 
+Cuantas formas hay de crearle propiedades a un objeto?
+http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
+
 Que es el Debounce?
 Para que se utiliza comunmente la variable Self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
