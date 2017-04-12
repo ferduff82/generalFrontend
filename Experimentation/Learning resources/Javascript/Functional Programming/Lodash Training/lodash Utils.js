@@ -194,6 +194,13 @@ _.range(4);
 // => [0, 1, 2, 3]
 
 
+/* Keys */
+var dataObject = {};
+_.keys(getExtraData).forEach(function(key) {
+    dataObject[key] = getExtraData[key];
+});
+
+
 /* Key By */
 var posts = [
     { id: "1abc", title: "First blog post", content: "..." },
