@@ -36,7 +36,7 @@ Para que se usa hasOwnProperty?
 Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que no esten consumiendo memoria todo el tiempo)
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
 Que son las funciones puras y las inpuras?
-a que se le conoce como whitelistear?
+A que se le conoce como whitelistear?
 
 --------------------------------------------------------------------------------------------
 
