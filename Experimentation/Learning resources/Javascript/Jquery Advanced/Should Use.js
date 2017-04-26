@@ -9,3 +9,7 @@ wrap();
 $.blockUI();
 $.unblockUI();
 $.Deferred;
+
+//Get Jquery version in case of unexpected error or conflict:
+
+$().jquery
