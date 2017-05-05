@@ -57,6 +57,11 @@ git checkout <branch>
 git log
 
 
+Diferencias:
+
+git diff branch1...branch2
+
+
 Mergear branches:
 
 git checkout master (por ejemplo)

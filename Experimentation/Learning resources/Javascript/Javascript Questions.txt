@@ -25,6 +25,9 @@ Cuales son los 3 pasos en que se define una variable? (declaración, instanciaci
 Que es un Closure? (funciones con referencias de el contenido de su función padre) 
 https://www.sitepoint.com/javascript-closures-demystified/
 
+Cuantas formas hay de crearle propiedades a un objeto?
+http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
+
 Que es el Debounce?
 Para que se utiliza comunmente la variable Self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
@@ -33,6 +36,7 @@ Para que se usa hasOwnProperty?
 Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que no esten consumiendo memoria todo el tiempo)
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
 Que son las funciones puras y las inpuras?
+A que se le conoce como whitelistear?
 
 --------------------------------------------------------------------------------------------
 
@@ -42,7 +46,7 @@ http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
 Que es el var hoisting y que es el function hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
 
-Que significan if(!x), if(!!x)?
+Que significan if(!x) y if(!!x)? defina algún caso de uso. Que tiene que ver con type coersion?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
 
 Se puede utilizar x === “object” para testear si x es un objeto?
@@ -123,9 +127,6 @@ http://stackoverflow.com/questions/2937227/what-does-function-jquery-mean
 
 Como crear un plugin en Jquery?
 https://learn.jquery.com/plugins/basic-plugin-creation/
-
-Que diferencia hay entre window.load y $(document).ready()?
-http://dev.w3xperiences.com/tutoriales/js-ajax/diferencia-entre-document-ready-vs-window-load/
 
 Para que se utiliza el objeto $.Deferred()?
 http://tutorials.jenkov.com/jquery/deferred-objects.html
