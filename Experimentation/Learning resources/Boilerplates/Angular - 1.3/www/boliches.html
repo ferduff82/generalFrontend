@@ -1,0 +1,22 @@
+<!-- about.html -->
+    <div class="jumbotron text-center">
+        <h1>Boliches</h1>
+
+
+
+        <h3><strong>Discos</strong> {{ showUsername }}</h3>
+        <p>{{ showEdad }}</p>
+        <p>{{ showSex }}</p>
+        <p>{{ showEmail }}</p>
+
+        <div> 
+
+		<ul>
+		  <li ng-repeat="x in myData">
+		    {{ x.row[0].price }}
+		  </li>
+		</ul>
+
+		</div>
+
+    </div>
