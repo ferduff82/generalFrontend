@@ -1,0 +1,22 @@
+<!-- home.html -->
+    <div class="jumbotron text-center">
+        <h1>Home Page</h1>
+
+        <div>
+            Username<input type="text" ng-model="username"><br>
+            Age<input type="text" ng-model="edad"><br>
+            <input type="radio" name="gender" value="male" ng-model="sex">Male<br>
+            <input type="radio" name="gender" value="female" ng-model="sex">Female<br>
+            E-mail<input type="email" ng-model="email"><br>
+            Pass<input type="password" ng-model="password"><br>
+
+            <button ng-click="send()">Register</button>
+        </div>
+
+        <!-- Ocultar elementos al hacer click en un botón
+        <div ng-hide="hideme">
+            <button ng-click="send();hideme=true">Register</button>
+        </div>
+        -->
+
+    </div>
