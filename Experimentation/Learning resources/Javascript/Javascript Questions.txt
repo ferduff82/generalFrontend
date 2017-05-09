@@ -49,10 +49,11 @@ http://www.w3schools.com/js/js_hoisting.asp
 Que significan if(!x) y if(!!x)? defina algún caso de uso. Que tiene que ver con type coersion?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
 
+Que es el Stack y el Queued y cual corresponde con FIFO y cual con LIFO?
+http://codetunnel.com/9-javascript-tips-you-may-not-know/
+
 Se puede utilizar x === “object” para testear si x es un objeto?
 Que evaluan “1”+2+3 y 1+2+“3” respectivamente?
-Javascript soporta conversión automática de tipo?
-http://www.skilledup.com/articles/20-must-know-javascript-interview-qa
 
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
@@ -91,7 +92,7 @@ para que se parsea un JSON ej. JSON.parse()?
 https://msdn.microsoft.com/es-es/library/ie/cc836466(v=vs.94).aspx
 
 Que es JSONP y como se usa y a que se le llama comunmente CORS?
-http://es.wikipedia.org/wiki/JSONP
+https://www.sitepoint.com/jsonp-examples/
 
 Como saber si tengo acceso a CORS en un dominio externo, donde buscarlo en el navegador?
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
