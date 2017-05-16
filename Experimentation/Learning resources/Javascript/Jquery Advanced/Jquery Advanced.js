@@ -109,3 +109,16 @@ $(window).on('resize', $.debounce(250, function() {
 $( "div" ).greenify({
     color: "orange"
 });
+
+/*************************/
+/* Create a header hover */
+/*************************/
+
+$('.cmePrimaryNav li').hover( 
+    function(e) {
+        $(this).find('.cmeSecondaryNav').css('display','block');
+    },
+    function(e) {
+        $(this).find('.cmeSecondaryNav').css('display','none');
+    }
+);
