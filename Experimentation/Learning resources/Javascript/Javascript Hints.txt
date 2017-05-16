@@ -1,7 +1,25 @@
 
-Como guardar un dato en una posición específica de un Array:
+
+
+/* Como guardar un dato en una posición específica de un Array */
 
 var fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits[10] = "Lemon";
     console.log(fruits[10]);
     console.log(fruits[4]);
+
+
+
+/* Como construir propiedades de un objeto con Keys (lodash) */
+
+function getDataObject(TimeandSales) {
+
+    var getExtraData = that.extraData;
+
+    _.keys(getExtraData).forEach(function(key) {
+        dataObject[key] = getExtraData[key];
+    });
+    dataObject.timeAndSalesReport = TimeandSales;
+
+    return dataObject;
+}     
