@@ -4,6 +4,11 @@ Verificar accesos al repo:
 ssh git@cmegit
 
 
+clonar repositorios:
+
+git clone ssh://git@cmegit:/marketing_cmegroup_cq5_css.git
+
+
 Guardar pass para que no lo pida dos veces:
 
 git config credentials.helper store
@@ -17,11 +22,6 @@ https://help.github.com/articles/generating-an-ssh-key/
 Desabilitar ssl
 
 git config --global http.sslVerify false
-
-
-clonar repositorios:
-
-git clone git@cmegit:/marketing_cmegroup_cq5_css.git
 
 
 comandos comunes:
