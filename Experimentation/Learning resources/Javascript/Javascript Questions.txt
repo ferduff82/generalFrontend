@@ -37,6 +37,8 @@ Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
 Que son las funciones puras y las inpuras?
 A que se le conoce como whitelistear?
+Que diferencias hay entre GET y POST? porque IE puede traer problemas si se utiliza get con muchos parametros?
+
 
 --------------------------------------------------------------------------------------------
 
