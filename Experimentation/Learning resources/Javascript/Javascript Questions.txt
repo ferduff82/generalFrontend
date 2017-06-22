@@ -42,6 +42,9 @@ Que diferencias hay entre GET y POST? porque IE puede traer problemas si se util
 
 --------------------------------------------------------------------------------------------
 
+Para que se usa el content-type y el datatype en los forms?
+https://stackoverflow.com/questions/18701282/what-is-content-type-and-datatype-in-an-ajax-request
+
 Que es la inmutabilidad? Solo puede solucionarse con ES6?
 http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
 
