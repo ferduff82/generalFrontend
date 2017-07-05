@@ -42,6 +42,8 @@ Que diferencias hay entre GET y POST? porque IE puede traer problemas si se util
 Como se copia un array y para que es necesario copiar un array?
 (Usando .split() y es necesario porque no se puede guardar en variables, los arrays toman los datos del origen de donde vienen)
 
+Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
+(eventBus es un tipo de Pub/sub aplicado en backbone)
 
 --------------------------------------------------------------------------------------------
 
