@@ -147,4 +147,7 @@ http://tutorials.jenkov.com/jquery/deferred-objects.html
 http://www.etnassoft.com/2011/02/02/el-nuevo-objeto-deferred-en-jquery-1-5/
 https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
 
+Como desabilitar spellcheck en un input?
+(se hace desde html con spellcheck="false")
+
 Que es el DOM y el BOM?
