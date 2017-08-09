@@ -22,6 +22,11 @@ Que antipatrones de diseño existen?
 --------------------------------------------------------------------------------------------
 
 Cuales son los 3 pasos en que se define una variable? (declaración, instanciación y asignación)
+Que es la persistencia en una variable?
+Que es estar suscripto a una variable?
+
+--------------------------------------------------------------------------------------------
+
 Que es un Closure? 
 (La abilidad de acceder a variables/functions, etc fuera de tu scope local, con solo acceder a una
 variable fuera de tu scope se crea un closure, de esta manera se crea una referencia de los valores
