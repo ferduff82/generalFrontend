@@ -34,7 +34,7 @@ Angular Config and Run
 
 Para que se utiliza config en Angular?
 (Config se utiliza para poder instanciar providers y configurarlos antes de la inicialización de Angular como 
-es el caso de $httpProvider,$locationProvider,$routeProvider)
+es el caso de $httpProvider, $locationProvider, $routeProvider)
 
 Para que se utiliza run() en Angular?
 Sirve para agregar Handlers a nivel root en nuestra app.
@@ -47,4 +47,23 @@ Angular New version
 
 Que novedad introduce Angular 1.5? que es el component y que diferencia hay con las directivas?
 http://www.desarrolloweb.com/articulos/componentes-angularjs-15.html
+
+---------------------------------------------------------------------------------------------
+Que diferencia hay entre Component y Directive?
+
+Advantages of Components:
+simpler configuration than plain directives
+promote sane defaults and best practices
+optimized for component-based architecture
+writing component directives will make it easier to upgrade to Angular 2
+
+When not to use Components:
+for directives that rely on DOM manipulation, adding event listeners etc, because the compile and link functions are unavailable
+when you need advanced directive definition options like priority, terminal, multi-element
+when you want a directive that is triggered by an attribute or CSS class, rather than an element
+
+Utils on components:
+https://www.sitepoint.com/building-angular-1-5-components/
+https://tests4geeks.com/build-angular-1-5-component-angularjs-tutorial/
+
 
