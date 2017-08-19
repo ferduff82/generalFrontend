@@ -13,4 +13,9 @@ https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/
 Defina Diseño Atómico, OOCSS, BEM, SMACSS (Base, Layout, Module, State and Theme) y Sass 
 http://www.phase2technology.com/blog/your-frontend-methodology-is-all-of-them-atomic-design-patternlab/
 
+Como solucionar alternado el problema de alternado de estilos a las filas de una tabla?
+(sin importar el número de filas la última tiene que tener color de fondo)
 
+tr:nth-last-child(2n-1) {
+     background-color:black;
+}
