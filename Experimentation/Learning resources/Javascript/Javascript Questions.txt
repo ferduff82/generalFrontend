@@ -22,11 +22,25 @@ Que antipatrones de diseño existen?
 --------------------------------------------------------------------------------------------
 
 Cuales son los 3 pasos en que se define una variable? (declaración, instanciación y asignación)
-Que es un Closure? (funciones con referencias de el contenido de su función padre) 
+Que es la persistencia en una variable?
+Que es estar suscripto a una variable?
+
+--------------------------------------------------------------------------------------------
+
+Que es un Closure? 
+(La abilidad de acceder a variables/functions, etc fuera de tu scope local, con solo acceder a una
+variable fuera de tu scope se crea un closure, de esta manera se crea una referencia de los valores
+del parent scope). 
 https://www.sitepoint.com/javascript-closures-demystified/
 
 Cuantas formas hay de crearle propiedades a un objeto?
 http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
+
+Que es la sobrecarga de funciones/métodos? 
+(Una forma de mapear una función basada en los argumentos que se le pasa)
+https://johnresig.com/blog/javascript-method-overloading/
+
+--------------------------------------------------------------------------------------------
 
 Que es el Debounce?
 Para que se utiliza comunmente la variable Self?
@@ -37,8 +51,18 @@ Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
 Que son las funciones puras y las inpuras?
 A que se le conoce como whitelistear?
+Que diferencias hay entre GET y POST? porque IE puede traer problemas si se utiliza get con muchos parametros?
+
+Como se copia un array y para que es necesario copiar un array?
+(Usando .split() y es necesario porque no se puede guardar en variables, los arrays toman los datos del origen de donde vienen)
+
+Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
+(eventBus es un tipo de Pub/sub aplicado en backbone)
 
 --------------------------------------------------------------------------------------------
+
+Para que se usa el content-type y el datatype en los forms?
+https://stackoverflow.com/questions/18701282/what-is-content-type-and-datatype-in-an-ajax-request
 
 Que es la inmutabilidad? Solo puede solucionarse con ES6?
 http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
@@ -49,10 +73,11 @@ http://www.w3schools.com/js/js_hoisting.asp
 Que significan if(!x) y if(!!x)? defina algún caso de uso. Que tiene que ver con type coersion?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
 
+Que es el Stack y el Queued y cual corresponde con FIFO y cual con LIFO?
+http://codetunnel.com/9-javascript-tips-you-may-not-know/
+
 Se puede utilizar x === “object” para testear si x es un objeto?
 Que evaluan “1”+2+3 y 1+2+“3” respectivamente?
-Javascript soporta conversión automática de tipo?
-http://www.skilledup.com/articles/20-must-know-javascript-interview-qa
 
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
@@ -91,7 +116,7 @@ para que se parsea un JSON ej. JSON.parse()?
 https://msdn.microsoft.com/es-es/library/ie/cc836466(v=vs.94).aspx
 
 Que es JSONP y como se usa y a que se le llama comunmente CORS?
-http://es.wikipedia.org/wiki/JSONP
+https://www.sitepoint.com/jsonp-examples/
 
 Como saber si tengo acceso a CORS en un dominio externo, donde buscarlo en el navegador?
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
@@ -132,5 +157,8 @@ Para que se utiliza el objeto $.Deferred()?
 http://tutorials.jenkov.com/jquery/deferred-objects.html
 http://www.etnassoft.com/2011/02/02/el-nuevo-objeto-deferred-en-jquery-1-5/
 https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
+
+Como desabilitar spellcheck en un input?
+(se hace desde html con spellcheck="false")
 
 Que es el DOM y el BOM?

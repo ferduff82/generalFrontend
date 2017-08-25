@@ -1,4 +1,14 @@
 
+/* 
+Deferred se utiliza para evitar el callback hell, 
+está basado en functional programming al igual que 
+las promises, es composable.
+Se busca resolver un proceso asincrono y se retorna una 
+promise con el objetive de que lo que se retorna no pueda 
+ser resuelto por fuera del proceso async.
+https://www.sitepoint.com/introduction-jquery-deferred-objects/
+*/
+
 function getCustomer(customerId){
     var d = $.Deferred();
     
