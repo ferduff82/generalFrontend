@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="questions/questionsJS.js"></script>
+	<script src="questions/questionsCSS.js"></script>
+	<script>
+
+	$(document).ready(function(){
+
+	    $("#jsQuestion").click(function(){
+	    	makeRandomLogic(questionsJS);
+	    });
+
+	    $("#cssQuestion").click(function(){
+	    	makeRandomLogic(questionsCSS);
+	    });
+
+	    function makeRandomLogic(question) {
+    		var topLenght = question.length,
+            getRandomQuestion = Math.floor(Math.random() * topLenght);
+
+			$("#jsQuestionDone p").empty();
+			$("#jsQuestionDone p").append(question[getRandomQuestion]);
+	    }
+
+	});
+
+	</script>
+</head>
+<body>
+
+	<div id="div1">
+	    <h2>Daily Question</h2>
+	</div>
+
+	<button id="jsQuestion">Get JS question</button>
+
+	<button id="cssQuestion">Get CSS question</button>
+
+	<div id="jsQuestionDone">
+		<p></p>
+	</div>
+
+</body>
+</html>
