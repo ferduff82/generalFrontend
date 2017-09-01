@@ -2,6 +2,11 @@
 Verificar accesos al repo:
 
 ssh git@cmegit
+ssh git@cmegit info
+(ir a directorio ssh): cd ~/.ssh
+(open file config and verify route to user folder): cat config
+(open route): cd //uxhome/home/e23833/.ssh
+(check the lenght of the authenticating key, 2048 or 4096): ssh-keygen -lf e23833.pub
 
 
 clonar repositorios:
