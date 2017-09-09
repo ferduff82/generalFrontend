@@ -6,6 +6,8 @@ import Bets from './content/bets';
 import Header from './content/header';
 import SignIn from './content/signin';
 import Cell from './content/cell';
+import axios from 'axios';
+
 
 class Ruleta extends React.Component {
 
@@ -59,6 +61,11 @@ class Ruleta extends React.Component {
 				}
 			}
 		, 1000);
+
+		axios.get(`http://ws.geeklab.com.ar/dolar/get-dolar-json.php`)
+			.then(res => {
+				console.log(res);
+			});
 	}
 
 	render() {
