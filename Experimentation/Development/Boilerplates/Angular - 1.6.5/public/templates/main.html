@@ -1,0 +1,46 @@
+<div id="appContanier"> 
+
+    <header-mercadolibre buttona="Start" buttonb="About us" buttonc="Logout"></header-mercadolibre>
+
+    <h1>{{welcome | uppercase}}</h1>
+    <h3>{{todayDate | date : 'fullDate'}}</h3>
+
+    <div ng-controller="mainController">
+
+        <div ng-if="dolarSuccess" id="dolarT">
+            <h3>{{dolarLibre | currency}}</h3>
+            <h3>{{dolarBlue | currency}}</h3>
+        </div>
+
+        <input type="text" name="user" ng-model="userName"/>
+        <button ng-click="getUserName(userName)">Login</button>
+        <p>{{userName | validateChar}}</p>
+
+        <input id="filterInput" type="text" name="user" ng-disabled="enableInput"/>
+        <button id="filterButton" ng-disabled="enableInput">Filter</button>
+        <div ng-if="filterActive">Acabas de filtrar: {{fiterValue}}</div>
+
+        <input type="text" name="search" ng-model="post.postId"/>
+        <button ng-click="getById(post.postId)">Search</button>
+        <p>{{post.postId | validateChar}}</p>
+
+        <div>{{newValueAdded}}</div>
+
+        <div ng-if="productsSuccess" ng-repeat="product in products | orderBy:'title'" id="allProducts" ng-class="colorBack">
+            <h2>{{product.title}}</h2>
+            <p>{{product.price | currency}}</p>
+            <h4>Cantidad Vendido: {{product.sold_quantity}}</h4>
+        </div>
+        <div ng-show="productsSuccess">
+            <pagination 
+                ng-model="currentPage"
+                total-items="totalItems"
+                max-size="maxSize"  
+                boundary-links="true">
+            </pagination>
+        </div>
+
+        <a href="{{urlRedirect}}">Redirect to: {{urlRedirect}}</a>
+
+    </div>
+</div>
