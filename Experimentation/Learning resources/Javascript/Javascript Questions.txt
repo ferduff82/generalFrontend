@@ -42,6 +42,8 @@ https://johnresig.com/blog/javascript-method-overloading/
 
 --------------------------------------------------------------------------------------------
 
+Que soluciona "cache : false" en IE?
+(IE chachea las llamadas ajax, por lo tanto siempre hay que setear el chache como false)
 Que es el Debounce?
 Para que se utiliza comunmente la variable Self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
