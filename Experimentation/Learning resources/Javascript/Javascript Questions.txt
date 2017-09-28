@@ -42,6 +42,7 @@ https://johnresig.com/blog/javascript-method-overloading/
 
 --------------------------------------------------------------------------------------------
 
+Que son getters y setters?
 Que soluciona "cache : false" en IE?
 (IE chachea las llamadas ajax, por lo tanto siempre hay que setear el chache como false)
 Que es el Debounce?
