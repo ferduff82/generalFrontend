@@ -42,6 +42,9 @@ https://johnresig.com/blog/javascript-method-overloading/
 
 --------------------------------------------------------------------------------------------
 
+Que son getters y setters?
+Que soluciona "cache : false" en IE?
+(IE chachea las llamadas ajax, por lo tanto siempre hay que setear el chache como false)
 Que es el Debounce?
 Para que se utiliza comunmente la variable Self?
 Que diferencia hay entre hashear una URL y hacer un QueryString?
@@ -82,12 +85,6 @@ Que evaluan “1”+2+3 y 1+2+“3” respectivamente?
 Explique la diferencia entre RETURN FALSE, PREVENTDEFAULT Y STOPPROPAGATION
 http://qbit.com.mx/blog/2013/01/07/la-diferencia-entre-return-false-preventdefault-y-stoppropagation-en-jquery/
 
-Que diferencia hay entre $(document).ready y $(window).load
-https://4loc.wordpress.com/2009/04/28/documentready-vs-windowload/
-
-Para que se utiliza el método jQuery.noConflict()
-https://api.jquery.com/jquery.noconflict/
-
 Para que sirve el método prototype?
 http://www.w3schools.com/js/js_object_prototypes.asp
 http://codehero.co/javascript-desmitificado-objetos/
@@ -121,16 +118,10 @@ https://www.sitepoint.com/jsonp-examples/
 Como saber si tengo acceso a CORS en un dominio externo, donde buscarlo en el navegador?
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
 
-Que hace esto? que problema soluciona con distintos navegadores?
-$('li').click(function (e) { var e = window.event || e; });
-
 Para que se usa 'use strict'?
 Defina Herencia, Encapsulamiento, Abstracción(función anónima) y Polimorfismo
-Que diferencia hay entre $() y find() en Jquery?
-Hay alguna diferencia entre $('#mydiv').find('.adiv') y $('.adiv', '#mydiv')? (no, basicamente es lo mismo)
 Que diferencia hay entre Null y Undefined?
 Que hace el método .split() y .join() y como se usan?
-que significa esta nomenclatura en Jquery $j("li","#cmeSearchFilterResults")?
 
 Que es el Event Bubbling?
 http://javascript.info/tutorial/bubbling-and-capturing
@@ -142,23 +133,35 @@ Que diferencia hay entre bind y call/apply
 (bind crea una funcion que espera un evento, se usa normalmente para eventos, mientras que call y apply se ejecutan inmediatamente)
 https://www.youtube.com/watch?v=c0mLRpw-9rI
 
-Para que sirve el método off() en Jquery?
-
 Como ordernar valores de un objeto a una tabla (sort())?
 Ejemplo: Servicio Mercadolibre en Experiments o http://www.hiteshagrawal.com/javascript/sort-javascript-object-value/
-
-Para que se utilizan objetos literales (function(){...})() en Plugins de JQUERY (function($){})(jQuery); ademas de para crear plugins?
-http://stackoverflow.com/questions/2937227/what-does-function-jquery-mean
-
-Como crear un plugin en Jquery?
-https://learn.jquery.com/plugins/basic-plugin-creation/
-
-Para que se utiliza el objeto $.Deferred()?
-http://tutorials.jenkov.com/jquery/deferred-objects.html
-http://www.etnassoft.com/2011/02/02/el-nuevo-objeto-deferred-en-jquery-1-5/
-https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
 
 Como desabilitar spellcheck en un input?
 (se hace desde html con spellcheck="false")
 
 Que es el DOM y el BOM?
+
+--------------------------------------------------------------------------------------------
+
+JQUERY
+
+Que son getters y setters en JQuery?
+($( "h1" ).html( "hello world" ); //Setting the h1 content. $( "h1" ).html(); //Getting the h1 content.)
+
+Para que sirve el método off() en Jquery?
+Que diferencia hay entre $() y find() en Jquery?
+Hay alguna diferencia entre $('#mydiv').find('.adiv') y $('.adiv', '#mydiv')? (no, basicamente es lo mismo)
+
+Que hace esto? que problema soluciona con distintos navegadores?
+$('li').click(function (e) { var e = window.event || e; });
+
+Que diferencia hay entre $(document).ready y $(window).load
+https://4loc.wordpress.com/2009/04/28/documentready-vs-windowload/
+
+Para que se utiliza el método jQuery.noConflict()
+https://api.jquery.com/jquery.noconflict/
+
+Para que se utiliza el objeto $.Deferred()?
+http://tutorials.jenkov.com/jquery/deferred-objects.html
+http://www.etnassoft.com/2011/02/02/el-nuevo-objeto-deferred-en-jquery-1-5/
+https://www.funcion13.com/comprendiendo-promesas-y-deferreds-en-jquery/
