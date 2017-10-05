@@ -146,7 +146,13 @@ Que es el DOM y el BOM?
 JQUERY
 
 Que son getters y setters en JQuery?
-($( "h1" ).html( "hello world" ); //Setting the h1 content. $( "h1" ).html(); //Getting the h1 content.)
+($( "h1" ).html( "hello world" ); //Setting the h1 content. $( "h1" ).html(); //Getting the h1 content).
+
+Como remover un elemento en JQuery? que diferencia hay entre .remove(), .detach() and empty()?
+(detach remueve pero mantiene los eventos atacheados en caso de guardar el remove en una variabe se puede retornar los elementos y sus eventos a diferencia de remove y empty vacía el contenido de algo).
+
+Explique .bind() vs .live() vs .delegate() vs .on()?
+(bind() no atachea elementos futuros, live() si pero esta deprecado, delegate() permite pasar un anclaje y on() tiene todas las bondades de todos los anteriores + la capacidad de agregar nuevos eventos).
 
 Para que sirve el método off() en Jquery?
 Que diferencia hay entre $() y find() en Jquery?
