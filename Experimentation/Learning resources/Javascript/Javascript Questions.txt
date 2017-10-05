@@ -24,6 +24,8 @@ Que antipatrones de diseño existen?
 Cuales son los 3 pasos en que se define una variable? (declaración, instanciación y asignación)
 Que es la persistencia en una variable?
 Que es estar suscripto a una variable?
+Que es el var hoisting y que es el function hoisting?
+http://www.w3schools.com/js/js_hoisting.asp
 
 --------------------------------------------------------------------------------------------
 
@@ -69,9 +71,6 @@ https://stackoverflow.com/questions/18701282/what-is-content-type-and-datatype-i
 
 Que es la inmutabilidad? Solo puede solucionarse con ES6?
 http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
-
-Que es el var hoisting y que es el function hoisting?
-http://www.w3schools.com/js/js_hoisting.asp
 
 Que significan if(!x) y if(!!x)? defina algún caso de uso. Que tiene que ver con type coersion?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
