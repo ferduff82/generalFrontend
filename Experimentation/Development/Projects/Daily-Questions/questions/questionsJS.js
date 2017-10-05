@@ -70,5 +70,10 @@ var questionsJS = [
 	"Como crear un plugin en Jquery?",
 	"Para que se utiliza el objeto $.Deferred()?",
 	"Como desabilitar spellcheck en un input?",
-	"Que es el DOM y el BOM?"
+	"Que es el DOM y el BOM?",
+	"Que soluciona 'cache : false' en IE?",
+	"Que son los getters y setters?",
+	"Que son getters y setters en JQuery?",
+	"Como remover un elemento en JQuery? que diferencia hay entre .remove(), .detach() and empty()?",
+	"Explique .bind() vs .live() vs .delegate() vs .on()?"
 ];
