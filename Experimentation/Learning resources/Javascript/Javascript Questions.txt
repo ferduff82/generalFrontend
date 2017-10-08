@@ -42,6 +42,8 @@ https://johnresig.com/blog/javascript-method-overloading/
 Que significa pasar por valor y pasar por referencia en una function?
 http://blog.vigowebs.com/post/2017/javascript-interview-questions/
 
+Que son las funciones puras y las inpuras?
+
 --------------------------------------------------------------------------------------------
 
 Que son getters y setters?
@@ -54,10 +56,8 @@ Para que sirve el método "arguments.length" dentro de una función?
 Para que se usa hasOwnProperty?
 Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que no esten consumiendo memoria todo el tiempo)
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
-Que son las funciones puras y las inpuras?
 A que se le conoce como whitelistear?
 Que diferencias hay entre GET y POST? porque IE puede traer problemas si se utiliza get con muchos parametros?
-
 Como se copia un array y para que es necesario copiar un array?
 (Usando .split() y es necesario porque no se puede guardar en variables, los arrays toman los datos del origen de donde vienen)
 
