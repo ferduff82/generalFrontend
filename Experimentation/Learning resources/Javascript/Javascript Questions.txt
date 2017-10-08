@@ -24,6 +24,8 @@ Que antipatrones de diseño existen?
 Cuales son los 3 pasos en que se define una variable? (declaración, instanciación y asignación)
 Que es la persistencia en una variable?
 Que es estar suscripto a una variable?
+Que es el var hoisting y que es el function hoisting?
+http://www.w3schools.com/js/js_hoisting.asp
 
 --------------------------------------------------------------------------------------------
 
@@ -33,12 +35,14 @@ variable fuera de tu scope se crea un closure, de esta manera se crea una refere
 del parent scope). 
 https://www.sitepoint.com/javascript-closures-demystified/
 
-Cuantas formas hay de crearle propiedades a un objeto?
-http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
-
 Que es la sobrecarga de funciones/métodos? 
 (Una forma de mapear una función basada en los argumentos que se le pasa)
 https://johnresig.com/blog/javascript-method-overloading/
+
+Que significa pasar por valor y pasar por referencia en una function?
+http://blog.vigowebs.com/post/2017/javascript-interview-questions/
+
+Que son las funciones puras y las inpuras?
 
 --------------------------------------------------------------------------------------------
 
@@ -52,15 +56,16 @@ Para que sirve el método "arguments.length" dentro de una función?
 Para que se usa hasOwnProperty?
 Que son los memory leaks? (poder unbind los eventos en Single Page Apps para que no esten consumiendo memoria todo el tiempo)
 Que es el DRY code? (hacer $(selections) de forma repetida en lugar de guardar en variables)
-Que son las funciones puras y las inpuras?
 A que se le conoce como whitelistear?
 Que diferencias hay entre GET y POST? porque IE puede traer problemas si se utiliza get con muchos parametros?
-
 Como se copia un array y para que es necesario copiar un array?
 (Usando .split() y es necesario porque no se puede guardar en variables, los arrays toman los datos del origen de donde vienen)
 
 Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
 (eventBus es un tipo de Pub/sub aplicado en backbone)
+
+Cuantas formas hay de crearle propiedades a un objeto?
+http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
 
 --------------------------------------------------------------------------------------------
 
@@ -69,9 +74,6 @@ https://stackoverflow.com/questions/18701282/what-is-content-type-and-datatype-i
 
 Que es la inmutabilidad? Solo puede solucionarse con ES6?
 http://wecodetheweb.com/2016/02/12/immutable-javascript-using-es6-and-beyond/
-
-Que es el var hoisting y que es el function hoisting?
-http://www.w3schools.com/js/js_hoisting.asp
 
 Que significan if(!x) y if(!!x)? defina algún caso de uso. Que tiene que ver con type coersion?
 (La primera es negación de un valor, si el valor es true lo niega, la segunda es doble negación)
@@ -146,7 +148,13 @@ Que es el DOM y el BOM?
 JQUERY
 
 Que son getters y setters en JQuery?
-($( "h1" ).html( "hello world" ); //Setting the h1 content. $( "h1" ).html(); //Getting the h1 content.)
+($( "h1" ).html( "hello world" ); //Setting the h1 content. $( "h1" ).html(); //Getting the h1 content).
+
+Como remover un elemento en JQuery? que diferencia hay entre .remove(), .detach() and empty()?
+(detach remueve pero mantiene los eventos atacheados en caso de guardar el remove en una variabe se puede retornar los elementos y sus eventos a diferencia de remove y empty vacía el contenido de algo).
+
+Explique .bind() vs .live() vs .delegate() vs .on()?
+(bind() no atachea elementos futuros, live() si pero esta deprecado, delegate() permite pasar un anclaje y on() tiene todas las bondades de todos los anteriores + la capacidad de agregar nuevos eventos).
 
 Para que sirve el método off() en Jquery?
 Que diferencia hay entre $() y find() en Jquery?
