@@ -35,12 +35,12 @@ variable fuera de tu scope se crea un closure, de esta manera se crea una refere
 del parent scope). 
 https://www.sitepoint.com/javascript-closures-demystified/
 
-Cuantas formas hay de crearle propiedades a un objeto?
-http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
-
 Que es la sobrecarga de funciones/métodos? 
 (Una forma de mapear una función basada en los argumentos que se le pasa)
 https://johnresig.com/blog/javascript-method-overloading/
+
+Que significa pasar por valor y pasar por referencia en una function?
+http://blog.vigowebs.com/post/2017/javascript-interview-questions/
 
 --------------------------------------------------------------------------------------------
 
@@ -63,6 +63,9 @@ Como se copia un array y para que es necesario copiar un array?
 
 Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
 (eventBus es un tipo de Pub/sub aplicado en backbone)
+
+Cuantas formas hay de crearle propiedades a un objeto?
+http://stackoverflow.com/questions/1168807/how-can-i-add-a-key-value-pair-to-a-javascript-object
 
 --------------------------------------------------------------------------------------------
 
