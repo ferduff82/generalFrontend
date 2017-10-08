@@ -75,5 +75,7 @@ var questionsJS = [
 	"Que son los getters y setters?",
 	"Que son getters y setters en JQuery?",
 	"Como remover un elemento en JQuery? que diferencia hay entre .remove(), .detach() and empty()?",
-	"Explique .bind() vs .live() vs .delegate() vs .on()?"
+	"Explique .bind() vs .live() vs .delegate() vs .on()?",
+	"Que significa pasar por valor y pasar por referencia en una function?",
+	"Cuales son las 3 formas que hay de definir una función?"
 ];
