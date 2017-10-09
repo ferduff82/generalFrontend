@@ -77,5 +77,10 @@ var questionsJS = [
 	"Como remover un elemento en JQuery? que diferencia hay entre .remove(), .detach() and empty()?",
 	"Explique .bind() vs .live() vs .delegate() vs .on()?",
 	"Que significa pasar por valor y pasar por referencia en una function?",
-	"Cuales son las 3 formas que hay de definir una función?"
+	"Cuales son las 3 formas que hay de definir una función?",
+	"Que hace Object.keys()?",
+	"Para que se puede utilizar Object.defineProperty()?",
+	"Para que se usa seal(), freeze()?",
+	"Que es el constructor en un objeto?",
+	"Que es el manejo de excepciones?"
 ];
