@@ -82,6 +82,9 @@ Que hace Object.keys()?
 
 --------------------------------------------------------------------------------------------
 
+General:
+
+Para que se utiliza encodeURI y decodeURI?
 Que soluciona "cache : false" en IE?
 (IE chachea las llamadas ajax, por lo tanto siempre hay que setear el chache como false)
 Que es el Debounce?
@@ -99,6 +102,8 @@ Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
 Para que se utiliza comunmente la variable Self?
 
 --------------------------------------------------------------------------------------------
+
+Random:
 
 Para que se usa el content-type y el datatype en los forms?
 https://stackoverflow.com/questions/18701282/what-is-content-type-and-datatype-in-an-ajax-request
