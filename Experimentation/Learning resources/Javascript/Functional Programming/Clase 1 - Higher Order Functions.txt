@@ -3,12 +3,8 @@ Higher order Functions:
 
 Link: https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84
 
-Higher order functions means that functions are values and
-in functional programming functions are values:
-
-Every time you pass an anonymous function or a callback, you’re actually taking the value that the passed function returns, and using that as an argument for another function.
-
-Las functions pueden ser aplicadas a variables y pasadas a otras functions por eso se llaman higher order functions.
+Las functions en Javascript son "first class objects". 
+Las mismas se pueden guardar en variables, pasar como parametros a otras funciones y ser retornadas.
 
 Ej:
 
