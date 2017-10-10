@@ -82,5 +82,6 @@ var questionsJS = [
 	"Para que se puede utilizar Object.defineProperty()?",
 	"Para que se usa seal(), freeze()?",
 	"Que es el constructor en un objeto?",
-	"Que es el manejo de excepciones?"
+	"Que es el manejo de excepciones?",
+	"Para que se utiliza encodeURI y decodeURI?"
 ];
