@@ -80,6 +80,11 @@ Crear un nuevo branch:
 git branch -b magicTable
 
 
+Crear un branch que se desprende de otro branch:
+
+git branch -b magicTable dev
+
+
 Recuperar archivos borrados:
 
 git checkout .
