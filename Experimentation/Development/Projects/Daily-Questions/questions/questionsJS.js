@@ -1,4 +1,4 @@
-var questionsJS = [
+﻿var questionsJS = [
 	"Es javascript un lenguaje tipado?",
 	"Es javascript un lenguaje orientado a objetos o orientado a functional?",
 	"Es javascript un lenguaje orientado a eventos?",
@@ -83,5 +83,6 @@ var questionsJS = [
 	"Para que se usa seal(), freeze()?",
 	"Que es el constructor en un objeto?",
 	"Que es el manejo de excepciones?",
-	"Para que se utiliza encodeURI y decodeURI?"
+	"Para que se utiliza encodeURI y decodeURI?",
+	"Que es la programación recursiva?"
 ];
