@@ -4,5 +4,6 @@ Promises:
 La diferencia entre las promesas y los callbacks es que las promises son "composable" y eso da un gran orden.
 Las promesas son eventos que todavia no sucedieron pero se puede codear logica para cuando ese evento se dispare.
 
+!importante: En promesas la responsabilidad de disparar la respuesta queda del lado del front end a diferencia de los callbacks los cuales la respuesta se produce de lado del backend y de esa forma estas atado a lo que el backend responda.
 
 
