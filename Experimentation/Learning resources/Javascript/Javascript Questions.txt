@@ -27,6 +27,7 @@ Variables:
 Cuales son los 3 pasos en que se define una variable? (declaración, instanciación y asignación)
 Que es la persistencia en una variable?
 Que es estar suscripto a una variable?
+Para que se utiliza comunmente la variable Self?
 Que es el var hoisting y que es el function hoisting?
 http://www.w3schools.com/js/js_hoisting.asp
 
@@ -84,6 +85,7 @@ Que hace Object.keys()?
 
 General:
 
+Que es la programación recursiva?
 Para que se utiliza encodeURI y decodeURI?
 Que soluciona "cache : false" en IE?
 (IE chachea las llamadas ajax, por lo tanto siempre hay que setear el chache como false)
@@ -99,7 +101,6 @@ Como se copia un array y para que es necesario copiar un array?
 (Usando .split() y es necesario porque no se puede guardar en variables, los arrays toman los datos del origen de donde vienen)
 Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
 (eventBus es un tipo de Pub/sub aplicado en backbone)
-Para que se utiliza comunmente la variable Self?
 
 --------------------------------------------------------------------------------------------
 
