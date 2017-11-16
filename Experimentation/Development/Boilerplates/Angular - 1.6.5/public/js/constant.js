@@ -1,0 +1,1 @@
+app.constant('API_KEY', 'API123');

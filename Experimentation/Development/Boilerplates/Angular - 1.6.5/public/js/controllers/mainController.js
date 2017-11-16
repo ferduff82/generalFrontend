@@ -1,16 +1,19 @@
 
-app.controller('mainController', ['$scope','$http','$rootScope','$interval','$location','dataClass','API_PRODUCTS','API_DOLAR', function($scope, $http, $rootScope, $interval, $location, dataClass, API_PRODUCTS, API_DOLAR) {
+app.controller('mainController', ['$scope','$http','$rootScope','$interval','$location','dataClass','API_PRODUCTS','API_DOLAR','API_KEY', function($scope, $http, $rootScope, $interval, $location, dataClass, API_PRODUCTS, API_DOLAR, API_KEY) {
 
     /* Paginator Vars */
+
     $scope.currentPage = 1,
     $scope.numPerPage = 10,
     $scope.maxSize = 8;
+    
     /* End of Paginator Vars */
 
     currentPage = 0,
     searchValue = null,
     $scope.post = { postId: null };
     $scope.enableInput = true;
+    $rootScope.apiKey = API_KEY;
 
   
     $scope.getById = function (id) {

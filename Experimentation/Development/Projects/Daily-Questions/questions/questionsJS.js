@@ -49,7 +49,6 @@
 	"Por que si comparamos false == 0 nos da true?",
 	"Cual es la diferencia for y while? ejemplifique.",
 	"Cual es la diferencia entre for y foreach? en que caso conviene usar cada uno?",
-	"Cual es la diferencia entre TDD y BDD?",
 	"Para que se parsea un JSON ej. JSON.parse()?",
 	"Que es JSONP y como se usa y a que se le llama comunmente CORS?",
 	"Como saber si tengo acceso a CORS en un dominio externo, donde buscarlo en el navegador?",

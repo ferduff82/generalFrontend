@@ -1,6 +1,7 @@
 app.factory('dataClass', function() {
     return {
         items: [],
+        searchPerformed : 0,
         addItem : function(item) {
             this.items.push(item);
         },
