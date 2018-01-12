@@ -1,0 +1,30 @@
+{
+  "name": "helloWorld",
+  "version": "0.0.1",
+  "description": "a simple hello world application.",
+  "main": "/app/index.js",
+  "author": "Company name",
+  "dependencies": {
+    "config": "latest",
+    "dateformat": "latest",
+    "node-fetch": "^1.7.3",
+    "url-parse": "^1.1.9"
+  },
+  "devDependencies": {
+    "express": "latest",
+    "gulp": "latest",
+    "gulp-jasmine": "latest",
+    "jshint": "latest",
+    "winston": "latest"
+  },
+  "authenticatedUrls": [],
+  "publicUrls": [
+    "/ccstorex/custom/v1/helloWorld",
+    "/ccstorex/custom/v1/securedHelloWorld"
+  ],
+  "scripts": {
+    "lint": "jshint ./app || rem",
+    "start": "node index.js",
+    "test": "gulp test"
+  }
+}
