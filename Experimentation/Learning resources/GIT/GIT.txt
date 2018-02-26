@@ -1,22 +1,21 @@
-
-Verificar accesos al repo:
-
-ssh git@cmegit
-ssh git@cmegit info
-(ir a directorio ssh): cd ~/.ssh
-(open file config and verify route to user folder): cat config
-(open route): cd //uxhome/home/e23833/.ssh
-(check the lenght of the authenticating key, 2048 or 4096): ssh-keygen -lf e23833.pub
-
+﻿
 
 clonar repositorios:
 
 git clone ssh://git@cmegit:/marketing_cmegroup_cq5_css.git
 
 
-Guardar pass para que no lo pida dos veces:
+Guardar Credenciales para que no lo pida dos veces:
 
-git config credentials.helper store
+$ git config credential.helper store
+$ git push http://example.com/repo.git
+Username: <type your username>
+Password: <type your password>
+
+
+Evitar Proxy de Empresa
+
+git config --global url."https://".insteadOf git://
 
 
 Crear agregar y verificar ssh:
@@ -110,6 +109,7 @@ Volver atras despues de un intento de merge fallido
 git reset --hard HEAD
 
 
+
 Como usar Stash:
 
 git stash save "my_stash"
@@ -119,3 +119,14 @@ git stash list
 git stash pop stash@{n}
 
 git stash apply stash@{n}
+
+
+
+Verificar accesos al repo:
+
+ssh git@cmegit
+ssh git@cmegit info
+(ir a directorio ssh): cd ~/.ssh
+(open file config and verify route to user folder): cat config
+(open route): cd //uxhome/home/e23833/.ssh
+(check the lenght of the authenticating key, 2048 or 4096): ssh-keygen -lf e23833.pub
