@@ -112,6 +112,7 @@ Tienen algo que ver el patrón de diseño PUB/SUB con eventBus?
 Cuales son las partes de una direccion http?
 (protocolo, world wide web, dominio, directorio, archivo)
 Que son las HTML Entities?
+Que es el shim?
 
 --------------------------------------------------------------------------------------------
 
