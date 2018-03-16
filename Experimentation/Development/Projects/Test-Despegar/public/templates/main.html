@@ -1,0 +1,18 @@
+<div id="appContanier">
+
+    <div ng-controller="mainController">
+
+        <div id="restaurantScreen" class="ng-hide" ng-hide="restaurantSelected">
+            <input type="text" ng-model="restaurantName">
+
+            <input type="text" ng-model="restaurantDescription">
+
+            <div ng-repeat="item in deliveriesItems | filter: restaurantName | filter: restaurantDescription" >
+                <h2>{{item.name}}</h2>
+                <p>{{item.description}}</p>
+                <p><a href="#" ng-click="selectDelivery(item)">Realizar Pedido</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
