@@ -4,13 +4,43 @@
 
         <div id="restaurantScreen" class="ng-hide" ng-hide="restaurantSelected">
             <input type="text" ng-model="restaurantName">
-
             <input type="text" ng-model="restaurantDescription">
 
             <div ng-repeat="item in deliveriesItems | filter: restaurantName | filter: restaurantDescription" >
                 <h2>{{item.name}}</h2>
                 <p>{{item.description}}</p>
                 <p><a href="#" ng-click="selectDelivery(item)">Realizar Pedido</a></p>
+            </div>
+        </div>
+
+        <div id="mealScreen" ng-show="selectMeal">
+            <div ng-repeat="(keyMeals, meals) in mealsGroup">
+                <h2><a href="#" ng-click="displayMeals(keyMeals)">{{keyMeals}}</a></h2>
+                <div ng-show="true">
+                    <div ng-repeat="meal in meals" class="mealsContainer">
+                        <p class="selectMeal">{{meal.name}}</p>
+                        <p class="selectMeal">{{meal.price | currency}}</p>
+                        <p class="selectMeal">{{meal.description}}</p>
+                        <div ng-click="addMealToPurchaseList(meal)" class="addMealToMenu"></div>
+                        <div class="mealTooltip"></div>
+                    </div>
+                </div>
+            </div>
+            <div ng-repeat="selectedMeal in mealList">
+                <div class="removeItem" ng-click="removeMeal($index)"></div>
+                <p>{{selectedMeal.name}}</p>
+                <p>{{selectedMeal.price}}</p>
+                <div class="addAmount">
+                    <input type="text">
+                </div>
+                <div class="unityPrice"></div>
+                <div class="totalPrice"></div>
+            </div>
+            <div class="totalPrice">
+                <h3>{{totalPrice}}</h3>
+            </div>
+            <div class="totalPrice">
+                <h3>{{totalPrice}}</h3>
             </div>
         </div>
 
