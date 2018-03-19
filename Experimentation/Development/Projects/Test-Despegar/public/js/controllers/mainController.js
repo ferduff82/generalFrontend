@@ -31,7 +31,7 @@ app.controller('mainController', ['$scope','$rootScope', 'deliveries',
         };
 
         $scope.backButton = function () {
-
+            console.log('hacia atras');
         };
 
         $scope.removeMeal = function (index) {
