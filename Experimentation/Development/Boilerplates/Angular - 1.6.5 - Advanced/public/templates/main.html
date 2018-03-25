@@ -1,0 +1,124 @@
+<div id="appContanier">
+
+    <div ng-controller="mainController">
+        <div class="headerContainer">
+            <h2>Delivery Online</h2>
+            <div class="statusHeader">
+                <ul>
+                    <li ng-class="pageStatus == 1 ? 'active' : ''"><strong>1</strong> - Elegí tu delivery</li>
+                    <li ng-class="pageStatus == 2 ? 'active' : ''"><strong>2</strong> - Realizá tu pedido</li>
+                    <li ng-class="pageStatus == 3 ? 'active' : ''"><strong>3</strong> - Completá tus datos</li>
+                </ul>
+            </div>
+        </div>
+        <div class="restaurantScreen" class="ng-hide" ng-hide="restaurantSelected">
+            <div class="restaurantFilters">
+                <h3>Filtros:</h3>
+                <input type="text" ng-model="restaurantName" placeholder="Nombre">
+                <input type="text" ng-model="restaurantDescription" placeholder="Descripción">
+            </div>
+            <div class="deliveriesContainer">
+                <h3>Deliveries:</h3>
+                <div class="restaurantSelect" ng-repeat="item in deliveriesItems | filter: restaurantName | filter: restaurantDescription" >
+                    <h4>{{item.name}}</h4>
+                    <div class="containDescription">
+                        <p>{{item.description}}</p>
+                        <p><div class="makeRequest" ng-click="selectDelivery(item)">Realizar Pedido</div></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mealScreen" ng-show="selectMeal">
+            <h3 ng-hide="hideMakeOrder">Realiza tu pedido!</h3>
+            <div ng-repeat="(keyMeals, meals) in mealsGroup" ng-hide="leftSelection" ng-init="displayMeals(keyMeals)">
+                <div class="accordionButtonContent">
+                    <h4><div ng-click="displayMeals(keyMeals)" class="accordionButton" ng-class="{selectedMeal: keyMeals == accordionDisplay}">{{keyMeals}}</div></h4>
+                </div>
+                <div ng-show="keyMeals == accordionDisplay" class="accordionContent">
+                    <li ng-repeat="meal in meals" class="mealsContainer">
+                        <div class="selectMeal">{{meal.name}}</div>
+                        <div class="mealPrice">{{meal.price | currency:undefined:0}}</div>
+                        <div class="addMealToMenu">
+                            <div class="addMealButton">
+                                <img src="../img/magnifying-glass.png" width="20px" height="20px" alt="magnifying glass">
+                            </div>
+                            <div class="displayTooltip">{{meal.description}}</div>
+                        </div>
+                        <div class="mealTooltip" ng-click="addMealToPurchaseList(meal)">
+                            <div class="seeDescriptionTooltip">
+                                <img src="../img/arrow-down.png" width="20px" height="20px" alt="add Product">
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <div class="formContainer" ng-show="showForm">
+                <h3>Completa tus datos!</h3>
+                <form ng-submit="endDeliver()" class="personalData" name="personalDataForm">
+                    <div class="lineInput">
+                        <div class="nameValid">Nombre:</div><input type="text" ng-model="name" name="name" placeholder="Nombre" required/>
+                    </div>
+                    <div class="lineInput">
+                        <div class="lastNameValid">Apellido:</div><input type="text" ng-model="lastName" name="lastName" placeholder="Apellido" required/>
+                    </div>
+                    <div class="lineInput">
+                        <div class="addressValid">Dirección</div><input type="text" ng-model="address" name="address" placeholder="Calle XX nro. NN dpto AA e/ YY y ZZ" required/>
+                    </div>
+                    <div class="lineInput">
+                        <div class="phoneValid">Teléfono:</div><input type="text" ng-model="phone" name="phone" placeholder="Teléfono" required/>
+                    </div>
+                    <div class="lineInput">
+                        <div class="emailValid">E-mail:</div><input type="text" ng-model="email" name="email" placeholder="E-mail de contacto" required/>
+                    </div>
+                    <div class="formButtonsContainer">
+                        <div ng-click="lastBackButton()" class="lastBackButton">Atras</div>
+                        <button type="submit" id="submit" ng-disabled="personalDataForm.$invalid" class="makeRequestButton" ng-class="{activateRequest: personalDataForm.$invalid != true}">Realizar Pedido</button>
+                    </div>
+                </form>
+            </div>
+            <div class="amountContainer" ng-show="mealList.length > 0">
+                <table>
+                    <tr>
+                        <th class="headAmount">Producto</th>
+                        <th class="headAmount">Cantidad</th>
+                        <th class="headAmount">Precio Unitario</th>
+                        <th class="headAmount">Total</th>
+                    </tr>
+                    <tr ng-repeat="selectedMeal in mealList track by $index" class="purchaseProduct">
+                        <td class="productContainer">
+                            <div class="removeItem" ng-click="removeMeal($index)">
+                                <img src="../img/close-icon.png" alt="close icon" width="20px" height="20px">
+                            </div>
+                            <div class="mealName">{{selectedMeal.name}}</div>
+                        </td>
+                        <td class="addAmount">
+                            <input ng-model="itemSize" ng-init="itemSize='1'" ng-change="changeAmount($index,itemSize)">
+                        </td>
+                        <td class="unityPrice">{{selectedMeal.price | currency:undefined:0}}</td>
+                        <td>
+                            {{selectedMeal.totalLocal | currency:undefined:0}}
+                        </td>
+                    </tr>
+                </table>
+                <div class="totalPrice">
+                    <h3>{{totalPrice | currency:undefined:0}}</h3>
+                </div>
+            </div>
+            <div class="displayDataContainer" ng-show="jsonDisplay">
+                <div class="backCover"></div>
+                <div class="displayData">
+                    {{displayDataObject}}
+                </div>
+            </div>
+            <div class="buttonsContainer">
+                <div class="backButtonSecondScreen" ng-hide="hideSecondBack">
+                    <div ng-click="backButton()">Atras</div>
+                </div>
+                <div class="continueToEnd" ng-hide="hideContinue" ng-class="{ activateContinue : mealList.length > 0 }">
+                    <div ng-click="continueToEnd()">Continuar</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+</div>

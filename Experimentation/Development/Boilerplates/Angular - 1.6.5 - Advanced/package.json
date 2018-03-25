@@ -1,10 +1,11 @@
 {
-  "name": "angular-starter",
+  "name": "ejercicio-despegar",
   "version": "1.0.0",
-  "description": "Entry point:",
+  "description": "Ejercicio AngularJS para Despegar",
   "main": "server.js",
   "dependencies": {
     "express": "^4.15.4",
+    "less-middleware": "^2.2.1",
     "opn": "^5.1.0"
   },
   "devDependencies": {},

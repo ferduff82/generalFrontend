@@ -1,0 +1,346 @@
+
+/* Header */
+
+.headerContainer {
+    background-color: #2d3e50;
+    color: #fff;
+    padding: 10px;
+    right: 35px;
+}
+.headerContainer h2{
+    margin-top: 5px;
+    display: inline-table;
+}
+.headerContainer .statusHeader {
+    display: inline-table;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+.headerContainer .statusHeader li {
+    display: inline;
+    padding: 10px;
+    background-color: #11BA9E;
+    color: #fff;
+    border-radius: 4px;
+}
+.headerContainer .statusHeader li.active {
+    background-color: #fff;
+    color: #2d3e50;
+}
+
+/* End Header */
+
+/* Restaurant Selection */
+
+.restaurantScreen {
+    padding: 10px;
+}
+.restaurantScreen .restaurantSelect {
+    display: inline-table;
+    width: 250px;
+    border: 1px solid #ccc;
+    margin: 10px 10px 10px 0;
+    border-radius: 4px;
+}
+.restaurantScreen .restaurantFilters {
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #ddd;
+}
+.restaurantScreen .deliveriesContainer {
+    margin: 0 auto;
+}
+.restaurantScreen .restaurantFilters input{
+    width: 242px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.restaurantSelect h4 {
+    background-color: #006CCD;
+    padding: 5px;
+    margin: 0;
+    color: #fff;
+    border-radius: 4px 4px 0 0;
+}
+.restaurantSelect .containDescription {
+    padding: 10px;
+}
+.restaurantSelect .containDescription .makeRequest {
+    font-weight: bold;
+    cursor: pointer;
+    color: #2d3e50;
+}
+
+
+/* End Restaurant Selection */
+
+/* Order Selection */
+
+.mealScreen {
+    padding: 10px;
+}
+.mealScreen h3 {
+    margin-bottom: 36px;
+}
+.mealScreen .selectedMeal {
+    color: gray;
+    border: 1px solid #ccc;
+    border-right: transparent;
+}
+.mealScreen .mealsContainer {
+    display: table-header-group;
+}
+.mealScreen .mealsContainer:nth-child(odd)  {
+    background-color: #ddd;
+}
+.mealScreen .accordionButton {
+    display: inline-block;
+    padding: 10px;
+    width: 180px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.mealScreen .accordionContent {
+    border: 1px solid #ccc;
+    display: inline-table;
+    position: absolute;
+    top: 170px;
+    padding: 10px;
+    table-layout: fixed;
+    width: 415px;
+}
+.mealScreen .accordionButtonContent,
+.mealScreen .accordionButtonContent h3 {
+    display: inline-block;
+    color: #11BA9E;
+}
+.mealScreen .accordionContent div {
+    padding: 8px;
+}
+.mealScreen .mealTooltip {
+    width: 40px;
+    height: 22px;
+    display: table-cell;
+}
+.mealScreen .addMealToMenu {
+    width: 40px;
+    height: 22px;
+    display: table-cell;
+}
+.mealScreen .mealTooltip .seeDescriptionTooltip {
+    background-color: #11BA9E;
+    padding: 2px;
+    cursor: pointer;
+}
+.mealScreen .addMealToMenu:hover .displayTooltip {
+    display: block;
+}
+.mealScreen .addMealToMenu .addMealButton {
+    background-color: #006CCD;
+    padding: 2px;
+}
+.mealScreen .selectMeal,
+.mealScreen .mealPrice {
+    display: table-cell;
+}
+.mealScreen .mealPrice {
+    width: 70px;
+}
+.mealScreen .displayTooltip {
+    position: absolute;
+    background-color: #2d3e50;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: -95px;
+    z-index: 999;
+    margin-left: -15px;
+    display: none;
+}
+.mealScreen .displayTooltip::before {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 18px;
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: #2d3e50 transparent;
+}
+.mealScreen .amountContainer {
+    position: absolute;
+    left: 615px;
+    right: 10px;
+    top: 170px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.mealScreen .amountContainer .headAmount {
+    background-color: #006CCD;
+    color: #fff;
+}
+.mealScreen .amountContainer td:last-child,
+.mealScreen .amountContainer .headAmount:last-child {
+    text-align: right;
+}
+.mealScreen .amountContainer table {
+    width: 100%;
+}
+.mealScreen .amountContainer td,
+.mealScreen .amountContainer th {
+    padding: 10px;
+}
+.mealScreen .amountContainer tr:nth-child(odd) {
+    background-color: #ddd;
+}
+.mealScreen .amountContainer .purchaseProduct div {
+    display: table-cell;
+}
+.mealScreen .amountContainer .totalPrice {
+    float: right;
+}
+.mealScreen .amountContainer .totalPrice h3{
+    margin-bottom: 10px;
+}
+.mealScreen .amountContainer .productContainer .removeItem {
+    background-color: red;
+    margin-right: 15px;
+    height: 23px;
+    float: left;
+    display: inline;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.mealScreen .amountContainer .productContainer .mealName {
+    display: inline;
+}
+
+/* End Order Selection */
+
+/* Buttons */
+
+.buttonsContainer {
+    position: absolute;
+    bottom: 75px;
+    right: 10px;
+}
+.backButtonSecondScreen,
+.lastBackButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #999;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.continueToEnd {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ddd;
+    color: #fff;
+    border-radius: 4px;
+}
+.continueToEnd.activateContinue {
+    background-color: #11BA9E;
+    cursor: pointer;
+}
+.backButtonSecondScreen:hover,
+.lastBackButton:hover {
+    background-color: #777;
+}
+.makeRequestButton {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #ccc;
+}
+.makeRequestButton.activateRequest {
+    background-color: #11BA9E;
+}
+.formButtonsContainer {
+    position: absolute;
+    right: 10px;
+    bottom: 75px;
+}
+
+/* End Buttons */
+
+/* Footer */
+
+.footer {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background-color: #2d3e50;
+    bottom: 0;
+}
+
+/* End Footer */
+
+/* Personal Data */
+
+.formContainer {
+    width: 592px;
+}
+.formContainer h3 {
+    margin-bottom: 45px;
+}
+.formContainer .personalData {
+    margin-top: 20px;
+    background-color: #ddd;
+    padding: 31px 0 8px 48px;
+    border-radius: 4px;
+}
+.formContainer .personalData .lineInput {
+    margin-bottom: 25px;
+}
+.formContainer .personalData .lineInput div {
+    display: inline-block;
+    margin-right: 40px;
+    width: 100px;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px;
+}
+.formContainer .personalData .lineInput input {
+    width: 350px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* End Personal Data */
+
+/* Json Modal Display */
+
+.displayData {
+    position: absolute;
+    z-index: 2;
+    top: 28%;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 35px;
+    background-color: #999;
+    border-radius: 4px;
+    color: #fff;
+    font-family: monospace;
+}
+.backCover {
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    opacity: 0.8;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* End Json Modal Display */
+
