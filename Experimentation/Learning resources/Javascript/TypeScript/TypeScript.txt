@@ -1,0 +1,200 @@
+﻿
+
+
+
+- Variables: Se define el tipo de valor que va a contener.
+
+var name:string = "John"; 
+var score1:number = 50;
+
+
+
+
+- Functions: Se definen los tipos de valores en los argumentos.
+
+function disp_details( id:number, name:string, mail_id?:string ) { 
+   console.log("ID:", id); 
+   console.log("Name",name); 
+   
+   if(mail_id!=undefined)  
+   console.log("Email Id",mail_id); 
+}
+
+disp_details(123,"John");
+disp_details(111,"mary","mary@xyz.com");
+
+
+
+
+- Arrays: Se define el tipo de valor que va a contener el array y si es un array.
+
+var alphas:string[]; 
+
+alphas = ["1","2","3","4"];
+
+
+
+
+- Tuple: Es un array que funciona como collection, te permite guardar diferentes tipos de valores.
+
+var mytuple = [10,"Hello"]; 
+
+
+
+
+- Union: Tipo de variable que permite diferentes tipos de valores.
+
+var val:string|number; 
+val = 12;
+val = "This is a string"; 
+
+/* También hay union de Arrays */
+
+var arr:number[]|string[]; 
+
+
+
+
+- Interface: Es un contrato al cual la entidad debe estar suscripta.
+
+interface IPerson { 
+   firstName:string, 
+   lastName:string, 
+   sayHi: ()=>string 
+} 
+
+var customer:IPerson = { 
+   firstName:"Tom",
+   lastName:"Hanks", 
+   sayHi: ():string =>{return "Hi there"} 
+} 
+
+console.log("Customer Object ") 
+console.log(customer.firstName) 
+console.log(customer.lastName) 
+console.log(customer.sayHi())  
+
+
+
+
+- Interface in Array:
+
+interface namelist { 
+   [index:number]:string 
+} 
+
+var list2:namelist = ["John",1,"Bran"] //Error. 1 is not type string  
+interface ages { 
+   [index:string]:number 
+} 
+
+var agelist:ages; 
+agelist["John"] = 15   // Ok 
+
+
+
+
+- Inheritance in Interface:
+
+interface Person { 
+   age:number 
+} 
+
+interface Musician extends Person { 
+   instrument:string 
+} 
+
+var drummer = <Musician>{}; 
+drummer.age = 27 
+drummer.instrument = "Drums" 
+console.log("Age:  "+drummer.age) console.log("Instrument:  "+drummer.instrument)
+
+
+
+
+- Clases:
+
+class Car { 
+   //field 
+   engine:string; 
+   
+   //constructor 
+   constructor(engine:string) { 
+      this.engine = engine 
+   }  
+   
+   //function 
+   disp():void { 
+      console.log("Function displays Engine is  :   "+this.engine) 
+   } 
+} 
+
+//create an object 
+var obj = new Car("XXSY1")
+
+//access the field 
+console.log("Reading attribute value Engine as :  "+obj.engine)  
+
+//access the function
+obj.disp()
+
+
+
+
+
+- Clases Inheritance:
+
+class Shape { 
+   Area:number 
+   
+   constructor(a:number) { 
+      this.Area = a 
+   } 
+} 
+
+class Circle extends Shape { 
+   disp():void { 
+      console.log("Area of the circle:  "+this.Area) 
+   } 
+}
+  
+var obj = new Circle(223); 
+obj.disp()
+
+
+
+
+
+- Private Clases
+
+class Encapsulate { 
+   str:string = "hello" 
+   private str2:string = "world" 
+}
+ 
+var obj = new Encapsulate() 
+console.log(obj.str)     //accessible 
+console.log(obj.str2)   //compilation Error as str2 is private
+
+
+
+
+
+- Interfaces in Clases
+
+interface ILoan { 
+   interest:number 
+} 
+
+class AgriLoan implements ILoan { 
+   interest:number 
+   rebate:number 
+   
+   constructor(interest:number,rebate:number) { 
+      this.interest = interest 
+      this.rebate = rebate 
+   } 
+} 
+
+var obj = new AgriLoan(10,1) 
+console.log("Interest is : "+obj.interest+" Rebate is : "+obj.rebate )
