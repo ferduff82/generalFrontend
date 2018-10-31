@@ -1,0 +1,352 @@
+
+/***********/
+
+/* IMPORTS */
+
+/***********/
+
+@import "../vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+#spacesWrapper {
+	width: 1024px;
+	margin: auto;
+	.hide {
+		display: none;
+	}
+	.show {
+		display: block !important;
+	}
+	.highlightBlue {
+		background-color: @lightBlue;
+		opacity: 0.5;
+	}
+	.highlightBlue:hover {
+		background-color: @lightBlue !important;
+	}
+	.highlightYellow {
+		background-color: @lightYellow;
+		opacity: 0.5;
+	}
+	.highlightYellow:hover  {
+		background-color: @lightYellow !important;
+	}
+	.highlightGreen {
+		background-color: @lightGreen;
+		opacity: 0.5;
+	}
+	.highlightGreen:hover  {
+		background-color: @lightGreen !important;
+	}
+
+	.content {
+		padding: 43px 43px 70px 43px;
+		.events-nav {
+			.events-nav-title {
+			    border-bottom: 1px solid;
+			    margin-left: 19px;
+			    padding-left: 12px;
+			}
+			.events-nav-bullet {
+			    background-color: black;
+			    width: 19px;
+			    height: 19px;
+			    float: left;
+			}
+			.events-nav-back {
+			    height: 41px;
+			    margin-bottom: 12px;
+			    img {
+			    	transform: rotate(-90deg);
+			    	float: right;
+			    }
+			}
+			.contact-data {
+			    padding: 10px 0 10px 0;
+			}
+		}
+		.spaceComponentWrapper {
+		    width: 100%;
+		    height: 1002px;
+		    background-repeat: no-repeat;
+		    background-image: url('../img/dist/pictures/mapa.png');
+			.asset-manager-container {
+				background-color: @black;
+			    width: 54px;
+			    height: 204px;
+			    position: fixed;
+			    top: 0;
+			    left: calc(50% - -450px);
+			    margin-top: 200px;
+			    padding: 5px;
+			    img {
+			    	padding: 4px 0;
+	    			width: 100%;
+			    }
+			    .addBottomBorder {
+			    	border-bottom: 1px solid @white;
+			    }
+			}
+			.parking-space,
+			.cole-space,
+			.subte-space,
+			.caminar-space,
+			.bici-space,
+			.taxi-space {
+				position: absolute;
+				width: 165px;
+				font-weight: bold;
+				> div {
+			    	float: left;
+			    }
+			}
+			.parking-space {
+			    top: 890px;
+			    left: calc(50% - 310px);
+			    div {
+			    	float: left;
+			    }
+			    div:last-child {
+			    	margin-top: 15px;
+			    	margin-left: 10px;
+			    }
+			}
+			.subte-space {
+			    top: 987px;
+			    left: calc(50% - 10px);
+			    div:last-child {
+			    	margin-top: 10px;
+			    	margin-left: 10px;
+			    	span:last-child {
+			    		font-weight: normal;
+			    	}
+			    }
+			}
+			.cole-space {
+			    top: 220px;
+			    float: right;
+			    left: calc(50% - -130px);
+			    display: flex;
+		    	> div {
+				    float: left;
+				}
+			}
+			.taxi-space {
+			    float: right;
+			    top: 764px;
+    			left: calc(50% - -260px);
+    			div:last-child {
+    				margin: 18px 0 0 10px;
+    			}
+			}
+			.bici-space { 
+			    float: right;
+			    top: 852px;
+			    left: calc(50% - -180px);
+			    div:last-child {
+    				margin: 18px 0 0 10px;
+    			}
+			}
+			.caminar-space {
+			    float: right;
+			    top: 912px;
+			    left: calc(50% - -274px);
+			    div:first-child {
+			    	margin: 18px 18px 0 0;
+			    }
+			}
+			.general-hall-data {
+			    width: 326px;
+				height: 200px;
+				padding: 15px;
+				color: @white;
+				z-index: 9999999;
+				.title-container {
+					display: flex;
+					h3 {
+					    margin: 0;
+					    display: flex;
+					    width: 90%;
+					}
+					.close-display {
+						float: right;
+					}
+				}
+				.image-display {
+					> div {
+						display: inline;
+					}
+				}
+				.inline-display {
+					display: inline;
+				}
+    			.content-data {
+					display: flex;
+				}
+				.content-a,
+				.content-b {
+					font-size: 12px;
+				}
+				.content-a {
+					width: 55%;
+				}
+				.title-capacity {
+					h5 {
+						margin: 5px 0 5px -15px;
+					}
+				}
+				li {
+					margin: 5px 0;
+				}
+				.content-b {
+					width: 45%;
+					li {
+						list-style-type: disc !important;
+					}
+				}
+				.arrow-style {
+				    width: 0;
+				    height: 0;
+				    border-left: 15px solid transparent;
+				    border-right: 15px solid transparent;
+				    position: absolute;
+				}
+				.skematic,
+				.technik,
+				.gallery {
+					img {
+						width: 30px;
+						margin-right: 10px;
+						margin-top: 10px;
+					}
+				}
+			}
+			.plenary-a:hover,
+			.plenary-b:hover,
+			.plenary-c:hover,
+			.vip-a:hover,
+			.vip-b:hover,
+			.auxiliar-a:hover,
+			.auxiliar-b:hover {
+				background-color: @grey;
+				opacity: 0.5;
+			}
+			.plenary-container {
+			    margin-left: 274px;
+			    padding-top: 243px;
+				.plenary-a,
+				.plenary-b,
+				.plenary-c {
+					position: absolute;
+				}
+				.plenary-a,
+				.plenary-b,
+				.plenary-c {
+					height: 150px;
+				}
+				.plenary-a {
+					width: 150px;
+				}
+				.plenary-b {
+				    width: 120px;
+				    margin-left: 150px;
+				}
+				.plenary-c {
+				    width: 147px;
+				    margin-left: 269px;
+				}
+				.plenary-data-display {
+					background-color: @highlightBlue;
+					position: absolute;
+    				top: 563px;
+					.arrow-style {
+					    border-bottom: 15px solid @highlightBlue;
+					    top: -14px;
+				     	left: 30px;
+					}
+				}
+			}
+			.vip-container {
+			    margin-left: 274px;
+			    width: 100px;
+			    display: inline-block;
+			    height: 100px;
+			    margin-top: 204px;
+				.vip-data-display {
+					background-color: @darkGreen;
+				    position: absolute;
+				    top: 724px;
+				    left: calc(50% - 227px);
+					.arrow-style {
+						margin-top: -28px;
+						margin-left: 15px;
+					    border-bottom: 15px solid @darkGreen;
+					}
+				}
+				.vip-a,
+				.vip-b {
+					position: absolute;
+				}
+				.vip-a {
+				    width: 16px;
+				    height: 24px;
+				    margin-top: 11px;
+				}
+				.vip-b {
+					width: 16px;
+				    height: 42px;
+				    margin-top: 35px;
+				}
+			}
+			.auxiliar-container {
+				margin-left: 223px;
+			    margin-top: -58px;
+			    display: inline-block;
+			    width: 125px;
+			    height: 158px;
+				.auxiliar-data-display {
+					background-color: @darkYellow;
+				    position: absolute;
+				    top: 724px;
+					.arrow-style {
+					    border-bottom: 15px solid @darkYellow;
+    					margin-top: -28px;
+				     	left: 30px;
+					}
+				}
+				.auxiliar-a,
+				.auxiliar-b {
+					position: absolute;
+				}
+				.auxiliar-a {
+				    width: 88px;
+				    height: 52px;
+				    margin-left: 2px;
+				    margin-top: 26px;
+				}
+				.auxiliar-b {
+				    width: 88px;
+				    height: 75px;
+				    margin-top: 79px;
+				    margin-left: 2px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Centro de Convenciones Buenos Aires</title>
+		<meta name="keywords" content="Digital Agency, Diseño, Programación">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../libs/normalize.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
+	</head>
+	<body>
+		<div class="menu">
+			
+		</div>
+		<div class="headerTemplate"></div>
+		<div id="cityWrapper" class="wrapper">
+			<div class="content">
+				<div class="events-nav">
+					<div class="events-nav-head">
+						<div class="events-nav-bullet"></div>
+						<div class="events-nav-title">LA CIUDAD</div>
+					</div>
+				</div>
+				<div class="top-container">
+					<div class="column">Buenos Aires, capital de la República Argentina, es la ciudad con más habitantes del país. Reconocida internacionalmente por su diversidad y riquezas culturales se encuentra ubicada estratégicamente respecto de las grandes ciudades del mundo. El turismo de reuniones es uno de los motores de la economía en la Ciudad.
+<br/><br/>
+<strong><a href="http://disfrutemosba.buenosaires.gob.ar" target="_blank">disfrutemosba.buenosaires.gob.ar</a></strong>
+					</div>
+					<div class="column">
+						<div class="temperature-service">
+							<div class="weatherPictureContainer">
+								<div class="hide lluvia_con_sol">
+									<img src="../img/dist/vectors/weather/lluvia_con_sol.svg" alt="weather">
+								</div>
+								<div class="hide lluvia">
+									<img src="../img/dist/vectors/weather/lluvia.svg" alt="weather">
+								</div>
+								<div class="hide nieve">
+									<img src="../img/dist/vectors/weather/nieve.svg" alt="weather">
+								</div>
+								<div class="hide nublado">
+									<img src="../img/dist/vectors/weather/nublado.svg" alt="weather">
+								</div>
+								<div class="hide parcialmente_soleado">
+									<img src="../img/dist/vectors/weather/parcialmente_soleado.svg" alt="weather">
+								</div>
+								<div class="hide soleado">
+									<img src="../img/dist/vectors/weather/soleado.svg" alt="weather">
+								</div>
+								<div class="hide tormenta_electrica">
+									<img src="../img/dist/vectors/weather/tormenta_electrica.svg" alt="weather">
+								</div>
+								<div class="hide viento">
+									<img src="../img/dist/vectors/weather/viento.svg" alt="weather">
+								</div>
+							</div>
+							<div class="temperature"></div>
+							<div class="dateAndTime">
+								<strong>BUENOS AIRES, ARGENTINA</strong><br/>
+								<div class="dateTime"></div>
+								<div class="weatherDescription"></div>
+							</div>
+						</div>
+						<div class="money-service">
+							<div class="column-service">
+								<div>
+									<img src="../img/dist/vectors/dolar.svg" alt="dolar">
+								</div>
+								<div class="dolar">
+									<div>COMPRA: <strong>$33,52</strong></div>
+									<div>VENTA: <strong>$34,56</strong></div>
+								</div>
+							</div>
+							<div class="column-service">
+								<div>
+									<img src="../img/dist/vectors/euro.svg" alt="euro">
+								</div>
+								<div class="euro">
+									<div>COMPRA: <strong>$43,52</strong></div>
+									<div>VENTA: <strong>$44,56</strong></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="map-container">
+					<div class="map-column column-a">
+						<div class="links">
+							<div class="touristic-atractions">
+								<img src="../img/dist/vectors/atractions.svg" alt="atractions">
+								<div>Atractivos turísticos</div>
+							</div>
+							<div class="gastronomy">
+								<img src="../img/dist/vectors/resto.svg" alt="gastronomy">
+								<div>Gastronomía</div>
+							</div>
+							<div class="hotels">
+								<img src="../img/dist/vectors/hotel.svg" alt="hotels">
+								<div>Hoteles</div>
+							</div>
+							<div class="parkings">
+								<img src="../img/dist/vectors/parking-atractions.svg" alt="parking">
+								<div>Estacionamientos</div>
+							</div>
+						</div>
+						<div id="map"></div>
+					</div>
+					<div class="map-column column-b"></div>
+				</div>
+			</div>
+		</div>
+		<div class="footerTemplate"></div>
+
+		<!-- Libraries -->
+		<script src="../libs/jquery-3.3.1.min.js"></script>
+		<script src="../libs/mustache.js"></script>
+		<script src="../libs/promisePolyfill.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTzDD8wWGcKPdn5CRn-UrFf6qJEPjoxlo&libraries=places"></script>
+
+		<!-- Main JS Entry Point -->
+		<script src="../js/classes/removeStylesTranslator.js"></script>
+		<script src="../js/classes/menuDisplay.js"></script>
+		<script src="../js/classes/weatherService.js"></script>
+		<script src="../js/classes/moneyService.js"></script>
+		<script src="../js/classes/loadHeaderAndFooter.js"></script>
+		<script src="../js/mainCity.js"></script>
+
+	</body>
+</html>

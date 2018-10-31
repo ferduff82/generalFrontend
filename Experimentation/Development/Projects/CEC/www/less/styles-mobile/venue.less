@@ -1,0 +1,71 @@
+
+/***********/
+
+/* IMPORTS */
+
+/***********/
+
+@import "../vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+@media (max-width: @md) {
+
+	#venueWrapper {
+		width: 100%;
+		.content {
+			padding-bottom: 180px;
+			.image-venue img {
+			    height: 150px;
+			}
+		}
+	}
+	.modal-display {
+		.background-modal {
+		    opacity: 0.9;
+		    width: 100%;
+		    height: 100%;
+		    padding: 85px;
+		}
+		.modal-container {
+		    left: 190px;
+		    right: 190px;
+		}
+	}
+	#plenariaCWrapper{
+		width: 100%;
+		.content {
+			.pictures-container {
+				.image-plenaria {
+				    margin-right: 10px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 430px) {
+	#plenariaCWrapper{
+		.content {
+			.pictures-container {
+				.image-plenaria {
+				    width: 100%;
+				}
+			}
+		}
+	}
+}

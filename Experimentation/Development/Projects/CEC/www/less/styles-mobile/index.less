@@ -1,0 +1,146 @@
+@import "../vars/vars.less";
+@media (max-width: @md) {
+    .full-width-index {
+
+        .news-content {
+            width: 100%;
+
+            .content-title-events {
+                padding: 43px 0 0;
+                margin: 0 @globalPaddingMobile;
+            }
+
+            .news-container {
+                flex-wrap: wrap;    
+            }//.news-container 
+            
+        }//.news-content
+
+        
+    }//.full-width-index
+    
+    .news-module {
+        padding: 22px @globalPaddingMobile;
+    }
+
+    .news-module:first-child {
+        padding-right: @globalPaddingMobile;
+    }
+    .news-module:last-child {
+        padding-left: @globalPaddingMobile;
+    }
+
+    #indexWrapper {
+        .news-content {
+            width: 100%;
+
+            .news-container {
+                flex-wrap: wrap;    
+            }//.news-container 
+
+            .content-title-news {
+                padding: 43px 0 0;
+                margin: 0 @globalPaddingMobile;
+            }
+        }//.news-content
+
+        .content {
+            .bx-wrapper {
+                min-height: 250px;
+                img {
+                    max-width: initial;
+                    width: 150%;
+                }
+            }
+
+            .slider-a {
+                .text-container {
+                    position: absolute;	    
+                     top: 50%;
+                     transform: translateY(-50%);
+                    left: 0;
+
+                    .title-main {
+                        font-size: 28px;
+                    }
+                }
+            }//.slider-a
+        }//.content
+
+    }//#indexWrapper
+
+    .maps-container {
+        .wrapper-map {
+            width: 100%;
+
+            .left-column {
+                float: none;
+                padding: 0 @globalPaddingMobile;
+                margin-bottom: @globalPaddingMobile;
+            }
+
+            .right-column {
+                float: none;
+                padding: 0 @globalPaddingMobile;
+                margin-bottom: @globalPaddingMobile;
+            }
+        }
+    }
+
+}//media querie md
+
+@media (max-width: @sm) {
+    #indexWrapper {
+
+        .content {
+            .bx-wrapper {
+                min-height: 210px;
+                img {
+                    max-width: initial;
+                    width: 150%;
+                }
+            }
+
+            .slider-a .text-container {
+                .title-top {
+                    margin: 20px 20px 10px;
+                }
+                .title-main {
+                    font-size: 22px;
+                }
+                .subtitle {
+                    margin: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: @xs) {
+    #indexWrapper {
+        .content {
+            .bx-wrapper {
+                min-height: 300px;
+                img {
+                    max-width: initial;
+                    width: 350%;
+                }
+            }
+
+            .slider-a .text-container {
+                .title-top {
+                    margin: 20px;
+                }
+                .title-main {
+                    font-size: 28px;
+                }
+                .subtitle {
+                    margin: 20px;
+                }
+            }
+            
+        }
+
+    }
+
+}//xs

@@ -1,0 +1,104 @@
+
+/********/
+
+/* VARS */
+
+/********/
+
+@import "../vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+.modal-display {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 999999999;
+    .background-modal {
+    	opacity: 0.9;
+    	background-color: @grey;
+    	width: 100%;
+    	height: 100%;
+    	padding: 150px;
+    }
+    .modal-container {
+	    background-color: #fff;
+	    position: fixed;
+	    top: 126px;
+	    left: 250px;
+	    right: 250px;
+	    .modal-image {
+	    	img {
+	    		width: 100%;
+	    	}
+	    }
+	    .modal-close {
+			width: 40px;
+		    position: absolute;
+		    right: 0;
+		    color: #fff;
+		    font-size: 25px;
+		    padding: 6px 12px;
+		    background-color: #000;
+		    font-weight: bold;
+		}
+		.modal-text {
+			width: 100%;
+			background-color: @white;
+		    font-size: 13px;
+		    font-weight: bold;
+		    padding: 16px 38px;
+		    bottom: 0;
+		    position: absolute;
+		}
+    }
+}
+
+@media (min-width: 1580px) {
+	body {
+		.modal-display {
+			.modal-container {
+			    left: 400px;
+			    right: 400px;
+			}
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	body {
+		.modal-display {
+			.modal-container {
+			    left: 100px;
+			    right: 100px;
+			}
+		}
+	}
+}
+
+@media (max-width: 550px) {
+	body {
+		.modal-display {
+			.modal-container {
+			    left: 50px;
+			    right: 50px;
+			}
+		}
+	}
+}

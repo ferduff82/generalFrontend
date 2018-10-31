@@ -1,0 +1,120 @@
+@import "../vars/vars.less";
+
+@media (max-width: @md) {
+    #cityWrapper {
+        width: 100%;
+
+        .content {
+            padding: @globalPaddingMobile 0;
+
+            .events-nav {
+                padding: @globalPaddingMobile;
+            }
+
+            .top-container {
+                flex-wrap: wrap;
+
+                .column {
+                    width: 100%;
+                    margin-bottom: @globalPaddingMobile;
+
+                    .temperature-service {
+                        width: 100%;
+                        margin: 0;
+                        padding: 10px 0;
+                        margin-bottom: @globalPaddingMobile;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+
+                    .money-service {
+                        width: 100%;
+                        margin: 0;
+                        padding: 10px 0;
+                        margin-bottom: @globalPaddingMobile;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+
+            .map-container {
+                flex-direction: column;
+                margin-bottom: @globalPadding;
+                height: auto;
+                .links {
+                    flex-wrap: wrap;
+
+                    .touristic-atractions, .gastronomy, .hotels, .parkings {
+                        width: 50%;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                    }
+                }
+                .column-a, .column-b {
+                    width: 100%;
+                }
+
+                .column-b {
+                    height: auto;
+                    margin: 30px 0 70px 0;
+                    display: flex;
+                    padding: 33px 8%;
+                    flex-wrap: wrap;
+                    overflow-y: visible;
+                    justify-content: left;
+                    .atraction-container {
+                        width: 25%;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;
+                        text-align: center;
+                        div {
+                            margin: auto;
+                        }
+                        .atraction-text {
+                            border-top: none;
+                            width: 110px;
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+         }//.content
+    }//#cityWrapper
+}//md
+
+@media (max-width: @sm) {
+    #cityWrapper .content .map-container .column-b .atraction-container {
+        width: 33.33%;
+    }
+}
+@media (max-width: @xs) {
+    #cityWrapper .content .top-container .column .money-service {
+        flex-direction: column;
+    }   
+    #cityWrapper .content .top-container .column .money-service .column-service {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+    }
+
+    #cityWrapper .content .top-container .column .money-service .column-service {
+        padding: 10px;
+        border-bottom: 1px solid #333;
+    }
+
+    #cityWrapper .content .top-container .column .money-service .column-service:last-child {
+        border-bottom: none;
+    }
+    
+
+    #cityWrapper .content .top-container .column .temperature-service .dateAndTime {
+        width: 100%;
+        text-align: center;
+    }
+
+    #cityWrapper .content .map-container .column-b .atraction-container {
+        width: 40%;
+    }
+}//xs

@@ -1,0 +1,75 @@
+
+/***********/
+
+/* IMPORTS */
+
+/***********/
+
+@import "components/menu-display.less";
+@import "components/footer.less";
+@import "components/header.less";
+@import "vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul {
+	padding-left: 0;
+	margin: 0;
+}
+
+body {
+    font-family: robotoRegular;
+}
+a {
+	color: @black;	
+}
+/*
+.wrapper {
+	width: 1024px;
+	margin: auto;
+}
+*/
+.scroll-top {
+	padding: 0 @globalPadding 100px 0;
+	display: flow-root;
+	img {
+		float: right;
+	}
+}
+
+.content {
+	.bx-wrapper {
+		border: none;
+		box-shadow: none;
+		img {
+		    margin: auto;
+		}
+	}
+}
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Centro de Convenciones Buenos Aires</title>
+		<meta name="keywords" content="Digital Agency, Diseño, Programación">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../libs/normalize.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
+	</head>
+	<body>
+		<div class="menu"></div>
+		<div class="headerTemplate"></div>
+		<div id="contactWrapper" class="wrapper">
+			<div class="content">
+				<div class="events-nav">
+					<div class="events-nav-head">
+						<div class="events-nav-bullet"></div>
+						<div class="events-nav-title">CONTACTO</div>
+					</div>
+					<div class="contact-data">
+						<div><strong>Dirección: </strong> Av. Figueroa Alcorta 1099</div>
+						<strong>Teléfono:</strong> (54-11) 4777-5513 | <strong>Mail:</strong> comercial@cecbuenosaires.com.ar 
+					</div>
+				</div>
+				<div class="contact-form-container">
+					<form>
+						<div class="flex-display">
+							<div class="column-a">
+								<div class="input-contain">
+									<input type="text" name="nombre" placeholder="Nombre*">
+								</div>
+								<div class="input-contain">
+									<input type="text" name="apellido" placeholder="Apellido*">
+								</div>
+								<div class="input-contain">
+									<input type="text" name="pais" placeholder="País*">
+								</div>
+								<div class="input-contain">
+									<input type="text" name="telefono" placeholder="Teléfono">
+								</div>		
+							</div>
+							<div class="column-b">
+								<div class="input-contain">
+									<input type="text" name="celular" placeholder="Celular">
+								</div>	
+								<div class="input-contain">
+									<input type="text" name="mail" placeholder="Email*">
+								</div>	
+								<div class="input-contain">
+									<input type="text" name="compania" placeholder="Compañia / Organización*">
+								</div>	
+								<div class="input-contain">
+									<input type="text" name="industria" placeholder="Industria / Sector*">
+								</div>			
+							</div>
+						</div>
+						<div class="full-column">
+							<div class="input-contain">
+								<input type="text" name="mensaje" placeholder="Mensaje">
+							</div>
+							<div class="input-contain">
+								<input type="submit" value="Enviar">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="footerTemplate"></div>
+
+		<!-- Libraries -->
+		<script src="../libs/jquery-3.3.1.min.js"></script>
+		<script src="../libs/mustache.js"></script>
+		<script src="../libs/promisePolyfill.min.js"></script>
+
+		<!-- Main JS Entry Point -->
+		<script src="../js/classes/removeStylesTranslator.js"></script>
+		<script src="../js/classes/menuDisplay.js"></script>
+		<script src="../js/classes/loadHeaderAndFooter.js"></script>
+		<script src="../js/mainContact.js"></script>
+	</body>
+</html>

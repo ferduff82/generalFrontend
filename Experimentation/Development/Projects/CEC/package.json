@@ -1,0 +1,22 @@
+{
+  "name": "Autoseguro",
+  "version": "1.0.0",
+  "description": "Sitio Autoseguro",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fernando Arias",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-imagemin": "^2.0.1",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-express": "^1.4.1",
+    "grunt-open": "^0.2.3",
+    "grunt-parallel": "^0.5.1",
+    "jit-grunt": "^0.10.0",
+    "normalize.css": "^8.0.0"
+  }
+}

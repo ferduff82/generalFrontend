@@ -1,0 +1,167 @@
+@import "../vars/vars.less";
+
+@media (max-width: @md) {
+
+    #institutionalWrapper {
+        width: 100%;
+        margin: auto;
+
+        .video-container {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+        .content {
+            padding: @globalPadding 0 0;
+
+            .institutional-a-module, .institutional-d-module {
+                flex-wrap: wrap;
+
+                .column-a, .column-b {
+                    width: 100%;
+                    margin-bottom: 43px;
+                }
+
+                .column-a {
+                    padding-left: @globalPaddingMobile;
+                    padding-right: @globalPaddingMobile;
+                }
+            }
+
+            .institutional-a-module {
+                .column-b {
+                    .plane-container {
+                        position: relative;
+                        .full-screen {
+                            position: absolute;
+                            right: 15px;
+                            top: 20px;
+                            float: none;
+                            margin: 0;
+                        }
+                    }
+                    .plane-cec {
+                        padding-left: @globalPaddingMobile;
+                        padding-right: @globalPaddingMobile;
+                    }
+                }
+            }
+
+        }//.content
+    }//#institutionalWrapper
+
+    .scroll-top {
+        padding: 0 43px 200px 0;
+    }
+
+    .full-wrapper-institutional {
+
+        .institutional-b-module {
+            flex-wrap: wrap;
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: @globalPaddingMobile;
+
+            .column-a, .column-b {
+                width: 100%;
+            }
+
+            .column-a {
+                padding-right: 0;
+            }
+
+            .column-b {
+                margin-top: 43px;
+                padding-left: @globalPaddingMobile;
+                padding-right: @globalPaddingMobile;
+
+                .inner-column-b {
+                    .title-conventions {
+                        div {
+                            display: inline;
+                        }
+                    }
+                }
+            }
+
+        }//.institutional-b-module
+
+        .institutional-c-module {
+            flex-wrap: wrap;
+            width: 100%;
+            padding-left: @globalPaddingMobile;
+            padding-right: @globalPaddingMobile;
+
+        }//.institutional-c-module
+
+    }//.full-wrapper-institutional
+
+}//media queries
+
+@media (max-width: @sm) {
+
+    #institutionalWrapper {
+        width: 100%;
+        margin: auto;
+
+        .video-container {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+        .content {
+
+            .institutional-a-module, .institutional-d-module {
+                flex-wrap: wrap;
+
+                .column-a, .column-b {
+                    width: 100%;
+                    margin-bottom: 43px;
+                }
+            }
+
+            .green-model {
+
+                .institutional-e-module {
+                    flex-wrap: wrap;
+
+                    .column-sustainability {
+                        width: 100%;
+                        padding-left: @globalPaddingMobile;
+                        padding-right: @globalPaddingMobile;
+                        margin-bottom: 40px;
+                    }
+                }
+            }//.green-model
+        }//.content
+    }//#institutionalWrapper
+
+    .full-wrapper-institutional {
+
+        .institutional-c-module {
+            .companies-container {
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+
+                .column-company {
+                    width: auto;
+                    max-width: 50%;
+                    .text-compay-container {
+                        display: none;
+                    }
+                }
+            }
+
+            .international-alliance {
+                width: 100%;
+            }
+
+        }//.institutional-c-module
+
+    }//.full-wrapper-institutional
+
+}//media queries

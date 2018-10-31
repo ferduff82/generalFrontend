@@ -1,0 +1,92 @@
+{
+	"plenary-container" : {
+		"hall-a" : {
+			"containerName": "hall-a",
+			"hall" : "A",
+			"size" : "1600",
+			"measures" : [39, 40, 9],
+			"auditorio" : "1200",
+			"banqueteCon" : "800",
+			"banqueteSin" : "900",
+			"escuela" : "650",
+			"coctel" : "1300",
+			"floor" : "Subsuelo"
+		},
+		"hall-b" : {
+			"containerName": "hall-b",
+			"hall" : "B",
+			"size" : "1200",
+			"measures" : [39, 32, 9],
+			"auditorio" : "1000",
+			"banqueteCon" : "550",
+			"banqueteSin" : "650",
+			"escuela" : "550",
+			"coctel" : "1000",
+			"floor" : "Subsuelo"
+		},
+		"hall-c" : {
+			"containerName": "hall-c",
+			"hall" : "C",
+			"size" : "1600",
+			"measures" : [39, 39.5, 9],
+			"auditorio" : "1200",
+			"banqueteCon" : "800",
+			"banqueteSin" : "900",
+			"escuela" : "650",
+			"coctel" : "1300",
+			"floor" : "Subsuelo"
+		}
+	},
+	"vip-container" : {
+		"hall-a" : {
+			"containerName": "hall-a",
+			"hall" : "1",
+			"size" : "100",
+			"measures" : [17.5, 6.5, 2.9],
+			"auditorio" : "90",
+			"banqueteCon" : "0",
+			"banqueteSin" : "0",
+			"escuela" : "60",
+			"coctel" : "80",
+			"floor" : "Subsuelo"
+		},
+		"hall-b" : {
+			"containerName": "hall-b",
+			"hall" : "2",
+			"size" : "60",
+			"measures" : [9.5, 6.5, 2.9],
+			"auditorio" : "50",
+			"banqueteCon" : "0",
+			"banqueteSin" : "0",
+			"escuela" : "30",
+			"coctel" : "40",
+			"floor" : "Subsuelo"
+		}
+	},
+	"auxiliar-container" : {
+		"hall-a" : {
+			"containerName": "hall-a",
+			"hall" : "D",
+			"size" : "350",
+			"measures" : [14, 23.5, 9],
+			"auditorio" : "200",
+			"banqueteCon" : "100",
+			"banqueteSin" : "150",
+			"escuela" : "100",
+			"coctel" : "300",
+			"floor" : "Subsuelo"
+		},
+		"hall-b" : {
+			"containerName": "hall-b",
+			"hall" : "E",
+			"size" : "450",
+			"measures" : [19, 23.5, 9],
+			"auditorio" : "300",
+			"banqueteCon" : "150",
+			"banqueteSin" : "200",
+			"escuela" : "150",
+			"coctel" : "400",
+			"floor" : "Subsuelo"
+		}
+	}
+}

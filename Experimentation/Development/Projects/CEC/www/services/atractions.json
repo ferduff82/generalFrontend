@@ -1,0 +1,109 @@
+{
+	"atractions" : {
+
+		"0" : {
+			"title" : "Biblioteca Nacional",
+			"img" : "../img/dist/pictures/images-map/biblioteca-nacional-de-la-repu-blica-argentina-buenos-aires-argentina-21-feb-2011.png",
+			"location" : {
+				"lat" : "-34.5844438",
+				"long" : "-58.4002178,17"
+			}
+		},
+		"1" : {
+			"title" : "Cementerio de la Recoleta",
+			"img" : "../img/dist/pictures/images-map/buenos-aires-recoleta-entrada-cementerio.png",
+			"location" : {
+				"lat" : "-34.587479",
+				"long" : "-58.3956296,17"
+			}
+		},
+		"2" : {
+			"title" : "Centro Comercial Buenos Aires Design",
+			"img" : "../img/dist/pictures/images-map/centro-comercial.png",
+			"location" : {
+				"lat" : "-34.5860106",
+				"long" : "-58.3947955,17"
+			}
+		},
+		"3" : {
+			"title" : "Centro Comercial Recoleta Mall",
+			"img" : "../img/dist/pictures/images-map/recoleta-mall.png",
+			"location" : {
+				"lat" : "-34.5890199",
+				"long" : "-58.3961097,17"
+			}
+		},
+		"4" : {
+			"title" : "Centro Cultural Recoleta",
+			"img" : "../img/dist/pictures/images-map/centro-cultural-recoleta-fachada.png",
+			"location" : {
+				"lat" : "-34.5864656",
+				"long" : "-58.3939406,17"
+			}
+		},
+		"5" : {
+			"title" : "Facultad de Derecho",
+			"img" : "../img/dist/pictures/images-map/facultad-derecho.png",
+			"location" : {
+				"lat" : "-34.583504",
+				"long" : "-58.39407,17"
+			}
+		},
+		"6" : {
+			"title" : "Hard Rock Café Buenos Aires",
+			"img" : "../img/dist/pictures/images-map/hard-rock.png",
+			"location" : {
+				"lat" : "-34.5857009",
+				"long" : "-58.395201,17"
+			}
+		},
+		"7" : {
+			"title" : "Iglesia Nuestra Señora del Pilar",
+			"img" : "../img/dist/pictures/images-map/buenos-aires-recoleta-basi-lica-de-nuestra-sen-ora-del-pilar-1.png",
+			"location" : {
+				"lat" : "-34.5868417",
+				"long" : "-58.394163,17"
+			}
+		},
+		"8" : {
+			"title" : "Librería El Ateneo Grand Splendid",
+			"img" : "../img/dist/pictures/images-map/ateneo.png",
+			"location" : {
+				"lat" : "-34.5959789",
+				"long" : "-58.3964172,17"
+			}
+		},
+		"9" : {
+			"title" : "Monumento Floralis",
+			"img" : "../img/dist/pictures/images-map/flor.png",
+			"location" : {
+				"lat" : "-34.5849735",
+				"long" : "-58.4035272,15"
+			}
+		},
+		"10" : {
+			"title" : "Museo Nacional de Bellas Artes",
+			"img" : "../img/dist/pictures/images-map/mnba-3.png",
+			"location" : {
+				"lat" : "-34.583985",
+				"long" : "-58.3951931,17"
+			}
+		},
+		"11" : {
+			"title" : "Palais de Glace",
+			"img" : "../img/dist/pictures/images-map/glaice.png",
+			"location" : {
+				"lat" : "-34.5856109",
+				"long" : "-58.3914543,17"
+			}
+		},
+		"12" : {
+			"title" : "Plaza Francia",
+			"img" : "../img/dist/pictures/images-map/plaza-francia.png",
+			"location" : {
+				"lat" : "-34.5848173",
+				"long" : "-58.3953647,17"
+			}
+		}
+	}
+}

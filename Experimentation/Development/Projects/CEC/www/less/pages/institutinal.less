@@ -1,0 +1,312 @@
+
+/***********/
+
+/* IMPORTS */
+
+/***********/
+
+@import "../vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+#institutionalWrapper {
+	width: 1024px;
+	margin: auto;
+	.content {
+		padding: @globalPadding;
+		.events-nav {
+			.events-nav-title {
+			    border-bottom: 1px solid;
+			    margin-left: 19px;
+			    padding-left: 12px;
+			}
+			.events-nav-bullet {
+			    background-color: black;
+			    width: 19px;
+			    height: 19px;
+			    float: left;
+			}
+			.events-nav-back {
+			    height: 41px;
+			    margin-bottom: 12px;
+			    img {
+			    	transform: rotate(-90deg);
+			    	float: right;
+			    }
+			}
+			.contact-data {
+			    padding: 10px 0 10px 0;
+			}
+		}
+		.institutional-a-module,
+		.institutional-d-module {
+			display: flex;
+			.column-a {
+				width: 45%;
+				display: flex;
+				padding-right: 30px;
+				.inner-column-a {
+				    border-left: 1px solid @black;
+				    width: 17px;
+				    height: 92%;
+				    margin-right: 12px;
+					.bullet-design {
+						width: 17px;
+						height: 17px;
+						background-color: @black;
+					}
+				}
+				.inner-column-b {
+					.title-conventions {
+						font-size: 24px;
+						margin-bottom: 27px;
+						strong {
+							color: @highlightBlue;
+							line-height: 5px;
+						}
+					}
+					.text-conventions {
+						margin-bottom: 35px;
+						font-size: 13px;
+					}
+					.button-commercial-memory,
+					.class-institutional-brochure {
+						background-color: @highlightBlue;
+						color: @white;
+						text-align: center;
+						font-weight: bold;
+						padding: 10px 10px 10px 33px;
+						width: 226px;
+						margin: 10px 0;
+						font-size: 13px;
+						.icon-download {
+							float: left;
+							margin-top: -2px;
+						}
+					}
+					.button-commercial-memory {
+						.text-adjustment {
+							margin-left: -24px;
+							display: inline;
+						}
+					}
+					.class-institutional-brochure {
+						margin-bottom: 0;
+						.text-adjustment {
+							display: inline;
+							margin-left: -8px;
+						}
+					}
+				}
+			}
+			.column-b {
+				width: 55%;
+				.plane-container {
+					img {
+						width: 100%;
+					}
+					.full-screen,
+					.arrow-left,
+					.arrow-right {
+						position: relative;
+						img {
+							width: auto;
+						}
+					}
+					.full-screen {
+						float: right;
+					    margin-top: -333px;
+					    margin-right: 16px;
+					}
+					.arrow-left {
+						float: left;
+					    margin-top: -175px;
+					    margin-left: 28px;
+					}
+					.arrow-right {
+						float: right;
+					    margin-top: -175px;
+					    margin-right: 20px;
+					}
+					.bx-wrapper {
+						margin-bottom: 10px;
+					}
+				}
+				.plane-cec {
+					font-size: 13px;
+					margin-top: 10px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.content {
+		.green-model {
+			.institutional-d-module {
+				.inner-column-a {
+					border-left: 1px solid @green;
+					.bullet-design {
+						background-color: @green;
+					}
+				}
+				.inner-column-b {
+					.title-conventions {
+						strong {
+							color: @green;
+						}
+					}
+					.button-commercial-memory,
+					.class-institutional-brochure {
+						background-color: @green;
+						padding: 10px 10px 10px 23px;
+					}
+				}
+			}
+			.institutional-e-module {
+				display: flex;
+				margin: 30px 0;
+				.column-sustainability {
+					width: 25%;
+					padding-right: 25px;
+					font-size: 13px;
+					.image-sustain-container {
+						margin-bottom: 18px;
+					}
+					.text-sustain-container {
+						display: flex;
+						.bullet-green {
+							width: 11px;
+						    height: 11px;
+						    margin-right: 10px;
+							background-color: @green;
+						}
+					}	
+				}
+			}
+		}
+	}
+}
+
+
+.full-wrapper-institutional {
+	background-color: @warmGrey;
+	.institutional-b-module {
+		display: flex;
+		background-color: @warmGrey;
+		width: 1024px;
+		margin: auto;
+		padding: 54px 43px;
+		.column-a {
+			width: 55%;
+			display: flex;
+			padding-right: 30px;
+			.plane-container {
+				img {
+					width: 100%;
+				}
+			}
+		}
+		.column-b {
+			width: 45%;
+			display: flex;
+			.inner-column-a {
+			    border-left: 1px solid #000000;
+			    width: 17px;
+			    height: 92%;
+			    margin-right: 12px;
+				.bullet-design {
+					width: 17px;
+					height: 17px;
+					background-color: @black;
+				}
+			}
+			.inner-column-b {
+				.title-conventions {
+					font-size: 24px;
+					margin-bottom: 27px;
+					strong {
+						color: @yellow;
+						line-height: 5px;
+					}
+				}
+				.text-conventions {
+					margin-bottom: 35px;
+					font-size: 13px;
+				}
+				.button-commercial-memory,
+				.class-institutional-brochure {
+					background-color: @highlightBlue;
+					color: @white;
+					text-align: center;
+					font-weight: bold;
+					padding: 10px;
+					width: 226px;
+					margin: 10px 0;
+				}
+				.class-institutional-brochure {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	.institutional-c-module {
+		width: 1024px;
+		margin: auto;
+		padding: 0 43px 54px 43px;
+		.companies-container {
+			display: flex;
+			margin-bottom: 35px;
+			.column-company {
+				padding-right: 30px;
+				font-size: 12px;
+				width: 25%;
+				.image-company-container {
+					margin-bottom: 15px;
+					height: 40px;
+					img {
+						max-height: 40px;
+					}
+				}
+			}
+		}
+		.international-alliance {
+			width: 510px;
+			padding: 20px;
+			border: 1px solid @black;
+			margin: auto;
+			.logo-alliance {
+				width: 152px;
+				height: 31px;
+				margin: 12px 0 20px 0;
+				img {
+					width: 100%;
+				}
+			}
+			.alliance-description {
+				font-size: 12px;
+			}
+		}
+	}
+	a {
+		color: @black;
+		text-decoration: underline;		
+	}
+}
+
+
+

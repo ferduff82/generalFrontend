@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Page 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-13.0%" y="-1.6%" width="125.9%" height="104.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-2" points="0 0 31.999975 0 31.999975 31.9999688 0 31.9999688"></polygon>
+        <polygon id="path-4" points="0 32 32 32 32 0 0 0"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.9">
+        <g id="ESPACIOS_2" transform="translate(-933.000000, -299.000000)">
+            <g id="menu" filter="url(#filter-1)" transform="translate(927.000000, 223.000000)">
+                <g id="Page-1" transform="translate(10.000000, 78.000000)">
+                    <g id="Group-3">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M18.8786625,23.7434063 C13.0216625,23.7434063 8.2566,18.9783438 8.2566,13.1213438 C8.2566,7.26434375 13.0216625,2.49928125 18.8786625,2.49928125 C24.7356625,2.49928125 29.5006625,7.26434375 29.5006625,13.1213438 C29.5006625,18.9783438 24.7356625,23.7434063 18.8786625,23.7434063 M18.8786625,-3.125e-05 C11.6435375,-3.125e-05 5.7572875,5.88621875 5.7572875,13.1213438 C5.7572875,16.2899063 6.8862875,19.1996563 8.762975,21.4697187 L-2.5e-05,30.2327188 L1.7672875,31.9999688 L10.5302875,23.2369687 C12.80035,25.1137188 15.7101,26.2427188 18.8786625,26.2427188 C26.1137875,26.2427188 31.999975,20.3565312 31.999975,13.1213438 C31.999975,5.88621875 26.11385,-3.125e-05 18.8786625,-3.125e-05" id="Fill-1" fill="#FFFFFF" mask="url(#mask-3)"></path>
+                    </g>
+                    <mask id="mask-5" fill="white">
+                        <use xlink:href="#path-4"></use>
+                    </mask>
+                    <g id="Clip-5"></g>
+                    <polygon id="Fill-4" fill="#FFFFFF" mask="url(#mask-5)" points="12 14 26 14 26 12 12 12"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

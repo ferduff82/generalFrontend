@@ -1,0 +1,180 @@
+
+/***********/
+
+/* IMPORTS */
+
+/***********/
+
+@import "../vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+#cityWrapper {
+	width: 1024px;
+	margin: auto;
+	.hide {
+		display: none;
+	}
+	.show {
+		display: block !important;
+	}
+	#map {
+		width: 100%;
+		height: 500px;
+	}
+	.content {
+		padding: @globalPadding @globalPadding 120px @globalPadding;
+		.events-nav {
+			.events-nav-title {
+			    border-bottom: 1px solid;
+			    margin-left: 19px;
+			    padding-left: 12px;
+			}
+			.events-nav-bullet {
+			    background-color: black;
+			    width: 19px;
+			    height: 19px;
+			    float: left;
+			}
+			.events-nav-back {
+			    height: 41px;
+			    margin-bottom: 12px;
+			    img {
+			    	transform: rotate(-90deg);
+			    	float: right;
+			    }
+			}
+			.contact-data {
+			    padding: 10px 0 10px 0;
+			}
+		}
+		.top-container {
+			display: flex;
+			padding: 28px;
+			.column {
+				.temperature-service,
+				.money-service {
+					width: 480px;
+					background-color: @grey;
+					margin-left: 48px;
+					margin-bottom: 15px;
+					padding: 10px 19px;
+					display: flex;
+					.column-service {
+						display: flex;
+						.dolar,
+						.euro {
+							margin:8px 15px;
+						}
+						img {
+							margin:4px;
+						}
+					}
+				}
+				.temperature-service {
+					.temperature {
+						font-size: 50px;
+						margin: 11px 12px 14px;
+					}
+					.dateAndTime {
+						font-size: 14px;
+						margin-top: 14px;
+					}
+					.weatherPictureContainer {
+						img {
+							width: 80px;
+						}
+					}
+				}
+			}
+		}
+		.map-container {
+			display: flex;
+			height: 531px;
+			.map-column {
+				background-color: @grey;
+				height: 531px;
+			}
+			.column-a {
+				width: 80%;
+			}
+			.column-b {
+				width: 20%;
+			    overflow-y: scroll;
+			    padding: 10px 6px 10px 10px;
+    			.atraction-container {
+				    margin-bottom: 12px;
+				    font-size: 12px;
+				    display: flex;
+				    cursor: pointer;
+				    .atraction-text {
+				    	padding-left: 7px;
+				    	border-top: 1px solid @blue;
+				    	padding-top: 8px;
+				    	font-weight: bold;
+				    }
+				    .icon-plus {
+				    	img {
+				    		width: 15px;
+				    	}
+				    }
+				}
+			}
+			.links {
+				display: flex;
+				.touristic-atractions,
+				.gastronomy,
+				.hotels,
+				.parkings {
+					height: 32px;
+					width: 100%;
+					color: @white;
+					text-align: center;
+					line-height: 32px;
+					font-size: 12px;
+					display: flex;
+					img {
+						margin: 0 10px 0 0 ;
+					}
+				}
+				.touristic-atractions {
+					background-color: @highlightBlue;
+					padding-left: 21px;
+				}
+				.gastronomy {
+					background-color: @yellow;
+					padding-left: 53px;
+				}
+				.hotels {
+					background-color: @green;
+					padding-left: 63px;
+				}
+				.parkings {
+					background-color: @black;
+					padding-left: 31px;
+				}
+				.touristic-atractions:hover,
+				.gastronomy:hover,
+				.hotels:hover,
+				.parkings:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}

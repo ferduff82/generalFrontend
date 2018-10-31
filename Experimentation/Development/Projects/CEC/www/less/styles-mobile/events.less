@@ -1,0 +1,119 @@
+@import "../vars/vars.less";
+
+@media (max-width: @md) {
+    #eventsSearchWrapper {
+        width: 100%;
+
+        .content {
+            padding: @globalPadding @globalPadding 200px @globalPadding;
+        }
+    }//
+
+    #eventsWrapper {
+        width: 100%;
+        .content {
+            padding: @globalPadding @globalPadding 200px @globalPadding;
+
+            .events-nav {
+                padding: 0 @globalPaddingMobile;
+            }
+
+            .slide-events {
+                .events-title {
+                    padding: 0 @globalPaddingMobile;
+                }
+
+                .event-info {
+                    flex-direction: column-reverse;
+                    padding: 0 @globalPaddingMobile;
+                
+                    .event-information {
+                        padding: 0;
+                        width: 100%;
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        >div {
+                            width: 50%;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: flex-start;
+                            text-align: center;
+                        }
+                    }
+
+                    .event-description{
+                        width: 100%;
+                        border-right: none;
+                        border-top: 1px solid #979797;
+                        padding-right: 0;
+                        padding-top: @globalPaddingMobile;
+                    }
+                }//.event-info
+            }
+
+        }//.content
+    }//#eventsWrapper
+
+}//md
+
+@media (max-width: @sm) {
+    #eventsSearchWrapper {
+        width: 100%;
+
+        .content {
+            padding: @globalPadding @globalPadding 200px @globalPadding;
+
+            .filter-input {
+                flex-wrap: wrap;
+                margin-bottom: 0;
+
+                .event-container {
+                    width:100%;
+                    padding: 0;
+                }
+
+                .date-container {
+                    width:100%;
+                    padding: 0;
+                }
+
+                .apply {
+                    width:100%;
+                    padding: 0;
+
+                    button {
+                        width: 100%;
+                        margin-top: 25px;
+                    }
+                }
+
+                .clear-filter-container {
+                    width:100%;
+                    padding: 0;
+
+                    button {
+                        width: 100%;
+                        margin-top: 25px;
+                    }
+                }
+                
+            }//.filter-input
+
+            .event-search-container {
+                flex-wrap: wrap;
+
+                .event-search-module {
+                    width: 100%;
+                    margin-top: 70px;
+                    &:first-child {
+                        margin-right: 0;
+                    }
+                }
+            }//.event-search-container
+
+        }//.content
+    }//#eventsSearchWrapper
+
+
+}//sm

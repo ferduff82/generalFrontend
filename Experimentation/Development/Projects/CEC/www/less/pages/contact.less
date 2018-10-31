@@ -1,0 +1,95 @@
+
+/***********/
+
+/* IMPORTS */
+
+/***********/
+
+@import "../vars/vars.less";
+
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+#contactWrapper {
+	width: 1024px;
+	margin: auto;
+	.content {
+		padding: @globalPadding @globalPadding 130px @globalPadding;
+		.events-nav {
+			.events-nav-title {
+			    border-bottom: 1px solid;
+			    margin-left: 19px;
+			    padding-left: 12px;
+			}
+			.events-nav-bullet {
+			    background-color: black;
+			    width: 19px;
+			    height: 19px;
+			    float: left;
+			}
+			.events-nav-back {
+			    height: 41px;
+			    margin-bottom: 12px;
+			    img {
+			    	transform: rotate(-90deg);
+			    	float: right;
+			    }
+			}
+			.contact-data {
+			    padding: 10px 0 10px 0;
+			}
+		}
+		.contact-form-container {
+			form {
+				padding: 50px 50px 0;
+				.flex-display,
+				.full-column {
+					.input-contain {
+						padding: 8px;
+						input {
+							width: 100%;
+							padding: 5px 14px;
+						}
+						input[type="submit"] {
+							width: 172px;
+						    margin: auto;
+						    display: block;
+						    height: 42px;
+						    margin-top: 33px;
+						    background-color: @highlightBlue;
+						    border: none;
+						    color: @white;
+						    font-weight: bold;
+						}
+					}
+					.column-a,
+					.column-b {
+						width: 100%;
+					}
+				}
+				.flex-display {
+					display: flex;
+				}
+				.full-column {
+					input {
+						height: 80px;
+					}
+				}
+			}
+		}
+	}
+}

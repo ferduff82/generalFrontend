@@ -1,0 +1,265 @@
+
+/********/
+
+/* VARS */
+
+/********/
+
+@import "../vars/vars.less";
+
+/*********/
+
+/* Fonts */
+
+/*********/
+
+@import "../fonts/fonts.less";
+
+
+/*****************/
+
+/* Global Styles */
+
+/*****************/
+
+
+header {
+	height: 114px;
+	background-color: @black;
+	.header-wrapper {
+		margin: auto;
+		width: 1024px;
+		display: flex;
+	}
+	.menu-icon {
+		padding: 46px 10px 43px 43px;
+	    width: 9%;
+	}
+	.home-icon {
+		padding: 42px 0 43px 0;
+		width: 5%;
+	}
+	.translate {
+	    padding-top: 42px;
+	    
+	    .goog-te-gadget-simple {
+	    	border: none;
+	    	border-bottom: 1px solid #000;
+	    	img {
+	    		visibility: hidden !important;
+	    	}
+	    	span {
+    			border: none !important;
+    		}
+	    }
+	    .goog-te-menu-value {
+	    	margin-left: 5px;
+	    	margin-left: 15px;
+    		margin-right: 10px;
+	    	span:last-child {
+	    		visibility: hidden !important;
+	    	}
+	    }
+	    .custom-icons {
+	    	.icon-translate {
+	    		position: relative;
+	    		top: -22px;
+    			left: 2px;
+    			display: inline;
+    			margin-left: 1px;
+	    	}
+	    	.icon-arrow {
+			    position: relative;
+			    top: -19px;
+			    display: inline;
+			    right: 0;
+			    float: right;
+			    margin-right: 5px;
+	    	}
+	    }
+    	.rotateArrow {
+		    -ms-transform: rotate(180deg);
+		    -webkit-transform: rotate(180deg);
+		    transform: rotate(180deg);
+		    top: -23px !important;
+		}
+		
+	}
+	.cec-logo {
+      	padding: 31px 12px 0 90px;
+		width: 35%;
+	}
+	.social {
+		width: 35%;
+		display: flex;
+		.contact-social {
+			width: 45%;
+			img {
+				padding: 48px 4px;
+			}
+		}
+
+		.contact-social-mobile {
+			display: none;
+		}
+		.search {
+			padding: 28px 0 28px 25px;
+		    width: 45%;
+			input {
+				width: 100px;
+				padding-left: 24px;
+				float: right
+			}
+			.magnifier-glass {
+				img {
+					position: relative;
+				    top: 22px;
+				    left: 41px;
+				}
+			}
+		}
+	}
+}
+
+/* Fixes for Google Translate */
+
+.goog-te-menu-frame {
+	width: 185px !important;
+	box-shadow: none !important;
+}
+
+.whitehover {
+	background-color: #fff !important;
+}
+
+
+//boton toggle de search, lupa blanca
+.button-search {
+	display: none;
+}
+
+@media (max-width: @md) {
+
+	.button-search {
+		display: inline-block;
+	}
+
+	header {
+		height: 51px;
+		.header-wrapper {
+			margin: auto;
+			width: 100%;
+			align-items: center;
+			justify-content: flex-start;
+			padding: 0 @globalPaddingMobile;
+		}
+
+		.translate {
+			display: none;
+		}
+
+		.social {
+			width: 10%;
+			.contact-social {
+				display: none;
+			}
+			
+			.search {
+				padding: 0;
+				width: 100%;
+				text-align: right;
+				.button-search {
+					background: transparent;
+					border:none;
+					width: 20px;
+					height: 20px;
+				}
+
+				.magnifier-glass {
+					display: none;
+				}
+				input {
+					display: none;
+				}
+			}
+		}//.social
+	
+		.cec-logo {
+			padding: 10px 0;
+			width: 80%;
+			img {
+				width: 40%;
+				max-width: 150px;
+				margin: 0 auto;
+				display: block;
+			}
+		}
+
+		.home-icon {
+			padding: 14px 0;
+			width: 15px;
+		}
+
+		.menu-icon {
+			width: 24px;
+			padding: 10px 0;
+			margin-right: 4%;
+		}
+
+	}//header
+
+	.menu {
+		width: 100%;
+		left: -100%;
+
+		.contact-social-mobile {
+			display: block;
+			width: 100%;
+			margin-top: 50px;
+			img {
+				padding: 0px;
+				margin-right: 20px;
+				height: 20px;
+			}
+		}
+	}//.menu
+
+}//md
+
+@media (min-width: @xlg) {
+	header {
+		.header-wrapper {
+			width: 100%;
+			padding: 0 @globalPaddingXLSMenu;
+		}
+		.menu-icon {
+			width: 5%;
+			padding-left: 0;
+		}
+		.home-icon {
+			width: 5%;
+		}
+		.cec-logo {
+			width: 100%;
+			text-align: center;
+			padding: 31px 0 0 0px;
+		}
+
+		.social {
+			width: 50%;
+			justify-content: flex-end;
+			.contact-social {
+				width: 48%;	
+			}
+			.search {
+				width: 120px;
+
+				.magnifier-glass {
+					img {
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+}//1500

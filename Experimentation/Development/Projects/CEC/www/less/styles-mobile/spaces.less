@@ -1,0 +1,314 @@
+@import "../vars/vars.less";
+
+
+@media (max-width: @md) {
+
+    #spacesWrapper  {
+        width: 100%;
+        .content {
+            padding: @globalPaddingMobile;
+            .events-nav {
+                margin-bottom: 130px;
+            }
+            .spaceComponentWrapper {
+                background-size: contain;
+                height: auto;
+                width: 640px;
+                margin: auto;
+                .asset-manager-container {
+                    position: absolute;
+                    width: auto ;
+                    display: flex;
+                    right: initial;
+                    left: 0;
+                    top: 130px;
+                    height: 60px;
+                    margin: 0 @globalPaddingMobile;
+                    align-items: center;
+                    justify-content: center;
+
+                    .addBottomBorder {
+                        border-bottom: none;
+                        padding: 3%;
+                        border-right: 1px solid #fff;
+                        img {
+                        padding: 3%; 
+                        }
+                    }
+                }
+                .space-icons {
+                    .parking-space,
+                    .cole-space,
+                    .subte-space,
+                    .caminar-space,
+                    .bici-space,
+                    .taxi-space {
+                        font-size: 1.5vw;
+                        img {
+                            width: 5vw;
+                        }
+                    }
+                    .parking-space {
+                        top: 70vh;
+                        left: 20%;
+                        div:last-child {
+                            margin-top: 2vw;
+                            margin-left: 1vw;
+                        }
+                    }
+                    .cole-space {
+                        top: 26vh;
+                        left: 58%;
+                    }
+                    .subte-space {
+                        top: 74vh;
+                        left: 45%;
+                    }
+                    .taxi-space {
+                        top: 58vh;
+                        left: 74vw;
+                    }
+                    .bici-space {
+                        top: 66vh;
+                        left: 62vw;
+                        div:last-child {
+                            margin: 2vw 0 0 2vw;
+                        }
+                    }
+                    .caminar-space {
+                        top: 71vh;
+                        left: 71vw;
+                        div:first-child {
+                            margin: 2vw 2vw 0 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 630px) {
+    body {
+        overflow: hidden;
+        #spacesWrapper  {
+            .content {
+                .spaceComponentWrapper {
+                    min-height: 510px;
+                    width: auto;
+                    .space-icons {
+                        .parking-space,
+                        .cole-space,
+                        .subte-space,
+                        .caminar-space,
+                        .bici-space,
+                        .taxi-space {
+                            font-size: 1.5vw;
+                            img {
+                                width: 5vw;
+                            }
+                        }
+                        .parking-space {
+                            top: 122vw;
+                            left: 20%;
+                            div:last-child {
+                                margin-top: 2vw;
+                                margin-left: 1vw;
+                            }
+                        }
+                        .cole-space {
+                            top: 62vw;
+                            left: 58%;
+                        }
+                        .subte-space {
+                            top: 130vw;
+                            left: 45%;
+                        }
+                        .taxi-space {
+                            top: 106vw;
+                            left: 72vw;
+                            div:last-child {
+                                margin-top: 2vw;
+                                margin-left: 1vw;
+                            }
+                        }
+                        .bici-space {
+                            top: 116vw;
+                            left: 56vw;
+                            div:last-child {
+                                margin: 2vw 0 0 2vw;
+                            }
+                        }
+                        .caminar-space {
+                            top: 124vw;
+                            left: 66vw;
+                            div:first-child {
+                                margin: 2vw 2vw 0 0;
+                            }
+                        }
+                    }
+                    .plenary-container {
+                        margin-left: 24vw;
+                        padding-top: 21vw;
+                        .plenary-a {
+                            width: 13.5vw;
+                            height: 14vw;
+                        }
+                        .plenary-b {
+                            width: 9.5vw;
+                            height: 14vw;
+                            margin-left: 13.5vw;
+                        }
+                        .plenary-c {
+                            width: 12.5vw;
+                            height: 14vw;
+                            margin-left: 23.5vw;
+                        }
+                        .highlightBlue:hover {
+                            background-color: transparent !important;
+                        }
+                        .plenary-data-display {
+                            top: 100vw;
+                            left: 6vw;
+                            .arrow-style {
+                                display: none;
+                            }
+                        }
+                    }
+                    .vip-container {
+                        margin-left: 23.5vw;
+                        margin-top: 19vw;
+                        .vip {
+                            margin-top: 0;
+                        }
+                        .vip-a {
+                            width: 2vw;
+                            height: 9px;
+                        }
+                        .vip-b {
+                            width: 2vw;
+                            height: 14px;
+                            margin-top: 2vw;
+                        }
+                        .highlightGreen:hover {
+                            background-color: transparent !important;
+                        }
+                        .vip-data-display {
+                            top: 111vw;
+                            left: 5vw;
+                            .arrow-style {
+                                display: none;
+                            }
+                        }
+                    }
+                    .auxiliar-container {
+                        .auxiliar-a {
+                            width: 8vw;
+                            height: 5vw;
+                            margin-left: -7.5vw;
+                            margin-top: -16vw;
+                        }
+                        .auxiliar-b {
+                            width: 8vw;
+                            height: 7vw;
+                            margin-top: -12vw;
+                            margin-left: -28px;
+                        }
+                        .highlightYellow:hover {
+                            background-color: transparent !important;
+                        }
+                        .auxiliar-data-display {
+                            top: 111vw;
+                            left: 4vw;
+                            .arrow-style {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-device-width: 820px) and (orientation: landscape) {
+    #spacesWrapper  {
+        .content {
+            .spaceComponentWrapper {
+                min-height: 600px;
+                margin-bottom: 118px;
+                .parking-space {
+                    top: 180vh !important;
+                }
+                .subte-space {
+                    top: 200vh !important;
+                }
+                .bici-space {
+                    top: 175vh !important;
+                }
+                .caminar-space {
+                    top: 188vh !important;
+                }
+                .taxi-space {
+                    top: 158vh !important;
+                }
+                .cole-space {
+                    top: 65vh !important;
+                }
+
+                .plenary-container {
+                    margin-left: 20vw;
+                    .plenary-a {
+                        margin-top: -12.5vw;
+                        height: 12vw;
+                        width: 11vw;
+                    }
+                    .plenary-b {
+                        margin-top: -12.5vw;
+                        height: 12vw;
+                        width: 9vw;
+                        margin-left: 11vw;
+                    }
+                    .plenary-c {
+                        margin-top: -12.5vw;
+                        height: 12vw;
+                        width: 12vw;
+                        margin-left: 19.5vw;
+                    }
+                }
+                .vip-container {
+                    margin-top: 3vw;
+                    margin-left: 20vw;
+                    width: 4vw;
+                    height: 10vw;
+                    .vip-a {
+                        width: 16px;
+                        height: 1.5vw;
+                        margin-top: 1vw;
+                    }
+                    .vip-b {
+                        width: 16px;
+                        height: 42px;
+                        margin-top: 2.5vw;
+                    }
+                }
+                .auxiliar-container {
+                    margin-left: 19.6vw;
+                    margin-top: 0vw;
+                    .auxiliar-a {
+                        height: 5vw;
+                        margin-left: 2px;
+                        margin-top: 0;
+                        width: 7vw;
+                    }
+                    .auxiliar-b { 
+                        height: 6vw;
+                        margin-left: 2px;
+                        margin-top: 4.5vw;
+                        width: 7vw;
+                    }
+                }
+            }
+        }
+    }
+}
