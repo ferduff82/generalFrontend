@@ -1,0 +1,321 @@
+
+/* Material Design */
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../lib/material/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(../lib/material/MaterialIcons-Regular.woff2) format('woff2'),
+    url(../lib/material/MaterialIcons-Regular.woff) format('woff'),
+    url(../lib/material/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/* Style Overrides */
+
+body {
+  margin-top: 20px;
+}
+.container {
+  max-width: 750px !important;
+}
+ul {
+  padding: 0 !important;
+}
+.bg-dark {
+  background-color: #1fbba6 !important;
+}
+.bg-light {
+  background-color: #0e1824 !important;
+}
+.d-flex {
+  display: flex;
+}
+.mb-1 {
+  margin-bottom: 20px;
+}
+.mb-s-1 {
+  margin-bottom: 10px;
+}
+.ml-1 {
+  margin-left: 10px;
+}
+.mt-1 {
+  margin-top: 10px;
+}
+.border-radius-left-right-bottom {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.border-radius-left-right-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.border-radius-s-left-right-top {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.border-radius-s-left-right-bottom {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.validate-spacing {
+  font-size: 30px;
+  font-weight: bold;
+  height: 0;
+  color: #fc6241;
+  margin: 0 14px;
+  line-height: 35px;
+}
+.validate-spacing.email-validate {
+  width: 48%;
+  font-size: 12px;
+}
+.add-pointer {
+  cursor: pointer;
+}
+.container .list-group-item:last-child {
+  border: 0;
+  border-radius: 0;
+}
+.title-container .btn-primary:active, 
+.title-container .btn-primary:focus, 
+.title-container .btn-primary:hover {
+  background-color: #fff !important;
+  border-color: #fff !important;
+  color: #696d71;
+}
+.list-group-item {
+  padding: 14px 15px;
+}
+
+/* Custom Styles */
+
+.container h1,
+.container h3,
+.container .search-icon {
+  color: #fff;
+}
+.container h3 {
+  background-color: #2d2f31;
+  padding: 8px 15px 8px 15px;
+  font-size: 17px;
+}
+.list-group-item .material-icons {
+  color: #2d2f31;
+}
+.list-group-item input {
+  border-radius: 0;
+}
+.container .label {
+  border-radius: 0;
+  display: inline-block;
+  padding: 5px;
+}
+.container .list-group-item .material-icons {
+  line-height: 0.8;
+}
+.title-container .add-user-container {
+  margin-top: 0;
+  width: 70%
+}
+.title-container .adjust-text {
+  line-height: 1.7;
+}
+.title-container .btn-primary {
+  background-color: #fff;
+  border: none;
+  color: #2d2f31;
+}
+.search-container {
+  width: 30%;
+  display: flex;
+  position: relative;
+}
+.search-container input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: 0;
+}
+.search-container .search-icon {
+  font-size: 35px;
+}
+.button-add-user {
+  width: 125px;
+}
+.container-list {
+  position: relative;
+}
+.container-list .edit-icon {
+  position: absolute;
+  right: 0;
+}
+.header-user-container {
+  margin-bottom: 15px;
+  position: relative;
+}
+.close-user-creation {
+  position: absolute;
+  right: 9px;
+}
+.page-header {
+  padding-bottom: 10px;
+  margin: 20px 0 20px;
+}
+.page-header h1 {
+  text-align: center;
+}
+.label {
+  font-size: 90%;
+}
+.arrow-custom {
+  float: right;
+  margin-top: -2px;
+}
+.container ul:last-child {
+  margin-bottom: 16px;
+}
+.container .validate-spacing .material-icons {
+  color: #1fbba6;
+}
+.editing-container .btn-primary,
+.new-user-container .btn-primary {
+  background-color: #2d2f31 !important;
+  border-color: #2d2f31 !important;
+  border: 0;
+  margin-right: 10px;
+}
+.modal-container .btn-primary {
+  background-color: #2d2f31 !important;
+  border-color: #2d2f31 !important;
+  border: 0;
+}
+.editing-container .btn-primary:active, 
+.editing-container .btn-primary:focus, 
+.editing-container .btn-primary:hover,
+.new-user-container .btn-primary:active, 
+.new-user-container .btn-primary:focus, 
+.new-user-container .btn-primary:hover,
+.modal-container .btn-primary:active,
+.modal-container .btn-primary:focus, 
+.modal-container .btn-primary:hover {
+  background-color: #555 !important;
+  border-color: #2d2f31 !important;
+  border: 0;
+}
+.pencil-space {
+  padding-right: 36px;
+}
+.back-cover-modal {
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+}
+.modal-component,
+.modal-component-edit {
+  position: absolute;
+  top: calc(50% - 230px);
+  background-color: #fff;
+  padding: 10px;
+  z-index: 10;
+}
+.modal-component {
+  left: calc(50% - 153px);
+}
+.modal-component-edit {
+  left: calc(50% - 141px);
+}
+.modal-component h4,
+.modal-component-edit h4 {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.modal-component button,
+.modal-component-edit button {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Tablet Devices */
+
+@media only screen and (max-width: 750px) {
+
+  .bg-light {
+    background-color: #1fbba6 !important;
+  }
+
+}
+
+@media only screen and (max-width: 730px) {
+
+  .validate-spacing.email-validate {
+    width: 73%;
+    font-size: 12px;
+  } 
+
+}
+
+@media only screen and (max-width: 590px) {
+
+  .validate-spacing.email-validate {
+    width: 100%;
+    font-size: 12px;
+  } 
+  .validate-spacing.email-validate {
+    margin: 0 0 0 5px;
+    line-height: 1.4;
+  }
+  .email-mobile input {
+    margin-bottom: 10px;
+  }
+  .title-container h3 {
+    width: 50%;
+  }
+  .search-container {
+    width: 50%;
+  }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+  .title-container .add-user-container {
+      width: 50%;
+  }
+
+}

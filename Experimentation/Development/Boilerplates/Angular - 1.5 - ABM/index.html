@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>ABM</title>
+    <script src="lib/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="lib/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/agency.min.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
+  </head>
+
+  <body ng-app="abmModule" ng-controller="abmMainController" class="bg-light">
+    <div id="wrap">
+      
+      <div class="container bg-dark border-radius-left-right-bottom">
+        <div class="page-header">
+          <h1> ABM de Usuarios </h1>
+        </div>
+
+        <!-- Modal -->
+
+        <div class="modal-container" ng-show="userCreated">
+          <div class="back-cover-modal"></div>
+          <div class="modal-component">
+            <h4>You have succesfully created a new User!</h4>
+            <button class="btn btn-primary" ng-click="userCreated = false">Close</button>
+          </div>
+        </div>
+
+        <!-- End Modal -->
+
+        <!-- User Creation Button and Search Input -->
+
+        <div class="d-flex title-container mb-1">
+          <div class="add-user-container">
+            <a class="btn btn-primary button-add-user" ng-click="visible = true"><span class="ml-1 adjust-text">Add User</span><i class="material-icons pull-left">add_circle</i></a> 
+          </div>
+          <div class="search-container">
+            <i class="material-icons search-icon">search</i>
+            <input class="form-control ml-1" ng-model="userSearch.name" placeholder="Search User..."/>
+          </div>
+        </div>
+
+        <!-- End User Creation Button and Search Input -->
+
+        <!-- User Creation Form -->
+
+        <form name="abmForm" ng-show="visible" ng-submit="newAbm(); userCreated = true;" class="list-group-item mb-1 new-user-container">
+
+          <div class="d-flex header-user-container">
+            <h4>Add a new User</h4>
+            <i class="material-icons add-pointer mb-s-1 mt-1 close-user-creation" ng-click="visible = false;">clear</i>
+          </div>
+
+          <label class="label label-default">Name:</label>
+          <div class="d-flex">
+            <input type="text" class="form-control mb-s-1" name="firstName" ng-model="addName" placeholder="Write your Name" required/>
+            <span ng-show="abmForm.firstName.$error.required" class="validate-spacing">*</span>
+            <span ng-show="abmForm.firstName.$valid" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+          </div>
+
+          <label class="label label-default">Last Name:</label>
+          <div class="d-flex">
+            <input type="text" class="form-control mb-s-1" name="lastName" ng-model="addLastName" placeholder="Write your Last Name" required/>
+            <span ng-show="abmForm.lastName.$error.required" class="validate-spacing">*</span>
+            <span ng-show="abmForm.lastName.$valid" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+          </div>
+
+          <label class="label label-default">E-mail:</label>
+          <div class="d-flex email-mobile">
+            <input type="text" class="form-control mb-s-1" ng-model="emailAdress" name="email" placeholder="Write your E-mail" ng-pattern="email_expression" required/>
+            <span ng-show="abmForm.email.$error.required" class="validate-spacing">*</span>
+            <span ng-show="abmForm.email.$dirty&&abmForm.email.$error.pattern" class="validate-spacing email-validate">Please enter a valid email adress</span>
+            <span ng-show="abmForm.email.$valid" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+          </div>
+
+          <label class="label label-default">User Type:</label>
+          <div class="d-flex">
+            <select ng-model="typeOfUser" class="form-control mb-s-1" name="userType" ng-options="x for x in userType" required></select>
+            <span ng-show="abmForm.userType.$error.required" class="validate-spacing">*</span>
+            <span ng-show="abmForm.userType.$valid" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+          </div>
+          
+          <button class="btn btn-primary mt-1" type="submit" ng-disabled="abmForm.$invalid">Save</button>
+
+        </form>
+
+        <!-- End User Creation Form -->
+
+        <h3 ng-click="visibleList = visibleList ? false : true" class="add-pointer">User List <i class="material-icons add-pointer arrow-custom" ng-show="!visibleList">keyboard_arrow_down</i> <i class="material-icons add-pointer arrow-custom" ng-show="visibleList">keyboard_arrow_right</i></h3>
+
+        <!-- User list and Edit Users -->
+            
+        <ul ng-repeat="user in dataUsers | filter: userSearch" ng-hide="visibleList">
+
+          <!-- Edit Modal -->
+
+          <div class="modal-container" ng-show="userEdited">
+            <div class="back-cover-modal"></div>
+            <div class="modal-component-edit">
+              <h4>You have succesfully edited this User!</h4>
+              <button class="btn btn-primary" ng-click="userEdited = false">Close</button>
+            </div>
+          </div>
+
+          <!-- Finish Edit Modal -->
+
+          <li class="list-group-item">
+
+            <!-- Show list of Users -->
+
+            <div class="container-list">
+              <span ng-hide="editing" ng-click="editing = true" class="d-flex pencil-space add-pointer">
+                <div><strong>Name:</strong> {{user.name}} - <strong>Last Name:</strong> {{user.lastName}} - <strong>User Name:</strong> {{user.user}} - <strong>E-mail:</strong> {{user.email}}</div>
+                <i class="material-icons pull-right add-pointer edit-icon">edit</i></span>
+            </div>
+
+            <!-- Edit User Features -->
+
+            <form name="abmEdit" ng-show="editing" ng-submit="userEdited = true; editing = false; editingFirstName = false; editingLastName = false; editingEmail = false;" class="editing-container">
+
+              <div class="header-user-container d-flex">
+                <h4>Edit user</h4>
+              </div>
+
+              <label class="label label-default">Name:</label>
+              <div class="d-flex">
+                <input type="text" class="form-control mb-s-1" name="firstName" ng-model="user.name" placeholder="Write your Name" ng-keydown="editingFirstName = true" required/>
+                <span ng-show="abmEdit.firstName.$error.required" class="validate-spacing"> * </span>
+                <span ng-show="abmEdit.firstName.$valid&&editingFirstName" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+              </div>
+
+              <label class="label label-default">Last Name:</label>
+              <div class="d-flex">
+                <input type="text" class="form-control mb-s-1" name="lastName" ng-model="user.lastName" placeholder="Write your Last Name" ng-keydown="editingLastName = true" required/>
+                <span ng-show="abmEdit.lastName.$error.required" class="validate-spacing"> * </span>
+                <span ng-show="abmEdit.lastName.$valid&&editingLastName" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+              </div>
+
+              <label class="label label-default">E-mail:</label>
+              <div class="d-flex email-mobile">
+                <input type="text" name="email" class="form-control mb-s-1" ng-model="user.email" placeholder="Write your E-mail" ng-pattern="email_expression" ng-keydown="editingEmail = true" required/>
+                <span ng-show="abmEdit.email.$error.required" class="validate-spacing"> * </span>
+                <span ng-show="abmEdit.email.$dirty&&abmEdit.email.$error.pattern" class="validate-spacing email-validate"> * Please Enter Valid Email Adress</span>
+                <span ng-show="abmEdit.email.$valid&&editingEmail" class="validate-spacing"><i class="material-icons">check_circle</i></span>
+              </div>
+
+              <label class="label label-default">User Type:</label>
+              <div class="d-flex">
+                <select ng-model="user.user" class="form-control mb-s-1" name="userType" ng-options="x for x in userType" required></select>
+              </div>
+              <button class="btn btn-primary mt-1" type="submit" ng-disabled="abmEdit.$invalid">Save</button>
+              <button class="btn btn-secondary mt-1" type="button" ng-click="editing = false;">Cancel</button>
+              <button class="btn pull-right mt-1" type="button" ng-click="remove(user)"><i class="material-icons pull-left">delete</i></button>
+            </form>
+
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+  </body>
+</html>
