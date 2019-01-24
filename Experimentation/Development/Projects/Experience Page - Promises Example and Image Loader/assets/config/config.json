@@ -1,0 +1,61 @@
+{
+    "api_call": true,
+    "api_url": "https://skuapi.portinos.com/get-products?form_factor=2&processor=7&retail=1&qty=3&token=64CF9QB54H27I1OOS4T9",
+    "manual_input": [{
+        "name": "Lenovo ThinkPad Yoga 11e",
+        "image": "http://images.icecat.biz/img/gallery/36269190_6783385555.jpg",
+        "price": "811.03",
+        "link": "https://www.amazon.com/Lenovo-11-6MTCH-128GB-W10P-20HU0000US/dp/B072BY1YZW?SubscriptionId=AKIAJQXDQRH6HAYWR4NA&tag=iceleadscom-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B072BY1YZW",
+        "tech_spec": {
+            "sop": "Windows 10 Pro",
+            "processor": "7th gen Intel® Core™ i3 2.40 GHz",
+            "hdd": "128 GB (SSD)",
+            "ram": "8 GB",
+            "display": "11.6 inch HD IPS",
+            "product_manufacturer": "Lenovo",
+            "processor_thumbnail": "http://www.intel.com/content/dam/www/global/ark/badges/95501_128.gif"
+        }
+    },{
+        "name": "Lenovo ThinkPad Yoga 11e",
+        "image": "http://images.icecat.biz/img/gallery/36269190_6783385555.jpg",
+        "price": "811.03",
+        "link": "https://www.amazon.com/Lenovo-11-6MTCH-128GB-W10P-20HU0000US/dp/B072BY1YZW?SubscriptionId=AKIAJQXDQRH6HAYWR4NA&tag=iceleadscom-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B072BY1YZW",
+        "tech_spec": {
+            "sop": "Windows 10 Pro",
+            "processor": "7th gen Intel® Core™ i3 2.40 GHz",
+            "hdd": "128 GB (SSD)",
+            "ram": "8 GB",
+            "display": "11.6 inch HD IPS",
+            "product_manufacturer": "Lenovo",
+            "processor_thumbnail": "http://www.intel.com/content/dam/www/global/ark/badges/95501_128.gif"
+        }
+    },{
+        "name": "Lenovo ThinkPad Yoga 11e",
+        "image": "http://images.icecat.biz/img/gallery/36269190_6783385555.jpg",
+        "price": "811.03",
+        "link": "https://www.amazon.com/Lenovo-11-6MTCH-128GB-W10P-20HU0000US/dp/B072BY1YZW?SubscriptionId=AKIAJQXDQRH6HAYWR4NA&tag=iceleadscom-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B072BY1YZW",
+        "tech_spec": {
+            "sop": "Windows 10 Pro",
+            "processor": "7th gen Intel® Core™ i3 2.40 GHz",
+            "hdd": "128 GB (SSD)",
+            "ram": "8 GB",
+            "display": "11.6 inch HD IPS",
+            "product_manufacturer": "Lenovo",
+            "processor_thumbnail": "http://www.intel.com/content/dam/www/global/ark/badges/95501_128.gif"
+        }
+    },{
+        "name": "Lenovo ThinkPad Yoga 11e",
+        "image": "http://images.icecat.biz/img/gallery/36269190_6783385555.jpg",
+        "price": "811.03",
+        "link": "https://www.amazon.com/Lenovo-11-6MTCH-128GB-W10P-20HU0000US/dp/B072BY1YZW?SubscriptionId=AKIAJQXDQRH6HAYWR4NA&tag=iceleadscom-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B072BY1YZW",
+        "tech_spec": {
+            "sop": "Windows 10 Pro",
+            "processor": "7th gen Intel® Core™ i3 2.40 GHz",
+            "hdd": "128 GB (SSD)",
+            "ram": "8 GB",
+            "display": "11.6 inch HD IPS",
+            "product_manufacturer": "Lenovo",
+            "processor_thumbnail": "http://www.intel.com/content/dam/www/global/ark/badges/95501_128.gif"
+        }
+    }]
+}

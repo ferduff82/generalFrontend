@@ -1,0 +1,418 @@
+/* ************* */
+
+/*     Fonts     */
+
+/* ************* */
+
+@font-face {
+    font-family: "IntelClear";
+    src: url("./fonts/IntelClear_WLat_Rg.eot");
+    src: url("./fonts/IntelClear_WLat_Rg.eot?#iefix") format("embedded-opentype"), url("./fonts/IntelClear_WLat_Rg.woff") format("woff"), url("./fonts/IntelClear_WLat_Rg.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "IntelClearThin";
+    src: url("./fonts/IntelClear_WLat_Lt.eot");
+    src: url("./fonts/IntelClear_WLat_Lt.eot?#iefix") format("embedded-opentype"), url("./fonts/IntelClear_WLat_Lt.woff") format("woff"), url("./fonts/IntelClear_WLat_Lt.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "IntelClearBold";
+    src: url("./fonts/IntelClear_WLat_Bd.eot");
+    src: url("./fonts/IntelClear_WLat_Bd.eot?#iefix") format("embedded-opentype"), url("./fonts/IntelClear_WLat_Bd.woff") format("woff"), url("./fonts/IntelClear_WLat_Bd.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: "IntelClearPro";
+    src: url("./fonts/IntelClearPro_W_Bd.eot");
+    src: url("./fonts/IntelClearPro_W_Bd.eot?#iefix") format("embedded-opentype"), url("./fonts/IntelClearPro_W_Bd.woff") format("woff"), url("./fonts/IntelClearPro_W_Bd.ttf") format("truetype")
+}
+
+/* ************* */
+
+/*   Generales   */
+
+/* ************* */
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+    background: #ffffff;
+    margin: 0 auto;
+    padding: 0;
+    color: #FFF;
+    font-size: 100%;
+    width: 100%;
+}
+
+.wrapper h1,
+.wrapper h2,
+.wrapper h3,
+.wrapper h4,
+.wrapper h5,
+.wrapper h6 {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.wrapper sup {
+    font-size: 57%;
+}
+
+/* LOADER */
+.modal{
+    background: #FFF;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 9;
+}
+.loader{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    margin: 0 auto;
+}
+
+#loader-1:before, #loader-1:after{
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 10px solid transparent;
+    border-top-color: #3498db;
+  }
+  
+  #loader-1:before{
+    z-index: 100;
+    animation: spin 1s infinite;
+  }
+  
+  #loader-1:after{
+    border: 10px solid #ccc;
+  }
+  
+  @keyframes spin{
+    0%{
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100%{
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+
+
+
+/* ************* */
+
+/*    DESKTOP    */
+
+/* ************* */
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 479px);
+    grid-row-gap: 45px;
+    row-gap: 45px;
+    grid-column-gap: 45px;
+    -webkit-column-gap: 45px;
+            column-gap: 45px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 35px 0;
+    position: relative;
+}
+
+.wrapper .product-container {
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 2px 20px 2px rgba(169, 169, 169, 0.5);
+            box-shadow: 0 2px 20px 2px rgba(169, 169, 169, 0.5);
+    width: 479px;
+    min-height: 211px;
+}
+
+.wrapper .product-container .top-bar {
+    background-color: #0071c5;
+    /* height: 33px; */
+    padding: 5px 100px 5px 15px;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.wrapper .product-container .top-bar h2 {
+    font-family: 'IntelClearBold';
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.wrapper .product-container .top-bar .intel-badge {
+    position: absolute;
+    top: 7px;
+    right: 16px;
+    width: 69px;
+}
+
+.wrapper .product-container .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    /* height: calc(100% - 33px); */
+    min-height: 165px;
+}
+
+.wrapper .product-container .content .device {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 44%;
+}
+
+.wrapper .product-container .content .device>img {
+    max-height: 135px;
+    max-width: 180px;
+}
+
+.wrapper .product-container .content .specs {
+    position: relative;
+    width: 60%;
+    padding-bottom: 10px;
+    
+}
+
+.wrapper .product-container .content .specs h3.title {
+    font-family: 'IntelClearBold';
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #0071c5;
+    margin-top: 10%;
+    width: 185px
+
+}
+
+.wrapper .product-container .content .specs ul.info {
+    font-family: 'IntelClear';
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #0071c5;
+    list-style: none;
+    margin: 0%;
+    padding: 0%;
+    margin-top: 4%;
+}
+
+.wrapper .product-container .content .specs h4.price {
+    visibility: hidden;
+
+    font-family: IntelClearBold;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0071c5;
+    margin-top: 5%;
+}
+
+.wrapper .product-container .content .specs a.cta {
+    width: 91px;
+    height: 27px;
+    background-color: #0071c5;
+    text-decoration: none;
+    border: none;
+    font-family: IntelClearBold;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    padding: 0%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+
+/* ************* */
+
+/*     TABLET   */
+
+/* ************* */
+@media (max-width:1024px) {
+
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-row-gap: 45px;
+        row-gap: 45px;
+        grid-column-gap: initial;
+        -webkit-column-gap: initial;
+                column-gap: initial;
+        padding-top: 30px;
+    }
+
+    .wrapper .product-container {
+        margin: 0 auto;
+    }
+
+}
+
+/* ************* */
+
+/*     MOBILE   */
+
+/* ************* */
+
+@media (max-width:525px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-row-gap: 35px;
+        row-gap: 35px;
+        grid-column-gap: initial;
+        -webkit-column-gap: initial;
+                column-gap: initial;
+        padding-top: 30px;
+    }
+
+    .wrapper .product-container {
+        width: 255px;
+        min-height: 328px;
+    }
+
+    .wrapper .product-container .top-bar {
+        min-height: 38px;
+        padding: 5px 85px 5px 11px;
+    }
+
+    .wrapper .product-container .top-bar h2 {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .wrapper .product-container .top-bar .intel-badge {
+        top: 10px;
+        right: 11px;
+        width: 49px;
+    }
+
+    .wrapper .product-container .content {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-flow: column nowrap;
+                flex-flow: column nowrap;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+        min-height: 290px;
+
+    }
+    
+    .wrapper .product-container .content .device {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        height: 55%;
+        width: 100%;
+    }
+    
+    .wrapper .product-container .content .device>img {
+        max-height: 135px;
+        max-width: 180px;
+    }
+
+
+    .wrapper .product-container .content .specs {
+        position: relative;
+        padding-left: 5%;
+        padding-bottom: 5%;
+        margin-top: 3%;
+        width: 100%;
+    }
+    
+    .wrapper .product-container .content .specs h3.title {
+        font-size: 12px;
+        margin-top: 0%;
+        position: absolute;
+        top: -160%;
+    
+    }
+    
+    .wrapper .product-container .content .specs ul.info {
+        font-size: 12px;
+        margin-top: 0%;
+    }
+    
+    .wrapper .product-container .content .specs h4.price {
+        font-size: 16px;
+        margin-top: 5%;
+    }
+    
+    .wrapper .product-container .content .specs button.cta {
+        width: 76px;
+        height: 23px;
+        font-size: 12px;
+
+        position: absolute;
+        bottom: 12px;
+        right: 11px;
+    }
+
+}
