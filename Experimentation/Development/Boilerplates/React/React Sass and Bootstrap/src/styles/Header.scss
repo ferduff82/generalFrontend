@@ -1,0 +1,67 @@
+
+@import './index.scss';
+
+.header {
+
+   width: 100%;
+   background-color: $primary-background !important;
+   box-shadow: $main-shadow;
+
+   .header-wrapper {
+      height: 40px;
+      .calc-center-align {
+         left: calc(50% - 36px);
+      }
+      .white-color {
+         color: $white-color;
+      } 
+      h5 {
+         font-weight: bold;
+      }
+   }     
+   .patient-data-wrapper {
+      .patient-data-info {
+         width: 100%;
+         height: 78px;
+         position: relative;
+         background-color: $white-color;
+         .patient-nameandsex-container {
+            font-weight: bold;
+            margin-bottom: 6px;
+            margin-top: -2px;
+            color: $text-dark;
+            .female {
+               img {
+                  width: 17px;
+                  height: 22px;
+                  margin-right: 4px;
+               }
+            }
+            .male {
+               img {
+                  width: 22px;
+                  height: 22px;
+               }
+            }
+         }
+         .patient-information {
+            width: 100%;
+            display: flex;
+            color: $text-light;
+            .reduce-font-size {
+               font-size: 12px;
+            }
+            .material-icons {
+               font-size: 17px;
+               margin-right: 10px;
+            }
+         }
+         .phone-container,
+         .patient-age,
+         .patient-sex {
+            right: .5rem;
+         }
+      }
+   }
+   
+}

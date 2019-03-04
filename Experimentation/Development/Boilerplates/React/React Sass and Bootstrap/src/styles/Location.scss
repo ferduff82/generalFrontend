@@ -1,0 +1,55 @@
+
+@import './index.scss';
+
+.location {
+
+   width: 100%;
+   padding-top: 16px; 
+   margin-bottom: 55px;
+
+   .mapContainer {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 10px;
+      position: relative;
+   }
+   .doctorStatus {
+      .orangeDelayed {
+         color: $orange-high;
+      }
+      .blueDelayed {
+         color: $primary-background;
+      }
+      .orangeDelayedBackground {
+         background-color: $orange-high;
+      }
+      .blueDelayedBackground {
+         background-color: $primary-background;
+      }
+      .leftColumn {
+         width: 70%;
+         padding-right: 15px;
+         text-align: right;
+         .delayedTime {
+            font-weight: bold;
+            font-size: 14px;
+         }
+         .arrivalTimeText {
+            color: $text-dark;
+            font-weight: bold;
+            font-size: 14px;
+         }
+      } 
+      .rightColumn {
+         width: 30%;
+         .exactTime {
+            text-align: center;
+            height: 100%;
+            line-height: 3;
+            color: $white-color;
+         }
+      }
+   }
+
+   
+}

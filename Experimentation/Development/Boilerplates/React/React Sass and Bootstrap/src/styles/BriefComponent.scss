@@ -1,0 +1,54 @@
+
+@import './index.scss';
+
+.briefComponent {
+
+   margin-bottom: 55px;
+
+   ul {
+      height: 100%;
+      li {
+         height: 16.666666%;
+         .left-column-brief,
+         .right-column-brief,
+         .right-color {
+            height: 45px;
+         }
+         .row-brief {
+            margin-bottom:10px;
+            .left-column-brief {
+               width: 56px;
+               text-align: center;
+               line-height: 2.9;
+               color: #fff;
+               border-radius: 25px;
+               font-weight: bold;
+            }
+            .right-column-brief {
+               width: 100%;
+               padding: 13px;
+               font-size: 0.9em;
+               margin-left: 10px;
+               background-color: $white-color;
+               color: $text-light;
+            }
+            .right-color {
+               background-color: $green-high;
+               width: 10px;
+            }
+            .grayBack {
+               background-color: $grey-navigation-color;
+            }
+            .redBack {
+               background-color: $red-high;
+            }
+            .yellowBack {
+               background-color: $yellow-high;
+            }
+            .greenBack {
+               background-color: $green-high;
+            }
+         }
+      }
+   }
+}

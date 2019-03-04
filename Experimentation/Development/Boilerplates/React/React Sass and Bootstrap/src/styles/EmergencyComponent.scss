@@ -1,0 +1,89 @@
+
+@import './index.scss';
+
+.emergencyComponent {
+
+   width: 100%;
+   padding-bottom: 8px;
+
+   .right-side {
+      width: 100%;
+      font-weight: bold;
+      color: $white-color;
+      box-shadow: $main-shadow;
+      .first-row,
+      .second-row {
+         display: flow-root;
+      }
+      .first-row {
+         .title-emergency {
+            display: contents;
+            .emergency-name {
+               margin-bottom: 6px;
+               width: 88%;
+               line-height: 1.4;
+               font-size: 14px;
+               line-height: 1.2;
+            }
+         }
+         .right-icons {
+            right: 10px;
+            .icon-ambulance {
+               img {
+                  width: 23px;
+                  height: 16px;
+                  margin-top: -3px;
+               }
+               i {
+                  font-size: 24px;
+               }
+            }
+         }
+      }
+      .second-row {
+         overflow: hidden;
+         p {
+            font-family: avenirBook;
+            font-size: 0.7em;
+            margin-bottom: 0;
+            line-height: 1.2;
+         }
+         .description-emergency {
+            width: 85%;
+            .ellipsis {
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+            }
+         }
+         .full-description {
+            position: absolute;
+            right: .5rem;
+            bottom: 6px;
+            opacity: 0.6;
+            .hidden {
+               display: none;
+            }
+            .show {
+               display: block;
+            }
+         }
+      }
+      .heightFixed {
+         min-height: 30px;
+      }
+      .heightAuto {
+         height: auto;
+      }
+   }
+   .VERDE {
+      background-color: $green-high;
+   }
+   .ROJO {
+      background-color: $red-high;
+   }
+   .AMARILLO {
+      background-color: $yellow-high;
+   }
+
+}

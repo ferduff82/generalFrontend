@@ -1,0 +1,87 @@
+
+@import './index.scss';
+
+.historic-container {
+
+   margin-bottom: 67px;
+   
+   .historic {
+      width: 100%;
+      padding-top: 12px;
+      .left-side {
+         width: 16px;
+      }
+      .right-side {
+         width: 95%;
+         font-weight: bold;
+         background-color: $white-color;
+         .first-row,
+         .second-row {
+            display: flow-root;
+         }
+         .first-row {
+            h6 {
+               font-size: 16px;
+               font-weight: bold;
+               color: $text-dark;
+               .date {
+                  color: $grey-navigation-color; 
+                  font-size: 13px;
+                  padding-bottom: 3px;
+               }
+               .diagnostic {
+                  font-size: 14px;
+               }
+            }
+         }
+         .second-row {
+            overflow: hidden;
+            p {
+               font-family: avenirBook;
+               font-size: 0.7em;
+               margin-bottom: 0;
+               line-height: 1.2;
+               color: $text-light;
+            }
+            .description-emergency {
+               width: 80%;
+            }
+            .full-description {
+               position: absolute;
+               right: .5rem;
+               bottom: 6px;
+               opacity: 0.6;
+               .material-icons {
+                  color: $grey-navigation-color; 
+               }
+               .hidden {
+                  display: none;
+               }
+               .show {
+                  display: block;
+               }
+            }
+         }
+         .heightFixed {
+            height: 19px;
+         }
+         .heightAuto {
+            height: auto;
+         }
+      }
+      .ROJO {
+         background-color: $red-high;
+      }
+      .AMARILLO {
+         background-color: $yellow-high;
+      }
+      .VERDE {
+         background-color: $green-high;
+      }
+      .ellipsis {
+         white-space: nowrap; 
+         overflow: hidden;
+         text-overflow: ellipsis;
+      }
+   }
+}

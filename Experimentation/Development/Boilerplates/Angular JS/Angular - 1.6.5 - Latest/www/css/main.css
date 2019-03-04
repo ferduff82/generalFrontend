@@ -1,0 +1,54 @@
+/**********/
+/* Colors */
+/**********/
+/*********/
+/* Fonts */
+/*********/
+@font-face {
+  font-family: robotoRegular;
+  src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: robotoBold;
+  src: url(../fonts/Roboto/Roboto-Bold.ttf);
+}
+/******************/
+/* General Styles */
+/******************/
+/* Styles for ngAnimate */
+#dolarT.ng-enter {
+  transition: 2s linear all;
+  opacity: 0;
+}
+#dolarT.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+#allProducts.ng-enter {
+  transition: 2s linear all;
+  opacity: 0;
+}
+#allProducts.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+/* Styles for ngClass */
+.blue {
+  background-color: blue;
+  color: #fff;
+}
+.green {
+  background-color: green;
+  color: #fff;
+}
+.red {
+  background-color: red;
+  color: #fff;
+}
+/* Small style changes */
+#appContanier {
+  margin: 15px;
+}
+h3 {
+  display: inline-block;
+  margin: 10px 10px 10px 0;
+}
+/*# sourceMappingURL=main.css.map */
