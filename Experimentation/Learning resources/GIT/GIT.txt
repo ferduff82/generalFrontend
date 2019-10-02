@@ -48,6 +48,8 @@ git add "ruta del archivo modified" o git add -A "para agregar todo los untracke
 
 git reset "ruta del archivo modified" (volver atrás el add)
 
+git rm --cached test (para resetear archivo a untracked)
+
 git commit
 
 git commit -m '<message>'
