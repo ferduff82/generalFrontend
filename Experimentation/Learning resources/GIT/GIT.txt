@@ -2,7 +2,7 @@
 
 clonar repositorios:
 
-git clone ssh://git@cmegit:/marketing_cmegroup_cq5_css.git
+git clone ssh://ferduff82@gmail:/exampleRepo.git
 
 
 Guardar Credenciales para que no lo pida dos veces:
