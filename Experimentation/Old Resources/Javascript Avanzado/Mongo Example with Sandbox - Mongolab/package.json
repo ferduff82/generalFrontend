@@ -5,7 +5,7 @@
   "main": "mongooseSimpleExample.js",
   "dependencies": {
     "mongoose": "^4.0.1",
-    "mongodb": "^2.0.25"
+    "mongodb": "^3.6.1"
   },
   "devDependencies": {},
   "scripts": {
