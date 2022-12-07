@@ -4,7 +4,7 @@
   "description": "Ejercicio AngularJS para Despegar",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.15.4",
+    "express": "^4.18.2",
     "less-middleware": "^2.2.1",
     "opn": "^5.1.0"
   },
